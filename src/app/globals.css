@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Palette matched to the existing Wix site (spchoir1.wixsite.com/choir):
+       cardinal red brand on warm off-white, with a warm gold accent kept for
+       eyebrows / badges where pure red would overload. */
+    --background: 30 25% 97%;        /* warm off-white #F7F5F2 */
+    --foreground: 20 13% 14%;        /* warm near-black #27211E */
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 13% 14%;
+
+    --primary: 350 96% 38%;          /* cardinal red ~#BC0424 */
+    --primary-foreground: 30 25% 97%;
+
+    --secondary: 35 80% 40%;         /* warm deep gold ~#B87809 */
+    --secondary-foreground: 20 13% 14%;
+
+    --muted: 20 15% 93%;
+    --muted-foreground: 20 10% 38%;
+
+    --accent: 35 80% 40%;
+    --accent-foreground: 20 13% 14%;
+
+    --border: 20 15% 86%;
+    --input: 20 15% 86%;
+    --ring: 350 96% 38%;
+
+    --radius: 0.6rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+  }
+}
