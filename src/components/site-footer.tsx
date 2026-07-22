@@ -11,6 +11,12 @@ const ICONS: Record<ChoirSocial["icon"], typeof Facebook> = {
   globe: Globe,
 };
 
+const FEEDBACK_HREF = `mailto:${CHOIR.email}?subject=${encodeURIComponent(
+  "St. Paul's Choir website — feedback",
+)}&body=${encodeURIComponent(
+  "What I liked:\n\nWhat could be better:\n\nAnything not working:\n\nWhich page/section:\n",
+)}`;
+
 export function SiteFooter() {
   return (
     <footer className="border-t bg-foreground text-background">
@@ -36,6 +42,7 @@ export function SiteFooter() {
             <li><Link href="/concerts" className="hover:text-secondary">Concerts &amp; events</Link></li>
             <li><Link href="/join" className="hover:text-secondary">Join the choir</Link></li>
             <li><Link href="/contact" className="hover:text-secondary">Contact us</Link></li>
+            <li><a href={FEEDBACK_HREF} className="hover:text-secondary">Send feedback</a></li>
             <li>
               <a
                 href={CHOIR.parishSiteHref}
