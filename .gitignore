@@ -35,3 +35,7 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# internal planning docs (contain member names — keep out of the repo)
+*.xlsx
+*.xls
