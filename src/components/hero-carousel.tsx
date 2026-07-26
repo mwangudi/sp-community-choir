@@ -4,7 +4,18 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-type Slide = { src: string; alt: string; kicker?: string; title?: string };
+type Slide = {
+  src: string;
+  alt: string;
+  kicker?: string;
+  title?: string;
+  /**
+   * CSS object-position for this photo, e.g. "center 30%".
+   * Lets each image be anchored on its faces, since the photos have
+   * very different aspect ratios (square group shots vs. wide panoramas).
+   */
+  focus?: string;
+};
 
 export function HeroCarousel({
   slides,
@@ -57,8 +68,9 @@ export function HeroCarousel({
             alt={s.alt}
             fill
             priority={i === 0}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-cover object-[center_top]"
+            sizes="(min-width: 1024px) 60vw, 100vw"
+            style={{ objectPosition: s.focus ?? "center" }}
+            className="object-cover"
           />
           {(s.kicker || s.title) && (
             <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 via-primary/40 to-transparent p-5 pb-6 text-right sm:p-8 sm:pb-8">

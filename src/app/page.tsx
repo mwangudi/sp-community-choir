@@ -68,7 +68,7 @@ export default function HomePage() {
           <div className="relative lg:col-span-7">
             <HeroCarousel
               slides={HERO_CAROUSEL}
-              className="aspect-[4/3] w-full lg:aspect-[5/4]"
+              className="aspect-[16/11] w-full lg:aspect-[16/10]"
             />
 
             {/* Floating accent card (template-style) */}

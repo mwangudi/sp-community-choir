@@ -43,31 +43,44 @@ export const GALLERY_PREVIEW: { src: string; alt: string }[] = [
   { src: "/gallery/pic-5.avif", alt: "Choir moment" },
 ];
 
-/** Slides used in the homepage hero carousel. */
+/**
+ * Slides used in the homepage hero carousel.
+ *
+ * Only photos whose faces are fully visible in the SOURCE file are used
+ * here — `pic-2`, `pic-4` and `pic-5` are tightly cropped panoramas whose
+ * subjects are already clipped in the original, so they stay in the
+ * gallery grid instead. Each slide sets a `focus` (CSS object-position)
+ * because the shapes differ wildly: `pic-1` is square (1266×1275),
+ * `pic-7` is 1.93:1 and `pic-3` is a 3.17:1 panorama.
+ */
 export const HERO_CAROUSEL: {
   src: string;
   alt: string;
   kicker?: string;
   title?: string;
+  focus?: string;
 }[] = [
   {
     src: "/gallery/pic-1.avif",
     alt: "Choir in praise and dance",
     kicker: "Join us in",
     title: "Praise and Dance",
-  },
-  {
-    src: "/gallery/pic-2.avif",
-    alt: "Choir exploring different musical traditions",
-    kicker: "Explore & learn music…",
-    title: "Classical, African, you name it!",
+    // Square photo in a landscape frame: anchor at the top so the back
+    // row's heads stay in shot.
+    focus: "center top",
   },
   {
     src: "/gallery/pic-3.avif",
     alt: "The Eucharistic celebration",
     kicker: "Our core",
     title: "Eucharistic Celebration",
+    focus: "center 35%",
   },
-  { src: "/gallery/pic-4.avif", alt: "St. Paul's Chapel Community Choir" },
-  { src: "/gallery/pic-5.avif", alt: "St. Paul's Chapel Community Choir" },
+  {
+    src: "/gallery/pic-7.avif",
+    alt: "The choir performing in concert with an orchestra",
+    kicker: "Explore & learn music…",
+    title: "Classical, African, you name it!",
+    focus: "center 40%",
+  },
 ];
