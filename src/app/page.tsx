@@ -30,79 +30,84 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ─────────── Hero ─────────── */}
-      <section className="relative overflow-hidden border-b bg-gradient-to-br from-background via-background to-secondary/5">
-        <div className="container relative grid items-center gap-8 py-10 sm:py-12 lg:grid-cols-12 lg:gap-12 lg:py-10">
-          <div className="lg:col-span-5">
-            <div className="inline-flex items-center gap-2 rounded-full bg-secondary/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-secondary">
-              <Sparkles className="h-3.5 w-3.5" />
-              {CHOIR.tagline}
+      {/* ─────────── Hero + verse band ───────────
+         On large screens these two fill exactly one viewport (minus the
+         4rem sticky header) so the verse sits on the fold instead of
+         leaving dead space above it. */}
+      <div className="flex flex-col lg:min-h-[calc(100svh-4rem)]">
+        <section className="relative flex flex-1 items-center overflow-hidden border-b bg-gradient-to-br from-background via-background to-secondary/5">
+          <div className="container relative grid w-full items-center gap-8 py-10 sm:py-12 lg:grid-cols-12 lg:gap-12 lg:py-10">
+            <div className="lg:col-span-5">
+              <div className="inline-flex items-center gap-2 rounded-full bg-secondary/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-secondary">
+                <Sparkles className="h-3.5 w-3.5" />
+                {CHOIR.tagline}
+              </div>
+              <h1 className="mt-4 font-serif text-4xl font-semibold leading-[1.1] text-primary sm:text-5xl lg:text-[3.25rem] xl:text-6xl">
+                {CHOIR.name}
+              </h1>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/80 sm:text-lg">
+                {CHOIR.intro}
+              </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Button
+                  asChild
+                  size="lg"
+                  className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  <Link href="/join">
+                    Join the choir <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full"
+                >
+                  <Link href="/concerts">See upcoming concerts</Link>
+                </Button>
+              </div>
             </div>
-            <h1 className="mt-4 font-serif text-4xl font-semibold leading-[1.1] text-primary sm:text-5xl lg:text-[3.25rem] xl:text-6xl">
-              {CHOIR.name}
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/80 sm:text-lg">
-              {CHOIR.intro}
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Button
-                asChild
-                size="lg"
-                className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
-              >
-                <Link href="/join">
-                  Join the choir <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="rounded-full"
-              >
-                <Link href="/concerts">See upcoming concerts</Link>
-              </Button>
+
+            <div className="relative lg:col-span-7">
+              <HeroCarousel
+                slides={HERO_CAROUSEL}
+                className="aspect-[16/11] w-full lg:aspect-[16/10]"
+              />
+
+              {/* Floating accent card (template-style) */}
+              <Card className="absolute -bottom-5 -left-3 hidden w-[240px] border-secondary/30 bg-background/95 shadow-2xl backdrop-blur sm:block lg:-bottom-6 lg:-left-6">
+                <CardContent className="flex items-center gap-3 p-3.5">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                    <Music2 className="h-5 w-5" />
+                  </span>
+                  <div className="text-sm leading-tight">
+                    <div className="font-serif text-base font-semibold text-primary">
+                      {CHOIR.ministersAt.label}
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      Every Sunday at St. Paul&apos;s Chapel
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
+        </section>
 
-          <div className="relative lg:col-span-7">
-            <HeroCarousel
-              slides={HERO_CAROUSEL}
-              className="aspect-[16/11] w-full lg:aspect-[16/10]"
-            />
-
-            {/* Floating accent card (template-style) */}
-            <Card className="absolute -bottom-5 -left-3 hidden w-[240px] border-secondary/30 bg-background/95 shadow-2xl backdrop-blur sm:block lg:-bottom-6 lg:-left-6">
-              <CardContent className="flex items-center gap-3 p-3.5">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                  <Music2 className="h-5 w-5" />
-                </span>
-                <div className="text-sm leading-tight">
-                  <div className="font-serif text-base font-semibold text-primary">
-                    {CHOIR.ministersAt.label}
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    Every Sunday at St. Paul&apos;s Chapel
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+        {/* ─────────── Verse band ─────────── */}
+        <section className="border-b bg-primary py-10 text-primary-foreground">
+          <div className="container flex flex-col items-center gap-2 text-center">
+            <Quote className="h-7 w-7 text-gold" />
+            <blockquote className="max-w-2xl font-serif text-xl leading-snug sm:text-2xl">
+              {CHOIR.verse.text}
+            </blockquote>
+            <cite className="text-xs font-semibold uppercase tracking-widest not-italic text-gold">
+              {CHOIR.verse.ref}
+            </cite>
           </div>
-        </div>
-      </section>
-
-      {/* ─────────── Verse band ─────────── */}
-      <section className="border-b bg-primary py-10 text-primary-foreground">
-        <div className="container flex flex-col items-center gap-2 text-center">
-          <Quote className="h-7 w-7 text-gold" />
-          <blockquote className="max-w-2xl font-serif text-xl leading-snug sm:text-2xl">
-            {CHOIR.verse.text}
-          </blockquote>
-          <cite className="text-xs font-semibold uppercase tracking-widest not-italic text-gold">
-            {CHOIR.verse.ref}
-          </cite>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* ─────────── What we do ─────────── */}
       <section className="border-b py-16 sm:py-20">
