@@ -39,3 +39,4 @@ next-env.d.ts
 # internal planning docs (contain member names — keep out of the repo)
 *.xlsx
 *.xls
+*.pptx
