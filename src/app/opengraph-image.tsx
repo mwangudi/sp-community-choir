@@ -31,7 +31,7 @@ export default function OpengraphImage() {
               width: 64,
               height: 64,
               borderRadius: 999,
-              background: "#B87809",
+              background: "#FDB321",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -45,7 +45,7 @@ export default function OpengraphImage() {
               fontSize: 24,
               letterSpacing: 6,
               textTransform: "uppercase",
-              color: "#F0C879",
+              color: "#FDB321",
             }}
           >
             {CHOIR.tagline}
@@ -67,8 +67,8 @@ export default function OpengraphImage() {
             justifyContent: "space-between",
             alignItems: "center",
             fontSize: 24,
-            color: "#F0C879",
-            borderTop: "2px solid rgba(240,200,121,0.35)",
+            color: "#FDB321",
+            borderTop: "2px solid rgba(253,179,33,0.35)",
             paddingTop: 24,
           }}
         >

@@ -76,7 +76,7 @@ export function HeroCarousel({
             <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/85 via-primary/40 to-transparent p-5 pb-6 text-right sm:p-8 sm:pb-8">
               <div className="ml-auto max-w-[70%] sm:max-w-[65%]">
                 {s.kicker && (
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-secondary sm:text-xs">
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gold sm:text-xs">
                     {s.kicker}
                   </div>
                 )}

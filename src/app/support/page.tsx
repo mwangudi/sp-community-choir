@@ -56,7 +56,7 @@ export default function SupportPage() {
                   priority
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/70 via-primary/20 to-transparent p-4">
-                  <p className="text-right text-xs font-semibold uppercase tracking-widest text-secondary">
+                  <p className="text-right text-xs font-semibold uppercase tracking-widest text-gold">
                     Asante sana
                   </p>
                 </div>

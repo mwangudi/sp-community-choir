@@ -19,6 +19,11 @@
     --secondary: 35 80% 40%;         /* warm deep gold ~#B87809 */
     --secondary-foreground: 20 13% 14%;
 
+    /* Amber gold from the choir uniform ~#FDB321. Bright enough to stay
+       legible on the cardinal-red and ink backgrounds, where the deeper
+       --secondary gold does not have sufficient contrast. */
+    --gold: 40 98% 56%;
+
     --muted: 20 15% 93%;
     --muted-foreground: 20 10% 38%;
 

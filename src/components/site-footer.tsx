@@ -34,21 +34,21 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-secondary">
+          <h3 className="text-xs font-semibold uppercase tracking-widest text-gold">
             Explore
           </h3>
           <ul className="mt-3 grid gap-2 text-sm text-background/90">
-            <li><Link href="/about" className="hover:text-secondary">About the choir</Link></li>
-            <li><Link href="/concerts" className="hover:text-secondary">Concerts &amp; events</Link></li>
-            <li><Link href="/join" className="hover:text-secondary">Join the choir</Link></li>
-            <li><Link href="/contact" className="hover:text-secondary">Contact us</Link></li>
-            <li><a href={FEEDBACK_HREF} className="hover:text-secondary">Send feedback</a></li>
+            <li><Link href="/about" className="hover:text-gold">About the choir</Link></li>
+            <li><Link href="/concerts" className="hover:text-gold">Concerts &amp; events</Link></li>
+            <li><Link href="/join" className="hover:text-gold">Join the choir</Link></li>
+            <li><Link href="/contact" className="hover:text-gold">Contact us</Link></li>
+            <li><a href={FEEDBACK_HREF} className="hover:text-gold">Send feedback</a></li>
             <li>
               <a
                 href={CHOIR.parishSiteHref}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-secondary"
+                className="hover:text-gold"
               >
                 Parish website ↗
               </a>
@@ -57,7 +57,7 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-secondary">
+          <h3 className="text-xs font-semibold uppercase tracking-widest text-gold">
             Follow &amp; listen
           </h3>
           <ul className="mt-3 flex flex-wrap gap-2">
@@ -90,7 +90,7 @@ export function SiteFooter() {
             </li>
           </ul>
           <p className="mt-3 text-sm text-background/80">
-            <a href={`mailto:${CHOIR.email}`} className="hover:text-secondary">
+            <a href={`mailto:${CHOIR.email}`} className="hover:text-gold">
               {CHOIR.email}
             </a>
           </p>

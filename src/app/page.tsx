@@ -94,11 +94,11 @@ export default function HomePage() {
       {/* ─────────── Verse band ─────────── */}
       <section className="border-b bg-primary py-10 text-primary-foreground">
         <div className="container flex flex-col items-center gap-2 text-center">
-          <Quote className="h-7 w-7 text-secondary" />
+          <Quote className="h-7 w-7 text-gold" />
           <blockquote className="max-w-2xl font-serif text-xl leading-snug sm:text-2xl">
             {CHOIR.verse.text}
           </blockquote>
-          <cite className="text-xs font-semibold uppercase tracking-widest not-italic text-secondary">
+          <cite className="text-xs font-semibold uppercase tracking-widest not-italic text-gold">
             {CHOIR.verse.ref}
           </cite>
         </div>
@@ -355,7 +355,7 @@ export default function HomePage() {
       <section className="bg-primary py-16 text-primary-foreground sm:py-20">
         <div className="container grid items-center gap-8 md:grid-cols-[1.3fr,1fr]">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-secondary">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-gold">
               <HeartHandshake className="h-3.5 w-3.5" />
               Join us
             </div>
@@ -394,7 +394,7 @@ export default function HomePage() {
           {/* Curved-corner card (template signature) */}
           <Card className="overflow-hidden rounded-[24px_72px_24px_24px] border-primary-foreground/15 bg-primary-foreground/[0.06] text-primary-foreground shadow-2xl">
             <CardContent className="space-y-3 p-6">
-              <div className="text-xs font-semibold uppercase tracking-widest text-secondary">
+              <div className="text-xs font-semibold uppercase tracking-widest text-gold">
                 Media consent form
               </div>
               <p className="text-sm text-primary-foreground/85">
