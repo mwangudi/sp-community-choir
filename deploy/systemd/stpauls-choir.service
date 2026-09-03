@@ -1,0 +1,26 @@
+[Unit]
+Description=St. Paul's Chapel Community Choir (Next.js)
+After=network.target mysql.service
+Wants=mysql.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/choir
+Environment=NODE_ENV=production
+Environment=PORT=3100
+EnvironmentFile=/var/www/choir/.env
+ExecStart=/usr/bin/npm run start
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+# Uploads are written here, so it must stay writable.
+ReadWritePaths=/var/lib/choir-uploads
+
+[Install]
+WantedBy=multi-user.target

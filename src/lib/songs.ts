@@ -52,6 +52,16 @@ export type SongTheme =
 
 export type SongLanguage = "English" | "Swahili" | "Latin" | "Malagasy" | "Other";
 
+/**
+ * Rights status of the score/MIDI files. Anything other than PublicDomain is
+ * only linked for signed-in members.
+ */
+export type SongCopyright =
+  | "PublicDomain"
+  | "Licensed"
+  | "Copyrighted"
+  | "Unknown";
+
 export type Song = {
   slug: string;
   title: string;
@@ -80,6 +90,12 @@ export type Song = {
   scripture?: string[];
   /** Drive folder ID (the part after `/folders/` in the URL). */
   driveFolderId?: string;
+  /** Rights status — defaults to Unknown until someone confirms it. */
+  copyright?: SongCopyright;
+  /** Composer, publisher or estate holding the rights. */
+  rightsHolder?: string;
+  /** Licence reference, e.g. a OneLicense/CCLI number. */
+  licenceRef?: string;
   /** Free-form notes — voicing tips, when last sung, etc. */
   notes?: string;
 };
@@ -99,6 +115,15 @@ export function songDriveUrl(song: Song): string {
     return `https://drive.google.com/drive/folders/${song.driveFolderId}`;
   }
   return DRIVE_DATABASE_URL;
+}
+
+export function songCopyright(song: Song): SongCopyright {
+  return song.copyright ?? "Unknown";
+}
+
+/** Public visitors only see files for works confirmed as public domain. */
+export function isScorePublic(song: Song): boolean {
+  return songCopyright(song) === "PublicDomain";
 }
 
 // ----- seed catalogue -----
@@ -362,13 +387,16 @@ export function searchSongs(songs: Song[], filters: SongFilters): Song[] {
  * Matches on: feast key > specific Sunday slug > season.
  * Songs targeting the exact feast or Sunday rank highest.
  */
-export function songsForSunday(ctx: {
-  season: LiturgicalSeason;
-  slug: string;
-  feast?: string;
-  year: LectionaryYear;
-}): Song[] {
-  const scored = SONGS.map((s) => {
+export function songsForSunday(
+  ctx: {
+    season: LiturgicalSeason;
+    slug: string;
+    feast?: string;
+    year: LectionaryYear;
+  },
+  songs: Song[] = SONGS,
+): Song[] {
+  const scored = songs.map((s) => {
     let score = 0;
     if (ctx.feast && s.feasts?.includes(ctx.feast)) score += 100;
     if (s.sundays?.includes(ctx.slug)) score += 80;

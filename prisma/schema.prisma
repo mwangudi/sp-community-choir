@@ -1,0 +1,424 @@
+// St. Paul's Chapel Community Choir — data model.
+// MySQL has no scalar lists, so list-like fields (aliases, seasons, tags…) are Json.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────── Auth ───────────────────────────
+
+enum Role {
+  ADMIN
+  TECHNICAL
+  MEMBER
+}
+
+enum Voice {
+  SOPRANO
+  ALTO
+  TENOR
+  BASS
+  INSTRUMENTALIST
+  CONDUCTOR
+  OTHER
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  role         Role      @default(MEMBER)
+  voice        Voice?
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  massPlans     MassPlan[]
+  reviewedItems SongProposal[] @relation("ProposalReviewer")
+  posts         Post[]
+
+  @@index([role])
+}
+
+// ──────────────────────── Repertoire ────────────────────────
+
+enum SongLanguage {
+  ENGLISH
+  SWAHILI
+  LATIN
+  MALAGASY
+  OTHER
+}
+
+enum LiturgicalSeason {
+  ADVENT
+  CHRISTMAS
+  ORDINARY_TIME
+  LENT
+  TRIDUUM
+  EASTER
+}
+
+/// Covers both the Mass Ordinary and the hymn slots used in the order of service.
+enum MassPart {
+  ENTRANCE
+  PENITENTIAL
+  KYRIE
+  GLORIA
+  RESPONSORIAL_PSALM
+  GOSPEL_ACCLAMATION
+  GOSPEL_PROCESSION
+  CREED
+  OFFERTORY
+  PREPARATION_OF_GIFTS
+  SANCTUS
+  MYSTERY_OF_FAITH
+  GREAT_AMEN
+  OUR_FATHER
+  SIGN_OF_PEACE
+  AGNUS_DEI
+  COMMUNION
+  ANIMA_CHRISTI
+  THANKSGIVING
+  RECESSIONAL
+  MARIAN_HYMN
+}
+
+/// Rights status of a score — drives whether files are shown publicly.
+enum CopyrightStatus {
+  PUBLIC_DOMAIN
+  LICENSED
+  COPYRIGHTED
+  UNKNOWN
+}
+
+model Song {
+  slug        String        @id
+  title       String
+  language    SongLanguage  @default(ENGLISH)
+  composer    String?
+  arranger    String?
+  voicing     String?
+  musicalKey  String?
+  /// string[]
+  aliases     Json?
+  /// LiturgicalSeason[]
+  seasons     Json?
+  /// MassPart[]
+  massParts   Json?
+  /// string[] — theme tags
+  themes      Json?
+  /// string[] — scripture references
+  scripture   Json?
+  driveFolderId String?
+  notes       String?       @db.Text
+  isActive    Boolean       @default(true)
+
+  copyrightStatus CopyrightStatus @default(UNKNOWN)
+  rightsHolder    String?
+  licenceRef      String?
+  sourceUrl       String?
+  rightsCheckedAt DateTime?
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  massPlanItems MassPlanItem[]
+
+  @@index([title])
+  @@index([language])
+  @@index([copyrightStatus])
+}
+
+// ───────────────────────── Mass plans ────────────────────────
+
+enum PlanStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model MassPlan {
+  id        String     @id @default(cuid())
+  /// The Sunday this plan serves (date only, unique).
+  date      DateTime   @unique @db.Date
+  name      String
+  /// Lectionary cycle: A, B or C.
+  year      String     @db.Char(1)
+  season    LiturgicalSeason?
+  setting   String?
+  leader    String?
+  notes     String?    @db.Text
+  status    PlanStatus @default(DRAFT)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  createdById String?
+  createdBy   User?   @relation(fields: [createdById], references: [id], onDelete: SetNull)
+
+  items MassPlanItem[]
+
+  @@index([status])
+}
+
+model MassPlanItem {
+  id       String   @id @default(cuid())
+  planId   String
+  plan     MassPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+  part     MassPart
+  /// Free text so plans can name songs that are not catalogued yet.
+  song     String
+  sortOrder Int     @default(0)
+
+  songSlug String?
+  songRef  Song?   @relation(fields: [songSlug], references: [slug], onDelete: SetNull)
+
+  @@index([planId])
+  @@index([songSlug])
+}
+
+// ─────────────────────── Song proposals ──────────────────────
+
+enum ProposalStatus {
+  PENDING
+  REVIEWED
+  ACCEPTED
+  DECLINED
+}
+
+model SongProposal {
+  id            String         @id @default(cuid())
+  sundayDate    DateTime       @db.Date
+  sundayName    String
+  lectionaryYear String?       @db.Char(1)
+  proposerName  String
+  proposerEmail String?
+  voice         Voice?
+  status        ProposalStatus @default(PENDING)
+  note          String?        @db.Text
+  reviewerNote  String?        @db.Text
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  reviewedById String?
+  reviewedBy   User?     @relation("ProposalReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+  reviewedAt   DateTime?
+
+  items SongProposalItem[]
+
+  @@index([sundayDate])
+  @@index([status])
+}
+
+model SongProposalItem {
+  id         String       @id @default(cuid())
+  proposalId String
+  proposal   SongProposal @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  part       MassPart
+  song       String
+  sortOrder  Int          @default(0)
+
+  @@index([proposalId])
+}
+
+// ───────────────────────── Concerts ──────────────────────────
+
+model Concert {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  startsAt    DateTime
+  venue       String
+  blurb       String   @db.Text
+  /// string[] — long-form paragraphs
+  description Json?
+  poster      String?
+  pinned      Boolean  @default(false)
+  ctaLabel    String?
+  ctaHref     String?
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([startsAt])
+}
+
+// ────────────────────────── Gallery ──────────────────────────
+
+enum GalleryKind {
+  PHOTO
+  VIDEO
+}
+
+model GalleryItem {
+  id        String      @id @default(cuid())
+  slug      String      @unique
+  kind      GalleryKind
+  /// Public path for photos, e.g. /gallery/pic-1.avif
+  src       String?
+  /// 11-character YouTube id for videos
+  youtubeId String?
+  title     String?
+  alt       String?
+  caption   String?     @db.Text
+  takenOn   DateTime?   @db.Date
+  /// string[]
+  tags      Json?
+  sortOrder Int         @default(0)
+  isPublished Boolean   @default(true)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  @@index([kind])
+}
+
+// ─────────────────── Members & applications ──────────────────
+
+model Member {
+  id        String    @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String?
+  phone     String?
+  voice     Voice?
+  jumuiya   String?
+  isActive  Boolean   @default(true)
+  joinedOn  DateTime? @db.Date
+  notes     String?   @db.Text
+
+  mediaConsent     Boolean   @default(false)
+  consentVersion   String?
+  consentAt        DateTime?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([voice])
+  @@index([lastName])
+}
+
+enum ApplicationStatus {
+  NEW
+  CONTACTED
+  ACCEPTED
+  DECLINED
+}
+
+model JoinApplication {
+  id        String            @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String
+  phone     String?
+  voice     Voice?
+  startDate DateTime?         @db.Date
+  message   String?           @db.Text
+  status    ApplicationStatus @default(NEW)
+
+  /// Recorded so consent can be evidenced later.
+  mediaConsent   Boolean   @default(false)
+  privacyConsent Boolean   @default(false)
+  consentVersion String?
+  consentAt      DateTime?
+
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  @@index([status])
+}
+
+// ──────────────────────── Site feedback ──────────────────────
+
+model Feedback {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String?
+  page      String?
+  message   String   @db.Text
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([isRead])
+}
+
+// ───────────────────── Blog ───────────────────────────
+
+enum PostCategory {
+  EVENT
+  REFLECTION
+  PATRON_SAINT
+  NEWS
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model Post {
+  id          String       @id @default(cuid())
+  slug        String       @unique
+  title       String
+  excerpt     String?      @db.Text
+  /// Markdown-ish body, rendered as paragraphs.
+  body        String       @db.LongText
+  coverImage  String?
+  category    PostCategory @default(NEWS)
+  status      PostStatus   @default(DRAFT)
+  publishedAt DateTime?
+  /// string[]
+  tags        Json?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  authorId String?
+  author   User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([status, publishedAt])
+  @@index([category])
+}
+
+// ──────────────────── Configurable carousels ─────────────────
+
+enum SlidePlacement {
+  LOGIN
+  HERO
+}
+
+model Slide {
+  id        String         @id @default(cuid())
+  placement SlidePlacement @default(LOGIN)
+  /// Public path of the uploaded image, e.g. /uploads/login/abc.jpg
+  src       String
+  alt       String?
+  caption   String?
+  /// Hero only — small uppercase line above the headline.
+  kicker    String?
+  /// Hero only — headline drawn over the photo.
+  title     String?
+  /// Hero only — CSS object-position, e.g. "center 30%".
+  focus     String?
+  sortOrder Int            @default(0)
+  isActive  Boolean        @default(true)
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  @@index([placement, isActive, sortOrder])
+}
+
+// ───────────────────────── Site settings ─────────────────────
+
+/// Editable site copy and contact/payment details, keyed by dotted path
+/// (e.g. "support.paybill.number"). Anything absent falls back to the
+/// bundled defaults in src/lib/choir.ts.
+model SiteSetting {
+  key       String   @id
+  value     String   @db.Text
+  updatedAt DateTime @updatedAt
+}

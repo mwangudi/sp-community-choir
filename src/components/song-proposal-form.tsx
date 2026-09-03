@@ -6,13 +6,16 @@ import {
   Check,
   Copy,
   ListMusic,
+  Loader2,
   Mail,
   MessageCircle,
   RotateCcw,
+  Send,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Combobox } from "@/components/ui/combobox";
 import { SearchableSelect } from "@/components/ui/searchable-select";
+import { submitProposal } from "@/app/(site)/propose/actions";
 import { CHOIR } from "@/lib/choir";
 import {
   formatSunday,
@@ -85,6 +88,8 @@ function upcomingSundays(count: number): LiturgicalContext[] {
 
 type SubmitState =
   | { kind: "idle" }
+  | { kind: "sending" }
+  | { kind: "sent" }
   | { kind: "copied" }
   | { kind: "error"; message: string };
 
@@ -185,6 +190,24 @@ export function SongProposalForm() {
     }
     setState({ kind: "idle" });
     return true;
+  };
+
+  const onSend = async () => {
+    if (!tryStart() || !selected) return;
+    setState({ kind: "sending" });
+    const result = await submitProposal({
+      sundayDate: dateKey(selected.date),
+      sundayName: selected.name,
+      lectionaryYear: selected.year,
+      proposerName: name.trim(),
+      voice: voice || null,
+      items: filledParts.map((part) => ({ part, song: songs[part]!.trim() })),
+    });
+    if (result.ok) {
+      setState({ kind: "sent" });
+    } else {
+      setState({ kind: "error", message: result.error ?? "Could not send" });
+    }
   };
 
   const onEmail = () => {
@@ -373,12 +396,33 @@ export function SongProposalForm() {
           <div className="mt-4 grid gap-2">
             <Button
               type="button"
-              onClick={onEmail}
+              onClick={onSend}
+              disabled={state.kind === "sending"}
               className="w-full rounded-full bg-primary-foreground text-primary hover:bg-primary-foreground/90"
             >
-              <Mail className="h-4 w-4" /> Email to technical team
+              {state.kind === "sending" ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" /> Sending…
+                </>
+              ) : state.kind === "sent" ? (
+                <>
+                  <Check className="h-4 w-4" /> Sent to the technical team
+                </>
+              ) : (
+                <>
+                  <Send className="h-4 w-4" /> Send to technical team
+                </>
+              )}
             </Button>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={onEmail}
+                className="w-full rounded-full border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
+              >
+                <Mail className="h-4 w-4" /> Email
+              </Button>
               <Button
                 type="button"
                 variant="outline"
@@ -405,6 +449,12 @@ export function SongProposalForm() {
               </Button>
             </div>
           </div>
+
+          {state.kind === "sent" && (
+            <p className="mt-3 rounded-md bg-emerald-500/20 px-3 py-2 text-xs font-medium text-emerald-50">
+              Thank you! Your proposal is now with the technical team.
+            </p>
+          )}
 
           {state.kind === "error" && (
             <p className="mt-3 rounded-md bg-red-500/15 px-3 py-2 text-xs font-medium text-red-100">

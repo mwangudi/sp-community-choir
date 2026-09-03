@@ -40,3 +40,9 @@ next-env.d.ts
 *.xlsx
 *.xls
 *.pptx
+
+# unoptimised photo drops — the AVIFs in public/gallery are what ship
+originals/
+
+# runtime uploads — on the droplet this path is a symlink to /var/lib/choir-uploads
+public/uploads/

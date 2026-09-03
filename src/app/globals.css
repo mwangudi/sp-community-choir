@@ -49,4 +49,64 @@
   h1, h2, h3, h4 {
     @apply font-serif tracking-tight;
   }
+
+  /* The admin is Materio, which is sans throughout. MUI renders semantic
+     headings, so the rule above would otherwise pull the serif face in. */
+  .admin-root :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-sans), Inter, system-ui, sans-serif;
+    letter-spacing: normal;
+  }
+}
+
+/* Shared by the blog editor and the published post, so what you type is what
+   you get. */
+@layer components {
+  .choir-prose {
+    @apply text-base leading-relaxed text-foreground/85 sm:text-lg;
+  }
+  .choir-prose > * + * {
+    @apply mt-5;
+  }
+  .choir-prose h2 {
+    @apply mt-10 font-serif text-2xl font-semibold text-primary sm:text-3xl;
+  }
+  .choir-prose h3 {
+    @apply mt-8 font-serif text-xl font-semibold text-primary sm:text-2xl;
+  }
+  .choir-prose h4 {
+    @apply mt-6 font-serif text-lg font-semibold text-primary;
+  }
+  .choir-prose a {
+    @apply font-medium text-primary underline underline-offset-4;
+  }
+  .choir-prose strong {
+    @apply font-semibold text-foreground;
+  }
+  .choir-prose ul {
+    @apply list-disc space-y-1.5 pl-6;
+  }
+  .choir-prose ol {
+    @apply list-decimal space-y-1.5 pl-6;
+  }
+  .choir-prose blockquote {
+    @apply border-l-4 border-secondary/50 pl-4 font-serif italic text-foreground/80;
+  }
+  .choir-prose code {
+    @apply rounded bg-muted px-1.5 py-0.5 font-mono text-[0.9em];
+  }
+  .choir-prose pre {
+    @apply overflow-x-auto rounded-lg bg-foreground/90 p-4 text-sm text-background;
+  }
+  .choir-prose pre code {
+    @apply bg-transparent p-0 text-inherit;
+  }
+  .choir-prose hr {
+    @apply my-8 border-border;
+  }
+
+  /* TipTap placeholder */
+  .choir-prose p.is-editor-empty:first-child::before {
+    @apply pointer-events-none float-left h-0 text-muted-foreground/60;
+    content: attr(data-placeholder);
+  }
 }

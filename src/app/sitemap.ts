@@ -8,11 +8,13 @@ const ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/repertoire", priority: 0.9, changeFrequency: "weekly" },
   { path: "/propose", priority: 0.8, changeFrequency: "weekly" },
   { path: "/concerts", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
   { path: "/about", priority: 0.6, changeFrequency: "monthly" },
   { path: "/gallery", priority: 0.6, changeFrequency: "monthly" },
   { path: "/join", priority: 0.7, changeFrequency: "monthly" },
   { path: "/support", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

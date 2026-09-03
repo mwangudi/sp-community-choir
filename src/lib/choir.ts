@@ -208,8 +208,9 @@ export function isUpcoming(c: ChoirConcert) {
   return new Date(c.startsAt).getTime() >= now().getTime();
 }
 
-export function getUpcomingConcerts() {
-  return CONCERTS
+/** Pass admin-managed concerts in; defaults to the bundled fallback list. */
+export function getUpcomingConcerts(concerts: ChoirConcert[] = CONCERTS) {
+  return concerts
     .filter(isUpcoming)
     .sort((a, b) => {
       if (a.pinned && !b.pinned) return -1;
@@ -218,8 +219,8 @@ export function getUpcomingConcerts() {
     });
 }
 
-export function getPastConcerts() {
-  return CONCERTS
+export function getPastConcerts(concerts: ChoirConcert[] = CONCERTS) {
+  return concerts
     .filter((c) => !isUpcoming(c))
     .sort((a, b) => new Date(b.startsAt).getTime() - new Date(a.startsAt).getTime());
 }

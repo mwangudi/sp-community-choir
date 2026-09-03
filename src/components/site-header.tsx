@@ -27,6 +27,7 @@ const NAV: NavEntry[] = [
     items: [
       { href: "/concerts", label: "Concerts" },
       { href: "/gallery", label: "Gallery" },
+      { href: "/blog", label: "Blog" },
     ],
   },
   {

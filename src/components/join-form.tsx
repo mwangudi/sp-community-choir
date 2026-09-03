@@ -1,13 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2, Send } from "lucide-react";
+import Link from "next/link";
+import { CheckCircle2, Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { submitApplication } from "@/app/(site)/join/actions";
+import { MEDIA_CONSENT_TEXT, PRIVACY_CONSENT_TEXT } from "@/lib/consent";
 import { CHOIR } from "@/lib/choir";
 
 type Status =
   | { kind: "idle" }
   | { kind: "sending" }
+  | { kind: "sent"; message: string }
   | { kind: "info"; message: string }
   | { kind: "error"; message: string };
 
@@ -78,6 +82,8 @@ export function JoinForm() {
   });
   const [touched, setTouched] = useState<Partial<Record<FieldName, boolean>>>({});
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const [privacyConsent, setPrivacyConsent] = useState(false);
+  const [mediaConsent, setMediaConsent] = useState(false);
 
   const setField =
     (name: FieldName) =>
@@ -103,7 +109,7 @@ export function JoinForm() {
   const shownError = (name: FieldName) =>
     touched[name] ? errors[name] : undefined;
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setTouched({
       firstName: true,
@@ -120,31 +126,30 @@ export function JoinForm() {
       });
       return;
     }
-    setStatus({ kind: "sending" });
-
-    const subject = `Choir application — ${values.firstName} ${values.lastName}`;
-    const body = [
-      `Name: ${values.firstName} ${values.lastName}`,
-      `Email: ${values.email}`,
-      `Phone: ${values.phone || "(not given)"}`,
-      `Voice: ${values.voice}`,
-      `Available from: ${values.startDate || "(not given)"}`,
-      "",
-      "Message:",
-      values.message || "(none)",
-    ].join("\n");
-    const mailto = `mailto:${CHOIR.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-
-    window.setTimeout(() => {
-      window.location.href = mailto;
+    if (!privacyConsent) {
       setStatus({
-        kind: "info",
-        message:
-          "Opening your email app to send the application to the choir. Online submissions will be enabled here soon.",
+        kind: "error",
+        message: "Please accept the privacy notice so we may hold your details.",
       });
-    }, 400);
+      return;
+    }
+
+    setStatus({ kind: "sending" });
+    const result = await submitApplication({
+      ...values,
+      privacyConsent,
+      mediaConsent,
+    });
+
+    if (result.ok) {
+      setStatus({
+        kind: "sent",
+        message:
+          "Thank you! Your application is with the choir — we will be in touch soon.",
+      });
+      return;
+    }
+    setStatus({ kind: "error", message: result.error ?? "Could not send" });
   };
 
   const sending = status.kind === "sending";
@@ -259,11 +264,53 @@ export function JoinForm() {
         />
       </Field>
 
+      <div className="space-y-2.5 rounded-lg border border-border bg-muted/30 p-3.5">
+        <label className="flex cursor-pointer items-start gap-2.5 text-xs leading-relaxed text-foreground/85">
+          <input
+            type="checkbox"
+            checked={privacyConsent}
+            onChange={(e) => setPrivacyConsent(e.target.checked)}
+            disabled={sending}
+            className="mt-0.5 h-4 w-4 shrink-0 accent-primary"
+          />
+          <span>
+            {PRIVACY_CONSENT_TEXT}{" "}
+            <Link
+              href="/privacy"
+              target="_blank"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Read the privacy notice
+            </Link>
+            . <span className="text-primary">*</span>
+          </span>
+        </label>
+        <label className="flex cursor-pointer items-start gap-2.5 text-xs leading-relaxed text-foreground/85">
+          <input
+            type="checkbox"
+            checked={mediaConsent}
+            onChange={(e) => setMediaConsent(e.target.checked)}
+            disabled={sending}
+            className="mt-0.5 h-4 w-4 shrink-0 accent-primary"
+          />
+          <span>{MEDIA_CONSENT_TEXT} (optional)</span>
+        </label>
+      </div>
+
       <div className="flex flex-wrap items-center gap-3 pt-1">
-        <Button type="submit" size="lg" disabled={sending} className="rounded-full">
+        <Button
+          type="submit"
+          size="lg"
+          disabled={sending || status.kind === "sent"}
+          className="rounded-full"
+        >
           {sending ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" /> Sending…
+            </>
+          ) : status.kind === "sent" ? (
+            <>
+              <CheckCircle2 className="h-4 w-4" /> Application sent
             </>
           ) : (
             <>
@@ -272,11 +319,22 @@ export function JoinForm() {
           )}
         </Button>
         <p className="text-xs text-muted-foreground">
-          Online submissions are coming soon — for now we&apos;ll open your
-          email app pre-filled.
+          Or email us directly at{" "}
+          <a
+            href={`mailto:${CHOIR.email}`}
+            className="text-primary underline-offset-4 hover:underline"
+          >
+            {CHOIR.email}
+          </a>
+          .
         </p>
       </div>
 
+      {status.kind === "sent" && (
+        <p className="rounded-md border border-emerald-600/30 bg-emerald-600/10 px-3 py-2 text-xs text-emerald-800">
+          {status.message}
+        </p>
+      )}
       {status.kind === "info" && (
         <p className="rounded-md border border-secondary/30 bg-secondary/10 px-3 py-2 text-xs text-foreground/85">
           {status.message}

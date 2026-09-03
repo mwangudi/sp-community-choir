@@ -42,6 +42,7 @@ export function SiteFooter() {
             <li><Link href="/concerts" className="hover:text-gold">Concerts &amp; events</Link></li>
             <li><Link href="/join" className="hover:text-gold">Join the choir</Link></li>
             <li><Link href="/contact" className="hover:text-gold">Contact us</Link></li>
+            <li><Link href="/privacy" className="hover:text-gold">Privacy &amp; data protection</Link></li>
             <li><a href={FEEDBACK_HREF} className="hover:text-gold">Send feedback</a></li>
             <li>
               <a

@@ -1,185 +1,220 @@
-# Deploying PharmaCare (co-hosted on the existing droplet)
+# Deploying the Community Choir site
 
-This guide adds PharmaCare **alongside** the sites already on your droplet
-(`ubuntu-s-2vcpu-4gb-lon1`, IP `46.101.6.131`). One IP serves many sites — Nginx
-routes by domain name — so **no new droplet is needed**.
+Co-hosted on the existing DigitalOcean droplet (`ubuntu-s-2vcpu-4gb-lon1`,
+IP `46.101.6.131`, Ubuntu 24.04, 2 vCPU / 4 GB). One IP serves many sites —
+nginx routes by domain — so **no new droplet is needed**.
 
-- **App URL:** `https://pharma.localinvestors.co.ke`
-- **Stack:** React (Vite build, static) + Node/Fastify API + Prisma + MySQL 8, behind Nginx with Let's Encrypt.
-- **App path on server:** `/var/www/pharma`
-- **API port:** `4000` (localhost only, proxied by Nginx)
+- **App URL:** `https://CHOIR_DOMAIN` — *not decided yet; replace everywhere below*
+- **Stack:** Next.js 15 (SSR) + Prisma + MySQL 8, behind nginx with Let's Encrypt
+- **App path:** `/var/www/choir`
+- **Uploads path:** `/var/lib/choir-uploads` (outside the git tree)
+- **Port:** `3100` (localhost only, proxied by nginx)
 
-> Billing note: DigitalOcean bills per **account**. A late/unpaid invoice suspends the
-> whole account (every droplet), so co-hosting here shares billing fate with your other
-> sites. True isolation between clients requires a **separate DO account**, not a separate droplet.
+> **Important difference from PharmaCare.** PharmaCare is a static SPA plus a
+> separate API, so nginx serves a `dist/` folder. This app renders every page on
+> the server, so nginx proxies **all** traffic to a Node process. Don't copy the
+> PharmaCare vhost.
+
+> Billing note: DigitalOcean bills per **account**. A late invoice suspends every
+> droplet on it, so this site shares billing fate with PharmaCare and cedarcapital.
 
 ---
 
-## 0. Prerequisites on the droplet
-Most are already present from your existing site. Verify/install what's missing:
+## 0. Prerequisites
+
+Most are already on the droplet from the other sites. Verify:
 
 ```bash
-# Node 20 LTS (check first)
-node -v   # need v20+
-# If missing:
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-# Nginx, MySQL, Certbot (likely already installed)
-sudo apt-get install -y nginx mysql-server
-sudo apt-get install -y certbot python3-certbot-nginx git
+node -v                 # need v20+
+nginx -v
+mysql --version
+sudo ufw status         # OpenSSH + Nginx Full allowed; do NOT open 3100
 ```
 
-Firewall: only 22/80/443 should be open. Port 4000 stays internal.
+**Check swap before anything else.** `next build` peaks around 1.5 GB and this
+box already runs MySQL plus two Node services. Without swap the build can be
+OOM-killed:
+
 ```bash
-sudo ufw status   # ensure 'OpenSSH' + 'Nginx Full' allowed; do NOT open 4000
+free -m
+# If there is no swap:
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
 ---
 
 ## 1. DNS
-Point the subdomain at the droplet (same as you did for cedarcapital). This is
-already done:
+
+Add an A record for the chosen subdomain, then wait for it to resolve:
 
 | Type | Host | TTL | Value |
 |------|------|-----|-------|
-| A | `pharma` (→ pharma.localinvestors.co.ke) | 300 | `46.101.6.131` |
+| A | `CHOIR_DOMAIN` | 300 | `46.101.6.131` |
 
-Wait for it to resolve: `dig +short pharma.localinvestors.co.ke` → `46.101.6.131`.
-
-**Optional — `www` subdomain.** If you also want `www.pharma.localinvestors.co.ke` to
-work, add a matching record so Nginx on this droplet receives its traffic and can
-redirect it (see §8 → Redirects):
-
-| Type | Host | Value |
-|------|------|-------|
-| A | `www.pharma` | `46.101.6.131` |
-
-> Note: the current `www.pharma` record points to `102.130.123.40` (the default web
-> host), so `www.pharma` won't reach PharmaCare until you repoint it here.
+```bash
+dig +short CHOIR_DOMAIN   # must return 46.101.6.131
+```
 
 ---
 
 ## 2. Get the code
+
+The repo is `git@github.com:mwangudi/sp-community-choir.git`. The local clone
+uses the SSH host alias `github-mwangudi`, which does not exist on the server —
+add a deploy key for the droplet in the GitHub repo settings and use the plain
+host, or clone over HTTPS.
+
 ```bash
-sudo mkdir -p /var/www/pharma
-sudo chown -R "$USER":"$USER" /var/www/pharma
-git clone git@github.com:mwangudi/pharma.git /var/www/pharma
-cd /var/www/pharma
-git checkout develop
+sudo mkdir -p /var/www/choir
+sudo chown -R "$USER":"$USER" /var/www/choir
+git clone git@github.com:mwangudi/sp-community-choir.git /var/www/choir
+cd /var/www/choir && git checkout main
 ```
 
 ---
 
 ## 3. MySQL — database + dedicated user
+
+A separate database from PharmaCare's.
+
 ```bash
 sudo mysql
 ```
 ```sql
-CREATE DATABASE pharmacare CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'pharmacare'@'localhost' IDENTIFIED BY 'REPLACE_WITH_STRONG_PASSWORD';
-GRANT ALL PRIVILEGES ON pharmacare.* TO 'pharmacare'@'localhost';
+CREATE DATABASE stpauls_choir CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'choir'@'localhost' IDENTIFIED BY 'REPLACE_WITH_STRONG_PASSWORD';
+GRANT ALL PRIVILEGES ON stpauls_choir.* TO 'choir'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
 ```
-This is a **separate database** from your other sites' data.
 
 ---
 
-## 4. Backend — configure, migrate, seed, build
+## 4. Uploads directory
+
+Hero images, login slides and blog covers are written to disk. Keep them
+**outside** the repo so a redeploy or `git clean` can never wipe them.
+
 ```bash
-cd /var/www/pharma/backend
-cp .env.production.example .env
-# Edit .env:
-#   - DATABASE_URL: use the pharmacare user + password from step 3
-#   - JWT_SECRET:   openssl rand -hex 32
+sudo mkdir -p /var/lib/choir-uploads
+sudo chown -R www-data:www-data /var/lib/choir-uploads
+sudo ln -sfn /var/lib/choir-uploads /var/www/choir/public/uploads
+```
+
+Leave `BLOB_READ_WRITE_TOKEN` unset — that switch only exists for Vercel.
+
+---
+
+## 5. Configure
+
+```bash
+cd /var/www/choir
+cp .env.example .env
 nano .env
-
-npm ci
-npx prisma generate
-npx prisma migrate deploy     # creates all tables from committed migrations
-npm run seed                  # loads admin login + demo financials (idempotent)
-npm run build                 # compiles to dist/
 ```
-Seeded admin login: `admin@pharmacare.co.ke` / `admin123` — **change the password after first login.**
+
+Set at minimum:
+
+| Variable | Value |
+|----------|-------|
+| `DATABASE_URL` | `mysql://choir:<PASSWORD>@localhost:3306/stpauls_choir` |
+| `JWT_SECRET` | `openssl rand -hex 32` |
+| `NEXT_PUBLIC_SITE_URL` | `https://CHOIR_DOMAIN` |
+| `SEED_ADMIN_EMAIL` | the choir's admin address |
+| `SEED_ADMIN_PASSWORD` | a strong one-time password |
+
+> `NEXT_PUBLIC_*` values are baked in at **build time**. If you change them you
+> must rebuild, not just restart.
 
 ---
 
-## 5. Frontend — build the static site
+## 6. Migrate, seed, build
+
 ```bash
-cd /var/www/pharma/frontend
-npm ci
-npm run build                 # outputs to dist/ (served by Nginx)
+cd /var/www/choir
+npm ci --no-audit --no-fund
+npx prisma migrate deploy
+npm run db:seed                 # creates the first admin user
+NODE_OPTIONS="--max-old-space-size=1536" npm run build
 ```
-The SPA calls the API at the relative path `/api`, which Nginx proxies to the backend — no frontend env needed.
+
+Optionally import the bundled photo archive into the gallery:
+
+```bash
+node scripts/import-gallery.mjs        # add --publish to make them live at once
+```
 
 ---
 
-## 6. Run the API as a service
-```bash
-# The service runs as www-data — give it ownership of the app files:
-sudo chown -R www-data:www-data /var/www/pharma
+## 7. Run as a service
 
-sudo cp /var/www/pharma/deploy/systemd/pharmacare-api.service /etc/systemd/system/
+```bash
+sudo chown -R www-data:www-data /var/www/choir
+sudo cp /var/www/choir/deploy/systemd/stpauls-choir.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable --now pharmacare-api
-sudo systemctl status pharmacare-api        # should be active (running)
-curl -s http://127.0.0.1:4000/health        # {"ok":true,...}
+sudo systemctl enable --now stpauls-choir
+sudo systemctl status stpauls-choir
+curl -I http://127.0.0.1:3100/          # expect 200
 ```
 
 ---
 
-## 7. Nginx vhost
+## 8. nginx vhost
+
 ```bash
-sudo cp /var/www/pharma/deploy/nginx/pharma.localinvestors.co.ke.conf /etc/nginx/sites-available/
-sudo ln -s /etc/nginx/sites-available/pharma.localinvestors.co.ke.conf /etc/nginx/sites-enabled/
+sudo cp /var/www/choir/deploy/nginx/stpauls-choir.conf /etc/nginx/sites-available/
+sudo sed -i 's/CHOIR_DOMAIN/your.actual.domain/' /etc/nginx/sites-available/stpauls-choir.conf
+sudo ln -s /etc/nginx/sites-available/stpauls-choir.conf /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
 ```
-Your existing sites are untouched — this only adds the `pharma.localinvestors.co.ke` server block.
 
 ---
 
-## 8. HTTPS (Let's Encrypt)
+## 9. HTTPS
+
 ```bash
-sudo certbot --nginx -d pharma.localinvestors.co.ke
+sudo certbot --nginx -d CHOIR_DOMAIN
 ```
-Certbot adds the 443 block + HTTP→HTTPS redirect and auto-renews. Verify:
-`https://pharma.localinvestors.co.ke` → login page.
 
-### Redirects (how Nginx routes and redirects)
-Nginx picks the site by the request's `Host` header, so redirects are just extra
-server blocks:
-
-- **HTTP → HTTPS (automatic).** Certbot's port-80 block 301-redirects all plain HTTP
-  to HTTPS. Nothing else to configure.
-- **www → canonical host.** The shipped vhost already includes a block that redirects
-  `www.pharma.localinvestors.co.ke` → `https://pharma.localinvestors.co.ke`. To use it:
-  1. Point the `www.pharma` A record at `46.101.6.131` (see §1).
-  2. Include www when you run Certbot so it also gets a valid certificate:
-     ```bash
-     sudo certbot --nginx -d pharma.localinvestors.co.ke -d www.pharma.localinvestors.co.ke
-     ```
-  3. `sudo systemctl reload nginx`.
-- **Raw IP / unknown host.** Opening `http://46.101.6.131` directly shows whichever
-  vhost is Nginx's `default_server` (your existing site) — there is no domain to match,
-  so it never reaches PharmaCare. That is expected; the app is served only via
-  `pharma.localinvestors.co.ke`.
+Certbot adds the 443 server block, the HTTP→HTTPS redirect and a renewal timer.
 
 ---
 
-## 9. Redeploys (after the first setup)
-Pull + build + migrate + restart in one step:
+## 10. Redeploying
+
+After the first setup, everything above collapses into:
+
 ```bash
-sudo bash /var/www/pharma/deploy/deploy.sh
+sudo bash /var/www/choir/deploy/deploy.sh
 ```
-(Re-running `npm run seed` is safe — the seed is guarded and won't duplicate data.)
+
+It pulls `main`, installs, migrates, rebuilds with a capped heap, restarts the
+service and reloads nginx.
 
 ---
 
 ## Troubleshooting
-- **API won't start:** `journalctl -u pharmacare-api -n 50 --no-pager` (usually a bad `DATABASE_URL` or missing `.env`).
-- **502 from Nginx:** the API isn't running on 4000 — check the service status.
-- **Prisma migrate error:** confirm the MySQL user/password and that the `pharmacare` DB exists.
-- **Blank page / 404 on refresh:** ensure the vhost `try_files ... /index.html;` block is in place and `dist/` was built.
-- **Reset demo data (test only):** `cd backend && npx prisma migrate reset --force` (drops → re-migrates → re-seeds).
+
+| Symptom | Check |
+|---------|-------|
+| 502 from nginx | `sudo systemctl status stpauls-choir`, then `curl -I http://127.0.0.1:3100/` |
+| Service won't start | `sudo journalctl -u stpauls-choir -n 80 --no-pager` |
+| Build killed | Out of memory — confirm swap is on with `free -m` |
+| Admin edits don't show | Every public page is `force-dynamic`; if one is stale it is missing that export |
+| Uploads 404 | Check the `public/uploads` symlink and that nginx `alias` points at `/var/lib/choir-uploads/` |
+| Images unoptimised / erroring | `sharp` must be installed — it is a dependency, so re-run `npm ci` |
+| Login redirect loop | `JWT_SECRET` missing or under 32 chars |
+
+## Backups
+
+Not yet automated. At minimum, before each deploy:
+
+```bash
+mysqldump -u choir -p stpauls_choir > ~/choir-$(date +%F).sql
+tar czf ~/choir-uploads-$(date +%F).tar.gz /var/lib/choir-uploads
+```
