@@ -25,7 +25,7 @@ export default async function WorshipAidPage({
       include: {
         items: {
           orderBy: { sortOrder: "asc" },
-          include: { songRef: { select: { title: true, lyrics: true } } },
+          include: { songRef: { select: { lyrics: true } } },
         },
       },
     }),
@@ -35,41 +35,37 @@ export default async function WorshipAidPage({
   if (!plan) notFound();
 
   return (
-    <div className="worship-aid">
-      <div className="no-print mb-6 flex flex-wrap items-center justify-between gap-3">
-        <Link
-          href={`/admin/mass-plans/${plan.id}`}
-          className="text-sm font-medium underline"
-        >
+    <div className="aid-page">
+      <div className="aid-toolbar no-print">
+        <Link href={`/admin/mass-plans/${plan.id}`} className="aid-back">
           ← Back to the plan
         </Link>
         <PrintButton />
       </div>
 
-      <header className="aid-header">
-        <p className="aid-dedication">{plan.notes}</p>
-        <h1 className="aid-title">
-          {plan.name.toUpperCase()} YEAR {plan.year} | {formatDate(plan.date).toUpperCase()} |{" "}
-          {choir.parish.toUpperCase()}
-        </h1>
-      </header>
+      <article className="worship-aid">
+        <header>
+          {plan.notes && <p className="aid-dedication">{plan.notes}</p>}
+          <h1 className="aid-title">
+            {plan.name.toUpperCase()} YEAR {plan.year} |{" "}
+            {formatDate(plan.date).toUpperCase()} | {choir.parish.toUpperCase()}
+          </h1>
+        </header>
 
-      {plan.items.map((item) => {
-        const lyrics = item.songRef?.lyrics;
-        return (
+        {plan.items.map((item) => (
           <section key={item.id} className="aid-item">
             <h2 className="aid-part">
               {massPartLabel(item.part).toUpperCase()}: {item.song.toUpperCase()}
             </h2>
-            {lyrics ? (
+            {item.songRef?.lyrics && (
               <div
                 className="aid-lyrics"
-                dangerouslySetInnerHTML={{ __html: lyrics }}
+                dangerouslySetInnerHTML={{ __html: item.songRef.lyrics }}
               />
-            ) : null}
+            )}
           </section>
-        );
-      })}
+        ))}
+      </article>
     </div>
   );
 }

@@ -112,7 +112,7 @@ export default async function MassPlansPage({
                   <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
                     <Button
                       component={Link}
-                      href={`/admin/mass-plans/${plan.id}/worship-aid`}
+                      href={`/admin/worship-aid/${plan.id}`}
                       size="small"
                       variant="outlined"
                       color="inherit"

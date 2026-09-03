@@ -6,12 +6,14 @@ import { useRouter, useSearchParams } from "next/navigation";
 import {
   Badge,
   Button,
+  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
   Divider,
   InputAdornment,
+  ListItemText,
   MenuItem,
   Stack,
   TextField,
@@ -24,12 +26,18 @@ export type Option = { value: string; label: string };
 const MIN_QUERY = 3;
 const DEBOUNCE_MS = 400;
 
+const split = (v: string | null) => (v ? v.split(",").filter(Boolean) : []);
+
 export function SongsToolbar({
   languages,
   rights,
+  seasons,
+  parts,
 }: {
   languages: Option[];
   rights: Option[];
+  seasons: Option[];
+  parts: Option[];
 }) {
   const router = useRouter();
   const params = useSearchParams();
@@ -37,13 +45,18 @@ export function SongsToolbar({
   const committed = params.get("q") ?? "";
   const language = params.get("language") ?? "";
   const status = params.get("rights") ?? "";
+  const season = split(params.get("seasons"));
+  const part = split(params.get("parts"));
 
   const [query, setQuery] = useState(committed);
   const [open, setOpen] = useState(false);
   const [draftLanguage, setDraftLanguage] = useState(language);
   const [draftRights, setDraftRights] = useState(status);
+  const [draftSeasons, setDraftSeasons] = useState<string[]>(season);
+  const [draftParts, setDraftParts] = useState<string[]>(part);
 
-  const activeFilters = (language ? 1 : 0) + (status ? 1 : 0);
+  const activeFilters =
+    (language ? 1 : 0) + (status ? 1 : 0) + season.length + part.length;
   const hasAnything = Boolean(committed || activeFilters);
 
   const push = (patch: Record<string, string>) => {
@@ -77,12 +90,19 @@ export function SongsToolbar({
   const openFilters = () => {
     setDraftLanguage(language);
     setDraftRights(status);
+    setDraftSeasons(season);
+    setDraftParts(part);
     setOpen(true);
   };
 
   const applyFilters = () => {
     setOpen(false);
-    push({ language: draftLanguage, rights: draftRights });
+    push({
+      language: draftLanguage,
+      rights: draftRights,
+      seasons: draftSeasons.join(","),
+      parts: draftParts.join(","),
+    });
   };
 
   const clearAll = () => {
@@ -187,6 +207,68 @@ export function SongsToolbar({
                 </MenuItem>
               ))}
             </TextField>
+
+            <TextField
+              select
+              label="Seasons"
+              value={draftSeasons}
+              onChange={(e) =>
+                setDraftSeasons(e.target.value as unknown as string[])
+              }
+              slotProps={{
+                select: {
+                  multiple: true,
+                  displayEmpty: true,
+                  renderValue: (v) => {
+                    const picked = v as string[];
+                    if (picked.length === 0) return "Any season";
+                    return seasons
+                      .filter((o) => picked.includes(o.value))
+                      .map((o) => o.label)
+                      .join(", ");
+                  },
+                },
+              }}
+              fullWidth
+            >
+              {seasons.map((o) => (
+                <MenuItem key={o.value} value={o.value}>
+                  <Checkbox size="small" checked={draftSeasons.includes(o.value)} />
+                  <ListItemText primary={o.label} />
+                </MenuItem>
+              ))}
+            </TextField>
+
+            <TextField
+              select
+              label="Mass parts"
+              value={draftParts}
+              onChange={(e) =>
+                setDraftParts(e.target.value as unknown as string[])
+              }
+              slotProps={{
+                select: {
+                  multiple: true,
+                  displayEmpty: true,
+                  renderValue: (v) => {
+                    const picked = v as string[];
+                    if (picked.length === 0) return "Any Mass part";
+                    return parts
+                      .filter((o) => picked.includes(o.value))
+                      .map((o) => o.label)
+                      .join(", ");
+                  },
+                },
+              }}
+              fullWidth
+            >
+              {parts.map((o) => (
+                <MenuItem key={o.value} value={o.value}>
+                  <Checkbox size="small" checked={draftParts.includes(o.value)} />
+                  <ListItemText primary={o.label} />
+                </MenuItem>
+              ))}
+            </TextField>
           </Stack>
         </DialogContent>
         <Divider />
@@ -195,6 +277,8 @@ export function SongsToolbar({
             onClick={() => {
               setDraftLanguage("");
               setDraftRights("");
+              setDraftSeasons([]);
+              setDraftParts([]);
             }}
             color="inherit"
           >
