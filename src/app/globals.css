@@ -112,55 +112,92 @@
 }
 
 /* ─── Sunday worship aid ───────────────────────────────────
-   Screen preview mirrors the printed sheet, so what the choir
-   sees is what "Save as PDF" produces. */
+   The screen preview is a real A4 sheet so what you see is what
+   the PDF contains. Rendered outside the admin shell. */
+.aid-page {
+  min-height: 100vh;
+  background: #e9e9ee;
+  padding: 24px 16px 48px;
+}
+.aid-toolbar {
+  max-width: 210mm;
+  margin: 0 auto 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+.aid-back {
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #4a0713;
+}
+.aid-back:hover {
+  text-decoration: underline;
+}
+
 .worship-aid {
-  max-width: 48rem;
+  width: 210mm;
+  min-height: 297mm;
   margin: 0 auto;
+  padding: 14mm 15mm;
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.16);
   color: #111;
-  font-size: 11pt;
-  line-height: 1.35;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10.5pt;
+  line-height: 1.32;
 }
 .worship-aid .aid-dedication {
-  font-size: 9pt;
+  font-size: 8.5pt;
   font-style: italic;
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin: 0 0 6px;
 }
 .worship-aid .aid-title {
   font-size: 12pt;
   font-weight: 700;
   text-align: center;
+  letter-spacing: 0.2px;
   border-bottom: 2px solid #111;
-  padding-bottom: 0.35rem;
-  margin-bottom: 0.9rem;
+  padding-bottom: 5px;
+  margin: 0 0 14px;
 }
 .worship-aid .aid-item {
-  margin-bottom: 0.8rem;
+  margin-bottom: 11px;
   /* Never split a song's heading from its first lines. */
   break-inside: avoid;
 }
 .worship-aid .aid-part {
-  font-size: 11pt;
+  font-size: 10.5pt;
   font-weight: 700;
-  margin-bottom: 0.15rem;
+  margin: 0 0 2px;
 }
 .worship-aid .aid-lyrics p {
-  margin: 0 0 0.45rem;
+  margin: 0 0 6px;
 }
 
 @media print {
-  .no-print,
-  header[class*="MuiAppBar"],
-  .MuiDrawer-root {
+  .no-print {
     display: none !important;
   }
+  html,
   body {
-    background: #fff;
+    background: #fff !important;
+  }
+  .aid-page {
+    min-height: 0;
+    background: none;
+    padding: 0;
   }
   .worship-aid {
-    max-width: none;
+    width: auto;
+    min-height: 0;
     margin: 0;
+    padding: 0;
+    box-shadow: none;
   }
   @page {
     size: A4;

@@ -79,6 +79,8 @@ const ITEMS = [
     part: "GLORIA",
     slug: "mass-of-reverence-gloria",
     title: "Mass of Reverence — Gloria",
+    // The sheet names the setting, not the catalogue entry.
+    song: "Mass of Reverence",
     language: "ENGLISH",
     massParts: ["GLORIA"],
     verses: [
