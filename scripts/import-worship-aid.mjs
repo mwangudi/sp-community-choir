@@ -2,7 +2,7 @@
  * Imports the 22nd Sunday OT Year A worship aid (docs/22nd Sunday OT Year A.pdf)
  * as Song records with lyrics plus the Mass plan that orders them.
  *
- *   node scripts/import-worship-aid.mjs
+ *   node --env-file=.env scripts/import-worship-aid.mjs
  *
  * Safe to re-run: songs are upserted by slug and the plan by date. Existing
  * lyrics are only overwritten for the songs listed here.
