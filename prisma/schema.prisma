@@ -227,8 +227,11 @@ model SongProposalItem {
   part       MassPart
   song       String
   sortOrder  Int          @default(0)
+  /// Reviewed one song at a time, so a proposal can be part-accepted.
+  status     ProposalStatus @default(PENDING)
 
   @@index([proposalId])
+  @@index([status])
 }
 
 // ───────────────────────── Concerts ──────────────────────────

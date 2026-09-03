@@ -8,16 +8,18 @@ import {
   CardContent,
   Chip,
   Divider,
+  IconButton,
   Stack,
+  Tooltip,
   Typography,
 } from "@mui/material";
-import { Inbox } from "lucide-react";
+import { CalendarPlus, Check, Inbox, X } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { massPartLabel, massPartOrder } from "@/lib/mass-parts";
 import { formatDate } from "@/lib/utils";
 import { PaginationBar } from "@/components/admin/pagination-bar";
-import { reviewProposal } from "./actions";
+import { addAcceptedToPlan, reviewProposalItem } from "./actions";
 
 export const metadata: Metadata = { title: "Song proposals" };
 export const dynamic = "force-dynamic";
@@ -158,6 +160,7 @@ export default async function ProposalsPage({
                         spacing={2}
                         sx={{
                           justifyContent: "space-between",
+                          alignItems: "center",
                           borderBottom: "1px dashed rgba(40,33,30,0.12)",
                           py: 0.75,
                         }}
@@ -165,13 +168,69 @@ export default async function ProposalsPage({
                         <Typography
                           variant="caption"
                           color="text.secondary"
-                          sx={{ fontWeight: 700, textTransform: "uppercase" }}
+                          sx={{ fontWeight: 700, textTransform: "uppercase", flexShrink: 0 }}
                         >
                           {massPartLabel(item.part)}
                         </Typography>
-                        <Typography variant="body2" sx={{ textAlign: "right" }}>
+
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            flex: 1,
+                            textAlign: "right",
+                            textDecoration:
+                              item.status === "DECLINED" ? "line-through" : "none",
+                            color:
+                              item.status === "DECLINED" ? "text.disabled" : "text.primary",
+                          }}
+                        >
                           {item.song}
                         </Typography>
+
+                        <Stack
+                          direction="row"
+                          spacing={0.5}
+                          sx={{ flexShrink: 0, alignItems: "center" }}
+                        >
+                          {item.status === "ACCEPTED" && (
+                            <Chip size="small" color="success" label="In" />
+                          )}
+                          {item.status === "DECLINED" && (
+                            <Chip size="small" variant="outlined" label="Out" />
+                          )}
+                          <form action={reviewProposalItem}>
+                            <input type="hidden" name="itemId" value={item.id} />
+                            <Tooltip title="Accept this song">
+                              <IconButton
+                                type="submit"
+                                name="status"
+                                value="ACCEPTED"
+                                size="small"
+                                color="success"
+                                disabled={item.status === "ACCEPTED"}
+                                aria-label={`Accept ${item.song}`}
+                              >
+                                <Check size={16} />
+                              </IconButton>
+                            </Tooltip>
+                          </form>
+                          <form action={reviewProposalItem}>
+                            <input type="hidden" name="itemId" value={item.id} />
+                            <Tooltip title="Decline this song">
+                              <IconButton
+                                type="submit"
+                                name="status"
+                                value="DECLINED"
+                                size="small"
+                                color="error"
+                                disabled={item.status === "DECLINED"}
+                                aria-label={`Decline ${item.song}`}
+                              >
+                                <X size={16} />
+                              </IconButton>
+                            </Tooltip>
+                          </form>
+                        </Stack>
                       </Stack>
                     ))}
                 </Box>
@@ -182,24 +241,28 @@ export default async function ProposalsPage({
                   </Typography>
                 )}
 
-                <form action={reviewProposal}>
-                  <input type="hidden" name="id" value={p.id} />
-                  <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: "wrap", gap: 1 }}>
-                    {STATUSES.filter((s) => s !== p.status).map((s) => (
-                      <Button
-                        key={s}
-                        type="submit"
-                        name="status"
-                        value={s}
-                        size="small"
-                        variant={s === "ACCEPTED" ? "contained" : "outlined"}
-                        color={STATUS_COLOR[s] === "default" ? "primary" : STATUS_COLOR[s]}
-                      >
-                        Mark {massPartLabel(s).toLowerCase()}
-                      </Button>
-                    ))}
-                  </Stack>
-                </form>
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  sx={{ mt: 3, flexWrap: "wrap", gap: 2, alignItems: "center" }}
+                >
+                  <form action={addAcceptedToPlan}>
+                    <input type="hidden" name="id" value={p.id} />
+                    <Button
+                      type="submit"
+                      size="small"
+                      variant="contained"
+                      startIcon={<CalendarPlus size={15} />}
+                      disabled={p.items.every((i) => i.status !== "ACCEPTED")}
+                    >
+                      Add accepted to the plan
+                    </Button>
+                  </form>
+                  <Typography variant="caption" color="text.secondary">
+                    {p.items.filter((i) => i.status === "ACCEPTED").length} accepted ·{" "}
+                    {p.items.filter((i) => i.status === "PENDING").length} still to review
+                  </Typography>
+                </Stack>
               </CardContent>
             </Card>
           ))}
