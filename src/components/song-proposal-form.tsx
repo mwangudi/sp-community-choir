@@ -48,10 +48,12 @@ const VOICES = [
   "Other",
 ] as const;
 
+/** Set by the lectionary for each Sunday, so there is nothing to propose. */
+const FIXED_PARTS: MassPlanPart[] = ["Responsorial Psalm"];
+
 /** Parts most members propose — shown first, the rest under "more parts". */
 const PRIMARY_PARTS: MassPlanPart[] = [
   "Entrance",
-  "Responsorial Psalm",
   "Gospel Acclamation",
   "Gospel Procession",
   "Offertory",
@@ -63,7 +65,7 @@ const PRIMARY_PARTS: MassPlanPart[] = [
   "Marian Hymn",
 ];
 const SECONDARY_PARTS: MassPlanPart[] = MASS_PLAN_PART_ORDER.filter(
-  (p) => !PRIMARY_PARTS.includes(p),
+  (p) => !PRIMARY_PARTS.includes(p) && !FIXED_PARTS.includes(p),
 );
 
 function dateKey(d: Date): string {
@@ -147,6 +149,7 @@ export function SongProposalForm() {
     const next: Partial<Record<MassPlanPart, string>> = {};
     for (const it of orderedItems(existingPlan)) {
       if (/^recit/i.test(it.song)) continue;
+      if (FIXED_PARTS.includes(it.part)) continue;
       next[it.part] = next[it.part] ? `${next[it.part]} / ${it.song}` : it.song;
     }
     setSongs(next);
@@ -158,7 +161,9 @@ export function SongProposalForm() {
     setState({ kind: "idle" });
   };
 
-  const filledParts = MASS_PLAN_PART_ORDER.filter((p) => songs[p]?.trim());
+  const filledParts = MASS_PLAN_PART_ORDER.filter(
+    (p) => songs[p]?.trim() && !FIXED_PARTS.includes(p),
+  );
   const canSubmit =
     Boolean(name.trim()) && Boolean(voice) && filledParts.length > 0 && !!selected;
 
