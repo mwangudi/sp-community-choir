@@ -11,11 +11,14 @@ import {
 } from "@mui/material";
 import {
   CalendarDays,
+  Camera,
   Inbox,
   Music2,
   NotebookPen,
   Sparkles,
+  Ticket,
   UserPlus,
+  Users,
 } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
@@ -25,25 +28,56 @@ import { formatDate } from "@/lib/utils";
 export const dynamic = "force-dynamic";
 
 async function getStats() {
-  const [pendingProposals, publishedPlans, songs, newApplications, posts, nextPlan, recent] =
-    await Promise.all([
-      prisma.songProposal.count({ where: { status: "PENDING" } }),
-      prisma.massPlan.count({ where: { status: "PUBLISHED" } }),
-      prisma.song.count({ where: { isActive: true } }),
-      prisma.joinApplication.count({ where: { status: "NEW" } }),
-      prisma.post.count({ where: { status: "PUBLISHED" } }),
-      prisma.massPlan.findFirst({
-        where: { date: { gte: new Date(new Date().toDateString()) } },
-        orderBy: { date: "asc" },
-        include: { items: { orderBy: { sortOrder: "asc" } } },
-      }),
-      prisma.songProposal.findMany({
-        orderBy: { createdAt: "desc" },
-        take: 4,
-        select: { id: true, proposerName: true, sundayName: true, createdAt: true, status: true },
-      }),
-    ]);
-  return { pendingProposals, publishedPlans, songs, newApplications, posts, nextPlan, recent };
+  // MassPlan.date is a DATE column, so compare against UTC midnight.
+  const now = new Date();
+  const today = new Date(
+    Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()),
+  );
+
+  const [
+    pendingProposals,
+    publishedPlans,
+    songs,
+    newApplications,
+    posts,
+    members,
+    gallery,
+    concerts,
+    nextPlan,
+    recent,
+  ] = await Promise.all([
+    prisma.songProposal.count({ where: { status: "PENDING" } }),
+    prisma.massPlan.count({ where: { status: "PUBLISHED" } }),
+    prisma.song.count({ where: { isActive: true } }),
+    prisma.joinApplication.count({ where: { status: "NEW" } }),
+    prisma.post.count({ where: { status: "PUBLISHED" } }),
+    prisma.member.count({ where: { isActive: true } }),
+    prisma.galleryItem.count({ where: { isPublished: true } }),
+    prisma.concert.count({ where: { isPublished: true, startsAt: { gte: now } } }),
+    prisma.massPlan.findFirst({
+      where: { date: { gte: today } },
+      orderBy: { date: "asc" },
+      include: { items: { orderBy: { sortOrder: "asc" } } },
+    }),
+    prisma.songProposal.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 4,
+      select: { id: true, proposerName: true, sundayName: true, createdAt: true, status: true },
+    }),
+  ]);
+
+  return {
+    pendingProposals,
+    publishedPlans,
+    songs,
+    newApplications,
+    posts,
+    members,
+    gallery,
+    concerts,
+    nextPlan,
+    recent,
+  };
 }
 
 /** Soft tint + solid icon, the way Materio treats its stat icons. */
@@ -64,6 +98,9 @@ export default async function AdminDashboardPage() {
     { label: "Plans", value: s.publishedPlans, icon: CalendarDays, tone: TONE.gold, href: "/admin/mass-plans" },
     { label: "Songs", value: s.songs, icon: Music2, tone: TONE.teal, href: "/admin/songs" },
     { label: "Posts", value: s.posts, icon: NotebookPen, tone: TONE.indigo, href: "/admin/blog" },
+    { label: "Concerts", value: s.concerts, icon: Ticket, tone: TONE.gold, href: "/admin/concerts" },
+    { label: "Gallery", value: s.gallery, icon: Camera, tone: TONE.teal, href: "/admin/gallery" },
+    { label: "Members", value: s.members, icon: Users, tone: TONE.indigo, href: "/admin/members" },
     { label: "Applicants", value: s.newApplications, icon: UserPlus, tone: TONE.grey, href: "/admin/applications" },
   ];
 
@@ -124,7 +161,7 @@ export default async function AdminDashboardPage() {
               mt: 6,
               display: "grid",
               gap: 5,
-              gridTemplateColumns: { xs: "repeat(2, 1fr)", sm: "repeat(3, 1fr)", md: "repeat(5, 1fr)" },
+              gridTemplateColumns: { xs: "repeat(2, 1fr)", sm: "repeat(3, 1fr)", md: "repeat(4, 1fr)" },
             }}
           >
             {stats.map(({ label, value, icon: Icon, tone, href }) => (
@@ -173,10 +210,21 @@ export default async function AdminDashboardPage() {
             <Box>
               <Typography variant="h6">Next Sunday</Typography>
               <Typography variant="body2" color="text.secondary">
-                {s.nextPlan ? s.nextPlan.name : "No upcoming plan has been created yet."}
+                {s.nextPlan
+                  ? `${s.nextPlan.name} · ${formatDate(s.nextPlan.date)}`
+                  : "No upcoming plan has been created yet."}
               </Typography>
             </Box>
-            <Button component={Link} href="/admin/mass-plans" variant="contained" size="small">
+            <Button
+              component={Link}
+              href={
+                s.nextPlan
+                  ? `/admin/mass-plans/${s.nextPlan.id}`
+                  : "/admin/mass-plans/new"
+              }
+              variant="contained"
+              size="small"
+            >
               {s.nextPlan ? "Open plan" : "Create a plan"}
             </Button>
           </Stack>
@@ -184,7 +232,11 @@ export default async function AdminDashboardPage() {
           {s.nextPlan && (
             <>
               <Stack direction="row" spacing={2} sx={{ mt: 4, flexWrap: "wrap", gap: 2 }}>
-                <Chip size="small" label={s.nextPlan.status} color="success" />
+                <Chip
+                  size="small"
+                  label={s.nextPlan.status}
+                  color={s.nextPlan.status === "PUBLISHED" ? "success" : "default"}
+                />
                 {s.nextPlan.setting && (
                   <Chip size="small" label={s.nextPlan.setting} variant="outlined" />
                 )}
@@ -196,7 +248,7 @@ export default async function AdminDashboardPage() {
               <Box
                 sx={{
                   display: "grid",
-                  gap: 1,
+                  columnGap: 10,
                   gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
                 }}
               >
@@ -204,9 +256,25 @@ export default async function AdminDashboardPage() {
                   <Stack
                     key={item.id}
                     direction="row"
-                    sx={{ justifyContent: "space-between", gap: 4, py: 1.5 }}
+                    spacing={3}
+                    sx={{
+                      justifyContent: "space-between",
+                      alignItems: "baseline",
+                      py: 1,
+                      borderBottom: 1,
+                      borderColor: "divider",
+                    }}
                   >
-                    <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
+                    <Typography
+                      variant="caption"
+                      color="text.secondary"
+                      sx={{
+                        fontWeight: 600,
+                        textTransform: "uppercase",
+                        letterSpacing: 0.4,
+                        flexShrink: 0,
+                      }}
+                    >
                       {massPartLabel(item.part)}
                     </Typography>
                     <Typography variant="body2" sx={{ textAlign: "right" }}>
@@ -235,7 +303,18 @@ export default async function AdminDashboardPage() {
               </Typography>
             )}
             {s.recent.map((p) => (
-              <Stack key={p.id} direction="row" spacing={3} sx={{ alignItems: "center" }}>
+              <Stack
+                key={p.id}
+                component={Link}
+                href="/admin/proposals"
+                direction="row"
+                spacing={3}
+                sx={{
+                  alignItems: "center",
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+              >
                 <Box
                   sx={{
                     width: 38,
@@ -260,14 +339,17 @@ export default async function AdminDashboardPage() {
                     {p.sundayName}
                   </Typography>
                 </Box>
-                <Typography
-                  variant="caption"
-                  color="text.secondary"
-                  sx={{ flexShrink: 0 }}
-                  noWrap
-                >
-                  {formatDate(p.createdAt)}
-                </Typography>
+                <Stack spacing={1} sx={{ flexShrink: 0, alignItems: "flex-end" }}>
+                  <Chip
+                    size="small"
+                    label={massPartLabel(p.status)}
+                    color={p.status === "PENDING" ? "warning" : "default"}
+                    variant={p.status === "PENDING" ? "filled" : "outlined"}
+                  />
+                  <Typography variant="caption" color="text.secondary" noWrap>
+                    {formatDate(p.createdAt)}
+                  </Typography>
+                </Stack>
               </Stack>
             ))}
           </Stack>
