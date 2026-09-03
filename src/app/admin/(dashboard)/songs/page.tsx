@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import type { CopyrightStatus, Prisma, SongLanguage } from "@prisma/client";
+import type {
+  CopyrightStatus,
+  LiturgicalSeason,
+  MassPart,
+  Prisma,
+  SongLanguage,
+} from "@prisma/client";
 import {
   Alert,
   AlertTitle,
@@ -58,6 +64,39 @@ const RIGHTS: CopyrightStatus[] = [
   "UNKNOWN",
 ];
 
+const SEASONS: LiturgicalSeason[] = [
+  "ADVENT",
+  "CHRISTMAS",
+  "ORDINARY_TIME",
+  "LENT",
+  "TRIDUUM",
+  "EASTER",
+];
+
+const MASS_PARTS: MassPart[] = [
+  "ENTRANCE",
+  "PENITENTIAL",
+  "KYRIE",
+  "GLORIA",
+  "RESPONSORIAL_PSALM",
+  "GOSPEL_ACCLAMATION",
+  "GOSPEL_PROCESSION",
+  "CREED",
+  "OFFERTORY",
+  "PREPARATION_OF_GIFTS",
+  "SANCTUS",
+  "MYSTERY_OF_FAITH",
+  "GREAT_AMEN",
+  "OUR_FATHER",
+  "SIGN_OF_PEACE",
+  "AGNUS_DEI",
+  "COMMUNION",
+  "ANIMA_CHRISTI",
+  "THANKSGIVING",
+  "RECESSIONAL",
+  "MARIAN_HYMN",
+];
+
 type SortKey = "title" | "composer" | "language" | "copyrightStatus";
 
 const SORT_KEYS: SortKey[] = ["title", "composer", "language", "copyrightStatus"];
@@ -77,6 +116,8 @@ export default async function SongsPage({
     q?: string;
     language?: string;
     rights?: string;
+    seasons?: string;
+    parts?: string;
     sort?: string;
     dir?: string;
     page?: string;
@@ -97,19 +138,36 @@ export default async function SongsPage({
     : "title";
   const dir: "asc" | "desc" = sp.dir === "desc" ? "desc" : "asc";
 
+  const pickedSeasons = (sp.seasons?.split(",") ?? []).filter((v) =>
+    SEASONS.includes(v as LiturgicalSeason),
+  );
+  const pickedParts = (sp.parts?.split(",") ?? []).filter((v) =>
+    MASS_PARTS.includes(v as MassPart),
+  );
+
+  // Seasons and massParts are JSON arrays, so match any of the chosen values.
+  const jsonAny = (field: "seasons" | "massParts", values: string[]) =>
+    values.length
+      ? { OR: values.map((v) => ({ [field]: { array_contains: v } })) }
+      : {};
+
   // MySQL's utf8mb4_unicode_ci collation already makes `contains` case-insensitive.
   const where: Prisma.SongWhereInput = {
-    ...(language ? { language } : {}),
-    ...(rights ? { copyrightStatus: rights } : {}),
-    ...(q
-      ? {
-          OR: [
-            { title: { contains: q } },
-            { composer: { contains: q } },
-            { arranger: { contains: q } },
-          ],
-        }
-      : {}),
+    AND: [
+      language ? { language } : {},
+      rights ? { copyrightStatus: rights } : {},
+      jsonAny("seasons", pickedSeasons),
+      jsonAny("massParts", pickedParts),
+      q
+        ? {
+            OR: [
+              { title: { contains: q } },
+              { composer: { contains: q } },
+              { arranger: { contains: q } },
+            ],
+          }
+        : {},
+    ],
   };
 
   const total = await prisma.song.count({ where });
@@ -127,13 +185,17 @@ export default async function SongsPage({
     prisma.song.count({ where: { copyrightStatus: "UNKNOWN" } }),
   ]);
 
-  const filtered = Boolean(q || language || rights);
+  const filtered = Boolean(
+    q || language || rights || pickedSeasons.length || pickedParts.length,
+  );
 
   const sortHref = (key: SortKey) => {
     const next = new URLSearchParams();
     if (q) next.set("q", q);
     if (language) next.set("language", language);
     if (rights) next.set("rights", rights);
+    if (pickedSeasons.length) next.set("seasons", pickedSeasons.join(","));
+    if (pickedParts.length) next.set("parts", pickedParts.join(","));
     next.set("sort", key);
     // Clicking the active column flips direction; a new column starts ascending.
     next.set("dir", sort === key && dir === "asc" ? "desc" : "asc");
@@ -185,6 +247,8 @@ export default async function SongsPage({
         <SongsToolbar
           languages={LANGUAGES.map((v) => ({ value: v, label: massPartLabel(v) }))}
           rights={RIGHTS.map((v) => ({ value: v, label: massPartLabel(v) }))}
+          seasons={SEASONS.map((v) => ({ value: v, label: massPartLabel(v) }))}
+          parts={MASS_PARTS.map((v) => ({ value: v, label: massPartLabel(v) }))}
         />
         <Divider />
 
@@ -355,6 +419,8 @@ export default async function SongsPage({
             q: q || undefined,
             language,
             rights,
+            seasons: pickedSeasons.length ? pickedSeasons.join(",") : undefined,
+            parts: pickedParts.length ? pickedParts.join(",") : undefined,
             sort: sort === "title" ? undefined : sort,
             dir: dir === "asc" ? undefined : dir,
           }}
