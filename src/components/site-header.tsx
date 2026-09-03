@@ -25,6 +25,7 @@ const NAV: NavEntry[] = [
   {
     label: "Events",
     items: [
+      { href: "/masses", label: "Sunday Masses" },
       { href: "/concerts", label: "Concerts" },
       { href: "/gallery", label: "Gallery" },
       { href: "/blog", label: "Blog" },

@@ -49,6 +49,7 @@ export default async function EditMassPlanPage({
           season: plan.season ?? "",
           setting: plan.setting ?? "",
           leader: plan.leader ?? "",
+          youtubeId: plan.youtubeId ?? "",
           notes: plan.notes ?? "",
           status: plan.status,
           items: plan.items.map((i) => ({

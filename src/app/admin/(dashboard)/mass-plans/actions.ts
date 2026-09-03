@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import type { LiturgicalSeason, MassPart, PlanStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
+import { youtubeId } from "@/lib/youtube";
 
 export type PlanFormState = { error?: string };
 
@@ -51,6 +52,12 @@ export async function saveMassPlan(
       sortOrder: index,
     }));
 
+  const rawLivestream = String(formData.get("youtubeId") ?? "").trim();
+  const livestream = rawLivestream ? youtubeId(rawLivestream) : null;
+  if (rawLivestream && !livestream) {
+    return { error: "That does not look like a YouTube link or video id" };
+  }
+
   const data = {
     date,
     name,
@@ -58,6 +65,7 @@ export async function saveMassPlan(
     season: (text(formData, "season") as LiturgicalSeason | null) ?? null,
     setting: text(formData, "setting"),
     leader: text(formData, "leader"),
+    youtubeId: livestream,
     notes: text(formData, "notes"),
     status: String(formData.get("status") ?? "DRAFT") as PlanStatus,
   };
@@ -78,6 +86,7 @@ export async function saveMassPlan(
   }
 
   revalidatePath("/admin/mass-plans");
+  revalidatePath("/masses");
   redirect("/admin/mass-plans");
 }
 
@@ -88,6 +97,7 @@ export async function deleteMassPlan(formData: FormData) {
   await prisma.massPlan.delete({ where: { id } });
 
   revalidatePath("/admin/mass-plans");
+  revalidatePath("/masses");
 }
 
 export async function togglePlanStatus(formData: FormData) {
@@ -102,4 +112,5 @@ export async function togglePlanStatus(formData: FormData) {
   });
 
   revalidatePath("/admin/mass-plans");
+  revalidatePath("/masses");
 }
