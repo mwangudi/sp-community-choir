@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import {
   Box,
   Button,
@@ -6,16 +7,20 @@ import {
   CardContent,
   Chip,
   Divider,
+  LinearProgress,
   Stack,
   Typography,
 } from "@mui/material";
 import {
+  AtSign,
+  BadgeCheck,
   CalendarDays,
   Camera,
+  Clock,
   Inbox,
   Music2,
   NotebookPen,
-  Sparkles,
+  ShieldCheck,
   Ticket,
   UserPlus,
   Users,
@@ -23,6 +28,7 @@ import {
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { massPartLabel } from "@/lib/mass-parts";
+import { getChoir } from "@/lib/server/settings";
 import { formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -37,22 +43,33 @@ async function getStats() {
   const [
     pendingProposals,
     publishedPlans,
+    totalPlans,
     songs,
+    rightsConfirmed,
     newApplications,
     posts,
     members,
-    gallery,
+    membersConsented,
+    galleryPublished,
+    galleryTotal,
     concerts,
     nextPlan,
-    recent,
+    recentProposals,
+    recentApplications,
   ] = await Promise.all([
     prisma.songProposal.count({ where: { status: "PENDING" } }),
     prisma.massPlan.count({ where: { status: "PUBLISHED" } }),
+    prisma.massPlan.count(),
     prisma.song.count({ where: { isActive: true } }),
+    prisma.song.count({
+      where: { isActive: true, NOT: { copyrightStatus: "UNKNOWN" } },
+    }),
     prisma.joinApplication.count({ where: { status: "NEW" } }),
     prisma.post.count({ where: { status: "PUBLISHED" } }),
     prisma.member.count({ where: { isActive: true } }),
+    prisma.member.count({ where: { isActive: true, mediaConsent: true } }),
     prisma.galleryItem.count({ where: { isPublished: true } }),
+    prisma.galleryItem.count(),
     prisma.concert.count({ where: { isPublished: true, startsAt: { gte: now } } }),
     prisma.massPlan.findFirst({
       where: { date: { gte: today } },
@@ -62,47 +79,258 @@ async function getStats() {
     prisma.songProposal.findMany({
       orderBy: { createdAt: "desc" },
       take: 4,
-      select: { id: true, proposerName: true, sundayName: true, createdAt: true, status: true },
+      select: {
+        id: true,
+        proposerName: true,
+        sundayName: true,
+        createdAt: true,
+        status: true,
+      },
+    }),
+    prisma.joinApplication.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 4,
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        voice: true,
+        status: true,
+        createdAt: true,
+      },
     }),
   ]);
 
   return {
     pendingProposals,
     publishedPlans,
+    totalPlans,
     songs,
+    rightsConfirmed,
     newApplications,
     posts,
     members,
-    gallery,
+    membersConsented,
+    galleryPublished,
+    galleryTotal,
     concerts,
     nextPlan,
-    recent,
+    recentProposals,
+    recentApplications,
   };
 }
 
-/** Soft tint + solid icon, the way Materio treats its stat icons. */
-const TONE = {
-  red: { fg: "#BC0424", bg: "rgba(188,4,36,0.12)" },
-  gold: { fg: "#B87809", bg: "rgba(253,179,33,0.18)" },
-  teal: { fg: "#0F766E", bg: "rgba(15,118,110,0.12)" },
-  indigo: { fg: "#4338CA", bg: "rgba(67,56,202,0.12)" },
-  grey: { fg: "#6E6B7B", bg: "rgba(110,107,123,0.12)" },
+const TILE = {
+  dark: "#2E263D",
+  amber: "#DA8E00",
+  blue: "#1B84D8",
+  teal: "#0F766E",
 } as const;
+
+/** Solid KPI tile: small label, big number, quiet descriptor. */
+function Tile({
+  label,
+  value,
+  caption,
+  icon,
+  bg,
+  href,
+}: {
+  label: string;
+  value: string | number;
+  caption: string;
+  icon: ReactNode;
+  bg: string;
+  href: string;
+}) {
+  return (
+    <Card
+      component={Link}
+      href={href}
+      sx={{
+        gridColumn: { lg: "span 3" },
+        bgcolor: bg,
+        color: "#fff",
+        textDecoration: "none",
+        display: "block",
+        // The admin theme colours Typography explicitly, so force it back.
+        "& .MuiTypography-root": { color: "#fff" },
+        transition: "transform .15s ease, box-shadow .15s ease",
+        "&:hover": { transform: "translateY(-2px)", boxShadow: 6 },
+      }}
+    >
+      <CardContent>
+        <Stack direction="row" spacing={1.5} sx={{ alignItems: "center", mb: 2 }}>
+          {icon}
+          <Typography
+            sx={{
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: 0.8,
+              textTransform: "uppercase",
+              opacity: 0.9,
+            }}
+          >
+            {label}
+          </Typography>
+        </Stack>
+        <Typography
+          sx={{
+            fontSize: value === "Not planned" || String(value).length > 12 ? 20 : 30,
+            fontWeight: 600,
+            lineHeight: 1.15,
+          }}
+        >
+          {value}
+        </Typography>
+        <Typography sx={{ fontSize: 13, opacity: 0.85 }}>{caption}</Typography>
+      </CardContent>
+    </Card>
+  );
+}
+
+function SectionHeader({
+  icon,
+  title,
+  subtitle,
+  action,
+}: {
+  icon: ReactNode;
+  title: string;
+  subtitle: string;
+  action?: ReactNode;
+}) {
+  return (
+    <Stack
+      direction="row"
+      spacing={2}
+      sx={{ alignItems: "flex-start", justifyContent: "space-between" }}
+    >
+      <Stack direction="row" spacing={2} sx={{ alignItems: "flex-start" }}>
+        <Box sx={{ color: "text.secondary", mt: 0.25 }}>{icon}</Box>
+        <Box>
+          <Typography sx={{ fontWeight: 600, lineHeight: 1.3 }}>{title}</Typography>
+          <Typography variant="caption" color="text.secondary">
+            {subtitle}
+          </Typography>
+        </Box>
+      </Stack>
+      {action}
+    </Stack>
+  );
+}
+
+function EmptyState({ icon, title, body }: { icon: ReactNode; title: string; body: string }) {
+  return (
+    <Stack spacing={2} sx={{ alignItems: "center", textAlign: "center", py: 7 }}>
+      <Box
+        sx={{
+          width: 44,
+          height: 44,
+          borderRadius: "50%",
+          display: "grid",
+          placeItems: "center",
+          bgcolor: "action.hover",
+          color: "text.disabled",
+        }}
+      >
+        {icon}
+      </Box>
+      <Typography variant="body2" sx={{ fontWeight: 600 }}>
+        {title}
+      </Typography>
+      <Typography variant="caption" color="text.secondary" sx={{ maxWidth: 260 }}>
+        {body}
+      </Typography>
+    </Stack>
+  );
+}
+
+/** Quota-style row: label, "n of m", and a thin bar. */
+function MeterRow({
+  label,
+  done,
+  total,
+  unit,
+}: {
+  label: string;
+  done: number;
+  total: number;
+  unit: string;
+}) {
+  const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+  return (
+    <Box>
+      <Stack
+        direction="row"
+        sx={{ justifyContent: "space-between", alignItems: "baseline", mb: 1 }}
+      >
+        <Typography variant="body2">{label}</Typography>
+        <Typography variant="caption" color="text.secondary">
+          {done} of {total} {unit}
+        </Typography>
+      </Stack>
+      <LinearProgress
+        variant="determinate"
+        value={pct}
+        sx={{ height: 6, borderRadius: 3 }}
+        color={pct === 100 ? "success" : pct >= 50 ? "primary" : "warning"}
+      />
+    </Box>
+  );
+}
+
+function Meta({ icon, label, value }: { icon: ReactNode; label: string; value: string }) {
+  return (
+    <Box sx={{ minWidth: 0 }}>
+      <Stack direction="row" spacing={1} sx={{ alignItems: "center", color: "text.secondary" }}>
+        {icon}
+        <Typography
+          sx={{ fontSize: 10, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}
+        >
+          {label}
+        </Typography>
+      </Stack>
+      <Typography variant="body2" sx={{ mt: 0.5 }} noWrap>
+        {value}
+      </Typography>
+    </Box>
+  );
+}
+
+function Avatar({ initial }: { initial: string }) {
+  return (
+    <Box
+      sx={{
+        width: 38,
+        height: 38,
+        flexShrink: 0,
+        borderRadius: "50%",
+        display: "grid",
+        placeItems: "center",
+        bgcolor: "rgba(188,4,36,0.12)",
+        color: "#BC0424",
+        fontWeight: 600,
+        fontSize: 13,
+      }}
+    >
+      {initial}
+    </Box>
+  );
+}
 
 export default async function AdminDashboardPage() {
   const session = await requireSession();
-  const s = await getStats();
+  const [s, choir, me] = await Promise.all([
+    getStats(),
+    getChoir(),
+    prisma.user.findUnique({
+      where: { id: session.sub },
+      select: { voice: true, lastLoginAt: true, createdAt: true },
+    }),
+  ]);
 
-  const stats = [
-    { label: "Proposals", value: s.pendingProposals, icon: Inbox, tone: TONE.red, href: "/admin/proposals" },
-    { label: "Plans", value: s.publishedPlans, icon: CalendarDays, tone: TONE.gold, href: "/admin/mass-plans" },
-    { label: "Songs", value: s.songs, icon: Music2, tone: TONE.teal, href: "/admin/songs" },
-    { label: "Posts", value: s.posts, icon: NotebookPen, tone: TONE.indigo, href: "/admin/blog" },
-    { label: "Concerts", value: s.concerts, icon: Ticket, tone: TONE.gold, href: "/admin/concerts" },
-    { label: "Gallery", value: s.gallery, icon: Camera, tone: TONE.teal, href: "/admin/gallery" },
-    { label: "Members", value: s.members, icon: Users, tone: TONE.indigo, href: "/admin/members" },
-    { label: "Applicants", value: s.newApplications, icon: UserPlus, tone: TONE.grey, href: "/admin/applications" },
-  ];
+  const rightsBacklog = s.songs - s.rightsConfirmed;
 
   return (
     <Box
@@ -110,138 +338,152 @@ export default async function AdminDashboardPage() {
         display: "grid",
         gap: 6,
         gridTemplateColumns: { xs: "1fr", lg: "repeat(12, 1fr)" },
-        alignItems: "stretch",
+        alignItems: "start",
       }}
     >
-      {/* Welcome */}
-      <Card sx={{ gridColumn: { lg: "span 4" }, position: "relative", overflow: "hidden" }}>
-        <CardContent>
-          <Typography variant="h6" sx={{ color: "primary.main" }}>
-            Karibu, {session.name.split(" ")[0]}! 🎵
-          </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-            {s.pendingProposals > 0
-              ? "Proposals are waiting for review"
-              : "Nothing is waiting for review"}
-          </Typography>
-          <Typography variant="h4" sx={{ mt: 4, fontWeight: 500, color: "primary.main", lineHeight: 1 }}>
-            {s.pendingProposals}
-          </Typography>
-          <Typography variant="caption" color="text.secondary">
-            pending song proposals
-          </Typography>
-          <Box sx={{ mt: 5 }}>
-            <Button component={Link} href="/admin/proposals" variant="contained" size="small">
-              Review now
-            </Button>
-          </Box>
-          <Sparkles
-            size={92}
-            style={{
-              position: "absolute",
-              right: -12,
-              bottom: -12,
-              opacity: 0.07,
-              color: "#BC0424",
-            }}
-          />
-        </CardContent>
-      </Card>
-
-      {/* At a glance */}
-      <Card sx={{ gridColumn: { lg: "span 8" } }}>
-        <CardContent>
-          <Typography variant="h6">At a glance</Typography>
-          <Typography variant="body2" color="text.secondary">
-            The choir&apos;s music and people, in numbers
-          </Typography>
-
-          <Box
-            sx={{
-              mt: 6,
-              display: "grid",
-              gap: 5,
-              gridTemplateColumns: { xs: "repeat(2, 1fr)", sm: "repeat(3, 1fr)", md: "repeat(4, 1fr)" },
-            }}
-          >
-            {stats.map(({ label, value, icon: Icon, tone, href }) => (
-              <Stack
-                key={label}
-                component={Link}
-                href={href}
-                direction="row"
-                spacing={3}
-                sx={{ alignItems: "center", textDecoration: "none", color: "inherit" }}
-              >
-                <Box
-                  sx={{
-                    width: 40,
-                    height: 40,
-                    flexShrink: 0,
-                    borderRadius: 1,
-                    display: "grid",
-                    placeItems: "center",
-                    bgcolor: tone.bg,
-                    color: tone.fg,
-                  }}
-                >
-                  <Icon size={19} />
-                </Box>
-                <Box sx={{ minWidth: 0 }}>
-                  <Typography variant="caption" color="text.secondary" noWrap>
-                    {label}
-                  </Typography>
-                  <Typography sx={{ fontWeight: 500, lineHeight: 1.2 }}>{value}</Typography>
-                </Box>
-              </Stack>
-            ))}
-          </Box>
-        </CardContent>
-      </Card>
-
-      {/* Next Sunday */}
-      <Card sx={{ gridColumn: { lg: "span 8" } }}>
+      {/* Identity strip */}
+      <Card sx={{ gridColumn: { lg: "span 12" } }}>
         <CardContent>
           <Stack
             direction={{ xs: "column", sm: "row" }}
             spacing={2}
-            sx={{ justifyContent: "space-between", alignItems: { sm: "center" } }}
+            sx={{ justifyContent: "space-between", alignItems: { sm: "flex-start" } }}
           >
             <Box>
-              <Typography variant="h6">Next Sunday</Typography>
+              <Typography variant="h6" sx={{ lineHeight: 1.2 }}>
+                {session.name}
+              </Typography>
               <Typography variant="body2" color="text.secondary">
-                {s.nextPlan
-                  ? `${s.nextPlan.name} · ${formatDate(s.nextPlan.date)}`
-                  : "No upcoming plan has been created yet."}
+                {massPartLabel(session.role)}
+                {me?.voice ? ` · ${massPartLabel(me.voice)}` : ""} ·{" "}
+                {choir.shortName}
               </Typography>
             </Box>
-            <Button
-              component={Link}
-              href={
-                s.nextPlan
-                  ? `/admin/mass-plans/${s.nextPlan.id}`
-                  : "/admin/mass-plans/new"
-              }
-              variant="contained"
+            <Chip
               size="small"
-            >
-              {s.nextPlan ? "Open plan" : "Create a plan"}
-            </Button>
+              icon={<BadgeCheck size={14} />}
+              label="Signed in"
+              color="success"
+              variant="outlined"
+            />
           </Stack>
 
-          {s.nextPlan && (
+          <Box
+            sx={{
+              mt: 5,
+              display: "grid",
+              gap: 5,
+              gridTemplateColumns: {
+                xs: "repeat(2, 1fr)",
+                sm: "repeat(3, 1fr)",
+                lg: "repeat(5, 1fr)",
+              },
+            }}
+          >
+            <Meta icon={<AtSign size={13} />} label="Email" value={session.email} />
+            <Meta
+              icon={<Clock size={13} />}
+              label="Last sign-in"
+              value={me?.lastLoginAt ? formatDate(me.lastLoginAt) : "First visit"}
+            />
+            <Meta
+              icon={<CalendarDays size={13} />}
+              label="Rehearsals"
+              value={`${choir.rehearsals.day} · ${choir.rehearsals.time}`}
+            />
+            <Meta
+              icon={<Music2 size={13} />}
+              label="Sunday Mass"
+              value={choir.ministersAt.label}
+            />
+            <Meta
+              icon={<NotebookPen size={13} />}
+              label="Published posts"
+              value={String(s.posts)}
+            />
+          </Box>
+        </CardContent>
+      </Card>
+
+      {/* KPI tiles */}
+      <Tile
+        label="Proposals"
+        value={s.pendingProposals}
+        caption="awaiting review"
+        icon={<Inbox size={16} />}
+        bg={TILE.dark}
+        href="/admin/proposals"
+      />
+      <Tile
+        label="Next Sunday"
+        value={s.nextPlan ? s.nextPlan.name : "Not planned"}
+        caption={s.nextPlan ? formatDate(s.nextPlan.date) : "no upcoming plan"}
+        icon={<CalendarDays size={16} />}
+        bg={TILE.amber}
+        href={s.nextPlan ? `/admin/mass-plans/${s.nextPlan.id}` : "/admin/mass-plans/new"}
+      />
+      <Tile
+        label="Repertoire"
+        value={s.songs}
+        caption="songs in the catalogue"
+        icon={<Music2 size={16} />}
+        bg={TILE.blue}
+        href="/admin/songs"
+      />
+      <Tile
+        label="Applicants"
+        value={s.newApplications}
+        caption="waiting for a reply"
+        icon={<UserPlus size={16} />}
+        bg={TILE.teal}
+        href="/admin/applications"
+      />
+
+      {/* Next Sunday */}
+      <Card sx={{ gridColumn: { lg: "span 8" } }}>
+        <CardContent>
+          <SectionHeader
+            icon={<CalendarDays size={18} />}
+            title="Next Sunday"
+            subtitle={
+              s.nextPlan
+                ? `${s.nextPlan.name} · ${formatDate(s.nextPlan.date)}`
+                : "The order of service for the coming Sunday"
+            }
+            action={
+              <Button
+                component={Link}
+                href={
+                  s.nextPlan ? `/admin/mass-plans/${s.nextPlan.id}` : "/admin/mass-plans/new"
+                }
+                variant="contained"
+                size="small"
+              >
+                {s.nextPlan ? "Open plan" : "Create a plan"}
+              </Button>
+            }
+          />
+
+          {!s.nextPlan ? (
+            <EmptyState
+              icon={<CalendarDays size={20} />}
+              title="No upcoming plan"
+              body="Once a Sunday is planned, its full order of service appears here."
+            />
+          ) : (
             <>
               <Stack direction="row" spacing={2} sx={{ mt: 4, flexWrap: "wrap", gap: 2 }}>
                 <Chip
                   size="small"
-                  label={s.nextPlan.status}
+                  label={massPartLabel(s.nextPlan.status)}
                   color={s.nextPlan.status === "PUBLISHED" ? "success" : "default"}
                 />
+                <Chip size="small" variant="outlined" label={`Year ${s.nextPlan.year}`} />
                 {s.nextPlan.setting && (
-                  <Chip size="small" label={s.nextPlan.setting} variant="outlined" />
+                  <Chip size="small" variant="outlined" label={s.nextPlan.setting} />
                 )}
                 {s.nextPlan.leader && (
-                  <Chip size="small" label={s.nextPlan.leader} variant="outlined" />
+                  <Chip size="small" variant="outlined" label={s.nextPlan.leader} />
                 )}
               </Stack>
               <Divider sx={{ my: 4 }} />
@@ -288,69 +530,191 @@ export default async function AdminDashboardPage() {
         </CardContent>
       </Card>
 
-      {/* Recent proposals */}
+      {/* Where things stand */}
       <Card sx={{ gridColumn: { lg: "span 4" } }}>
         <CardContent>
-          <Typography variant="h6">Latest proposals</Typography>
-          <Typography variant="body2" color="text.secondary">
-            Most recent submissions
-          </Typography>
+          <SectionHeader
+            icon={<ShieldCheck size={18} />}
+            title="Where things stand"
+            subtitle="What still needs attention"
+          />
+          <Stack spacing={4} sx={{ mt: 5 }}>
+            <MeterRow
+              label="Song rights confirmed"
+              done={s.rightsConfirmed}
+              total={s.songs}
+              unit="songs"
+            />
+            <MeterRow
+              label="Media consent recorded"
+              done={s.membersConsented}
+              total={s.members}
+              unit="members"
+            />
+            <MeterRow
+              label="Gallery published"
+              done={s.galleryPublished}
+              total={s.galleryTotal}
+              unit="photos"
+            />
+            <MeterRow
+              label="Mass plans published"
+              done={s.publishedPlans}
+              total={s.totalPlans}
+              unit="plans"
+            />
+          </Stack>
 
-          <Stack spacing={5} sx={{ mt: 6 }}>
-            {s.recent.length === 0 && (
-              <Typography variant="body2" color="text.secondary">
-                Nothing submitted yet.
-              </Typography>
-            )}
-            {s.recent.map((p) => (
-              <Stack
-                key={p.id}
-                component={Link}
-                href="/admin/proposals"
-                direction="row"
-                spacing={3}
-                sx={{
-                  alignItems: "center",
-                  textDecoration: "none",
-                  color: "inherit",
-                }}
-              >
-                <Box
-                  sx={{
-                    width: 38,
-                    height: 38,
-                    flexShrink: 0,
-                    borderRadius: 1,
-                    display: "grid",
-                    placeItems: "center",
-                    bgcolor: TONE.red.bg,
-                    color: TONE.red.fg,
-                    fontWeight: 500,
-                    fontSize: 14,
-                  }}
+          {rightsBacklog > 0 && (
+            <Typography variant="caption" color="text.secondary" sx={{ mt: 4, display: "block" }}>
+              {rightsBacklog} song{rightsBacklog === 1 ? "" : "s"} still need a copyright
+              check — their scores stay members-only until then.
+            </Typography>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Latest proposals */}
+      <Card sx={{ gridColumn: { lg: "span 6" } }}>
+        <CardContent>
+          <SectionHeader
+            icon={<Inbox size={18} />}
+            title="Latest proposals"
+            subtitle="Songs members have suggested"
+            action={
+              <Button component={Link} href="/admin/proposals" size="small">
+                View all
+              </Button>
+            }
+          />
+          {s.recentProposals.length === 0 ? (
+            <EmptyState
+              icon={<Inbox size={20} />}
+              title="Nothing submitted yet"
+              body="Proposals from the website appear here as members send them in."
+            />
+          ) : (
+            <Stack spacing={4} sx={{ mt: 5 }}>
+              {s.recentProposals.map((p) => (
+                <Stack
+                  key={p.id}
+                  component={Link}
+                  href="/admin/proposals"
+                  direction="row"
+                  spacing={3}
+                  sx={{ alignItems: "center", textDecoration: "none", color: "inherit" }}
                 >
-                  {p.proposerName.slice(0, 1).toUpperCase()}
-                </Box>
-                <Box sx={{ minWidth: 0, flex: 1 }}>
-                  <Typography variant="body2" sx={{ fontWeight: 500 }} noWrap>
-                    {p.proposerName}
-                  </Typography>
-                  <Typography variant="caption" component="div" color="text.secondary" noWrap>
-                    {p.sundayName}
-                  </Typography>
-                </Box>
-                <Stack spacing={1} sx={{ flexShrink: 0, alignItems: "flex-end" }}>
-                  <Chip
-                    size="small"
-                    label={massPartLabel(p.status)}
-                    color={p.status === "PENDING" ? "warning" : "default"}
-                    variant={p.status === "PENDING" ? "filled" : "outlined"}
-                  />
-                  <Typography variant="caption" color="text.secondary" noWrap>
-                    {formatDate(p.createdAt)}
-                  </Typography>
+                  <Avatar initial={p.proposerName.slice(0, 1).toUpperCase()} />
+                  <Box sx={{ minWidth: 0, flex: 1 }}>
+                    <Typography variant="body2" sx={{ fontWeight: 600 }} noWrap>
+                      {p.proposerName}
+                    </Typography>
+                    <Typography variant="caption" component="div" color="text.secondary" noWrap>
+                      {p.sundayName}
+                    </Typography>
+                  </Box>
+                  <Stack spacing={1} sx={{ flexShrink: 0, alignItems: "flex-end" }}>
+                    <Chip
+                      size="small"
+                      label={massPartLabel(p.status)}
+                      color={p.status === "PENDING" ? "warning" : "default"}
+                      variant={p.status === "PENDING" ? "filled" : "outlined"}
+                    />
+                    <Typography variant="caption" color="text.secondary" noWrap>
+                      {formatDate(p.createdAt)}
+                    </Typography>
+                  </Stack>
                 </Stack>
-              </Stack>
+              ))}
+            </Stack>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Latest applications */}
+      <Card sx={{ gridColumn: { lg: "span 6" } }}>
+        <CardContent>
+          <SectionHeader
+            icon={<UserPlus size={18} />}
+            title="Who wants to join"
+            subtitle="Applications from the website"
+            action={
+              <Button component={Link} href="/admin/applications" size="small">
+                View all
+              </Button>
+            }
+          />
+          {s.recentApplications.length === 0 ? (
+            <EmptyState
+              icon={<Users size={20} />}
+              title="No applications yet"
+              body="When someone applies through the join form, they land here."
+            />
+          ) : (
+            <Stack spacing={4} sx={{ mt: 5 }}>
+              {s.recentApplications.map((a) => (
+                <Stack
+                  key={a.id}
+                  component={Link}
+                  href="/admin/applications"
+                  direction="row"
+                  spacing={3}
+                  sx={{ alignItems: "center", textDecoration: "none", color: "inherit" }}
+                >
+                  <Avatar initial={a.firstName.slice(0, 1).toUpperCase()} />
+                  <Box sx={{ minWidth: 0, flex: 1 }}>
+                    <Typography variant="body2" sx={{ fontWeight: 600 }} noWrap>
+                      {a.firstName} {a.lastName}
+                    </Typography>
+                    <Typography variant="caption" component="div" color="text.secondary" noWrap>
+                      {a.voice ? massPartLabel(a.voice) : "Voice not stated"}
+                    </Typography>
+                  </Box>
+                  <Stack spacing={1} sx={{ flexShrink: 0, alignItems: "flex-end" }}>
+                    <Chip
+                      size="small"
+                      label={massPartLabel(a.status)}
+                      color={a.status === "NEW" ? "warning" : "default"}
+                      variant={a.status === "NEW" ? "filled" : "outlined"}
+                    />
+                    <Typography variant="caption" color="text.secondary" noWrap>
+                      {formatDate(a.createdAt)}
+                    </Typography>
+                  </Stack>
+                </Stack>
+              ))}
+            </Stack>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Quick links */}
+      <Card sx={{ gridColumn: { lg: "span 12" } }}>
+        <CardContent>
+          <SectionHeader
+            icon={<Ticket size={18} />}
+            title="Jump to"
+            subtitle="The rest of the choir's content"
+          />
+          <Stack direction="row" spacing={3} sx={{ mt: 4, flexWrap: "wrap", gap: 3 }}>
+            {[
+              { href: "/admin/concerts", label: `Concerts (${s.concerts} upcoming)`, icon: <Ticket size={15} /> },
+              { href: "/admin/gallery", label: `Gallery (${s.galleryPublished} live)`, icon: <Camera size={15} /> },
+              { href: "/admin/members", label: `Members (${s.members})`, icon: <Users size={15} /> },
+              { href: "/admin/blog", label: `Blog (${s.posts} published)`, icon: <NotebookPen size={15} /> },
+              { href: "/admin/settings", label: "Site settings", icon: <ShieldCheck size={15} /> },
+            ].map((l) => (
+              <Button
+                key={l.href}
+                component={Link}
+                href={l.href}
+                variant="outlined"
+                size="small"
+                startIcon={l.icon}
+                color="inherit"
+              >
+                {l.label}
+              </Button>
             ))}
           </Stack>
         </CardContent>
