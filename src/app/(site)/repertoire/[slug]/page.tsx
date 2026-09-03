@@ -125,6 +125,18 @@ export default async function SongPage({
 
       <section className="py-12 sm:py-16">
         <div className="container max-w-4xl">
+          {song.lyrics && (
+            <div className="mb-10 rounded-lg border bg-muted/20 p-6 sm:p-8">
+              <h2 className="font-serif text-2xl font-semibold text-primary">
+                Lyrics
+              </h2>
+              <div
+                className="choir-prose mt-4"
+                dangerouslySetInnerHTML={{ __html: song.lyrics }}
+              />
+            </div>
+          )}
+
           <div className="grid gap-8 md:grid-cols-2">
             <DetailBlock label="Liturgical seasons">
               {song.seasons.map((s) => (

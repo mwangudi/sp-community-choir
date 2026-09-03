@@ -118,6 +118,8 @@ model Song {
   /// string[] — scripture references
   scripture   Json?
   driveFolderId String?
+  /// Full text as sung, stored as HTML from the admin editor.
+  lyrics      String?       @db.LongText
   notes       String?       @db.Text
   isActive    Boolean       @default(true)
 

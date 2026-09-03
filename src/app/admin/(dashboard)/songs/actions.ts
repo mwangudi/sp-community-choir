@@ -10,9 +10,16 @@ import type {
 } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
+import { htmlToText, sanitizeLyricsHtml } from "@/lib/sanitize";
 import { slugify } from "@/lib/blog";
 
 export type SongFormState = { error?: string };
+
+/** The editor emits "<p></p>" for an empty document, so store nothing. */
+function richText(formData: FormData, key: string): string | null {
+  const html = sanitizeLyricsHtml(String(formData.get(key) ?? ""));
+  return htmlToText(html) ? html : null;
+}
 
 function list(value: FormDataEntryValue | null): string[] {
   return String(value ?? "")
@@ -63,6 +70,7 @@ export async function saveSong(
     themes: list(formData.get("themes")),
     scripture: list(formData.get("scripture")),
     driveFolderId: text(formData, "driveFolderId"),
+    lyrics: richText(formData, "lyrics"),
     notes: text(formData, "notes"),
     isActive: formData.get("isActive") === "on",
     copyrightStatus,

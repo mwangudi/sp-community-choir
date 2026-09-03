@@ -43,6 +43,7 @@ export default async function EditSongPage({
           themes: asList(song.themes).join(", "),
           scripture: asList(song.scripture).join(", "),
           driveFolderId: song.driveFolderId ?? "",
+          lyrics: song.lyrics ?? "",
           notes: song.notes ?? "",
           isActive: song.isActive,
           copyrightStatus: song.copyrightStatus,

@@ -114,6 +114,7 @@ export async function getSongs(): Promise<Song[]> {
       themes: strings(r.themes) as SongTheme[],
       scripture: strings(r.scripture),
       driveFolderId: r.driveFolderId ?? undefined,
+      lyrics: r.lyrics ?? undefined,
       copyright: COPYRIGHT[r.copyrightStatus] ?? "Unknown",
       rightsHolder: r.rightsHolder ?? undefined,
       licenceRef: r.licenceRef ?? undefined,

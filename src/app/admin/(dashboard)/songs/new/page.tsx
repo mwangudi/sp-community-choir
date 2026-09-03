@@ -34,6 +34,7 @@ export default async function NewSongPage() {
           themes: "",
           scripture: "",
           driveFolderId: "",
+          lyrics: "",
           notes: "",
           isActive: true,
           copyrightStatus: "UNKNOWN",

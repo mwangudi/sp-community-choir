@@ -15,6 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 import { FormActions } from "@/components/admin/form-actions";
+import { RichTextEditor } from "@/components/admin/rich-text-editor";
 import {
   isRequired,
   useFieldValidation,
@@ -43,6 +44,7 @@ export type SongDraft = {
   themes: string;
   scripture: string;
   driveFolderId: string;
+  lyrics: string;
   notes: string;
   isActive: boolean;
   copyrightStatus: string;
@@ -159,6 +161,22 @@ export function SongForm({ song, isNew }: { song: SongDraft; isNew: boolean }) {
                   fullWidth
                 />
               </Stack>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Lyrics</Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>
+                The full text as sung. Number each verse and keep the
+                leader/response markers — this is what the Sunday worship aid is
+                built from. Add any translation as the last line.
+              </Typography>
+              <RichTextEditor
+                name="lyrics"
+                defaultValue={song.lyrics}
+                placeholder={"1. First line of the verse…"}
+              />
             </CardContent>
           </Card>
 

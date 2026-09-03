@@ -90,6 +90,8 @@ export type Song = {
   scripture?: string[];
   /** Drive folder ID (the part after `/folders/` in the URL). */
   driveFolderId?: string;
+  /** Full sung text as HTML, entered in the admin editor. */
+  lyrics?: string;
   /** Rights status — defaults to Unknown until someone confirms it. */
   copyright?: SongCopyright;
   /** Composer, publisher or estate holding the rights. */

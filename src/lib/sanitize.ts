@@ -40,6 +40,9 @@ export function sanitizePostHtml(dirty: string): string {
   });
 }
 
+/** Song lyrics come from the same editor, so the same allow-list applies. */
+export const sanitizeLyricsHtml = sanitizePostHtml;
+
 /** Plain text for excerpts and reading time. */
 export function htmlToText(html: string): string {
   return sanitizeHtml(html, { allowedTags: [], allowedAttributes: {} })
