@@ -16,10 +16,14 @@ import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { massPartLabel, massPartOrder } from "@/lib/mass-parts";
 import { formatDate } from "@/lib/utils";
+import { PaginationBar } from "@/components/admin/pagination-bar";
 import { reviewProposal } from "./actions";
 
 export const metadata: Metadata = { title: "Song proposals" };
 export const dynamic = "force-dynamic";
+
+// Each card lists a full set of proposed songs, so keep the page short.
+const PER_PAGE = 15;
 
 const STATUSES: ProposalStatus[] = ["PENDING", "REVIEWED", "ACCEPTED", "DECLINED"];
 
@@ -36,20 +40,26 @@ const STATUS_COLOR: Record<
 export default async function ProposalsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ status?: string }>;
+  searchParams: Promise<{ status?: string; page?: string }>;
 }) {
   await requireSession("TECHNICAL");
-  const { status } = await searchParams;
+  const { status, page: rawPage } = await searchParams;
   const active = STATUSES.includes(status as ProposalStatus)
     ? (status as ProposalStatus)
     : undefined;
 
+  const where = active ? { status: active } : undefined;
+  const total = await prisma.songProposal.count({ where });
+  const pageCount = Math.max(1, Math.ceil(total / PER_PAGE));
+  const page = Math.min(Math.max(Number(rawPage) || 1, 1), pageCount);
+
   const [proposals, counts] = await Promise.all([
     prisma.songProposal.findMany({
-      where: active ? { status: active } : undefined,
+      where,
       orderBy: [{ sundayDate: "asc" }, { createdAt: "desc" }],
       include: { items: true },
-      take: 100,
+      skip: (page - 1) * PER_PAGE,
+      take: PER_PAGE,
     }),
     prisma.songProposal.groupBy({ by: ["status"], _count: true }),
   ]);
@@ -194,6 +204,18 @@ export default async function ProposalsPage({
             </Card>
           ))}
         </Stack>
+      )}
+
+      {proposals.length > 0 && (
+        <PaginationBar
+          page={page}
+          pageCount={pageCount}
+          total={total}
+          shown={proposals.length}
+          basePath="/admin/proposals"
+          params={{ status: active }}
+          label="proposals"
+        />
       )}
     </Stack>
   );
