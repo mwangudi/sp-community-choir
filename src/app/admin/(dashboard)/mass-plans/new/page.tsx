@@ -33,6 +33,7 @@ export default async function NewMassPlanPage() {
           season: "",
           setting: "",
           leader: "",
+          youtubeId: "",
           notes: "",
           status: "DRAFT",
           items: [],

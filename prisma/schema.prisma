@@ -156,6 +156,8 @@ model MassPlan {
   season    LiturgicalSeason?
   setting   String?
   leader    String?
+  /// 11-character YouTube id for the livestream of this Sunday's Mass.
+  youtubeId String?
   notes     String?    @db.Text
   status    PlanStatus @default(DRAFT)
   createdAt DateTime   @default(now())

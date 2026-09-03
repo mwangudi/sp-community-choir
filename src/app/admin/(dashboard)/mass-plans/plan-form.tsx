@@ -35,6 +35,7 @@ export type PlanDraft = {
   season: string;
   setting: string;
   leader: string;
+  youtubeId: string;
   notes: string;
   status: string;
   items: PlanItemDraft[];
@@ -289,6 +290,14 @@ export function PlanForm({
                   name="leader"
                   label="Leader"
                   defaultValue={plan.leader}
+                  fullWidth
+                />
+                <TextField
+                  name="youtubeId"
+                  label="Livestream (YouTube)"
+                  placeholder="https://www.youtube.com/watch?v=…"
+                  defaultValue={plan.youtubeId}
+                  helperText="Paste the link after Mass — visitors can then watch it on the website."
                   fullWidth
                 />
                 <TextField
