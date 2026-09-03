@@ -112,6 +112,19 @@ export const adminTheme = createTheme({
           fontWeight: 500,
         }),
         contained: { boxShadow: `0px 2px 4px ${SHADOW}` },
+        outlined: {
+          borderWidth: 1.5,
+          "&:hover": { borderWidth: 1.5 },
+          // Used for Cancel / secondary actions.
+          "&.MuiButton-outlinedInherit": {
+            borderColor: `rgb(${MAIN} / 0.24)`,
+            color: `rgb(${MAIN} / 0.75)`,
+            "&:hover": {
+              borderColor: `rgb(${MAIN} / 0.4)`,
+              backgroundColor: `rgb(${MAIN} / 0.04)`,
+            },
+          },
+        },
         sizeSmall: ({ theme }) => ({ padding: theme.spacing(1.5, 3.5) }),
       },
     },

@@ -33,7 +33,7 @@ export function FormActions({
         >
           {pending ? "Saving…" : label}
         </Button>
-        <Button component={Link} href={cancelHref} color="inherit" disabled={pending}>
+        <Button component={Link} href={cancelHref} variant="outlined" color="inherit" disabled={pending}>
           Cancel
         </Button>
       </Stack>

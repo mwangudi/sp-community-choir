@@ -26,6 +26,7 @@ import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { ConfirmDelete } from "@/components/admin/confirm-delete";
 import { PaginationBar } from "@/components/admin/pagination-bar";
+import { ADMIN_SURFACE } from "@/components/admin/surface";
 import { massPartLabel } from "@/lib/mass-parts";
 import { deleteSong } from "./actions";
 import { SongsToolbar } from "./songs-toolbar";
@@ -141,26 +142,12 @@ export default async function SongsPage({
 
   return (
     <Stack spacing={6}>
-      <Stack
-        direction={{ xs: "column", sm: "row" }}
-        spacing={4}
-        sx={{ justifyContent: "space-between", alignItems: { sm: "center" } }}
-      >
-        <Box>
-          <Typography variant="h4">Repertoire</Typography>
-          <Typography color="text.secondary">
-            {catalogue} songs in the catalogue.
-          </Typography>
-        </Box>
-        <Button
-          component={Link}
-          href="/admin/songs/new"
-          variant="contained"
-          startIcon={<Plus size={16} />}
-        >
-          Add a song
-        </Button>
-      </Stack>
+      <Box>
+        <Typography variant="h4">Repertoire</Typography>
+        <Typography color="text.secondary">
+          {catalogue} songs in the catalogue.
+        </Typography>
+      </Box>
 
       {unknown > 0 && (
         <Alert severity="warning" icon={<ShieldAlert size={22} />}>
@@ -220,7 +207,7 @@ export default async function SongsPage({
                 <TableRow
                   sx={{
                     "& th": {
-                      bgcolor: "#16324F",
+                      bgcolor: ADMIN_SURFACE.bg,
                       color: "#fff",
                       fontWeight: 600,
                       textTransform: "uppercase",
@@ -232,7 +219,9 @@ export default async function SongsPage({
                     // Sort labels carry their own colour, so force them light.
                     "& .MuiTableSortLabel-root, & .MuiTableSortLabel-root:hover, & .MuiTableSortLabel-root.Mui-active":
                       { color: "#fff" },
-                    "& .MuiTableSortLabel-icon": { color: "#FDB321 !important" },
+                    "& .MuiTableSortLabel-icon": {
+                      color: `${ADMIN_SURFACE.accent} !important`,
+                    },
                   }}
                 >
                   {COLUMNS.map((col) => (

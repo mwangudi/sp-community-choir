@@ -47,22 +47,13 @@ import {
   Users,
 } from "lucide-react";
 import type { Role } from "@prisma/client";
+import { ADMIN_SURFACE } from "@/components/admin/surface";
 
 const WIDTH = 260;
 const MINI_WIDTH = 76;
 const STORAGE_KEY = "choir-admin-sidebar";
 
-/** Dark navy rail with an amber marker on the current page. */
-const NAVY = {
-  bg: "#16324F",
-  headerBg: "#12293F",
-  text: "rgba(255,255,255,0.72)",
-  activeText: "#FFFFFF",
-  activeBg: "rgba(255,255,255,0.10)",
-  hoverBg: "rgba(255,255,255,0.06)",
-  accent: "#FDB321",
-  divider: "rgba(255,255,255,0.10)",
-} as const;
+const NAVY = ADMIN_SURFACE;
 
 // Materio's themeConfig: 24px layout padding, 1440px compact content width.
 const LAYOUT_PADDING = 24;
@@ -498,7 +489,7 @@ export function AdminShell({
                 py: 0.25,
                 borderRadius: 0.75,
                 bgcolor: NAVY.accent,
-                color: "#12293F",
+                color: NAVY.headerBg,
                 fontSize: 10,
                 fontWeight: 700,
                 letterSpacing: 0.5,

@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import {
   Alert,
+  Box,
   Card,
   CardContent,
   Stack,
@@ -45,7 +46,13 @@ export function SettingsForm({ values }: { values: Record<string, string> }) {
               <Typography variant="body2" color="text.secondary" sx={{ mb: 5 }}>
                 {group.description}
               </Typography>
-              <Stack spacing={5}>
+              <Box
+                sx={{
+                  display: "grid",
+                  gap: 5,
+                  gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
+                }}
+              >
                 {group.fields.map((f) => (
                   <TextField
                     key={f.key}
@@ -55,10 +62,12 @@ export function SettingsForm({ values }: { values: Record<string, string> }) {
                     multiline={f.multiline}
                     minRows={f.multiline ? 3 : undefined}
                     fullWidth
+                    // Long-form copy needs the full width to be readable.
+                    sx={f.multiline ? { gridColumn: { md: "1 / -1" } } : undefined}
                     {...field(f.key, f.help)}
                   />
                 ))}
-              </Stack>
+              </Box>
             </CardContent>
           </Card>
         ))}
