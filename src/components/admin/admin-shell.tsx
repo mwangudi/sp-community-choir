@@ -18,9 +18,9 @@ import {
   ListItemText,
   Menu,
   MenuItem,
+  Stack,
   Tooltip,
   Typography,
-  lighten,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -51,6 +51,18 @@ import type { Role } from "@prisma/client";
 const WIDTH = 260;
 const MINI_WIDTH = 76;
 const STORAGE_KEY = "choir-admin-sidebar";
+
+/** Dark navy rail with an amber marker on the current page. */
+const NAVY = {
+  bg: "#16324F",
+  headerBg: "#12293F",
+  text: "rgba(255,255,255,0.72)",
+  activeText: "#FFFFFF",
+  activeBg: "rgba(255,255,255,0.10)",
+  hoverBg: "rgba(255,255,255,0.06)",
+  accent: "#FDB321",
+  divider: "rgba(255,255,255,0.10)",
+} as const;
 
 // Materio's themeConfig: 24px layout padding, 1440px compact content width.
 const LAYOUT_PADDING = 24;
@@ -205,47 +217,50 @@ export function AdminShell({
   const mini = isDesktop && collapsed;
   const drawerWidth = mini ? MINI_WIDTH : WIDTH;
 
-  // Values below are Materio's menuItemStyles, in the choir's palette.
   const activeSx = {
-    color: "var(--mui-palette-primary-contrastText)",
-    background: `linear-gradient(270deg, ${theme.palette.primary.main}, ${lighten(
-      theme.palette.primary.main,
-      0.5,
-    )} 100%)`,
-    "&:hover": {
-      background: `linear-gradient(270deg, ${theme.palette.primary.main}, ${lighten(
-        theme.palette.primary.main,
-        0.5,
-      )} 100%)`,
-    },
-    "& .MuiListItemIcon-root": { color: "inherit" },
+    color: NAVY.activeText,
+    backgroundColor: NAVY.activeBg,
+    borderLeftColor: NAVY.accent,
+    "&:hover": { backgroundColor: NAVY.activeBg },
+    "& .MuiListItemIcon-root": { color: NAVY.accent },
   };
 
   const openGroupSx = {
-    backgroundColor: "var(--mui-palette-action-selected)",
+    backgroundColor: NAVY.hoverBg,
+    color: NAVY.activeText,
   };
 
   const itemSx = {
-    mt: 1.5,
+    mt: 0.5,
     py: 2,
-    pl: 5.5,
+    pl: 5,
     pr: 3.5,
-    borderStartEndRadius: 50,
-    borderEndEndRadius: 50,
-    "&:hover": { backgroundColor: "var(--mui-palette-action-hover)" },
+    color: NAVY.text,
+    borderLeft: "3px solid transparent",
+    "&:hover": { backgroundColor: NAVY.hoverBg, color: NAVY.activeText },
   };
 
   const miniItemSx = {
-    mt: 1.5,
-    mx: 3,
+    mt: 0.5,
+    mx: 2,
     py: 2,
     px: 3,
     borderRadius: 1,
     justifyContent: "center",
+    color: NAVY.text,
+    borderLeft: "3px solid transparent",
+    "&:hover": { backgroundColor: NAVY.hoverBg, color: NAVY.activeText },
   };
 
   const drawer = (
-    <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+    <Box
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        bgcolor: NAVY.bg,
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -254,6 +269,8 @@ export function AdminShell({
           p: "15px",
           pl: mini ? "15px" : "20px",
           justifyContent: mini ? "center" : "flex-start",
+          bgcolor: NAVY.headerBg,
+          borderBottom: `1px solid ${NAVY.divider}`,
         }}
       >
         <Box
@@ -277,7 +294,7 @@ export function AdminShell({
                 sx={{
                   fontWeight: 600,
                   fontSize: "1.375rem",
-                  color: "text.primary",
+                  color: NAVY.activeText,
                   letterSpacing: "0.15px",
                 }}
                 noWrap
@@ -287,7 +304,12 @@ export function AdminShell({
             </Box>
             {isDesktop && (
               <Tooltip title="Collapse menu">
-                <IconButton size="small" onClick={toggleCollapsed} aria-label="Toggle menu width">
+                <IconButton
+                  size="small"
+                  onClick={toggleCollapsed}
+                  aria-label="Toggle menu width"
+                  sx={{ color: NAVY.text }}
+                >
                   <CircleDot size={18} />
                 </IconButton>
               </Tooltip>
@@ -407,7 +429,8 @@ export function AdminShell({
                                 ml: 1.5,
                                 mr: 3.5,
                                 fontSize: "0.75rem",
-                                color: active ? "inherit" : "text.secondary",
+                                color: active ? NAVY.accent : "inherit",
+                                opacity: active ? 1 : 0.6,
                               }}
                             >
                               <Circle size={12} fill="currentColor" />
@@ -442,24 +465,48 @@ export function AdminShell({
         {mini ? (
           isDesktop && (
             <Tooltip title="Expand menu" placement="right">
-              <IconButton size="small" onClick={toggleCollapsed} aria-label="Toggle menu width">
+              <IconButton
+                size="small"
+                onClick={toggleCollapsed}
+                aria-label="Toggle menu width"
+                sx={{ color: NAVY.text }}
+              >
                 <ChevronRight size={18} />
               </IconButton>
             </Tooltip>
           )
         ) : (
-          <Typography
-            component={Link}
-            href="/"
-            variant="caption"
-            sx={{
-              color: "text.secondary",
-              textDecoration: "none",
-              "&:hover": { color: "primary.main" },
-            }}
+          <Stack
+            direction="row"
+            sx={{ width: "100%", alignItems: "center", justifyContent: "space-between" }}
           >
-            ← Back to the website
-          </Typography>
+            <Typography
+              component={Link}
+              href="/"
+              variant="caption"
+              sx={{
+                color: NAVY.text,
+                textDecoration: "none",
+                "&:hover": { color: NAVY.accent },
+              }}
+            >
+              ← Back to the website
+            </Typography>
+            <Box
+              sx={{
+                px: 1.5,
+                py: 0.25,
+                borderRadius: 0.75,
+                bgcolor: NAVY.accent,
+                color: "#12293F",
+                fontSize: 10,
+                fontWeight: 700,
+                letterSpacing: 0.5,
+              }}
+            >
+              CHOIR
+            </Box>
+          </Stack>
         )}
       </Box>
     </Box>
@@ -480,6 +527,8 @@ export function AdminShell({
             boxSizing: "border-box",
             overflowX: "hidden",
             borderRight: 0,
+            bgcolor: NAVY.bg,
+            color: NAVY.text,
             transition: theme.transitions.create("width", {
               easing: theme.transitions.easing.sharp,
               duration: theme.transitions.duration.shorter,

@@ -33,7 +33,7 @@ import { SongsToolbar } from "./songs-toolbar";
 export const metadata: Metadata = { title: "Repertoire" };
 export const dynamic = "force-dynamic";
 
-const PER_PAGE = 10;
+const PER_PAGE = 15;
 
 const RIGHTS_COLOR: Record<CopyrightStatus, "success" | "info" | "error" | "warning"> = {
   PUBLIC_DOMAIN: "success",
@@ -172,6 +172,29 @@ export default async function SongsPage({
       )}
 
       <Card>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={3}
+          sx={{
+            px: 4,
+            pt: 4,
+            alignItems: { md: "center" },
+            justifyContent: "space-between",
+          }}
+        >
+          <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
+            <Box
+              sx={{ width: 3, height: 20, borderRadius: 1, bgcolor: "secondary.main" }}
+            />
+            <Typography sx={{ fontWeight: 600 }}>All songs</Typography>
+          </Stack>
+          <Chip
+            size="small"
+            label={`${total} record${total === 1 ? "" : "s"}`}
+            variant="outlined"
+          />
+        </Stack>
+
         <SongsToolbar
           languages={LANGUAGES.map((v) => ({ value: v, label: massPartLabel(v) }))}
           rights={RIGHTS.map((v) => ({ value: v, label: massPartLabel(v) }))}
@@ -197,13 +220,19 @@ export default async function SongsPage({
                 <TableRow
                   sx={{
                     "& th": {
-                      bgcolor: "action.hover",
+                      bgcolor: "#16324F",
+                      color: "#fff",
                       fontWeight: 600,
                       textTransform: "uppercase",
                       letterSpacing: 0.4,
                       fontSize: 12,
                       whiteSpace: "nowrap",
+                      borderBottom: 0,
                     },
+                    // Sort labels carry their own colour, so force them light.
+                    "& .MuiTableSortLabel-root, & .MuiTableSortLabel-root:hover, & .MuiTableSortLabel-root.Mui-active":
+                      { color: "#fff" },
+                    "& .MuiTableSortLabel-icon": { color: "#FDB321 !important" },
                   }}
                 >
                   {COLUMNS.map((col) => (
