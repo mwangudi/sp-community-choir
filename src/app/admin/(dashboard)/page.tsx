@@ -29,6 +29,7 @@ import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { massPartLabel } from "@/lib/mass-parts";
 import { getChoir } from "@/lib/server/settings";
+import { ADMIN_SURFACE } from "@/components/admin/surface";
 import { formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -120,55 +121,79 @@ async function getStats() {
   };
 }
 
+/** The choir's cardinal and gold, deep enough to carry white text. */
 const TILE = {
-  dark: "#2E263D",
-  amber: "#DA8E00",
-  blue: "#1B84D8",
-  teal: "#0F766E",
+  cardinalDeep: ADMIN_SURFACE.bg,
+  cardinal: "#BC0424",
+  gold: "#B87809",
+  bronze: "#7C4A0B",
 } as const;
 
-/** Solid KPI tile: small label, big number, quiet descriptor. */
+/**
+ * KPI tile. One tile is filled to carry the call to action; the rest stay
+ * white so four brand colours don't fight each other.
+ */
 function Tile({
   label,
   value,
   caption,
   icon,
-  bg,
+  accent,
   href,
+  solid = false,
 }: {
   label: string;
   value: string | number;
   caption: string;
   icon: ReactNode;
-  bg: string;
+  accent: string;
   href: string;
+  solid?: boolean;
 }) {
+  const big = String(value).length > 12 ? 20 : 30;
+
   return (
     <Card
       component={Link}
       href={href}
       sx={{
         gridColumn: { lg: "span 3" },
-        bgcolor: bg,
-        color: "#fff",
         textDecoration: "none",
         display: "block",
-        // The admin theme colours Typography explicitly, so force it back.
-        "& .MuiTypography-root": { color: "#fff" },
         transition: "transform .15s ease, box-shadow .15s ease",
-        "&:hover": { transform: "translateY(-2px)", boxShadow: 6 },
+        "&:hover": { transform: "translateY(-2px)", boxShadow: 4 },
+        ...(solid
+          ? {
+              bgcolor: accent,
+              // The admin theme colours Typography explicitly, so force it back.
+              "& .MuiTypography-root": { color: "#fff" },
+            }
+          : { bgcolor: "background.paper", border: 1, borderColor: "divider" }),
       }}
     >
       <CardContent>
-        <Stack direction="row" spacing={1.5} sx={{ alignItems: "center", mb: 2 }}>
-          {icon}
+        <Stack direction="row" spacing={2} sx={{ alignItems: "center", mb: 3 }}>
+          <Box
+            sx={{
+              width: 30,
+              height: 30,
+              borderRadius: 1,
+              display: "grid",
+              placeItems: "center",
+              flexShrink: 0,
+              bgcolor: solid ? "rgba(255,255,255,0.18)" : `${accent}1F`,
+              color: solid ? "#fff" : accent,
+            }}
+          >
+            {icon}
+          </Box>
           <Typography
             sx={{
               fontSize: 11,
               fontWeight: 700,
               letterSpacing: 0.8,
               textTransform: "uppercase",
-              opacity: 0.9,
+              color: solid ? "inherit" : "text.secondary",
             }}
           >
             {label}
@@ -176,14 +201,23 @@ function Tile({
         </Stack>
         <Typography
           sx={{
-            fontSize: value === "Not planned" || String(value).length > 12 ? 20 : 30,
+            fontSize: big,
             fontWeight: 600,
             lineHeight: 1.15,
+            color: solid ? "inherit" : "text.primary",
           }}
         >
           {value}
         </Typography>
-        <Typography sx={{ fontSize: 13, opacity: 0.85 }}>{caption}</Typography>
+        <Typography
+          sx={{
+            fontSize: 13,
+            color: solid ? "inherit" : "text.secondary",
+            opacity: solid ? 0.85 : 1,
+          }}
+        >
+          {caption}
+        </Typography>
       </CardContent>
     </Card>
   );
@@ -309,7 +343,7 @@ function Avatar({ initial }: { initial: string }) {
         display: "grid",
         placeItems: "center",
         bgcolor: "rgba(188,4,36,0.12)",
-        color: "#BC0424",
+        color: TILE.cardinal,
         fontWeight: 600,
         fontSize: 13,
       }}
@@ -411,15 +445,16 @@ export default async function AdminDashboardPage() {
         value={s.pendingProposals}
         caption="awaiting review"
         icon={<Inbox size={16} />}
-        bg={TILE.dark}
+        accent={TILE.cardinalDeep}
         href="/admin/proposals"
+        solid
       />
       <Tile
         label="Next Sunday"
         value={s.nextPlan ? s.nextPlan.name : "Not planned"}
         caption={s.nextPlan ? formatDate(s.nextPlan.date) : "no upcoming plan"}
         icon={<CalendarDays size={16} />}
-        bg={TILE.amber}
+        accent={TILE.gold}
         href={s.nextPlan ? `/admin/mass-plans/${s.nextPlan.id}` : "/admin/mass-plans/new"}
       />
       <Tile
@@ -427,7 +462,7 @@ export default async function AdminDashboardPage() {
         value={s.songs}
         caption="songs in the catalogue"
         icon={<Music2 size={16} />}
-        bg={TILE.blue}
+        accent={TILE.cardinal}
         href="/admin/songs"
       />
       <Tile
@@ -435,7 +470,7 @@ export default async function AdminDashboardPage() {
         value={s.newApplications}
         caption="waiting for a reply"
         icon={<UserPlus size={16} />}
-        bg={TILE.teal}
+        accent={TILE.bronze}
         href="/admin/applications"
       />
 
