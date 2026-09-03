@@ -126,7 +126,7 @@ export default async function MassPlansPage() {
                 <Box
                   sx={{
                     display: "grid",
-                    gap: 1,
+                    columnGap: 10,
                     gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
                   }}
                 >
@@ -134,9 +134,25 @@ export default async function MassPlansPage() {
                     <Stack
                       key={item.id}
                       direction="row"
-                      sx={{ justifyContent: "space-between", gap: 4, py: 1.5 }}
+                      spacing={3}
+                      sx={{
+                        justifyContent: "space-between",
+                        alignItems: "baseline",
+                        py: 1,
+                        borderBottom: 1,
+                        borderColor: "divider",
+                      }}
                     >
-                      <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
+                      <Typography
+                        variant="caption"
+                        color="text.secondary"
+                        sx={{
+                          fontWeight: 600,
+                          textTransform: "uppercase",
+                          letterSpacing: 0.4,
+                          flexShrink: 0,
+                        }}
+                      >
                         {massPartLabel(item.part)}
                       </Typography>
                       <Typography variant="body2" sx={{ textAlign: "right" }}>
