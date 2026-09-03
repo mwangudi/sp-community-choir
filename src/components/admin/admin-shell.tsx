@@ -72,9 +72,9 @@ const NAV: Entry[] = [
     label: "Music",
     icon: Music2,
     items: [
+      { href: "/admin/songs", label: "Repertoire", icon: Music2 },
       { href: "/admin/proposals", label: "Song proposals", icon: Inbox },
       { href: "/admin/mass-plans", label: "Mass plans", icon: CalendarDays },
-      { href: "/admin/songs", label: "Repertoire", icon: Music2 },
     ],
   },
   {
