@@ -18,17 +18,32 @@ import { requireSession } from "@/lib/auth";
 import { massPartLabel } from "@/lib/mass-parts";
 import { formatDate } from "@/lib/utils";
 import { ConfirmDelete } from "@/components/admin/confirm-delete";
+import { PaginationBar } from "@/components/admin/pagination-bar";
 import { deleteMassPlan, togglePlanStatus } from "./actions";
 
 export const metadata: Metadata = { title: "Mass plans" };
 export const dynamic = "force-dynamic";
 
-export default async function MassPlansPage() {
+// Each card lists a full order of service, so keep the page short.
+const PER_PAGE = 10;
+
+export default async function MassPlansPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   await requireSession("TECHNICAL");
+
+  const { page: rawPage } = await searchParams;
+  const total = await prisma.massPlan.count();
+  const pageCount = Math.max(1, Math.ceil(total / PER_PAGE));
+  const page = Math.min(Math.max(Number(rawPage) || 1, 1), pageCount);
+
   const plans = await prisma.massPlan.findMany({
     orderBy: { date: "desc" },
     include: { items: { orderBy: { sortOrder: "asc" } } },
-    take: 60,
+    skip: (page - 1) * PER_PAGE,
+    take: PER_PAGE,
   });
 
   return (
@@ -43,8 +58,7 @@ export default async function MassPlansPage() {
           <Typography color="text.secondary">
             The order of service for each Sunday.
           </Typography>
-        </Box>
-        <Button
+        </Box>        <Button
           component={Link}
           href="/admin/mass-plans/new"
           variant="contained"
@@ -165,6 +179,17 @@ export default async function MassPlansPage() {
             </Card>
           ))}
         </Stack>
+      )}
+
+      {plans.length > 0 && (
+        <PaginationBar
+          page={page}
+          pageCount={pageCount}
+          total={total}
+          shown={plans.length}
+          basePath="/admin/mass-plans"
+          label="plans"
+        />
       )}
     </Stack>
   );
