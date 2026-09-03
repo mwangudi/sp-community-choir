@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
+import { massPartOrder } from "@/lib/mass-parts";
 import { proposalReviewSchema } from "@/lib/validation";
 
 export async function reviewProposal(formData: FormData) {
@@ -64,28 +65,37 @@ export async function reviewProposalItem(formData: FormData) {
 }
 
 /**
- * Copies the accepted songs into the Mass plan for that Sunday, creating the
- * plan if it does not exist yet. Songs already in the plan are left alone.
+ * Copies every accepted song for a Sunday — across all proposals for that
+ * date — into its Mass plan, creating the plan if it does not exist yet.
+ * Songs already on the plan are left alone.
  */
 export async function addAcceptedToPlan(formData: FormData) {
   const session = await requireSession("TECHNICAL");
-  const proposalId = String(formData.get("id"));
 
-  const proposal = await prisma.songProposal.findUnique({
-    where: { id: proposalId },
+  const raw = String(formData.get("date") ?? "").trim();
+  if (!raw) return;
+  const sundayDate = new Date(`${raw}T00:00:00.000Z`);
+  if (Number.isNaN(sundayDate.getTime())) return;
+
+  const proposals = await prisma.songProposal.findMany({
+    where: { sundayDate },
+    orderBy: { createdAt: "asc" },
     include: {
       items: { where: { status: "ACCEPTED" }, orderBy: { sortOrder: "asc" } },
     },
   });
-  if (!proposal || proposal.items.length === 0) return;
 
+  const accepted = proposals.flatMap((p) => p.items);
+  if (accepted.length === 0) return;
+
+  const first = proposals[0];
   const plan = await prisma.massPlan.upsert({
-    where: { date: proposal.sundayDate },
+    where: { date: sundayDate },
     update: {},
     create: {
-      date: proposal.sundayDate,
-      name: proposal.sundayName,
-      year: proposal.lectionaryYear ?? "A",
+      date: sundayDate,
+      name: first.sundayName,
+      year: first.lectionaryYear ?? "A",
       status: "DRAFT",
       createdById: session.sub,
     },
@@ -94,7 +104,11 @@ export async function addAcceptedToPlan(formData: FormData) {
 
   const key = (part: string, song: string) => `${part}|${song.trim().toLowerCase()}`;
   const already = new Set(plan.items.map((i) => key(i.part, i.song)));
-  const missing = proposal.items.filter((i) => !already.has(key(i.part, i.song)));
+
+  const missing = accepted
+    .filter((i) => !already.has(key(i.part, i.song)))
+    // The plan is read top to bottom, so file each song at its place in the Mass.
+    .sort((a, b) => massPartOrder(a.part) - massPartOrder(b.part));
   if (missing.length === 0) return;
 
   const nextOrder = plan.items.reduce((n, i) => Math.max(n, i.sortOrder + 1), 0);
