@@ -110,3 +110,60 @@
     content: attr(data-placeholder);
   }
 }
+
+/* ─── Sunday worship aid ───────────────────────────────────
+   Screen preview mirrors the printed sheet, so what the choir
+   sees is what "Save as PDF" produces. */
+.worship-aid {
+  max-width: 48rem;
+  margin: 0 auto;
+  color: #111;
+  font-size: 11pt;
+  line-height: 1.35;
+}
+.worship-aid .aid-dedication {
+  font-size: 9pt;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.worship-aid .aid-title {
+  font-size: 12pt;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 2px solid #111;
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.9rem;
+}
+.worship-aid .aid-item {
+  margin-bottom: 0.8rem;
+  /* Never split a song's heading from its first lines. */
+  break-inside: avoid;
+}
+.worship-aid .aid-part {
+  font-size: 11pt;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+.worship-aid .aid-lyrics p {
+  margin: 0 0 0.45rem;
+}
+
+@media print {
+  .no-print,
+  header[class*="MuiAppBar"],
+  .MuiDrawer-root {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .worship-aid {
+    max-width: none;
+    margin: 0;
+  }
+  @page {
+    size: A4;
+    margin: 14mm 15mm;
+  }
+}

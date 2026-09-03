@@ -12,7 +12,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { CalendarDays, Pencil, Plus } from "lucide-react";
+import { CalendarDays, Pencil, Plus, Printer } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { massPartLabel } from "@/lib/mass-parts";
@@ -110,6 +110,16 @@ export default async function MassPlansPage({
                     </Typography>
                   </Box>
                   <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
+                    <Button
+                      component={Link}
+                      href={`/admin/mass-plans/${plan.id}/worship-aid`}
+                      size="small"
+                      variant="outlined"
+                      color="inherit"
+                      startIcon={<Printer size={15} />}
+                    >
+                      Worship aid
+                    </Button>
                     <form action={togglePlanStatus}>
                       <input type="hidden" name="id" value={plan.id} />
                       <Button type="submit" size="small" variant="outlined">
