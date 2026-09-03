@@ -24,6 +24,14 @@ export const MASS_PARTS = [
   "MARIAN_HYMN",
 ] as const;
 
+/**
+ * Parts the lectionary already fixes for a given Sunday, so members do not
+ * propose them.
+ */
+export const FIXED_PARTS: readonly (typeof MASS_PARTS)[number][] = [
+  "RESPONSORIAL_PSALM",
+];
+
 export const VOICES = [
   "SOPRANO",
   "ALTO",
@@ -139,7 +147,9 @@ export const proposalSchema = z.object({
   items: z
     .array(
       z.object({
-        part: massPartEnum,
+        part: massPartEnum.refine((p) => !FIXED_PARTS.includes(p), {
+          message: "That part of the Mass is set by the lectionary",
+        }),
         song: z.string().min(1),
         sortOrder: z.number().int().default(0),
       }),
