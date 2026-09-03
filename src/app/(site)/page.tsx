@@ -52,11 +52,33 @@ async function getHeroSlides() {
   return HERO_CAROUSEL;
 }
 
+/** Admin-managed gallery photos, or the bundled ones when none are published. */
+async function getGalleryPreview() {
+  try {
+    const rows = await prisma.galleryItem.findMany({
+      where: { kind: "PHOTO", isPublished: true, src: { not: null } },
+      orderBy: { sortOrder: "asc" },
+      take: 8,
+      select: { src: true, alt: true, title: true },
+    });
+    if (rows.length > 0) {
+      return rows.map((r) => ({
+        src: r.src as string,
+        alt: r.alt ?? r.title ?? "St. Paul's Chapel Community Choir",
+      }));
+    }
+  } catch {
+    // Fall back to bundled photos when the database is unreachable.
+  }
+  return GALLERY_PREVIEW;
+}
+
 export default async function HomePage() {
-  const [choir, concerts, heroSlides] = await Promise.all([
+  const [choir, concerts, heroSlides, gallery] = await Promise.all([
     getChoir(),
     getConcerts(),
     getHeroSlides(),
+    getGalleryPreview(),
   ]);
   const upcoming = getUpcomingConcerts(concerts).slice(0, 3);
 
@@ -344,15 +366,12 @@ export default async function HomePage() {
             </Button>
           </div>
 
-          {/* CSS-columns masonry — no extra deps */}
-          <div className="columns-2 gap-4 sm:columns-3 lg:columns-4 [&>*]:mb-4 [&>*]:break-inside-avoid">
-            {GALLERY_PREVIEW.map((p, i) => (
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {gallery.map((p) => (
               <Link
                 key={p.src}
                 href="/gallery"
-                className={`group relative block w-full overflow-hidden rounded-2xl bg-muted shadow-sm ${
-                  i % 3 === 0 ? "aspect-[3/4]" : "aspect-square"
-                }`}
+                className="group relative block aspect-square overflow-hidden rounded-2xl bg-muted shadow-sm"
               >
                 <Image
                   src={p.src}
