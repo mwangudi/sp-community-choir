@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T17:43:14.650Z",
+  "generatedAt": "2026-09-06T17:50:03.117Z",
   "songs": [
     {
       "slug": "3-fold",
@@ -42,25 +42,6 @@
       "uses": 2
     },
     {
-      "slug": "a-m-e-c-e-a",
-      "title": "A.M.E.C.E.A.",
-      "language": "SWAHILI",
-      "massParts": [
-        "KYRIE",
-        "GLORIA",
-        "SANCTUS",
-        "MYSTERY_OF_FAITH",
-        "GREAT_AMEN",
-        "AGNUS_DEI",
-        "GOSPEL_ACCLAMATION"
-      ],
-      "aliases": [
-        "Amecea"
-      ],
-      "lyrics": "<p>1. Utukufu kwa Mungu juu mbinguni, na Amani kote duniani<br />(Kwa watu) wenye mapenzi mema</p><p>Tunakusifu Baba tunakuheshimu, twakuabudu sisi tunakutukuza *2</p><p>2. Twakushukuru Mungu kwa ‘tukufu - wako mkuu ewe Mungu Mfalme<br />(Ee Baba) wa mbingu Baba yetu.<br />3. Bwana wetu mwokozi Yesu Kristu - Mwana wa pekee wake Mungu<br />(Uliye) - Mwanakondoo wa Mungu.<br />4. Unayeziondoa dhambi zote - za dunia utuhurumie<br />(pokea) pokea ombi letu.<br />5. Wewe unayeketi kuume - kwake Baba utuhurumie<br />(sikia) - sikia ombi letu.<br />6. Kwani pekee yako ndiwe Bwana - Pekee yako mkuu na Mkombozi<br />(Pekee) - pekee Yesu Kristu.<br />7. Kwa umoja wa Roho Mtakatifu - ndani yake Baba watukuzwa<br />(Ee Yesu) - milele na milele.</p>",
-      "uses": 13
-    },
-    {
       "slug": "a-m-e-c-e-a-mass",
       "title": "A.M.E.C.E.A. Mass",
       "language": "SWAHILI",
@@ -71,13 +52,18 @@
         "SANCTUS",
         "MYSTERY_OF_FAITH",
         "AGNUS_DEI",
-        "GOSPEL_ACCLAMATION"
+        "GOSPEL_ACCLAMATION",
+        "OFFERTORY"
       ],
       "aliases": [
-        "Amecea Mass"
+        "Amecea Mass",
+        "Misa Amecea",
+        "Amecea",
+        "A.M.E.C.E.A.",
+        "Sanctus – Amecea Mass"
       ],
-      "lyrics": "<p>1. Utukufu kwa Mungu juu mbinguni, na Amani kote duniani<br />(Kwa watu) wenye mapenzi mema</p><p>Tunakusifu Baba tunakuheshimu, twakuabudu sisi tunakutukuza *2</p><p>2. Twakushukuru Mungu kwa ‘tukufu - wako mkuu ewe Mungu Mfalme<br />(Ee Baba) wa mbingu Baba yetu.<br />3. Bwana wetu mwokozi Yesu Kristu - Mwana wa pekee wake Mungu<br />(Uliye) - Mwanakondoo wa Mungu.<br />4. Unayeziondoa dhambi zote - za dunia utuhurumie<br />(pokea) pokea ombi letu.<br />5. Wewe unayeketi kuume - kwake Baba utuhurumie<br />(sikia) - sikia ombi letu.<br />6. Kwani pekee yako ndiwe Bwana - Pekee yako mkuu na Mkombozi<br />(Pekee) - pekee Yesu Kristu.<br />7. Kwa umoja wa Roho Mtakatifu - ndani yake Baba watukuzwa<br />(Ee Yesu) - milele na milele.</p>",
-      "uses": 23
+      "lyrics": "<p>1. Utukufu kwa Mungu juu mbinguni, na Amani kote duniani<br />(Kwa watu) wenye mapenzi mema</p><p>Tunakusifu Baba tunakuheshimu, twakuabudu sisi tunakutukuza *2</p><p>2. Twakushukuru Mungu kwa ‘tukufu - wako mkuu ewe Mungu Mfalme<br />(Ee Baba) wa mbingu Baba yetu.<br />3. Bwana wetu mwokozi Yesu Kristu - Mwana wa pekee wake Mungu<br />(Uliye) - Mwanakondoo wa Mungu.<br />4. Unayeziondoa dhambi zote - za dunia utuhurumie<br />(pokea) pokea ombi letu.<br />5. Wewe unayeketi kuume - kwake Baba utuhurumie<br />(sikia) - sikia ombi letu.<br />6. Kwani pekee yako ndiwe Bwana - Pekee yako mkuu na Mkombozi<br />(Pekee) - pekee Yesu Kristu.<br />7. Kwa umoja wa Roho Mtakatifu - ndani yake Baba watukuzwa<br />(Ee Yesu) - milele na milele.</p>\n<p><strong>Sanctus</strong></p>\n<p>Mtakatifu Mtakatifu Bwana, Mungu wa majeshi *2<br />Mbingu na dunia zimejaa zimejaa<br />Mbingu na dunia zimejaa utukufu wako x2<br />Hosana juu x 4 Mbinguni<br />Mbarikiwa ‘nayekuja *2 Mbarikiwa<br />Mbarikiwa ‘nayekuja kwa jina jina lake Bwana<br />Hosana juu x 4 Mbinguni</p>\n<p>Aleluiyah *6</p>",
+      "uses": 39
     },
     {
       "slug": "abide-with-me",
@@ -119,24 +105,6 @@
       ],
       "lyrics": "<p>Asante Bwana Yesu, kwa mema yako (yote)<br />Kwa mema yako, uliyotujalia<br />Asante, kwa mema yako (yote)<br />kwa mema yako, uliyotujalia<br />1. Umetulisha umetunywesha, twashukuru<br />2. Mema ya mbingu tumeyapata, twashukuru<br />3. Mwana wa Mungu u kati yetu, twashukuru<br />4. Kwa vitu vyote ulivyotupa, twashukuru<br />5. Msamaha wako umetujalia, twashukuru<br />6. Asante sana kwa mema yako, twashukuru</p>",
       "uses": 2
-    },
-    {
-      "slug": "akamba-mass",
-      "title": "Akamba Mass",
-      "language": "SWAHILI",
-      "massParts": [
-        "KYRIE",
-        "GLORIA",
-        "SANCTUS",
-        "MYSTERY_OF_FAITH",
-        "GREAT_AMEN",
-        "AGNUS_DEI"
-      ],
-      "aliases": [
-        "Kamba Mass"
-      ],
-      "lyrics": "<p>Utukufu kwa Mungu juu mbinguni, na amani duniani kwao watu wa mapenzi,<br />wenye mapenzi mema.</p><p>Tunakusifu (Baba) tunakuheshimu, tunakuabudu (Baba) tunakutukuza</p><p>2. Baba tunakushukuru kwa ajili ya utukufu, utukufu wako mkuu.<br />3. Ewe Mungu ni Mfalme wa mbinguni Mungu Baba, Baba ndiwe Mwenyezi.<br />4. Ewe Bwana Yesu Kristu ndiwe Mwana wake Mungu ndiwe Mwana wa pekee.<br />5. Ewe Bwana Mungu Mwana koondoo wake Mungu, Mwana wake Baba.<br />6. Ewe mwenye kuondoa zetu dhambi za dunia Bwana utuhurumie.<br />7. Ewe mwenye kuondoa zetu dhambi za dunia, ombi letu pokea.<br />8. Ewe mwenye kuketi kuume kwake Baba, ewe utuhurumie.<br />9. Ni kwa kuwa ndiwe uliye peke yako mtakatifu, Bwana Yesu Kristu.<br />10. Na pamoja naye Roho mtakatifu katika utukufu wa Mungu Baba.</p>",
-      "uses": 13
     },
     {
       "slug": "alelluia-chigambo",
@@ -970,33 +938,28 @@
       "uses": 4
     },
     {
-      "slug": "centenary",
-      "title": "Centenary",
-      "language": "ENGLISH",
-      "massParts": [
-        "GOSPEL_ACCLAMATION",
-        "GREAT_AMEN",
-        "MYSTERY_OF_FAITH"
-      ],
-      "lyrics": "<p>Yesu Kristu alikufa *2, Yesu Kristu alifufuka<br />Yesu Kristu atakuja tena.</p>",
-      "uses": 6
-    },
-    {
       "slug": "centenary-mass",
       "title": "Centenary Mass",
       "language": "SWAHILI",
       "massParts": [
+        "GOSPEL_ACCLAMATION",
         "KYRIE",
         "GLORIA",
-        "GOSPEL_ACCLAMATION",
         "SANCTUS",
         "MYSTERY_OF_FAITH",
         "GREAT_AMEN",
+        "AGNUS_DEI",
         "OUR_FATHER",
-        "AGNUS_DEI"
+        "OFFERTORY"
       ],
-      "lyrics": "<p>1. Utukufu kwa Mungu juu Mbinguni, Na amani iwe<br />kwa watu wenye mapenzi mema duniani kote.<br />(Tunakusifu) tunakusifu, tunakeheshimu, tunakuabudu, tunakutukuza *2<br />2. Tunakushukuru Mungu kwa ajili, Ya utukufu wako mkuu ee Bwana,<br />ni Mungu ndiwe mfalme wa mbinguni<br />3. Ee Baba Mwenyezi Bwana Yesu Kristu, Ee Mwana wa pekee<br />ee Mungu Mwanakondoo wa Mungu Mwana wake Baba.<br />4. Mwenye kuondoa dhambi za dunia, Utuhurumie,<br />tuhurumie maombi yetu Bwana uyapokee.<br />5. Mwenye kuketi kuume kwa Baba, Utuhurumie kwa kuwa ndiwe<br />pekee yako ni mtakatifu.<br />6. Pekee yako Bwana pekee yako mkuu, Ewe Yesu Kristu pamoja naye<br />Roho Mtakatifu milele yote<br />This Sunday the Choir Family prays with Charlene Wamuyu for her intentions and Choir intentions; thank you, Charl, for the songs selections!</p>",
-      "uses": 31
+      "aliases": [
+        "Misa Centenary",
+        "Centenary",
+        "Sanctus – Centenary Mass",
+        "Misa Centinary"
+      ],
+      "lyrics": "<p>1. Utukufu kwa Mungu juu Mbinguni, Na amani iwe<br />kwa watu wenye mapenzi mema duniani kote.<br />(Tunakusifu) tunakusifu, tunakeheshimu, tunakuabudu, tunakutukuza *2<br />2. Tunakushukuru Mungu kwa ajili, Ya utukufu wako mkuu ee Bwana,<br />ni Mungu ndiwe mfalme wa mbinguni<br />3. Ee Baba Mwenyezi Bwana Yesu Kristu, Ee Mwana wa pekee<br />ee Mungu Mwanakondoo wa Mungu Mwana wake Baba.<br />4. Mwenye kuondoa dhambi za dunia, Utuhurumie,<br />tuhurumie maombi yetu Bwana uyapokee.<br />5. Mwenye kuketi kuume kwa Baba, Utuhurumie kwa kuwa ndiwe<br />pekee yako ni mtakatifu.<br />6. Pekee yako Bwana pekee yako mkuu, Ewe Yesu Kristu pamoja naye<br />Roho Mtakatifu milele yote<br />This Sunday the Choir Family prays with Charlene Wamuyu for her intentions and Choir intentions; thank you, Charl, for the songs selections!</p>\n<p><strong>Sanctus</strong></p>\n<p>V: Mtakatifu, mtakatifu, W: Mtakatifu, Bwana Mungu.<br />V: Mtakatifu, mtakatifu, W: Mtakatifu Bwana Mungu, wa majeshi, x2<br />Mbingu na dunia zimejaa utukufu<br />Mbingu na dunia, Mbingu na dunia,<br />Mbingu na dunia zimejaa utukufu wako,<br />Zimejaa utukufu wako.<br />Hosana juu, hosanna juu,<br />Hosana juu, hosanna juu mbinguni x2<br />Mbarikiwa yeye ajaye kwa jina.<br />Mbarikiwa yeye, mbarikiwa yeye,<br />Mbarikiwa yeye ajaye kwa jina la Bwana.<br />Ajaye kwa jina la Bwana.<br />Hosana juu, hosanna juu,<br />Hosana juu, hosanna juu mbinguni x2</p>\n<p>Yesu Kristu alikufa *2, Yesu Kristu alifufuka<br />Yesu Kristu atakuja tena.</p>\n<p>Alleluia</p>",
+      "uses": 47
     },
     {
       "slug": "chigambo",
@@ -1400,10 +1363,14 @@
         "KYRIE",
         "AGNUS_DEI",
         "GLORIA",
-        "SANCTUS"
+        "SANCTUS",
+        "OFFERTORY"
       ],
-      "lyrics": "<p>Glory to God in the highest, Glory! *2</p><p>1. And on earth, peace to men<br />Peace to men who are Gods friends<br />2. God Almighty Father Heavenly King<br />We praise you and we bless you<br />3. We adore you, we glorify you<br />We give you thanks for your great glory<br />4. Lord Jesus Christ only Son of the Father<br />Lord, Lamb of God, Jesus Christ<br />5. You take away the sins of the world,<br />Have mercy, receive our prayers<br />6. You are seated at the right hand of the Father<br />Have mercy, Lord Jesus Christ<br />7. You alone are holy, you alone are Lord<br />You alone are the Most High<br />8. Glory to the Father, glory to the Son,<br />Glory to the Spirit, Holy One,</p>",
-      "uses": 6
+      "aliases": [
+        "Sanctus – Ggaba Mass"
+      ],
+      "lyrics": "<p>Glory to God in the highest, Glory! *2</p><p>1. And on earth, peace to men<br />Peace to men who are Gods friends<br />2. God Almighty Father Heavenly King<br />We praise you and we bless you<br />3. We adore you, we glorify you<br />We give you thanks for your great glory<br />4. Lord Jesus Christ only Son of the Father<br />Lord, Lamb of God, Jesus Christ<br />5. You take away the sins of the world,<br />Have mercy, receive our prayers<br />6. You are seated at the right hand of the Father<br />Have mercy, Lord Jesus Christ<br />7. You alone are holy, you alone are Lord<br />You alone are the Most High<br />8. Glory to the Father, glory to the Son,<br />Glory to the Spirit, Holy One,</p>\n<p><strong>Sanctus</strong></p>\n<p>Holy Holy Holy Lord God of Hosts!<br />Heaven and earth, Heaven and earth are filled with your Glory<br />{Hosanna! Hosanna Hosanna in the Highest! *2}<br />Blessed is He, blessed is He who comes in the Lord’s name.<br />{Hosanna! Hosanna Hosanna in the Highest! *2}</p>",
+      "uses": 7
     },
     {
       "slug": "give-thanks",
@@ -1703,13 +1670,15 @@
         "MYSTERY_OF_FAITH",
         "GREAT_AMEN",
         "AGNUS_DEI",
-        "SANCTUS"
+        "SANCTUS",
+        "OFFERTORY"
       ],
       "aliases": [
-        "Holy Spirit"
+        "Holy Spirit",
+        "Sanctus – Holy Spirit Mass"
       ],
-      "lyrics": "<p>Glory be to God *3 Glory to God in the highest</p><p>1. Heavenly King, Lord our God, praise praise praise to You Lord.<br />Father of all, we give you thanks, praise...<br />2. Lord Jesus Christ, you take away, praise...<br />All our sin, have mercy Lord, praise...<br />3. Glory is Your’s, at God’s right Hand, praise...<br />Graciously hear, your people’s prayer, praise...<br />4. For you alone, are Holy Christ, praise...<br />You are the Lord, you the most High, praise...<br />5. Spirit of God, may you be praised, praise...<br />You have been sent, to unite all, praise...</p>",
-      "uses": 38
+      "lyrics": "<p>Glory be to God *3 Glory to God in the highest</p><p>1. Heavenly King, Lord our God, praise praise praise to You Lord.<br />Father of all, we give you thanks, praise...<br />2. Lord Jesus Christ, you take away, praise...<br />All our sin, have mercy Lord, praise...<br />3. Glory is Your’s, at God’s right Hand, praise...<br />Graciously hear, your people’s prayer, praise...<br />4. For you alone, are Holy Christ, praise...<br />You are the Lord, you the most High, praise...<br />5. Spirit of God, may you be praised, praise...<br />You have been sent, to unite all, praise...</p>\n<p><strong>Sanctus</strong></p>\n<p>Holy, Holy, Holy is the Lord, Holy is the Lord, Almighty God. *2<br />Heaven and earth are full of your glory *2<br />Hosanna, Hosanna, Hosanna in the highest *2<br />Blessed is He who comes now to us,<br />Blessed is He who comes in the Lord’s name.<br />Hosanna, Hosanna, Hosanna in the highest *2</p>",
+      "uses": 40
     },
     {
       "slug": "holy-holy-holy",
@@ -2444,17 +2413,6 @@
       "uses": 1
     },
     {
-      "slug": "luo-mass",
-      "title": "Luo Mass",
-      "language": "ENGLISH",
-      "massParts": [
-        "KYRIE",
-        "GLORIA"
-      ],
-      "lyrics": "<p>Utukufu kwa Mungu juu!<br />Na amani kwa watu wenye mapenzi mema</p><p>1. Tunakusifu, tunakuheshimu tunakuabudu<br />2. Tunakusifu, tunakuheshimu, Mfalme wa Mbingu<br />3. Ee Bwana Mungu mfalme wa Mbinguni, Mungu Baba Mwenyezi<br />4. Ewe Yesu Kristu Mwana wa pekee, Mwana wake Baba<br />5. Mwenye kuondoa, dhambi za dunia, utuhurumie<br />6. Mwenye kuketi, kuume kwa Baba, pokea ombi letu<br />7. Peke yako Bwana peke yako mkuu peke yako mkombozi<br />8. Pamoja na Roho, Roho Mtakatifu, milele amina</p>",
-      "uses": 2
-    },
-    {
       "slug": "mabonza",
       "title": "Mabonza",
       "language": "ENGLISH",
@@ -2521,53 +2479,38 @@
       "uses": 1
     },
     {
-      "slug": "mass-of-christ-the-savior",
-      "title": "Mass of Christ the Savior",
-      "language": "ENGLISH",
-      "massParts": [
-        "MYSTERY_OF_FAITH",
-        "GREAT_AMEN",
-        "GOSPEL_ACCLAMATION"
-      ],
-      "lyrics": "<p>Save us, save us, Saviour of the world,<br />For by your cross and resurrection,<br />You have set us free.</p>",
-      "uses": 5
-    },
-    {
       "slug": "mass-of-christ-the-saviour",
       "title": "Mass of Christ the Saviour",
       "language": "ENGLISH",
       "massParts": [
-        "GREAT_AMEN",
         "MYSTERY_OF_FAITH",
+        "GREAT_AMEN",
+        "GOSPEL_ACCLAMATION",
         "AGNUS_DEI",
         "KYRIE",
-        "GOSPEL_ACCLAMATION",
         "SANCTUS",
         "GLORIA"
       ],
-      "lyrics": "<p>Glory to God, Glory to God<br />Glory to God in the highest<br />And on earth, Peace on earth<br />Peace to people of good will</p><p>1. We praise You, We bless You<br />We adore You, We glorify You<br />We give You thanks for Your great glory<br />Lord God, Heavenly King O God, Almighty Father<br />2. Lord Jesus Christ Only Begotten Son<br />Lord God, Lamb of God, Son of the Father<br />You take away the sins of the world<br />Have mercy on us<br />You take away the sins of the world<br />Receive our pray’r<br />You are seated at the right hand<br />The right hand of the Father<br />Have mercy on us<br />3. For You alone are the Holy One<br />You alone are the Lord<br />You alone are the Most High Jesus Christ<br />With the Holy Spirit<br />In the glory of God, the Father<br />Glory to God, Glory to God<br />Glory to God in the highest<br />And on earth, Peace on earth<br />Peace to people of good will<br />Amen, amen!</p>",
-      "uses": 30
-    },
-    {
-      "slug": "mass-of-reverence",
-      "title": "Mass of Reverence",
-      "language": "LATIN",
-      "massParts": [
-        "KYRIE",
-        "GLORIA"
+      "aliases": [
+        "Mass of Christ the Savior"
       ],
-      "lyrics": "<p>Glory to God in the highest,<br />And on earth peace to people of good will.<br />We praise you, we bless you, we adore you, we glorify you.<br />We give you thanks for your great glory,<br />Lord God, heavenly King, O God, almighty Father.</p><p>Lord Jesus Christ, only Begotten Son,<br />Lord God, Lamb of God, Son of the Father,<br />You take away the sins of the world have mercy on us;<br />You take away the sins of the world, receive our prayer;</p><p>You are seated at the right hand of the Father:<br />Have mercy on us *4</p><p>For you alone are the Holy One,<br />You alone are the Lord,<br />You alone are the Most High, Jesus Christ,<br />With the Holy Spirit, in the glory of God the Father<br />Amen, amen.</p>",
-      "uses": 2
+      "lyrics": "<p>Glory to God, Glory to God<br />Glory to God in the highest<br />And on earth, Peace on earth<br />Peace to people of good will</p><p>1. We praise You, We bless You<br />We adore You, We glorify You<br />We give You thanks for Your great glory<br />Lord God, Heavenly King O God, Almighty Father<br />2. Lord Jesus Christ Only Begotten Son<br />Lord God, Lamb of God, Son of the Father<br />You take away the sins of the world<br />Have mercy on us<br />You take away the sins of the world<br />Receive our pray’r<br />You are seated at the right hand<br />The right hand of the Father<br />Have mercy on us<br />3. For You alone are the Holy One<br />You alone are the Lord<br />You alone are the Most High Jesus Christ<br />With the Holy Spirit<br />In the glory of God, the Father<br />Glory to God, Glory to God<br />Glory to God in the highest<br />And on earth, Peace on earth<br />Peace to people of good will<br />Amen, amen!</p>\n<p>Save us, save us, Saviour of the world,<br />For by your cross and resurrection,<br />You have set us free.</p>",
+      "uses": 35
     },
     {
       "slug": "mass-of-reverence-hail-mary",
       "title": "Mass of Reverence Hail Mary",
       "language": "LATIN",
       "massParts": [
+        "KYRIE",
+        "GLORIA",
         "MARIAN_HYMN"
       ],
-      "lyrics": "<p>Hail Mary full of grace the Lord is with thee<br />Blessed are thou amongst women the Lord is with thee<br />And blessed is the fruit of they womb (the Lord is with thee)<br />and blessed is the fruit of thy womb JESUS<br />Hail Mary Mother of God Pray for us sinners  now,<br />And at the hour of our death</p><p>Ave Maria gratia plena Dominus tecum<br />Benedicta tu in mulieribus Dominus tecum<br />Et Benedictus fructus ventris tui (Dominus tecum)<br />et Benedictus fructus ventris tui  JESUS<br />Sancta Maria Mater Dei Pro nobis pecatoribus nunc,<br />et in hora mortis nostrae</p><p>Amen.</p>",
-      "uses": 1
+      "aliases": [
+        "Mass of Reverence"
+      ],
+      "lyrics": "<p>Glory to God in the highest,<br />And on earth peace to people of good will.<br />We praise you, we bless you, we adore you, we glorify you.<br />We give you thanks for your great glory,<br />Lord God, heavenly King, O God, almighty Father.</p><p>Lord Jesus Christ, only Begotten Son,<br />Lord God, Lamb of God, Son of the Father,<br />You take away the sins of the world have mercy on us;<br />You take away the sins of the world, receive our prayer;</p><p>You are seated at the right hand of the Father:<br />Have mercy on us *4</p><p>For you alone are the Holy One,<br />You alone are the Lord,<br />You alone are the Most High, Jesus Christ,<br />With the Holy Spirit, in the glory of God the Father<br />Amen, amen.</p>\n<p>Hail Mary full of grace the Lord is with thee<br />Blessed are thou amongst women the Lord is with thee<br />And blessed is the fruit of they womb (the Lord is with thee)<br />and blessed is the fruit of thy womb JESUS<br />Hail Mary Mother of God Pray for us sinners  now,<br />And at the hour of our death</p><p>Ave Maria gratia plena Dominus tecum<br />Benedicta tu in mulieribus Dominus tecum<br />Et Benedictus fructus ventris tui (Dominus tecum)<br />et Benedictus fructus ventris tui  JESUS<br />Sancta Maria Mater Dei Pro nobis pecatoribus nunc,<br />et in hora mortis nostrae</p><p>Amen.</p>",
+      "uses": 3
     },
     {
       "slug": "master-the-tempest",
@@ -2671,44 +2614,12 @@
         "GREAT_AMEN",
         "AGNUS_DEI"
       ],
-      "lyrics": "<p>Utukufu kwa Mungu juu mbinguni, na amani duniani kwao watu wa mapenzi,<br />wenye mapenzi mema.<br />Tunakusifu (Baba) tunakuheshimu, tunakuabudu (Baba) tunakutukuza<br />2. Baba tunakushukuru kwa ajili ya utukufu, utukufu wako mkuu.<br />3. Ewe Mungu ni Mfalme wa mbinguni Mungu Baba, Baba ndiwe Mwenyezi.<br />4. Ewe Bwana Yesu Kristu ndiwe Mwana wake Mungu ndiwe Mwana wa pekee.<br />5. Ewe Bwana Mungu Mwana koondoo wake Mungu, Mwana wake Baba.<br />6. Ewe mwenye kuondoa zetu dhambi za dunia Bwana utuhurumie.<br />7. Ewe mwenye kuondoa zetu dhambi za dunia, ombi letu pokea.<br />8. Ewe mwenye kuketi kuume kwake Baba, ewe utuhurumie.<br />9. Ni kwa kuwa ndiwe uliye peke yako mtakatifu, Bwana Yesu Kristu.<br />10. Na pamoja naye Roho mtakatifu katika utukufu wa Mungu Baba.</p>",
-      "uses": 12
-    },
-    {
-      "slug": "misa-amecea",
-      "title": "Misa Amecea",
-      "language": "ENGLISH",
-      "massParts": [
-        "GOSPEL_ACCLAMATION"
+      "aliases": [
+        "Kamba Mass",
+        "Akamba Mass"
       ],
-      "lyrics": "<p>Aleluiyah *6</p>",
-      "uses": 2
-    },
-    {
-      "slug": "misa-centenary",
-      "title": "Misa Centenary",
-      "language": "ENGLISH",
-      "massParts": [
-        "GOSPEL_ACCLAMATION",
-        "KYRIE",
-        "GLORIA",
-        "SANCTUS",
-        "MYSTERY_OF_FAITH",
-        "GREAT_AMEN",
-        "AGNUS_DEI"
-      ],
-      "lyrics": "<p>1. Utukufu kwa Mungu juu Mbinguni,<br />Na amani iwe, kwa watu wenye mapenzi mema duniani kote.</p><p>(Tunakusifu) tunakusifu, tunakeheshimu, tunakuabudu, tunakutukuza *2</p><p>2. Tunakushukuru Mungu kwa ajili, Ya utukufu wako<br />Mkuu ee Bwana, ni Mungu ndiwe mfalme wa mbinguni<br />3. Ee Baba Mwenyezi Bwana Yesu Kristu, Ee Mwana wa pekee<br />ee Mungu Mwanakondoo wa Mungu Mwana wake Baba.<br />4. Mwenye kuondoa dhambi za dunia, Utuhurumie,<br />tuhurumie maombi yetu Bwana uyapokee.<br />5. Mwenye kuketi kuume kwa Baba, Utuhurumie<br />Kwa kuwa ndiwe pekee yako ni mtakatifu.<br />6. Pekee yako Bwana pekee yako mkuu, Ewe Yesu Kristu<br />Pamoja naye Roho Mtakatifu milele yote</p>",
-      "uses": 8
-    },
-    {
-      "slug": "misa-centinary",
-      "title": "Misa Centinary",
-      "language": "ENGLISH",
-      "massParts": [
-        "GOSPEL_ACCLAMATION"
-      ],
-      "lyrics": "<p>Alleluia</p>",
-      "uses": 1
+      "lyrics": "<p>Utukufu kwa Mungu juu mbinguni, na amani duniani kwao watu wa mapenzi,<br />wenye mapenzi mema.</p><p>Tunakusifu (Baba) tunakuheshimu, tunakuabudu (Baba) tunakutukuza</p><p>2. Baba tunakushukuru kwa ajili ya utukufu, utukufu wako mkuu.<br />3. Ewe Mungu ni Mfalme wa mbinguni Mungu Baba, Baba ndiwe Mwenyezi.<br />4. Ewe Bwana Yesu Kristu ndiwe Mwana wake Mungu ndiwe Mwana wa pekee.<br />5. Ewe Bwana Mungu Mwana koondoo wake Mungu, Mwana wake Baba.<br />6. Ewe mwenye kuondoa zetu dhambi za dunia Bwana utuhurumie.<br />7. Ewe mwenye kuondoa zetu dhambi za dunia, ombi letu pokea.<br />8. Ewe mwenye kuketi kuume kwake Baba, ewe utuhurumie.<br />9. Ni kwa kuwa ndiwe uliye peke yako mtakatifu, Bwana Yesu Kristu.<br />10. Na pamoja naye Roho mtakatifu katika utukufu wa Mungu Baba.</p>",
+      "uses": 25
     },
     {
       "slug": "misa-de-angelis",
@@ -2721,16 +2632,6 @@
       "uses": 2
     },
     {
-      "slug": "misa-elizabeti",
-      "title": "Misa Elizabeti",
-      "language": "SWAHILI",
-      "massParts": [
-        "SANCTUS"
-      ],
-      "lyrics": "<p>Mtakatifu, mtakatifu mtakatifu mtakatifu<br />Mungu wa majeshi<br />Ulimwengu, ulimwengu Umejaa sifa yako Bwana<br />Hosanna *4 Hosanna juu mbinguni *2<br />Mbarikiwa ajaye kwa jina lake Bwana *2<br />Hosanna *4 Hosanna juu mbinguni *2</p>",
-      "uses": 1
-    },
-    {
       "slug": "misa-fadhili",
       "title": "Misa Fadhili",
       "language": "SWAHILI",
@@ -2740,10 +2641,14 @@
         "MYSTERY_OF_FAITH",
         "GREAT_AMEN",
         "SANCTUS",
-        "AGNUS_DEI"
+        "AGNUS_DEI",
+        "OFFERTORY"
       ],
-      "lyrics": "<p>Utukufu kwa Mungu Mbinguni<br />Utukufu (kwako) Mungu Mbinguni<br />Na amani (kote) duniani kwa watu wa mapenzi mema.</p><p>1. Tunakuheshimu tunakusifu, tunakuabudu twakutukuza ee Bwana<br />2. Tunakushukuru mfalme wa mbingu Mwana wa pekee mwana wa Baba ee Bwana<br />3. Unayeondoa makosa yetu Utuhurumie tusikilize ee Bwana<br />4. Kuume kwa Baba unapoketi Mtakatifu mkuu tuhurumie ee Bwana<br />5. Roho Mtakatifu pamoja nawe, Ndani yake Bwana unatukuzwa ee Bwana</p>",
-      "uses": 24
+      "aliases": [
+        "Sanctus – Misa Fadhili"
+      ],
+      "lyrics": "<p>Utukufu kwa Mungu Mbinguni<br />Utukufu (kwako) Mungu Mbinguni<br />Na amani (kote) duniani kwa watu wa mapenzi mema.</p><p>1. Tunakuheshimu tunakusifu, tunakuabudu twakutukuza ee Bwana<br />2. Tunakushukuru mfalme wa mbingu Mwana wa pekee mwana wa Baba ee Bwana<br />3. Unayeondoa makosa yetu Utuhurumie tusikilize ee Bwana<br />4. Kuume kwa Baba unapoketi Mtakatifu mkuu tuhurumie ee Bwana<br />5. Roho Mtakatifu pamoja nawe, Ndani yake Bwana unatukuzwa ee Bwana</p>\n<p><strong>Sanctus</strong></p>\n<p>Mtakatifu, mtakatifu Bwana; Mtakatifu Mungu wa majeshi<br />Mbingu na dunia zimejaa, zimejaa utukufu wako<br />Hosanna *5 Hosanna juu mbinguni *2<br />Mbarikiwa yeye ajaye kwa jina lake Bwana<br />Hosanna *5 Hosanna juu mbinguni *2</p>",
+      "uses": 27
     },
     {
       "slug": "misa-kariobangi",
@@ -2754,10 +2659,14 @@
         "GLORIA",
         "SANCTUS",
         "MYSTERY_OF_FAITH",
-        "AGNUS_DEI"
+        "AGNUS_DEI",
+        "OFFERTORY"
       ],
-      "lyrics": "<p>Utukufu juu kwa Mungu, Utukufu juu mbinguni<br />Na amani kote duniani, Kwa wenye mapenzi mema</p><p>1. Tunakusifu, tunakuheshimu; twakuabudu, tunakutukuza<br />Twakushukuru kwa ajili, ya Utukufu wako mkuu<br />2. Ewe Mungu, ndiwe Mfalme; wa mbinguni, Baba Mwenyezi,<br />Ewe Bwana Yesu Kristu, wa pekee Mwana wa Baba<br />3. Ewe Yesu Mwanakondoo, wa Mungu Mwana wa Baba<br />Ewe Mwenye kuziondoa Dhambi zetu ‘tuhurumie<br />4. Ewe Mwenye kuziondoa; za dunia dhambi za watu<br />Ewe mwenye rehema nyingi Upokee maombi yetu<br />5. Uketiye kuume kwake; Mungu Baba ‘tuhurumie<br />Kwa kuwa ndiye uliye Peke yako Mtakatifu<br />6. Peke yako ni Wewe Bwana; peke yako Bwana Mungu<br />Peke yako ni Mkombozi Peke yako Yesu Kristu<br />7. Naye Roho Mtakatifu, katika ‘tukufu wake<br />Mungu Mmoja anayeishi Na kutawala milele yote</p>",
-      "uses": 13
+      "aliases": [
+        "Sanctus – Misa Kariobangi"
+      ],
+      "lyrics": "<p>Utukufu juu kwa Mungu, Utukufu juu mbinguni<br />Na amani kote duniani, Kwa wenye mapenzi mema</p><p>1. Tunakusifu, tunakuheshimu; twakuabudu, tunakutukuza<br />Twakushukuru kwa ajili, ya Utukufu wako mkuu<br />2. Ewe Mungu, ndiwe Mfalme; wa mbinguni, Baba Mwenyezi,<br />Ewe Bwana Yesu Kristu, wa pekee Mwana wa Baba<br />3. Ewe Yesu Mwanakondoo, wa Mungu Mwana wa Baba<br />Ewe Mwenye kuziondoa Dhambi zetu ‘tuhurumie<br />4. Ewe Mwenye kuziondoa; za dunia dhambi za watu<br />Ewe mwenye rehema nyingi Upokee maombi yetu<br />5. Uketiye kuume kwake; Mungu Baba ‘tuhurumie<br />Kwa kuwa ndiye uliye Peke yako Mtakatifu<br />6. Peke yako ni Wewe Bwana; peke yako Bwana Mungu<br />Peke yako ni Mkombozi Peke yako Yesu Kristu<br />7. Naye Roho Mtakatifu, katika ‘tukufu wake<br />Mungu Mmoja anayeishi Na kutawala milele yote</p>\n<p><strong>Sanctus</strong></p>\n<p>Viongozi: (Bass) Mtakatifu<br />Wote: Mtakatifu mtakatifu Bwana Mungu<br />V. (Bass) Wa majeshi W. Mbingu na dunia zimejaa ‘tukufu wako<br />V. (Tenor) Hosanna! W. Hosana juu Mbinguni x2<br />V. (Tenor) Hosanna! W. Hosana juu Mbinguni<br />V. (Bass) Mbarikiwa W. Anayekuja kwa jina lake Bwana Mungu x2<br />V. (Tenor) Hosanna ...</p>",
+      "uses": 14
     },
     {
       "slug": "misa-lubba",
@@ -2781,8 +2690,11 @@
         "KYRIE",
         "GLORIA"
       ],
-      "lyrics": "<p>Utukufu kwa Mungu juu!<br />Na amani kwa watu wenye mapenzi mema<br />1. Tunakusifu, tunakuheshimu tunakuabudu<br />2. Tunakusifu, tunakuheshimu, Mfalme wa Mbingu<br />3. Ee Bwana Mungu mfalme wa Mbinguni, Mungu Baba Mwenyezi<br />4. Ewe Yesu Kristu Mwana wa pekee, Mwana wake Baba<br />5. Mwenye kuondoa, dhambi za dunia, utuhurumie<br />6. Mwenye kuketi, kuume kwa Baba, pokea ombi letu<br />7. Peke yako Bwana peke yako mkuu peke yako mkombozi<br />8. Pamoja na Roho, Roho Mtakatifu, milele amina</p>",
-      "uses": 2
+      "aliases": [
+        "Luo Mass"
+      ],
+      "lyrics": "<p>Utukufu kwa Mungu juu!<br />Na amani kwa watu wenye mapenzi mema</p><p>1. Tunakusifu, tunakuheshimu tunakuabudu<br />2. Tunakusifu, tunakuheshimu, Mfalme wa Mbingu<br />3. Ee Bwana Mungu mfalme wa Mbinguni, Mungu Baba Mwenyezi<br />4. Ewe Yesu Kristu Mwana wa pekee, Mwana wake Baba<br />5. Mwenye kuondoa, dhambi za dunia, utuhurumie<br />6. Mwenye kuketi, kuume kwa Baba, pokea ombi letu<br />7. Peke yako Bwana peke yako mkuu peke yako mkombozi<br />8. Pamoja na Roho, Roho Mtakatifu, milele amina</p>",
+      "uses": 4
     },
     {
       "slug": "misa-magnificat",
@@ -2818,10 +2730,11 @@
         "AGNUS_DEI"
       ],
       "aliases": [
+        "Misa Elizabeti",
         "Mt. Elizabeti"
       ],
-      "lyrics": "<p>Utukufu kwa Mungu juu, na amani duniani<br />Kwa watu wenye mapenzi mema *2</p><p>1. Tunakusifu tunakuheshimu – Sifa ni kwako milele yote<br />Twakuabudu, tunakutukuza -<br />Twakushukuru kwa utukufu -<br />Mfalme wa mbingu, Baba Mwenyezi -<br />2. Yesu Kristu, mwana wa pekee -<br />Mwanakondoo, mwana wake Baba -<br />Uondoaye dhambi za dunia -<br />Utuhurumie utusikilize -<br />3. Unayeketi kuume kwa Baba -<br />Mtakatifu mkuu Yesu Kristu -<br />Na pamoja naye Roho Mtakatifu -<br />Ndaniye Baba. Amina. Amina.</p>",
-      "uses": 14
+      "lyrics": "<p>Utukufu kwa Mungu juu, na amani duniani<br />Kwa watu wenye mapenzi mema *2</p><p>1. Tunakusifu tunakuheshimu – Sifa ni kwako milele yote<br />Twakuabudu, tunakutukuza -<br />Twakushukuru kwa utukufu -<br />Mfalme wa mbingu, Baba Mwenyezi -<br />2. Yesu Kristu, mwana wa pekee -<br />Mwanakondoo, mwana wake Baba -<br />Uondoaye dhambi za dunia -<br />Utuhurumie utusikilize -<br />3. Unayeketi kuume kwa Baba -<br />Mtakatifu mkuu Yesu Kristu -<br />Na pamoja naye Roho Mtakatifu -<br />Ndaniye Baba. Amina. Amina.</p>\n<p>Mtakatifu, mtakatifu mtakatifu mtakatifu<br />Mungu wa majeshi<br />Ulimwengu, ulimwengu Umejaa sifa yako Bwana<br />Hosanna *4 Hosanna juu mbinguni *2<br />Mbarikiwa ajaye kwa jina lake Bwana *2<br />Hosanna *4 Hosanna juu mbinguni *2</p>",
+      "uses": 15
     },
     {
       "slug": "misa-mt-paulo",
@@ -2834,13 +2747,15 @@
         "SANCTUS",
         "MYSTERY_OF_FAITH",
         "GREAT_AMEN",
-        "AGNUS_DEI"
+        "AGNUS_DEI",
+        "OFFERTORY"
       ],
       "aliases": [
-        "Misa Paulo"
+        "Misa Paulo",
+        "Sanctus – Misa Paulo"
       ],
-      "lyrics": "<p>R. Utukufu, utukufu, utukufu kwa Mungu juu mbinguni<br />Na amani duniani kwa watu Wenye mapenzi mema<br />1. Tunakusifu Bwana, tunakuheshimu,<br />Tunakuabudu, tunakutukuza,<br />{Tunakushukuru} *2<br />{Kwa ajili ya utukufu wako mkuu} *2<br />2. E e Bwana Mungu, Mfalme wa mbinguni,<br />E e Bwana Mungu, Mungu Baba Mwenyezi.<br />E Bwana Yesu Kristu, Mwana wa pekee.<br />E Bwana Yesu Kristu, Mwana wa pekee.<br />Ee Bwana Mungu, {Mwana kondoo wa Mungu, Mwana wa Baba} *2<br />3. Mwenye kuondoa dhambi za dunia,<br />Utuhurumie, Pokea ombi letu.<br />{Ewe mwenye kuketi} *2<br />{Kuume kwa Baba, utuhurumie} *2<br />4. Kwa kuwa ndiwe: peke yako Mtakatifu,<br />Peke yako Bwana, Mkuu; Peke yako Yesu Kristu.<br />Pamoja na Roho, Roho mtakatifu,<br />{Katika utukufu wa Mungu Baba} *4<br />This Sunday the Choir Family prays with our newest Priest, Fr. Okeyo, to God be all Glory!</p>",
-      "uses": 48
+      "lyrics": "<p>R. Utukufu, utukufu, utukufu kwa Mungu juu mbinguni<br />Na amani duniani kwa watu Wenye mapenzi mema<br />1. Tunakusifu Bwana, tunakuheshimu,<br />Tunakuabudu, tunakutukuza,<br />{Tunakushukuru} *2<br />{Kwa ajili ya utukufu wako mkuu} *2<br />2. E e Bwana Mungu, Mfalme wa mbinguni,<br />E e Bwana Mungu, Mungu Baba Mwenyezi.<br />E Bwana Yesu Kristu, Mwana wa pekee.<br />E Bwana Yesu Kristu, Mwana wa pekee.<br />Ee Bwana Mungu, {Mwana kondoo wa Mungu, Mwana wa Baba} *2<br />3. Mwenye kuondoa dhambi za dunia,<br />Utuhurumie, Pokea ombi letu.<br />{Ewe mwenye kuketi} *2<br />{Kuume kwa Baba, utuhurumie} *2<br />4. Kwa kuwa ndiwe: peke yako Mtakatifu,<br />Peke yako Bwana, Mkuu; Peke yako Yesu Kristu.<br />Pamoja na Roho, Roho mtakatifu,<br />{Katika utukufu wa Mungu Baba} *4<br />This Sunday the Choir Family prays with our newest Priest, Fr. Okeyo, to God be all Glory!</p>\n<p><strong>Sanctus</strong></p>\n<p>Mtakatifu *3 Bwana Mungu wa majeshi.<br />Mbingu na dunia! Zimejaa, Utukufu wako Bwana.<br />Hosana juu x3 Mbinguni.<br />Mbarikiwa anayekuja; kwa jina la Bwana.<br />Hosana juu x3 Mbinguni</p>",
+      "uses": 51
     },
     {
       "slug": "misa-shauri-moyo",
@@ -2861,26 +2776,35 @@
         "GLORIA",
         "MYSTERY_OF_FAITH",
         "AGNUS_DEI",
-        "SANCTUS"
+        "SANCTUS",
+        "OFFERTORY"
       ],
-      "lyrics": "<p>Utukufu kwa Mungu mbinguni, na amani duniani kote,<br />{Kwao wenye mapenzi mema} *2<br />1. Tunakusifu, tunakuheshimu, twakuabudu, nakukutukuza.<br />2. Twakushukuru, mwenye utukufu, Mfalme wa mbingu, Mungu Baba yetu.<br />3. Ee Bwana Yesu, Mwana wa pekee, Mwana kondoo wake Mungu Baba.<br />4. Mwenye kufuta dhambi za dunia, ‘tuhurumie, utusikilize.<br />5. Unayeketi kuume kwa Baba, u peke yako, Mkuu, Yesu Kristu.<br />6. Pamoja nawe Roho Mtakatifu kwa utukufu wake Mungu Baba.</p>",
-      "uses": 9
+      "aliases": [
+        "Sanctus – Misa Shukrani"
+      ],
+      "lyrics": "<p>Mtakatifu, mtakatifu, mtakatifu ewe Bwana,<br />{Bwana wetu Mungu wa majeshi} *2<br />1. Mbingu na dunia zimejaa utukufu, kweli zimejaa wako utukufu;<br />This Sunday the Choir Family prays with Jane Wairimu for her intentions and Choir intentions; thank you, Jane, for the songs selections!<br />{Hosanna! Hosanna! Hossana! Hossana juu mbinguni} *2<br />2. Amebarikiwa yule mwenye kuja kwetu - yule mwenye kuja, kwa jina la Bwana<br />{Hosanna! Hosanna! Hossana! Hossana juu mbinguni} *2</p>\n<p>Utukufu kwa Mungu mbinguni, na amani duniani kote,<br />{Kwao wenye mapenzi mema} *2<br />1. Tunakusifu, tunakuheshimu, twakuabudu, nakukutukuza.<br />2. Twakushukuru, mwenye utukufu, Mfalme wa mbingu, Mungu Baba yetu.<br />3. Ee Bwana Yesu, Mwana wa pekee, Mwana kondoo wake Mungu Baba.<br />4. Mwenye kufuta dhambi za dunia, ‘tuhurumie, utusikilize.<br />5. Unayeketi kuume kwa Baba, u peke yako, Mkuu, Yesu Kristu.<br />6. Pamoja nawe Roho Mtakatifu kwa utukufu wake Mungu Baba.</p>",
+      "uses": 10
     },
     {
       "slug": "misa-subukia",
       "title": "Misa Subukia",
       "language": "LATIN",
       "massParts": [
-        "SANCTUS",
         "KYRIE",
+        "GLORIA",
+        "GOSPEL_ACCLAMATION",
+        "SANCTUS",
         "MYSTERY_OF_FAITH",
         "GREAT_AMEN",
         "AGNUS_DEI",
-        "GLORIA",
-        "GOSPEL_ACCLAMATION"
+        "OFFERTORY"
       ],
-      "lyrics": "<p>{Utukufu juu kwa Mungu, na amani duniani,<br />kwao watu wenye mapenzi, watu wenye mapenzi mema } *2</p><p>1. Tunakusifu tunakuheshimu, twakuabudu tunakutukuza<br />Twakushukuru kwa ajili yako, ya utukufu wako mkuu.<br />2. Ee Mungu baba ndiwe mfalme, Mfalme wa Mbinguni Baba mwenyezi.<br />Ee Yesu Kristu mwana wa pekee, mwanakondoo mwana wa Baba.<br />3. Uondoaye dhambi za watu tuhurumie tusikilize,<br />Tuhurumie mwenye rehema maombi yetu uyapokee.<br />4. Uketiye kuume kwake, Mungu baba tuhurumie.<br />Kwa kuwa ndiwe pekee yako, Pekee yako Mtakatifu.<br />5. Pamoja naye roho Mtakatifu, katika utukufu wake<br />Anayeishi na kutawala, milele yote Amina.</p>",
-      "uses": 44
+      "aliases": [
+        "Subukia Mass",
+        "Sanctus – Misa Subukia"
+      ],
+      "lyrics": "<p>{Utukufu juu kwa Mungu, na amani duniani,<br />kwao watu wenye mapenzi, watu wenye mapenzi mema } *2</p><p>1. Tunakusifu tunakuheshimu, twakuabudu tunakutukuza<br />Twakushukuru kwa ajili yako, ya utukufu wako mkuu.<br />2. Ee Mungu baba ndiwe mfalme, Mfalme wa Mbinguni Baba mwenyezi.<br />Ee Yesu Kristu mwana wa pekee, mwanakondoo mwana wa Baba.<br />3. Uondoaye dhambi za watu tuhurumie tusikilize,<br />Tuhurumie mwenye rehema maombi yetu uyapokee.<br />4. Uketiye kuume kwake, Mungu baba tuhurumie.<br />Kwa kuwa ndiwe pekee yako, Pekee yako Mtakatifu.<br />5. Pamoja naye roho Mtakatifu, katika utukufu wake<br />Anayeishi na kutawala, milele yote Amina.</p>\n<p><strong>Sanctus</strong></p>\n<p>Mtakatifu, Mtakatifu, Mtakatifu Mungu wa majeshi<br />Mbingu na dunia, zimejaa, zimejaa utukufu wako.<br />Hossanna, hosanna, hosanna hosanna juu mbinguni *2<br />Mbarikiwa anayekuja, anayekuja kwa jina la Bwana.<br />Hossanna, hosanna, hosanna hosanna juu mbinguni *2</p>",
+      "uses": 52
     },
     {
       "slug": "misa-taita",
@@ -2891,10 +2815,14 @@
         "KYRIE",
         "SANCTUS",
         "MYSTERY_OF_FAITH",
-        "AGNUS_DEI"
+        "AGNUS_DEI",
+        "OFFERTORY"
       ],
-      "lyrics": "<p>V. Tukufu! W. Tukufu kwa Mungu juu<br />V. Amani! W. Na amani duniani<br />V. Kwa watu wenye mapenzi W. Wenye mapenzi mema x2<br />V. Sifa! W. Sisi tunakusifu<br />V. Heshima! W. Sisi tunakuheshimu<br />V. Tunakuabudu! W. Sisi tunakuabudu x2<br />V. Tukufu! W. Sisi tunakutukuza<br />V. Shukrani! W. Sisi tunakushukuru<br />V. Kwa ‘jili ya utukufu! W. Utukufu wako mkuu x2<br />V. Ee Mungu! W. Ee Bwana Mungu<br />V. Ee Baba! W. Mfalme wa mbinguni<br />V. Ee Mungu Baba W. Mungu Baba Mwenyezi x2<br />V. Ee Bwana! W. Eh Bwana Yesu Kristu<br />V. Eh Mwana! W. Kristu Mwana wa pekee<br />V. Mwana wa Baba W. Mwana Kondoo wa Mungu x2<br />V. Mwokozi! W. Mwenye kuondoa dhambi<br />V. Huruma! W. Dhambi za dunia<br />V. Utuhurumie! W. Pokea ombi letu x2<br />V. Ee Yesu! W. Kwani ndiwe Mtakatifu<br />V. Ee Kristu! W. Kwani ndiwe Bwana<br />V. Ee Yesu Kristu! W. Ndiwe peke yako Mkuu x2<br />V. Umoja! W. Pamoja na Roho Mtakatifu<br />V. Milele! W. Katika utukufu<br />V. Tukufu wa Mungu Baba W. Kristu anaishi x3<br />Word Procession: IENDE MBELE<br />1. Iende mbele Injili iende mbele<br />Iende mbele Injili iende mbele (iende wapi)<br />HOLY MASS: 3RD MAY 2025<br />Iende mbele Injili iende mbele<br />Iende mbele Injili iende mbele<br />2. Kwa wamama Injili iende mbele<br />Kwa wababa Injili iendembele<br />3. Kwa watoto Injili iende mbele<br />Kwa wazee Injili iende mbele<br />4. Kwa mapadri Injili iende mbele<br />Kwa watawa Injili iende mbele<br />Offertory: NDAKAIRE JEHOVA<br />1. Ndakaire Jehova, akihe utonga uyu muingi ma<br />Utonga wakwa muingi, wa ng’ombe na mburi nyingi ma<br />Ngiona ta ndaiganira, ngiriganirwo ni Ngai uheanaga<br />Ngukaira Jehova, Ngai riria ndi munyamaru<br />Na riria ndi muruaru ii; Na riria ndina mathina maingi<br />Norio nguririkana Ngai munyumbi<br />Na riri njiganiire ii na maundu ma thi<br />Ndingimuririkana Ngai wakwa<br />2. Ngai ni aheire hinya, ngiruta wira wa biashara<br />Biashara igitherema, mbia ikiingiha ta mahuti<br />Ngiona ta ndaiganira, ngiriganirwo ni Ngai uheanaga<br />3. Ndiari na gwakurima, akihe migunda miingi ma<br />Magetha makiingiha, ma mbembe na njahi nyingi ma<br />Ngiona ta ndaiganira, ngiriganirwo ni Ngai uheanaga<br />4. Ngihoya Mwene Nyaga, ciana igithoma wega muno<br />Ciothe iri mawira-ini, gutiri na thina menaguo<br />Ngiona ta ndaiganira, ngiriganirwo ni Ngai uheanaga<br />Offertory Procession: BWANA UPOKEE<br />Bwana upokee, Bwana upokee, zawadi twaleta *2<br />1. Mkate na divai, zawadi twaleta<br />Mazao ya mashamba, zawadi twaleta<br />Na pia nafsi zetu, zawadi twaleta<br />Vyote tulivyo navyo, zawadi twaleta<br />Furaha na uchungu . . .<br />2. Na kiini cha ngano . . .<br />Na tunda la Mzabibu . . .<br />Fedha za mifukoni . . .<br />Nafaka upokee . . .<br />Twakutolea vyote . . .<br />3. Kwako Baba Muumba . . .<br />Kwa njia ya Mwokozi. . .<br />Katika Mfariji . . .<br />Ipate kugeuzwa. . .<br />Iweze kutufaa. . .<br />4. Pokea twakuomba . . .<br />Ingawa ni kidogo . . .<br />Twatolea kwa moyo<br />Baba usikatae . . .<br />Vipaji vya wanao . . .<br />Sign of Peace: THAYU WA KRISTU<br />Thayu wa Kristu uromuikurukira<br />Giai na thayu na mugie naguo muno<br />1. Kristu oimirira arekio akimera... Giai na thayu na mugie naguo muno<br />Athuri na inyui Kristu aramwira . . .<br />Atumia na inyui Kristu aramwira . . .<br />2. Ona inyui ciana Kristu aramwira . . .<br />Riria mwarawara Kristu aramwira . . .<br />Hindi ya thina Kristu aramwira . . .<br />HOLY MASS: 3RD MAY 2025<br />Communion: AULAYE MWILI WANGU<br />Aulaye mwili wangu, na kuinywa damu yangu,<br />Hukaa ndani yangu, nami hukaa ndani yake.<br />1. Aulaye mwili wangu, na kuinywa damu yangu,<br />Ana uzima wa milele<br />2. Njoni enyi wenye njaa, njooni enyi wenye kiu,<br />Njoni kwangu niwashibishe<br />3. Aniaminiye mimi, na kushika nisemavyo,<br />Nitamfufua siku ya mwisho<br />4. Mlapo chakula hiki, mnywapo kinywaji hiki,<br />Mwatangaza kifo cha Bwana.<br />Thanksgiving: NGWANIRIRA NDINA GIKENO<br />Ngwanirira ndina gikeno njuge Mwathani niundathimite<br />ndatara irathimo ciakwa utamburukitie moko iguru riakwa<br />1. Ningukuinira Ngai ndina gikeno, na ndahe riri Wa ritwa riaku<br />ngugoce na ngukumie nduriri ini ngukenerere ngoro ini yakwa<br />2. Uhoti waku Ngai ni munene, na ugutura tene na tene<br />maitho maku nimo manjuthagiriria ukangitira mitino yothe<br />3. Ndagukaire Ngai nawe ukinjigua, ugithikiriria kiriro giakwa<br />ndwanjehereirie Ngai utugi waku niwanjokeirie ihoya riakwa<br />4.Niuminjaminjiirie mbura yotana, na nii gukena ningenukite<br />nguga ngemi na ihuni ngugathe Ngaiurotugira iguru muno<br />5. Kurathima Ngai niuturathimagaugakumbatura guoko gwaku<br />kiria giothe ki muoyo ugakihuniana nii ngutura o ngugocaga<br />Exit: TO GOD BE THE GLORY<br />1. To God be the glory, great things He hath done,<br />So loved He the world that He gave us His Son,<br />Who yielded His life an atonement for sin,<br />And opened the life-gate that all may go in.<br />Praise the Lord, praise the Lord,<br />Let the earth hear His voice;<br />Praise the Lord, praise the Lord,<br />Let the people rejoice;<br />Oh, come to the Father, through Jesus the Son,<br />And give Him the glory; great things He hath done.<br />2. Oh, perfect redemption, the purchase of blood,<br />To every believer the promise of God;<br />The vilest offender who truly believes,<br />That moment from Jesus a pardon receives.<br />3. Great things He hath taught us, great things He hath done,<br />And great our rejoicing through Jesus the Son;<br />But purer, and higher, and greater will be<br />Our wonder, our transport when Jesus we see!</p>",
-      "uses": 18
+      "aliases": [
+        "Sanctus – Misa Taita"
+      ],
+      "lyrics": "<p>V. Tukufu! W. Tukufu kwa Mungu juu<br />V. Amani! W. Na amani duniani<br />V. Kwa watu wenye mapenzi W. Wenye mapenzi mema x2<br />V. Sifa! W. Sisi tunakusifu<br />V. Heshima! W. Sisi tunakuheshimu<br />V. Tunakuabudu! W. Sisi tunakuabudu x2<br />V. Tukufu! W. Sisi tunakutukuza<br />V. Shukrani! W. Sisi tunakushukuru<br />V. Kwa ‘jili ya utukufu! W. Utukufu wako mkuu x2<br />V. Ee Mungu! W. Ee Bwana Mungu<br />V. Ee Baba! W. Mfalme wa mbinguni<br />V. Ee Mungu Baba W. Mungu Baba Mwenyezi x2<br />V. Ee Bwana! W. Eh Bwana Yesu Kristu<br />V. Eh Mwana! W. Kristu Mwana wa pekee<br />V. Mwana wa Baba W. Mwana Kondoo wa Mungu x2<br />V. Mwokozi! W. Mwenye kuondoa dhambi<br />V. Huruma! W. Dhambi za dunia<br />V. Utuhurumie! W. Pokea ombi letu x2<br />V. Ee Yesu! W. Kwani ndiwe Mtakatifu<br />V. Ee Kristu! W. Kwani ndiwe Bwana<br />V. Ee Yesu Kristu! W. Ndiwe peke yako Mkuu x2<br />V. Umoja! W. Pamoja na Roho Mtakatifu<br />V. Milele! W. Katika utukufu<br />V. Tukufu wa Mungu Baba W. Kristu anaishi x3<br />Word Procession: IENDE MBELE<br />1. Iende mbele Injili iende mbele<br />Iende mbele Injili iende mbele (iende wapi)<br />HOLY MASS: 3RD MAY 2025<br />Iende mbele Injili iende mbele<br />Iende mbele Injili iende mbele<br />2. Kwa wamama Injili iende mbele<br />Kwa wababa Injili iendembele<br />3. Kwa watoto Injili iende mbele<br />Kwa wazee Injili iende mbele<br />4. Kwa mapadri Injili iende mbele<br />Kwa watawa Injili iende mbele<br />Offertory: NDAKAIRE JEHOVA<br />1. Ndakaire Jehova, akihe utonga uyu muingi ma<br />Utonga wakwa muingi, wa ng’ombe na mburi nyingi ma<br />Ngiona ta ndaiganira, ngiriganirwo ni Ngai uheanaga<br />Ngukaira Jehova, Ngai riria ndi munyamaru<br />Na riria ndi muruaru ii; Na riria ndina mathina maingi<br />Norio nguririkana Ngai munyumbi<br />Na riri njiganiire ii na maundu ma thi<br />Ndingimuririkana Ngai wakwa<br />2. Ngai ni aheire hinya, ngiruta wira wa biashara<br />Biashara igitherema, mbia ikiingiha ta mahuti<br />Ngiona ta ndaiganira, ngiriganirwo ni Ngai uheanaga<br />3. Ndiari na gwakurima, akihe migunda miingi ma<br />Magetha makiingiha, ma mbembe na njahi nyingi ma<br />Ngiona ta ndaiganira, ngiriganirwo ni Ngai uheanaga<br />4. Ngihoya Mwene Nyaga, ciana igithoma wega muno<br />Ciothe iri mawira-ini, gutiri na thina menaguo<br />Ngiona ta ndaiganira, ngiriganirwo ni Ngai uheanaga<br />Offertory Procession: BWANA UPOKEE<br />Bwana upokee, Bwana upokee, zawadi twaleta *2<br />1. Mkate na divai, zawadi twaleta<br />Mazao ya mashamba, zawadi twaleta<br />Na pia nafsi zetu, zawadi twaleta<br />Vyote tulivyo navyo, zawadi twaleta<br />Furaha na uchungu . . .<br />2. Na kiini cha ngano . . .<br />Na tunda la Mzabibu . . .<br />Fedha za mifukoni . . .<br />Nafaka upokee . . .<br />Twakutolea vyote . . .<br />3. Kwako Baba Muumba . . .<br />Kwa njia ya Mwokozi. . .<br />Katika Mfariji . . .<br />Ipate kugeuzwa. . .<br />Iweze kutufaa. . .<br />4. Pokea twakuomba . . .<br />Ingawa ni kidogo . . .<br />Twatolea kwa moyo<br />Baba usikatae . . .<br />Vipaji vya wanao . . .<br />Sign of Peace: THAYU WA KRISTU<br />Thayu wa Kristu uromuikurukira<br />Giai na thayu na mugie naguo muno<br />1. Kristu oimirira arekio akimera... Giai na thayu na mugie naguo muno<br />Athuri na inyui Kristu aramwira . . .<br />Atumia na inyui Kristu aramwira . . .<br />2. Ona inyui ciana Kristu aramwira . . .<br />Riria mwarawara Kristu aramwira . . .<br />Hindi ya thina Kristu aramwira . . .<br />HOLY MASS: 3RD MAY 2025<br />Communion: AULAYE MWILI WANGU<br />Aulaye mwili wangu, na kuinywa damu yangu,<br />Hukaa ndani yangu, nami hukaa ndani yake.<br />1. Aulaye mwili wangu, na kuinywa damu yangu,<br />Ana uzima wa milele<br />2. Njoni enyi wenye njaa, njooni enyi wenye kiu,<br />Njoni kwangu niwashibishe<br />3. Aniaminiye mimi, na kushika nisemavyo,<br />Nitamfufua siku ya mwisho<br />4. Mlapo chakula hiki, mnywapo kinywaji hiki,<br />Mwatangaza kifo cha Bwana.<br />Thanksgiving: NGWANIRIRA NDINA GIKENO<br />Ngwanirira ndina gikeno njuge Mwathani niundathimite<br />ndatara irathimo ciakwa utamburukitie moko iguru riakwa<br />1. Ningukuinira Ngai ndina gikeno, na ndahe riri Wa ritwa riaku<br />ngugoce na ngukumie nduriri ini ngukenerere ngoro ini yakwa<br />2. Uhoti waku Ngai ni munene, na ugutura tene na tene<br />maitho maku nimo manjuthagiriria ukangitira mitino yothe<br />3. Ndagukaire Ngai nawe ukinjigua, ugithikiriria kiriro giakwa<br />ndwanjehereirie Ngai utugi waku niwanjokeirie ihoya riakwa<br />4.Niuminjaminjiirie mbura yotana, na nii gukena ningenukite<br />nguga ngemi na ihuni ngugathe Ngaiurotugira iguru muno<br />5. Kurathima Ngai niuturathimagaugakumbatura guoko gwaku<br />kiria giothe ki muoyo ugakihuniana nii ngutura o ngugocaga<br />Exit: TO GOD BE THE GLORY<br />1. To God be the glory, great things He hath done,<br />So loved He the world that He gave us His Son,<br />Who yielded His life an atonement for sin,<br />And opened the life-gate that all may go in.<br />Praise the Lord, praise the Lord,<br />Let the earth hear His voice;<br />Praise the Lord, praise the Lord,<br />Let the people rejoice;<br />Oh, come to the Father, through Jesus the Son,<br />And give Him the glory; great things He hath done.<br />2. Oh, perfect redemption, the purchase of blood,<br />To every believer the promise of God;<br />The vilest offender who truly believes,<br />That moment from Jesus a pardon receives.<br />3. Great things He hath taught us, great things He hath done,<br />And great our rejoicing through Jesus the Son;<br />But purer, and higher, and greater will be<br />Our wonder, our transport when Jesus we see!</p>\n<p><strong>Sanctus</strong></p>\n<p>V. Mtakatifu Bwana Mungu wetu W. Ee, Hosana juu!<br />V. Mtakatifu Bwana Mungu wetu W. Ee, Hosana juu!<br />V. Mtakatifu Bwana Mungu wetu W. Ee, Hosana juu!<br />W. Mbinguni.<br />1. Utukuzwe Bwana Mungu W. Ee!<br />V. Mungu Muumba wetu W. Ee!<br />V. Mbingu na dunia zimejaa Utukufu wako W. Ee! Ee! Ee! Ee, hosanna juu<br />V. Ee, Ee, mbinguni W. Mbinguni<br />2. Utukuzwe Bwana Mungu W. Ee!<br />V. Mungu Mkombozi wetu W. Ee!<br />V. Uliangamiza mauti ukaleta uzima mpya W. Ee! Ee! Ee! Ee, hosanna juu<br />V. Ee, Ee, mbinguni W. Mbinguni<br />This Sunday the Choir Family prays with Agnes Nelima for her intentions and Choir intentions; thank you, Nelima, for the songs selections!<br />3. Utukuzwe Bwana Mungu W. Ee!<br />V. Mungu Mfariji wetu W. Ee!<br />V. Ulimtuma Roho kwetu tuwe sote mwili mmoja W. Ee! Ee! Ee!<br />W. Ee, hosanna juu, mbinguni<br />V. Ee, Ee, mbinguni<br />V. Mtakatifu....</p>",
+      "uses": 20
     },
     {
       "slug": "missa-brevis-in-c-mj",
@@ -4290,7 +4218,7 @@
       "aliases": [
         "Psalm 121"
       ],
-      "lyrics": "<p>I lift my eyes unto the hills,<br />the hills from where my help is come.<br />My help, it cometh from the Lord<br />Who made heaven, heaven and earth.<br />He will not suffer thy foot to be moved,<br />neither will He (will not sleep.)<br />(The Lord is thy keeper, the)The Lord is thy shade.<br />The sun shall not smite thee by day;<br />(the moon shall not smite thee by night.)<br />The Lord shall protect thee from ev'ry evil,<br />He shall preserve thy soul.<br />Forever.<br />I lift my eyes unto the hills,<br />the hills from where my help is come.<br />{My help, it cometh from the Lord;} *3<br />Who made heaven, heaven and earth.<br />Amen.</p>",
+      "lyrics": "<p>I lift my eyes unto the hills,<br />the hills from where my help is come.<br />My help, it cometh from the Lord<br />Who made heaven, heaven and earth.<br />He will not suffer thy foot to be moved,<br />neither will He (will not sleep.)<br />(The Lord is thy keeper, the)The Lord is thy shade.<br />The sun shall not smite thee by day;<br />(the moon shall not smite thee by night.)<br />The Lord shall protect thee from ev'ry evil,<br />He shall preserve thy soul.<br />Forever.<br />I lift my eyes unto the hills,<br />the hills from where my help is come.<br />{My help, it cometh from the Lord;} *3<br />Who made heaven, heaven and earth.<br />Amen.</p>\n<p>R. Our help comes from the Lord, who made heaven and earth.</p><p>I lift up my eyes to the mountains;<br />from where shall come my help?<br />My help shall come from the Lord,<br />who made heaven and earth. R.<br />He will keep your foot from stumbling.<br />Your guard will never slumber.<br />No, he sleeps not nor slumbers,<br />Israel’s guard. R.</p><p>The Lord your guard, the Lord your shade<br />at your right hand.<br />By day the sun shall not smite you,<br />nor the moon in the night. R.</p><p>The Lord will guard you from evil;<br />he will guard your soul.<br />The Lord will guard your going and coming,<br />both now and forever. R.</p>",
       "uses": 2
     },
     {
@@ -4822,116 +4750,6 @@
       "uses": 7
     },
     {
-      "slug": "sanctus-amecea-mass",
-      "title": "Sanctus – Amecea Mass",
-      "language": "SWAHILI",
-      "massParts": [
-        "OFFERTORY"
-      ],
-      "lyrics": "<p>Mtakatifu Mtakatifu Bwana, Mungu wa majeshi *2<br />Mbingu na dunia zimejaa zimejaa<br />Mbingu na dunia zimejaa utukufu wako x2<br />Hosana juu x 4 Mbinguni<br />Mbarikiwa ‘nayekuja *2 Mbarikiwa<br />Mbarikiwa ‘nayekuja kwa jina jina lake Bwana<br />Hosana juu x 4 Mbinguni</p>",
-      "uses": 1
-    },
-    {
-      "slug": "sanctus-centenary-mass",
-      "title": "Sanctus – Centenary Mass",
-      "language": "SWAHILI",
-      "massParts": [
-        "OFFERTORY"
-      ],
-      "lyrics": "<p>V: Mtakatifu, mtakatifu, W: Mtakatifu, Bwana Mungu.<br />V: Mtakatifu, mtakatifu, W: Mtakatifu Bwana Mungu, wa majeshi, x2<br />Mbingu na dunia zimejaa utukufu<br />Mbingu na dunia, Mbingu na dunia,<br />Mbingu na dunia zimejaa utukufu wako,<br />Zimejaa utukufu wako.<br />Hosana juu, hosanna juu,<br />Hosana juu, hosanna juu mbinguni x2<br />Mbarikiwa yeye ajaye kwa jina.<br />Mbarikiwa yeye, mbarikiwa yeye,<br />Mbarikiwa yeye ajaye kwa jina la Bwana.<br />Ajaye kwa jina la Bwana.<br />Hosana juu, hosanna juu,<br />Hosana juu, hosanna juu mbinguni x2</p>",
-      "uses": 1
-    },
-    {
-      "slug": "sanctus-ggaba-mass",
-      "title": "Sanctus – Ggaba Mass",
-      "language": "LATIN",
-      "massParts": [
-        "OFFERTORY"
-      ],
-      "lyrics": "<p>Holy Holy Holy Lord God of Hosts!<br />Heaven and earth, Heaven and earth are filled with your Glory<br />{Hosanna! Hosanna Hosanna in the Highest! *2}<br />Blessed is He, blessed is He who comes in the Lord’s name.<br />{Hosanna! Hosanna Hosanna in the Highest! *2}</p>",
-      "uses": 1
-    },
-    {
-      "slug": "sanctus-holy-spirit-mass",
-      "title": "Sanctus – Holy Spirit Mass",
-      "language": "LATIN",
-      "massParts": [
-        "OFFERTORY"
-      ],
-      "lyrics": "<p>Holy, Holy, Holy is the Lord, Holy is the Lord, Almighty God. *2<br />Heaven and earth are full of your glory *2<br />Hosanna, Hosanna, Hosanna in the highest *2<br />Blessed is He who comes now to us,<br />Blessed is He who comes in the Lord’s name.<br />Hosanna, Hosanna, Hosanna in the highest *2</p>",
-      "uses": 2
-    },
-    {
-      "slug": "sanctus-misa-fadhili",
-      "title": "Sanctus – Misa Fadhili",
-      "language": "SWAHILI",
-      "massParts": [
-        "OFFERTORY"
-      ],
-      "lyrics": "<p>Mtakatifu, mtakatifu Bwana; Mtakatifu Mungu wa majeshi<br />Mbingu na dunia zimejaa, zimejaa utukufu wako<br />Hosanna *5 Hosanna juu mbinguni *2<br />Mbarikiwa yeye ajaye kwa jina lake Bwana<br />Hosanna *5 Hosanna juu mbinguni *2</p>",
-      "uses": 3
-    },
-    {
-      "slug": "sanctus-misa-kariobangi",
-      "title": "Sanctus – Misa Kariobangi",
-      "language": "SWAHILI",
-      "massParts": [
-        "OFFERTORY"
-      ],
-      "lyrics": "<p>Viongozi: (Bass) Mtakatifu<br />Wote: Mtakatifu mtakatifu Bwana Mungu<br />V. (Bass) Wa majeshi W. Mbingu na dunia zimejaa ‘tukufu wako<br />V. (Tenor) Hosanna! W. Hosana juu Mbinguni x2<br />V. (Tenor) Hosanna! W. Hosana juu Mbinguni<br />V. (Bass) Mbarikiwa W. Anayekuja kwa jina lake Bwana Mungu x2<br />V. (Tenor) Hosanna ...</p>",
-      "uses": 1
-    },
-    {
-      "slug": "sanctus-misa-paulo",
-      "title": "Sanctus – Misa Paulo",
-      "language": "SWAHILI",
-      "massParts": [
-        "OFFERTORY"
-      ],
-      "lyrics": "<p>Mtakatifu *3 Bwana Mungu wa majeshi.<br />Mbingu na dunia! Zimejaa, Utukufu wako Bwana.<br />Hosana juu x3 Mbinguni.<br />Mbarikiwa anayekuja; kwa jina la Bwana.<br />Hosana juu x3 Mbinguni</p>",
-      "uses": 3
-    },
-    {
-      "slug": "sanctus-misa-shukrani",
-      "title": "Sanctus – Misa Shukrani",
-      "language": "SWAHILI",
-      "massParts": [
-        "OFFERTORY"
-      ],
-      "lyrics": "<p>Mtakatifu, mtakatifu, mtakatifu ewe Bwana,<br />{Bwana wetu Mungu wa majeshi} *2<br />1. Mbingu na dunia zimejaa utukufu, kweli zimejaa wako utukufu;<br />This Sunday the Choir Family prays with Jane Wairimu for her intentions and Choir intentions; thank you, Jane, for the songs selections!<br />{Hosanna! Hosanna! Hossana! Hossana juu mbinguni} *2<br />2. Amebarikiwa yule mwenye kuja kwetu - yule mwenye kuja, kwa jina la Bwana<br />{Hosanna! Hosanna! Hossana! Hossana juu mbinguni} *2</p>",
-      "uses": 1
-    },
-    {
-      "slug": "sanctus-misa-subukia",
-      "title": "Sanctus – Misa Subukia",
-      "language": "LATIN",
-      "massParts": [
-        "OFFERTORY"
-      ],
-      "lyrics": "<p>Mtakatifu, Mtakatifu, Mtakatifu Mungu wa majeshi<br />Mbingu na dunia, zimejaa, zimejaa utukufu wako.<br />Hossanna, hosanna, hosanna hosanna juu mbinguni *2<br />Mbarikiwa anayekuja, anayekuja kwa jina la Bwana.<br />Hossanna, hosanna, hosanna hosanna juu mbinguni *2</p>",
-      "uses": 2
-    },
-    {
-      "slug": "sanctus-misa-taita",
-      "title": "Sanctus – Misa Taita",
-      "language": "SWAHILI",
-      "massParts": [
-        "OFFERTORY"
-      ],
-      "lyrics": "<p>V. Mtakatifu Bwana Mungu wetu W. Ee, Hosana juu!<br />V. Mtakatifu Bwana Mungu wetu W. Ee, Hosana juu!<br />V. Mtakatifu Bwana Mungu wetu W. Ee, Hosana juu!<br />W. Mbinguni.<br />1. Utukuzwe Bwana Mungu W. Ee!<br />V. Mungu Muumba wetu W. Ee!<br />V. Mbingu na dunia zimejaa Utukufu wako W. Ee! Ee! Ee! Ee, hosanna juu<br />V. Ee, Ee, mbinguni W. Mbinguni<br />2. Utukuzwe Bwana Mungu W. Ee!<br />V. Mungu Mkombozi wetu W. Ee!<br />V. Uliangamiza mauti ukaleta uzima mpya W. Ee! Ee! Ee! Ee, hosanna juu<br />V. Ee, Ee, mbinguni W. Mbinguni<br />This Sunday the Choir Family prays with Agnes Nelima for her intentions and Choir intentions; thank you, Nelima, for the songs selections!<br />3. Utukuzwe Bwana Mungu W. Ee!<br />V. Mungu Mfariji wetu W. Ee!<br />V. Ulimtuma Roho kwetu tuwe sote mwili mmoja W. Ee! Ee! Ee!<br />W. Ee, hosanna juu, mbinguni<br />V. Ee, Ee, mbinguni<br />V. Mtakatifu....</p>",
-      "uses": 2
-    },
-    {
-      "slug": "sanctus-swedish-mass",
-      "title": "Sanctus – Swedish Mass",
-      "language": "LATIN",
-      "massParts": [
-        "OFFERTORY"
-      ],
-      "lyrics": "<p>Holy, Holy, Holy Lord, earth is full of your glory,<br />Glory fills the Heaven’s too, sing to Him Hosanna!<br />Blessed is the One who comes, bringing this great glory,<br />Holy, Holy, Holy Lord, Sing to Him Hosanna!</p>",
-      "uses": 1
-    },
-    {
       "slug": "sasa-wakati-umefika",
       "title": "Sasa Wakati Umefika",
       "language": "SWAHILI",
@@ -5076,28 +4894,20 @@
       "uses": 1
     },
     {
-      "slug": "subukia-mass",
-      "title": "Subukia Mass",
-      "language": "SWAHILI",
-      "massParts": [
-        "KYRIE",
-        "GLORIA",
-        "GOSPEL_ACCLAMATION"
-      ],
-      "lyrics": "<p>{Utukufu juu kwa Mungu, na amani duniani,<br />kwao watu wenye mapenzi, watu wenye mapenzi mema } *2</p><p>1. Tunakusifu tunakuheshimu, twakuabudu tunakutukuza<br />Twakushukuru kwa ajili yako, ya utukufu wako mkuu.<br />2. Ee Mungu baba ndiwe mfalme, Mfalme wa Mbinguni Baba mwenyezi.<br />Ee Yesu Kristu mwana wa pekee, mwanakondoo mwana wa Baba.<br />3. Uondoaye dhambi za watu tuhurumie tusikilize,<br />Tuhurumie mwenye rehema maombi yetu uyapokee.<br />4. Uketiye kuume kwake, Mungu baba tuhurumie.<br />Kwa kuwa ndiwe pekee yako, Pekee yako Mtakatifu.<br />5. Pamoja naye roho Mtakatifu, katika utukufu wake<br />Anayeishi na kutawala, milele yote Amina.</p>",
-      "uses": 6
-    },
-    {
       "slug": "swedish-mass",
       "title": "Swedish Mass",
       "language": "ENGLISH",
       "massParts": [
         "KYRIE",
         "AGNUS_DEI",
-        "SANCTUS"
+        "SANCTUS",
+        "OFFERTORY"
       ],
-      "lyrics": "<p>Lamb of God, O Jesus Christ, take away our sin,<br />And have mercy on us all, and have mercy on us *2<br />Lamb of God, O Jesus Christ, take away our sin,<br />GGrant us peace, O grant us peace,<br />Grant us peace, forever.</p>",
-      "uses": 8
+      "aliases": [
+        "Sanctus – Swedish Mass"
+      ],
+      "lyrics": "<p>Lamb of God, O Jesus Christ, take away our sin,<br />And have mercy on us all, and have mercy on us *2<br />Lamb of God, O Jesus Christ, take away our sin,<br />GGrant us peace, O grant us peace,<br />Grant us peace, forever.</p>\n<p><strong>Sanctus</strong></p>\n<p>Holy, Holy, Holy Lord, earth is full of your glory,<br />Glory fills the Heaven’s too, sing to Him Hosanna!<br />Blessed is the One who comes, bringing this great glory,<br />Holy, Holy, Holy Lord, Sing to Him Hosanna!</p>",
+      "uses": 9
     },
     {
       "slug": "sweet-sacrament-divine",
@@ -6047,8 +5857,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Kariobangi",
-          "slug": "sanctus-misa-kariobangi"
+          "song": "Misa Kariobangi",
+          "slug": "misa-kariobangi"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -6160,8 +5970,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Paulo",
-          "slug": "sanctus-misa-paulo"
+          "song": "Misa Mt. Paulo",
+          "slug": "misa-mt-paulo"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -6278,8 +6088,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Ggaba Mass",
-          "slug": "sanctus-ggaba-mass"
+          "song": "Ggaba Mass",
+          "slug": "ggaba-mass"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -6391,8 +6201,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Subukia",
-          "slug": "sanctus-misa-subukia"
+          "song": "Misa Subukia",
+          "slug": "misa-subukia"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -6484,8 +6294,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "Centenary",
-          "slug": "centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "OFFERTORY",
@@ -6504,8 +6314,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Fadhili",
-          "slug": "sanctus-misa-fadhili"
+          "song": "Misa Fadhili",
+          "slug": "misa-fadhili"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -6514,8 +6324,8 @@
         },
         {
           "part": "GREAT_AMEN",
-          "song": "Centenary",
-          "slug": "centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "OUR_FATHER",
@@ -6612,8 +6422,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Taita",
-          "slug": "sanctus-misa-taita"
+          "song": "Misa Taita",
+          "slug": "misa-taita"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -6720,8 +6530,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Holy Spirit Mass",
-          "slug": "sanctus-holy-spirit-mass"
+          "song": "Holy Spirit Mass",
+          "slug": "holy-spirit-mass"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -6828,8 +6638,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Subukia",
-          "slug": "sanctus-misa-subukia"
+          "song": "Misa Subukia",
+          "slug": "misa-subukia"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -6941,8 +6751,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Centenary Mass",
-          "slug": "sanctus-centenary-mass"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -7054,8 +6864,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Amecea Mass",
-          "slug": "sanctus-amecea-mass"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -7172,8 +6982,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Paulo",
-          "slug": "sanctus-misa-paulo"
+          "song": "Misa Mt. Paulo",
+          "slug": "misa-mt-paulo"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -7280,8 +7090,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Paulo",
-          "slug": "sanctus-misa-paulo"
+          "song": "Misa Mt. Paulo",
+          "slug": "misa-mt-paulo"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -7388,8 +7198,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Fadhili",
-          "slug": "sanctus-misa-fadhili"
+          "song": "Misa Fadhili",
+          "slug": "misa-fadhili"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -7496,8 +7306,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Shukrani",
-          "slug": "sanctus-misa-shukrani"
+          "song": "Misa Shukrani",
+          "slug": "misa-shukrani"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -7599,8 +7409,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Taita",
-          "slug": "sanctus-misa-taita"
+          "song": "Misa Taita",
+          "slug": "misa-taita"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -7810,8 +7620,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Swedish Mass",
-          "slug": "sanctus-swedish-mass"
+          "song": "Swedish Mass",
+          "slug": "swedish-mass"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -8016,8 +7826,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Misa Fadhili",
-          "slug": "sanctus-misa-fadhili"
+          "song": "Misa Fadhili",
+          "slug": "misa-fadhili"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -8114,8 +7924,8 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Sanctus – Holy Spirit Mass",
-          "slug": "sanctus-holy-spirit-mass"
+          "song": "Holy Spirit Mass",
+          "slug": "holy-spirit-mass"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -8290,13 +8100,13 @@
         },
         {
           "part": "KYRIE",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "GLORIA",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -8330,18 +8140,18 @@
         },
         {
           "part": "SANCTUS",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "MYSTERY_OF_FAITH",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "GREAT_AMEN",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "OUR_FATHER",
@@ -8355,8 +8165,8 @@
         },
         {
           "part": "AGNUS_DEI",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "COMMUNION",
@@ -8624,13 +8434,13 @@
         },
         {
           "part": "KYRIE",
-          "song": "Misa Centenary",
-          "slug": "misa-centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "GLORIA",
-          "song": "Misa Centenary",
-          "slug": "misa-centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -8644,8 +8454,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "Misa Centinary",
-          "slug": "misa-centinary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "OFFERTORY",
@@ -8664,18 +8474,18 @@
         },
         {
           "part": "SANCTUS",
-          "song": "Misa Centenary",
-          "slug": "misa-centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "MYSTERY_OF_FAITH",
-          "song": "Misa Centenary",
-          "slug": "misa-centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "GREAT_AMEN",
-          "song": "Misa Centenary",
-          "slug": "misa-centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "OUR_FATHER",
@@ -8689,8 +8499,8 @@
         },
         {
           "part": "AGNUS_DEI",
-          "song": "Misa Centenary",
-          "slug": "misa-centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "COMMUNION",
@@ -9264,8 +9074,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "Misa Centenary",
-          "slug": "misa-centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "OFFERTORY",
@@ -9613,8 +9423,8 @@
         },
         {
           "part": "SANCTUS",
-          "song": "Misa Elizabeti",
-          "slug": "misa-elizabeti"
+          "song": "Misa Mt. Elizabeti",
+          "slug": "misa-mt-elizabeti"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -10846,8 +10656,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "Misa Amecea",
-          "slug": "misa-amecea"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "OFFERTORY",
@@ -10959,8 +10769,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "Misa Amecea",
-          "slug": "misa-amecea"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "OFFERTORY",
@@ -11283,13 +11093,13 @@
         },
         {
           "part": "KYRIE",
-          "song": "Subukia Mass",
-          "slug": "subukia-mass"
+          "song": "Misa Subukia",
+          "slug": "misa-subukia"
         },
         {
           "part": "GLORIA",
-          "song": "Subukia Mass",
-          "slug": "subukia-mass"
+          "song": "Misa Subukia",
+          "slug": "misa-subukia"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -11303,8 +11113,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "Centenary",
-          "slug": "centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "OFFERTORY",
@@ -11333,8 +11143,8 @@
         },
         {
           "part": "GREAT_AMEN",
-          "song": "Centenary",
-          "slug": "centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "OUR_FATHER",
@@ -12295,8 +12105,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "Centenary",
-          "slug": "centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "OFFERTORY",
@@ -12320,8 +12130,8 @@
         },
         {
           "part": "MYSTERY_OF_FAITH",
-          "song": "Centenary",
-          "slug": "centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "GREAT_AMEN",
@@ -12388,13 +12198,13 @@
         },
         {
           "part": "KYRIE",
-          "song": "Luo Mass",
-          "slug": "luo-mass"
+          "song": "Misa Luo",
+          "slug": "misa-luo"
         },
         {
           "part": "GLORIA",
-          "song": "Luo Mass",
-          "slug": "luo-mass"
+          "song": "Misa Luo",
+          "slug": "misa-luo"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -12408,8 +12218,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "Mass of Christ the Savior",
-          "slug": "mass-of-christ-the-savior"
+          "song": "Mass of Christ the Saviour",
+          "slug": "mass-of-christ-the-saviour"
         },
         {
           "part": "OFFERTORY",
@@ -12433,8 +12243,8 @@
         },
         {
           "part": "MYSTERY_OF_FAITH",
-          "song": "Mass of Christ the Savior",
-          "slug": "mass-of-christ-the-savior"
+          "song": "Mass of Christ the Saviour",
+          "slug": "mass-of-christ-the-saviour"
         },
         {
           "part": "GREAT_AMEN",
@@ -12644,8 +12454,8 @@
         },
         {
           "part": "SANCTUS",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "MYSTERY_OF_FAITH",
@@ -13096,13 +12906,13 @@
         },
         {
           "part": "MYSTERY_OF_FAITH",
-          "song": "Mass of Christ the Savior",
-          "slug": "mass-of-christ-the-savior"
+          "song": "Mass of Christ the Saviour",
+          "slug": "mass-of-christ-the-saviour"
         },
         {
           "part": "GREAT_AMEN",
-          "song": "Mass of Christ the Savior",
-          "slug": "mass-of-christ-the-savior"
+          "song": "Mass of Christ the Saviour",
+          "slug": "mass-of-christ-the-saviour"
         },
         {
           "part": "OUR_FATHER",
@@ -13832,13 +13642,13 @@
         },
         {
           "part": "KYRIE",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "GLORIA",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -13852,8 +13662,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "OFFERTORY",
@@ -13872,18 +13682,18 @@
         },
         {
           "part": "SANCTUS",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "MYSTERY_OF_FAITH",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "GREAT_AMEN",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "OUR_FATHER",
@@ -13897,8 +13707,8 @@
         },
         {
           "part": "AGNUS_DEI",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "COMMUNION",
@@ -14078,8 +13888,8 @@
         },
         {
           "part": "GLORIA",
-          "song": "Misa Centenary",
-          "slug": "misa-centenary"
+          "song": "Centenary Mass",
+          "slug": "centenary-mass"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -14492,8 +14302,8 @@
         },
         {
           "part": "MYSTERY_OF_FAITH",
-          "song": "Mass of Christ the Savior",
-          "slug": "mass-of-christ-the-savior"
+          "song": "Mass of Christ the Saviour",
+          "slug": "mass-of-christ-the-saviour"
         },
         {
           "part": "GREAT_AMEN",
@@ -15115,13 +14925,13 @@
         },
         {
           "part": "KYRIE",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "GLORIA",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -15155,18 +14965,18 @@
         },
         {
           "part": "SANCTUS",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "MYSTERY_OF_FAITH",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "GREAT_AMEN",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "OUR_FATHER",
@@ -15180,8 +14990,8 @@
         },
         {
           "part": "AGNUS_DEI",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "COMMUNION",
@@ -15228,13 +15038,13 @@
         },
         {
           "part": "KYRIE",
-          "song": "Subukia Mass",
-          "slug": "subukia-mass"
+          "song": "Misa Subukia",
+          "slug": "misa-subukia"
         },
         {
           "part": "GLORIA",
-          "song": "Subukia Mass",
-          "slug": "subukia-mass"
+          "song": "Misa Subukia",
+          "slug": "misa-subukia"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -15248,8 +15058,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "Subukia Mass",
-          "slug": "subukia-mass"
+          "song": "Misa Subukia",
+          "slug": "misa-subukia"
         },
         {
           "part": "GOSPEL_ACCLAMATION",
@@ -15597,13 +15407,13 @@
         },
         {
           "part": "KYRIE",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "GLORIA",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -15617,8 +15427,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "Subukia Mass",
-          "slug": "subukia-mass"
+          "song": "Misa Subukia",
+          "slug": "misa-subukia"
         },
         {
           "part": "OFFERTORY",
@@ -15637,18 +15447,18 @@
         },
         {
           "part": "SANCTUS",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "MYSTERY_OF_FAITH",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "GREAT_AMEN",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "OUR_FATHER",
@@ -15662,8 +15472,8 @@
         },
         {
           "part": "AGNUS_DEI",
-          "song": "Akamba Mass",
-          "slug": "akamba-mass"
+          "song": "Misa Akamba",
+          "slug": "misa-akamba"
         },
         {
           "part": "COMMUNION",
@@ -15725,13 +15535,13 @@
         },
         {
           "part": "KYRIE",
-          "song": "Mass of Reverence",
-          "slug": "mass-of-reverence"
+          "song": "Mass of Reverence Hail Mary",
+          "slug": "mass-of-reverence-hail-mary"
         },
         {
           "part": "GLORIA",
-          "song": "Mass of Reverence",
-          "slug": "mass-of-reverence"
+          "song": "Mass of Reverence Hail Mary",
+          "slug": "mass-of-reverence-hail-mary"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -15944,6 +15754,7 @@
       {
         "kept": "Misa Mt. Elizabeti",
         "absorbed": [
+          "Misa Elizabeti",
           "Mt. Elizabeti"
         ]
       },
@@ -15951,6 +15762,12 @@
         "kept": "Alleluia, Our Lord is Merciful",
         "absorbed": [
           "Our Lord is Merciful"
+        ]
+      },
+      {
+        "kept": "Mass of Christ the Saviour",
+        "absorbed": [
+          "Mass of Christ the Savior"
         ]
       },
       {
@@ -15971,6 +15788,12 @@
         "kept": "Wonderful Merciful Saviour",
         "absorbed": [
           "Wonderful Merciful Savior"
+        ]
+      },
+      {
+        "kept": "Misa Fadhili",
+        "absorbed": [
+          "Sanctus – Misa Fadhili"
         ]
       },
       {
@@ -16004,7 +15827,8 @@
       {
         "kept": "Holy Spirit Mass",
         "absorbed": [
-          "Holy Spirit"
+          "Holy Spirit",
+          "Sanctus – Holy Spirit Mass"
         ]
       },
       {
@@ -16026,6 +15850,22 @@
         ]
       },
       {
+        "kept": "Misa Akamba",
+        "absorbed": [
+          "Kamba Mass",
+          "Akamba Mass"
+        ]
+      },
+      {
+        "kept": "Centenary Mass",
+        "absorbed": [
+          "Misa Centenary",
+          "Centenary",
+          "Sanctus – Centenary Mass",
+          "Misa Centinary"
+        ]
+      },
+      {
         "kept": "Nyasaye Neno Hero",
         "absorbed": [
           "Nyasaye Neno"
@@ -16034,13 +15874,20 @@
       {
         "kept": "Misa Mt. Paulo",
         "absorbed": [
-          "Misa Paulo"
+          "Misa Paulo",
+          "Sanctus – Misa Paulo"
         ]
       },
       {
         "kept": "Haya Tazameni (Ameweza!)",
         "absorbed": [
           "Haya Tazameni"
+        ]
+      },
+      {
+        "kept": "Misa Kariobangi",
+        "absorbed": [
+          "Sanctus – Misa Kariobangi"
         ]
       },
       {
@@ -16073,6 +15920,12 @@
         "absorbed": [
           "Our Lady of Mercy",
           "Sanctus – Our Lady of Mercy Mass"
+        ]
+      },
+      {
+        "kept": "Misa Taita",
+        "absorbed": [
+          "Sanctus – Misa Taita"
         ]
       },
       {
@@ -16109,12 +15962,6 @@
         "kept": "Sweet Sacrament Divine",
         "absorbed": [
           "Sweet Sacrament"
-        ]
-      },
-      {
-        "kept": "Akamba Mass",
-        "absorbed": [
-          "Kamba Mass"
         ]
       },
       {
@@ -16161,6 +16008,13 @@
         ]
       },
       {
+        "kept": "Misa Subukia",
+        "absorbed": [
+          "Subukia Mass",
+          "Sanctus – Misa Subukia"
+        ]
+      },
+      {
         "kept": "Yawa Uling'alinga Uparang'o Injili Kalo",
         "absorbed": [
           "Yawa Uling'aling'a"
@@ -16204,6 +16058,12 @@
         ]
       },
       {
+        "kept": "Ggaba Mass",
+        "absorbed": [
+          "Sanctus – Ggaba Mass"
+        ]
+      },
+      {
         "kept": "O God Our Help in Ages Past",
         "absorbed": [
           "O God Our Help"
@@ -16242,7 +16102,11 @@
       {
         "kept": "A.M.E.C.E.A. Mass",
         "absorbed": [
-          "Amecea Mass"
+          "Amecea Mass",
+          "Misa Amecea",
+          "Amecea",
+          "A.M.E.C.E.A.",
+          "Sanctus – Amecea Mass"
         ]
       },
       {
@@ -16298,6 +16162,12 @@
         ]
       },
       {
+        "kept": "Mass of Reverence Hail Mary",
+        "absorbed": [
+          "Mass of Reverence"
+        ]
+      },
+      {
         "kept": "Amani Yako Bwana Isambae",
         "absorbed": [
           "Amani Yako"
@@ -16313,6 +16183,12 @@
         "kept": "Ave Verum (Gounod)",
         "absorbed": [
           "Ave Verum"
+        ]
+      },
+      {
+        "kept": "Misa Luo",
+        "absorbed": [
+          "Luo Mass"
         ]
       },
       {
@@ -16409,15 +16285,15 @@
         ]
       },
       {
-        "kept": "Ikaari Riri (Gikuyu)",
+        "kept": "Swedish Mass",
         "absorbed": [
-          "Ikaari Riri"
+          "Sanctus – Swedish Mass"
         ]
       },
       {
-        "kept": "A.M.E.C.E.A.",
+        "kept": "Ikaari Riri (Gikuyu)",
         "absorbed": [
-          "Amecea"
+          "Ikaari Riri"
         ]
       },
       {
@@ -16425,6 +16301,12 @@
         "absorbed": [
           "Twende Nyumbani Mwa Bwana Hoya!",
           "Twende Nyumbani (Hoya!)"
+        ]
+      },
+      {
+        "kept": "Misa Shukrani",
+        "absorbed": [
+          "Sanctus – Misa Shukrani"
         ]
       },
       {
