@@ -2,11 +2,11 @@
  * Imports the parsed Sunday worship aids in prisma/data/liturgical-songs.json:
  * the song catalogue with lyrics, and a Mass plan for each Sunday.
  *
- *   node scripts/import-lyrics.mjs            # songs only
- *   node scripts/import-lyrics.mjs --plans    # songs and Mass plans
- *   node scripts/import-lyrics.mjs --publish  # …and publish those plans
- *   node scripts/import-lyrics.mjs --replace-lyrics   # overwrite existing lyrics
- *   node scripts/import-lyrics.mjs --prune            # drop merged duplicates
+ *   node --env-file=.env scripts/import-lyrics.mjs            # songs only
+ *   node --env-file=.env scripts/import-lyrics.mjs --plans    # songs and Mass plans
+ *   node --env-file=.env scripts/import-lyrics.mjs --publish  # …and publish those plans
+ *   node --env-file=.env scripts/import-lyrics.mjs --replace-lyrics   # overwrite existing lyrics
+ *   node --env-file=.env scripts/import-lyrics.mjs --prune            # drop merged duplicates
  *
  * Safe to re-run: songs upsert by slug and plans by date. Existing lyrics are
  * only replaced when the imported version is longer, so hand edits survive —
