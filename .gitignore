@@ -46,3 +46,6 @@ originals/
 
 # runtime uploads — on the droplet this path is a symlink to /var/lib/choir-uploads
 public/uploads/
+
+# large source archives
+*.zip
