@@ -132,12 +132,15 @@ async function main() {
       console.log(`${entry.title}: added`);
     }
 
-    // Plans list these by name only until the song exists to point at.
-    const { count } = await prisma.massPlanItem.updateMany({
-      where: { songSlug: null, song: entry.title },
-      data: { songSlug: entry.slug },
-    });
-    linked += count;
+    // Plans list these by name only until the song exists to point at. Prisma
+    // drops an undefined filter, which would claim every unlinked item.
+    if (entry.title) {
+      const { count } = await prisma.massPlanItem.updateMany({
+        where: { songSlug: null, song: entry.title },
+        data: { songSlug: entry.slug },
+      });
+      linked += count;
+    }
   }
 
   console.log(
