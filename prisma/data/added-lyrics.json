@@ -18,6 +18,45 @@
     ]
   },
   {
+    "slug": "psalm-103",
+    "title": "Psalm 103",
+    "language": "ENGLISH",
+    "massParts": ["RESPONSORIAL_PSALM"],
+    "verses": [
+      ["Psalm 103:1-2. 3-4. 9-10. 11-12 (R. 8)"],
+      [
+        "R/. The Lord is compassionate and gracious, slow to anger and rich in mercy."
+      ],
+      [
+        "Bless the LORD, O my soul,",
+        "And all within me, his holy name.",
+        "Bless the LORD, O my soul,",
+        "And never forget all his benefits. R/."
+      ],
+      [
+        "It is the LORD who forgives all your sins,",
+        "who heals every one of your ills,",
+        "who redeems your life from the grave,",
+        "who crowns you with mercy and compassion. R/."
+      ],
+      [
+        "R/. The Lord is compassionate and gracious, slow to anger and rich in mercy."
+      ],
+      [
+        "He will not always find fault;",
+        "nor persist in his anger forever.",
+        "He does not treat us according to our sins,",
+        "nor repay us according to our faults. R/."
+      ],
+      [
+        "For as the heavens are high above the earth,",
+        "So strong his mercy for those who fear him.",
+        "As far as the east is from the west,",
+        "So far from us does he remove our transgressions. R/."
+      ]
+    ]
+  },
+  {
     "slug": "nakuja-polepole-nakuja-na-zawadi",
     "title": "Nakuja Polepole, Nakuja na Zawadi",
     "language": "SWAHILI",
