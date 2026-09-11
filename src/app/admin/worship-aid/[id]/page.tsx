@@ -11,6 +11,45 @@ import { PrintButton } from "./print-button";
 export const metadata: Metadata = { title: "Worship aid" };
 export const dynamic = "force-dynamic";
 
+/**
+ * A Mass setting is one record holding every movement, each under its own
+ * heading. Printing all of them under Kyrie, then again under Gloria, buries
+ * the congregation, so show only the movement being sung.
+ */
+const ORDINARY = new Set([
+  "kyrie",
+  "gloria",
+  "sanctus",
+  "mystery of faith",
+  "great amen",
+  "agnus dei",
+]);
+
+function lyricsForPart(lyrics: string, part: string) {
+  const heading = /<p><strong>([^<]+)<\/strong><\/p>/g;
+  const sections: { label: string; start: number; end: number }[] = [];
+
+  for (let m = heading.exec(lyrics); m; m = heading.exec(lyrics)) {
+    if (sections.length > 0) sections[sections.length - 1].end = m.index;
+    sections.push({
+      label: m[1].trim().toLowerCase(),
+      start: m.index + m[0].length,
+      end: lyrics.length,
+    });
+  }
+  if (sections.length === 0) return lyrics;
+
+  const wanted = massPartLabel(part).toLowerCase();
+  const match = sections.find((s) => s.label === wanted);
+  if (match) return lyrics.slice(match.start, match.end);
+
+  // We simply do not hold this movement; printing another one would mislead.
+  if (ORDINARY.has(wanted) && sections.some((s) => ORDINARY.has(s.label))) {
+    return "";
+  }
+  return lyrics.slice(sections[0].start, sections[0].end);
+}
+
 export default async function WorshipAidPage({
   params,
 }: {
@@ -60,7 +99,9 @@ export default async function WorshipAidPage({
             {item.songRef?.lyrics && (
               <div
                 className="aid-lyrics"
-                dangerouslySetInnerHTML={{ __html: item.songRef.lyrics }}
+                dangerouslySetInnerHTML={{
+                  __html: lyricsForPart(item.songRef.lyrics, item.part),
+                }}
               />
             )}
           </section>
