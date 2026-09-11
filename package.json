@@ -16,7 +16,8 @@
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "import:worship-aid": "node scripts/import-worship-aid.mjs",
-    "import:lyrics": "node scripts/import-lyrics.mjs"
+    "import:lyrics": "node scripts/import-lyrics.mjs",
+    "add:lyrics": "node scripts/add-lyrics.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
