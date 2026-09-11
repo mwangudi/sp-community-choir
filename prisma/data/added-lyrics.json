@@ -52,5 +52,51 @@
         "Baba nasema asante kwa yote."
       ]
     ]
+  },
+  {
+    "slug": "frisina",
+    "language": "LATIN",
+    "massParts": ["ANIMA_CHRISTI"],
+    "verses": [
+      [
+        "ANIMA CHRISTI, SANCTIFICA ME",
+        "CORPUS CHRISTI, SALVA ME",
+        "SANGUIS CHRISTI, INEBRIA ME",
+        "AQUA LATERIS CHRISTI, LAVA ME"
+      ],
+      [
+        "Passio Christi, conforta me",
+        "O bone Iesu, exaudi me",
+        "Intra vulnera tua absconde me"
+      ],
+      [
+        "ANIMA CHRISTI, SANCTIFICA ME",
+        "CORPUS CHRISTI, SALVA ME",
+        "SANGUIS CHRISTI, INEBRIA ME",
+        "AQUA LATERIS CHRISTI, LAVA ME"
+      ],
+      [
+        "Ne permittas a te me separari",
+        "Ab hoste maligno defende me",
+        "In hora mortis meæ voca me"
+      ],
+      [
+        "ANIMA CHRISTI, SANCTIFICA ME",
+        "CORPUS CHRISTI, SALVA ME",
+        "SANGUIS CHRISTI, INEBRIA ME",
+        "AQUA LATERIS CHRISTI, LAVA ME"
+      ],
+      [
+        "Et iube me venire ad te",
+        "Ut cum sanctis tuis laudem te",
+        "Per infinita sæcula sæculorum. Amen"
+      ],
+      [
+        "ANIMA CHRISTI, SANCTIFICA ME",
+        "CORPUS CHRISTI, SALVA ME",
+        "SANGUIS CHRISTI, INEBRIA ME",
+        "AQUA LATERIS CHRISTI, LAVA ME"
+      ]
+    ]
   }
 ]

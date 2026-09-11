@@ -106,7 +106,15 @@ async function main() {
     }
 
     if (existing) {
-      await prisma.song.update({ where: { slug: entry.slug }, data: { lyrics: html } });
+      await prisma.song.update({
+        where: { slug: entry.slug },
+        data: {
+          lyrics: html,
+          ...(entry.title ? { title: entry.title } : {}),
+          ...(entry.language ? { language: entry.language } : {}),
+          ...(entry.massParts ? { massParts: entry.massParts } : {}),
+        },
+      });
       songsUpdated += 1;
       console.log(`${existing.title}: lyrics replaced`);
     } else {
