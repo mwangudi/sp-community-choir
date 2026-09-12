@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-11T13:16:32.447Z",
+  "generatedAt": "2026-09-12T03:48:37.292Z",
   "songs": [
     {
       "slug": "3-fold",
@@ -79,45 +79,6 @@
       "uses": 3
     },
     {
-      "slug": "4-fold",
-      "title": "4-Fold",
-      "language": "ENGLISH",
-      "massParts": [
-        "GREAT_AMEN"
-      ],
-      "variants": [
-        {
-          "lyrics": "<p>AMEN *4</p>",
-          "plain": "AMEN *4",
-          "part": "GREAT_AMEN"
-        },
-        {
-          "lyrics": "<p>Amen *4</p>",
-          "plain": "Amen *4",
-          "part": "GREAT_AMEN"
-        }
-      ],
-      "lyrics": "<p>AMEN *4</p>",
-      "uses": 2
-    },
-    {
-      "slug": "4-fold-amen",
-      "title": "4-Fold Amen",
-      "language": "ENGLISH",
-      "massParts": [
-        "GREAT_AMEN"
-      ],
-      "variants": [
-        {
-          "lyrics": "",
-          "plain": "",
-          "part": "GREAT_AMEN"
-        }
-      ],
-      "lyrics": null,
-      "uses": 1
-    },
-    {
       "slug": "a-new-commandment",
       "title": "A New Commandment",
       "language": "ENGLISH",
@@ -138,6 +99,59 @@
       ],
       "lyrics": "<p>A new commandment I give unto you:<br />That you love one another as I have loved you,<br />That you love one another as I have loved you</p><p>1. By this shall all know that you are my disciples,<br />If you have love one for another. *2<br />2. You are my friends if you do what I command you.<br />Without my help you can do nothing. *2<br />3. I am the true vine, my Father is the gard'ner.<br />Abide in me: I will be with you. *2<br />4. True Love is patient, not arrogant nor boastful;<br />Love bears all things, love is eternal. *2</p>",
       "uses": 2
+    },
+    {
+      "slug": "a-m-e-c-e-a",
+      "title": "A.M.E.C.E.A.",
+      "language": "SWAHILI",
+      "massParts": [
+        "KYRIE",
+        "GLORIA",
+        "GOSPEL_ACCLAMATION",
+        "SANCTUS",
+        "MYSTERY_OF_FAITH",
+        "GREAT_AMEN",
+        "AGNUS_DEI"
+      ],
+      "variants": [
+        {
+          "lyrics": "<p>Bwana utuhurumie ee Bwana, Bwana utuhurumie *2<br />Kristu utuhurumie ee Kristu, Kristu utuhurumie *2<br />Bwana utuhurumie ee Bwana, Bwana utuhurumie *2</p>",
+          "plain": "Bwana utuhurumie ee Bwana, Bwana utuhurumie *2 Kristu utuhurumie ee Kristu, Kristu utuhurumie *2 Bwana utuhurumie ee Bwana, Bwana utuhurumie *2",
+          "part": "KYRIE"
+        },
+        {
+          "lyrics": "<p>1. Utukufu kwa Mungu juu mbinguni, na Amani kote duniani<br />(Kwa watu) wenye mapenzi mema</p><p>Tunakusifu Baba tunakuheshimu, twakuabudu sisi tunakutukuza *2</p><p>2. Twakushukuru Mungu kwa ‘tukufu - wako mkuu ewe Mungu Mfalme<br />(Ee Baba) wa mbingu Baba yetu.<br />3. Bwana wetu mwokozi Yesu Kristu - Mwana wa pekee wake Mungu<br />(Uliye) - Mwanakondoo wa Mungu.<br />4. Unayeziondoa dhambi zote - za dunia utuhurumie<br />(pokea) pokea ombi letu.<br />5. Wewe unayeketi kuume - kwake Baba utuhurumie<br />(sikia) - sikia ombi letu.<br />6. Kwani pekee yako ndiwe Bwana - Pekee yako mkuu na Mkombozi<br />(Pekee) - pekee Yesu Kristu.<br />7. Kwa umoja wa Roho Mtakatifu - ndani yake Baba watukuzwa<br />(Ee Yesu) - milele na milele.</p>",
+          "plain": "1. Utukufu kwa Mungu juu mbinguni, na Amani kote duniani (Kwa watu) wenye mapenzi mema  Tunakusifu Baba tunakuheshimu, twakuabudu sisi tunakutukuza *2  2. Twakushukuru Mungu kwa ‘tukufu - wako mkuu ewe Mungu Mfalme (Ee Baba) wa mbingu Baba yetu. 3. Bwana wetu mwokozi Yesu Kristu - Mwana wa pekee wake Mungu (Uliye) - Mwanakondoo wa Mungu. 4. Unayeziondoa dhambi zote - za dunia utuhurumie (pokea) pokea ombi letu. 5. Wewe unayeketi kuume - kwake Baba utuhurumie (sikia) - sikia ombi letu. 6. Kwani pekee yako ndiwe Bwana - Pekee yako mkuu na Mkombozi (Pekee) - pekee Yesu Kristu. 7. Kwa umoja wa Roho Mtakatifu - ndani yake Baba watukuzwa (Ee Yesu) - milele na milele.",
+          "part": "GLORIA"
+        },
+        {
+          "lyrics": "<p>Alleluia *n</p>",
+          "plain": "Alleluia *n",
+          "part": "GOSPEL_ACCLAMATION"
+        },
+        {
+          "lyrics": "<p>Mtakatifu Mtakatifu Bwana, Mungu wa majeshi *2<br />Mbingu na dunia zimejaa zimejaa<br />Mbingu na dunia zimejaa utukufu wako *2<br />Hosana juu *4 Mbinguni<br />Mbarikiwa ‘nayekuja *2 Mbarikiwa<br />Mbarikiwa ‘nayekuja kwa jina jina lake Bwana<br />Hosana juu *4 Mbinguni</p>",
+          "plain": "Mtakatifu Mtakatifu Bwana, Mungu wa majeshi *2 Mbingu na dunia zimejaa zimejaa Mbingu na dunia zimejaa utukufu wako *2 Hosana juu *4 Mbinguni Mbarikiwa ‘nayekuja *2 Mbarikiwa Mbarikiwa ‘nayekuja kwa jina jina lake Bwana Hosana juu *4 Mbinguni",
+          "part": "SANCTUS"
+        },
+        {
+          "lyrics": "<p>Yesu Kristu alikufa Yesu Kristu kafufuka<br />(Yesu) Kristu atakuja atakuja kwetu tena *2</p>",
+          "plain": "Yesu Kristu alikufa Yesu Kristu kafufuka (Yesu) Kristu atakuja atakuja kwetu tena *2",
+          "part": "MYSTERY_OF_FAITH"
+        },
+        {
+          "lyrics": "<p>Amina</p>",
+          "plain": "Amina",
+          "part": "GREAT_AMEN"
+        },
+        {
+          "lyrics": "<p>Mwanakondoo wa Mungu uondoaye dhambi za dunia e Bwana utuhurumie *n<br />Mwanakondoo wa Mungu uondoaye dhambi za dunia e Bwana utujalie amani</p>",
+          "plain": "Mwanakondoo wa Mungu uondoaye dhambi za dunia e Bwana utuhurumie *n Mwanakondoo wa Mungu uondoaye dhambi za dunia e Bwana utujalie amani",
+          "part": "AGNUS_DEI"
+        }
+      ],
+      "lyrics": "<p><strong>Gloria</strong></p>\n<p>1. Utukufu kwa Mungu juu mbinguni, na Amani kote duniani<br />(Kwa watu) wenye mapenzi mema</p><p>Tunakusifu Baba tunakuheshimu, twakuabudu sisi tunakutukuza *2</p><p>2. Twakushukuru Mungu kwa ‘tukufu - wako mkuu ewe Mungu Mfalme<br />(Ee Baba) wa mbingu Baba yetu.<br />3. Bwana wetu mwokozi Yesu Kristu - Mwana wa pekee wake Mungu<br />(Uliye) - Mwanakondoo wa Mungu.<br />4. Unayeziondoa dhambi zote - za dunia utuhurumie<br />(pokea) pokea ombi letu.<br />5. Wewe unayeketi kuume - kwake Baba utuhurumie<br />(sikia) - sikia ombi letu.<br />6. Kwani pekee yako ndiwe Bwana - Pekee yako mkuu na Mkombozi<br />(Pekee) - pekee Yesu Kristu.<br />7. Kwa umoja wa Roho Mtakatifu - ndani yake Baba watukuzwa<br />(Ee Yesu) - milele na milele.</p>\n<p><strong>Sanctus</strong></p>\n<p>Mtakatifu Mtakatifu Bwana, Mungu wa majeshi *2<br />Mbingu na dunia zimejaa zimejaa<br />Mbingu na dunia zimejaa utukufu wako *2<br />Hosana juu *4 Mbinguni<br />Mbarikiwa ‘nayekuja *2 Mbarikiwa<br />Mbarikiwa ‘nayekuja kwa jina jina lake Bwana<br />Hosana juu *4 Mbinguni</p>\n<p><strong>Mystery Of Faith</strong></p>\n<p>Yesu Kristu alikufa Yesu Kristu kafufuka<br />(Yesu) Kristu atakuja atakuja kwetu tena *2</p>\n<p><strong>Gospel Acclamation</strong></p>\n<p>Alleluia *n</p>\n<p><strong>Great Amen</strong></p>\n<p>Amina</p>",
+      "uses": 7
     },
     {
       "slug": "a-m-e-c-e-a-mass",
@@ -174,11 +188,10 @@
         "Amecea Mass",
         "Misa Amecea",
         "Amecea",
-        "A.M.E.C.E.A.",
         "Sanctus – Amecea Mass"
       ],
       "lyrics": "<p><strong>Gloria</strong></p>\n<p>1. Utukufu kwa Mungu juu mbinguni, na Amani kote duniani<br />(Kwa watu) wenye mapenzi mema</p><p>Tunakusifu Baba tunakuheshimu, twakuabudu sisi tunakutukuza *2</p><p>2. Twakushukuru Mungu kwa ‘tukufu - wako mkuu ewe Mungu Mfalme<br />(Ee Baba) wa mbingu Baba yetu.<br />3. Bwana wetu mwokozi Yesu Kristu - Mwana wa pekee wake Mungu<br />(Uliye) - Mwanakondoo wa Mungu.<br />4. Unayeziondoa dhambi zote - za dunia utuhurumie<br />(pokea) pokea ombi letu.<br />5. Wewe unayeketi kuume - kwake Baba utuhurumie<br />(sikia) - sikia ombi letu.<br />6. Kwani pekee yako ndiwe Bwana - Pekee yako mkuu na Mkombozi<br />(Pekee) - pekee Yesu Kristu.<br />7. Kwa umoja wa Roho Mtakatifu - ndani yake Baba watukuzwa<br />(Ee Yesu) - milele na milele.</p>\n<p><strong>Sanctus</strong></p>\n<p>Mtakatifu Mtakatifu Bwana, Mungu wa majeshi *2<br />Mbingu na dunia zimejaa zimejaa<br />Mbingu na dunia zimejaa utukufu wako x2<br />Hosana juu x 4 Mbinguni<br />Mbarikiwa ‘nayekuja *2 Mbarikiwa<br />Mbarikiwa ‘nayekuja kwa jina jina lake Bwana<br />Hosana juu x 4 Mbinguni</p>\n<p><strong>Mystery Of Faith</strong></p>\n<p>Yesu Kristu alikufax, Yesu Kristu kafufuka<br />Kristu atakuja atakuja kwetu tena (Yesu).</p>\n<p><strong>Gospel Acclamation</strong></p>\n<p>Alleluia *6</p>\n<p><strong>Great Amen</strong></p>\n<p>Amina *n</p>\n<p>Aleluiyah *6</p>",
-      "uses": 39
+      "uses": 32
     },
     {
       "slug": "abide-with-me",
@@ -239,23 +252,6 @@
       ],
       "lyrics": "<p>Glory be to God in Highest Heaven!<br />Peace to all His people His people on earth, Heavenly King Almighty Father God,<br />We worship You, we give You thanks,<br />We praise, we glorify You *2</p><p>Lord Jesus Christ (Jesus Christ the only Son of the Father),<br />Lord God Lamb of God (Jesus Christ the only Son of God)<br />You take away our sins have mercy on us;<br />You are seated at the Right Hand of the Father receive our prayer *2<br />You alone are Holy, You only are the Lord,<br />You alone are Most High Jesus Christ *2<br />For You alone are the Holy One (You alone are Lord)<br />For You alone are the Lord (You alone are Lord)<br />You alone are the Most High Jesus Christ with the Holy Spirit, Amen.</p><p>For You alone are the Holy One (You alone are Lord)<br />For You alone are the Lord (You alone are Lord)<br />You alone are the Most High Jesus Christ in the Glory of God the Father Amen.<br />AMEN! *n</p>",
       "uses": 3
-    },
-    {
-      "slug": "agnus-dei-dan",
-      "title": "Agnus Dei - Dan",
-      "language": "LATIN",
-      "massParts": [
-        "AGNUS_DEI"
-      ],
-      "variants": [
-        {
-          "lyrics": "<p>Agnus Dei, qui tollis peccata mundi, miserere nobis.<br />Agnus Dei, qui tollis peccata mundi, miserere nobis.<br />Agnus Dei, qui tollis peccata mundi, dona nobis pacem.</p>",
-          "plain": "Agnus Dei, qui tollis peccata mundi, miserere nobis. Agnus Dei, qui tollis peccata mundi, miserere nobis. Agnus Dei, qui tollis peccata mundi, dona nobis pacem.",
-          "part": "AGNUS_DEI"
-        }
-      ],
-      "lyrics": "<p>Agnus Dei, qui tollis peccata mundi, miserere nobis.<br />Agnus Dei, qui tollis peccata mundi, miserere nobis.<br />Agnus Dei, qui tollis peccata mundi, dona nobis pacem.</p>",
-      "uses": 1
     },
     {
       "slug": "ahsante-bwana-yesu",
@@ -689,8 +685,13 @@
           "part": "GREAT_AMEN"
         }
       ],
+      "aliases": [
+        "4-Fold Amen",
+        "Four Fold",
+        "4-Fold"
+      ],
       "lyrics": "<p>Amen! *4</p>",
-      "uses": 2
+      "uses": 6
     },
     {
       "slug": "amen-good-lordy",
@@ -764,23 +765,6 @@
         }
       ],
       "lyrics": "<p>Amepaa amepaa juu Mbinguni *2<br />1. Nimepewa mamlaka yote aleluya<br />Mbinguni na duniani aleluya<br />2. Nendeni mkawafanye mataifa yote aleluya<br />Wawe wafuasi aleluya<br />3. Wabatizeni kwa jina la Baba na mwana aleluya<br />Na la Roho Mtakatifu aleluya<br />4. Wafundisheni kushika maagizo yote aleluya<br />Niliyowapeni aleluya</p>",
-      "uses": 1
-    },
-    {
-      "slug": "ameweza-haya-tazameni",
-      "title": "Ameweza! (Haya Tazameni)",
-      "language": "SWAHILI",
-      "massParts": [
-        "THANKSGIVING"
-      ],
-      "variants": [
-        {
-          "lyrics": "<p>1. Haya tazameni ninyi wenyewe, Mungu wangu mwenye nguvu ametenda yote<br />Hata magumu yasiyofanyika , Mungu wangu…</p><p>Ameweza! Huyo ameweza yametimia *2<br />Oh Bwana Mungu kaweza, huyo ameweza yametimia<br />Yasiyowezekana, huyo ameweza yametimia<br />Yote ameyatenda, huyo ameweza yametimia<br />Ameweza, huyo ameweza yametimia!</p><p>2. Maji yaliyomwagika kabisa….<br />Ameyazoa yakajaa upya …<br />3. Katikati ya bahari ya sham …<br />Israeli kapita kwa muguu …<br />4. Nilipofukiwa shimo la zege …<br />Kulipokucha kaniweka huru …<br />5. Vilema vyangu nilivyomwonesha …<br />Amevigusa vikapona mara …<br />6. Nitapaza sauti milimani …<br />Dunia yote isikie haya …</p>",
-          "plain": "1. Haya tazameni ninyi wenyewe, Mungu wangu mwenye nguvu ametenda yote Hata magumu yasiyofanyika , Mungu wangu…  Ameweza! Huyo ameweza yametimia *2 Oh Bwana Mungu kaweza, huyo ameweza yametimia Yasiyowezekana, huyo ameweza yametimia Yote ameyatenda, huyo ameweza yametimia Ameweza, huyo ameweza yametimia!  2. Maji yaliyomwagika kabisa…. Ameyazoa yakajaa upya … 3. Katikati ya bahari ya sham … Israeli kapita kwa muguu … 4. Nilipofukiwa shimo la zege … Kulipokucha kaniweka huru … 5. Vilema vyangu nilivyomwonesha … Amevigusa vikapona mara … 6. Nitapaza sauti milimani … Dunia yote isikie haya …",
-          "part": "THANKSGIVING"
-        }
-      ],
-      "lyrics": "<p>1. Haya tazameni ninyi wenyewe, Mungu wangu mwenye nguvu ametenda yote<br />Hata magumu yasiyofanyika , Mungu wangu…</p><p>Ameweza! Huyo ameweza yametimia *2<br />Oh Bwana Mungu kaweza, huyo ameweza yametimia<br />Yasiyowezekana, huyo ameweza yametimia<br />Yote ameyatenda, huyo ameweza yametimia<br />Ameweza, huyo ameweza yametimia!</p><p>2. Maji yaliyomwagika kabisa….<br />Ameyazoa yakajaa upya …<br />3. Katikati ya bahari ya sham …<br />Israeli kapita kwa muguu …<br />4. Nilipofukiwa shimo la zege …<br />Kulipokucha kaniweka huru …<br />5. Vilema vyangu nilivyomwonesha …<br />Amevigusa vikapona mara …<br />6. Nitapaza sauti milimani …<br />Dunia yote isikie haya …</p>",
       "uses": 1
     },
     {
@@ -2503,23 +2487,6 @@
       "uses": 1
     },
     {
-      "slug": "dan-s",
-      "title": "Dan's",
-      "language": "LATIN",
-      "massParts": [
-        "AGNUS_DEI"
-      ],
-      "variants": [
-        {
-          "lyrics": "<p>Agnus Dei, qui tollis peccata mundi, miserere nobis.<br />Agnus Dei, qui tollis peccata mundi, miserere nobis.<br />Agnus Dei, qui tollis peccata mundi, dona nobis pacem.</p>",
-          "plain": "Agnus Dei, qui tollis peccata mundi, miserere nobis. Agnus Dei, qui tollis peccata mundi, miserere nobis. Agnus Dei, qui tollis peccata mundi, dona nobis pacem.",
-          "part": "AGNUS_DEI"
-        }
-      ],
-      "lyrics": "<p>Agnus Dei, qui tollis peccata mundi, miserere nobis.<br />Agnus Dei, qui tollis peccata mundi, miserere nobis.<br />Agnus Dei, qui tollis peccata mundi, dona nobis pacem.</p>",
-      "uses": 1
-    },
-    {
       "slug": "dan-s-agnus-dei",
       "title": "Dan's Agnus Dei",
       "language": "LATIN",
@@ -2533,8 +2500,12 @@
           "part": "AGNUS_DEI"
         }
       ],
+      "aliases": [
+        "Dan's",
+        "Agnus Dei - Dan"
+      ],
       "lyrics": "<p>Agnus Dei, qui tollis peccata mundi, miserere nobis.<br />Agnus Dei, qui tollis peccata mundi, miserere nobis.<br />Agnus Dei, qui tollis peccata mundi, dona nobis pacem.</p>",
-      "uses": 1
+      "uses": 3
     },
     {
       "slug": "dona-nobis-pacem",
@@ -2922,23 +2893,6 @@
         }
       ],
       "lyrics": "<p>1. Forty days and forty nights - Thou wast fasting in the wild;<br />Forty days and forty nights, Tempted, and yet undefiled.<br />2. Sunbeams scorching all the day; Chilly dew-drops nightly shed;<br />Prowling beasts about Thy way; Stones Thy pillow; earth Thy bed.<br />3. Should not we Thy sorrow share; And from worldly joys abstain,<br />Fasting with unceasing prayer, Strong with Thee to suffer pain?<br />4. Then if Satan on us press, Jesus, Savior, hear our call!<br />Victor in the wilderness, Grant we may not faint nor fall!<br />5. Keep, O keep us, Savior dear, Ever constant by Thy side;<br />That with Thee we may appear, At the eternal Eastertide.</p>",
-      "uses": 1
-    },
-    {
-      "slug": "four-fold",
-      "title": "Four Fold",
-      "language": "ENGLISH",
-      "massParts": [
-        "GREAT_AMEN"
-      ],
-      "variants": [
-        {
-          "lyrics": "",
-          "plain": "",
-          "part": "GREAT_AMEN"
-        }
-      ],
-      "lyrics": null,
       "uses": 1
     },
     {
@@ -3607,10 +3561,11 @@
         }
       ],
       "aliases": [
+        "Ameweza! (Haya Tazameni)",
         "Haya Tazameni"
       ],
       "lyrics": "<p>1. Haya tazameni ninyi wenyewe,<br />Mungu wangu mwenye nguvu ametenda yote<br />Hata magumu yasiyofanyika ,<br />Mungu wangu mwenye nguvu ametenda yote<br />Ameweza!<br />Huyo ameweza yametimia *2<br />Oh Bwana Mungu kaweza, huyo ameweza yametimia<br />Yasiyowezekana, huyo ameweza yametimia<br />Yote ameyatenda, huyo ameweza yametimia<br />Ameweza, huyo ameweza yametimia!<br />2. Maji yaliyomwagika kabisa …<br />Ameyazoa yakajaa upya …<br />3. Katikati ya bahari ya sham …<br />Israeli kapita kwa muguu …<br />4. Nilipofukiwa shimo la zege …<br />Kulipokucha kaniweka huru …<br />5. Vilema vyangu nilivyomwonesha…<br />Amevigusa vikapona mara Y…<br />6. Nitapaza sauti milimani …<br />Dunia yote isikie haya …</p>",
-      "uses": 3
+      "uses": 4
     },
     {
       "slug": "he-is-king-of-kings",
@@ -4781,6 +4736,7 @@
       "title": "Jehovah Ok Lo! (Jehovah Cannot Be Defeated!)",
       "language": "ENGLISH",
       "massParts": [
+        "THANKSGIVING",
         "GOSPEL_PROCESSION"
       ],
       "variants": [
@@ -4791,11 +4747,13 @@
         }
       ],
       "aliases": [
+        "OK LO JEHOVAH (Jehovah Cannot Be Defeated!)",
         "JEHOVAH OK LO (Jehovah Cannot Be Defeated!)",
-        "Jehovah Ok Lo!"
+        "Jehovah Ok Lo!",
+        "Ok Lo Jehovah (Dholuo)"
       ],
       "lyrics": "<p>(Jehovah Cannot be Defeated!)</p><p>S/A (Unison): Ok lo, Jehovah ok lo! *2<br />T/B (Unison): Ok lo, Jehovah ok lo! *2<br />Tutti (Parts): Ok lo, Jehovah ok lo! *2</p><p>Solo:<br />Katibed gi pesa<br />Katitem manade<br />Katisom manade<br />Katiriek manade</p><p>Okdi lo gi teko<br />Okdi lo gi ng’uono<br />Okdi lo gi hera<br />Okdi lo gi muolo</p><p>Katimed gi bilo<br />Katibed gi bunde<br />Katidhum kosogo<br />Katimed andiwo</p><p>Ok lo gi rieko<br />Ok lo gadiera<br />Ok lo gichiwo<br />Ok lo telo</p>",
-      "uses": 2
+      "uses": 4
     },
     {
       "slug": "jesu-joy",
@@ -8292,6 +8250,23 @@
       "uses": 4
     },
     {
+      "slug": "nikupe-nini-cha-kukupendeza",
+      "title": "Nikupe Nini (Cha Kukupendeza)",
+      "language": "SWAHILI",
+      "massParts": [
+        "THANKSGIVING"
+      ],
+      "variants": [
+        {
+          "lyrics": "<p>Nikupe nini Mungu wangu<br />Nikupe nini Mungu wangu cha kukupendeza<br />Cha kukupendeza, cha kukupendeza Cha kukupendeza,<br />Cha kupendeza, siku hii ya leo<br />1. Ninacho kidogo, cha kukupendeza, ewe Mungu wangu<br />Ninachoandaa siku hii ya leo ndicho hiki Bwana<br />2. Sadaka ya leo, ni sadaka safi, isiyo na doa<br />Twakuomba Bwana twakuomba Bwana upendezwe nayo</p>",
+          "plain": "Nikupe nini Mungu wangu Nikupe nini Mungu wangu cha kukupendeza Cha kukupendeza, cha kukupendeza Cha kukupendeza, Cha kupendeza, siku hii ya leo 1. Ninacho kidogo, cha kukupendeza, ewe Mungu wangu Ninachoandaa siku hii ya leo ndicho hiki Bwana 2. Sadaka ya leo, ni sadaka safi, isiyo na doa Twakuomba Bwana twakuomba Bwana upendezwe nayo",
+          "part": "THANKSGIVING"
+        }
+      ],
+      "lyrics": "<p>Nikupe nini Mungu wangu<br />Nikupe nini Mungu wangu cha kukupendeza<br />Cha kukupendeza, cha kukupendeza Cha kukupendeza,<br />Cha kupendeza, siku hii ya leo<br />1. Ninacho kidogo, cha kukupendeza, ewe Mungu wangu<br />Ninachoandaa siku hii ya leo ndicho hiki Bwana<br />2. Sadaka ya leo, ni sadaka safi, isiyo na doa<br />Twakuomba Bwana twakuomba Bwana upendezwe nayo</p>",
+      "uses": 1
+    },
+    {
       "slug": "nikupe-nini-ee-mungu",
       "title": "Nikupe Nini Ee Mungu (Chavallah)",
       "language": "SWAHILI",
@@ -8319,11 +8294,10 @@
     },
     {
       "slug": "nikupe-nini-mungu-wangu",
-      "title": "Nikupe Nini Mungu Wangu (Cha Kukupendeza)",
+      "title": "Nikupe Nini Mungu Wangu",
       "language": "SWAHILI",
       "massParts": [
-        "OFFERTORY",
-        "THANKSGIVING"
+        "OFFERTORY"
       ],
       "variants": [
         {
@@ -8358,12 +8332,10 @@
         }
       ],
       "aliases": [
-        "Nikupe Nini Mungu Wangu",
-        "Nikupe Nini",
-        "Nikupe Nini (Cha Kukupendeza)"
+        "Nikupe Nini"
       ],
       "lyrics": "<p><strong>Offertory</strong></p>\n<p>Nikupe nini Mungu wangu, nikupe nini we Mwokozi,<br />nikupe nini Bwana Wangu chakukupendeza.<br />1. Nakutolea mkate toka mmea wa ngano, nakutolea divai ni tunda la mzabibu<br />Ninakuomba Mwokozi, nifanyie msamaha na unipokee.<br />Mema unayoyatenda, nitafanya nini mimi nikurudishie.<br />2. Kila nitakachoshika mbona bado ni kidogo, mema unayoyatenda kwangu mimi naogopa<br />3. Mchana hata usiku wewe wanisimamia na nikiwa safarini waniepusha ajali<br />4. Nikiwa na matatizo Bwana wanisimamia, nikiwa kwenye majonzi wewe unanifariji<br />5. Kama njia sioni wewe unaniongoza, na hata nikopotea kwako unanirudisha<br />Nitafanya nini mimi kitakachokuwa sawa na fadhili zako,<br />nitaimba vipi mimi niyataje mema yote utendayo kwangu</p>\n<p><strong>Offertory</strong></p>\n<p>Nikupe nini Mungu wangu<br />Nikupe nini Mungu wangu cha kukupendeza<br />Cha kukupendeza, cha kukupendeza Cha kukupendeza,<br />Cha kupendeza, siku hii ya leo</p><p>1. Ninacho kidogo, cha kukupendeza, ewe Mungu wangu<br />Ninachoandaa siku hii ya leo ndicho hiki Bwana<br />2. Sadaka ya leo, ni sadaka safi, isiyo na doa<br />Twakuomba Bwana twakuomba Bwana upendezwe nayo</p>",
-      "uses": 10
+      "uses": 9
     },
     {
       "slug": "nimeahidi-yesu",
@@ -9300,26 +9272,6 @@
       "uses": 5
     },
     {
-      "slug": "ok-lo-jehovah-jehovah-cannot-be-defeated",
-      "title": "OK LO JEHOVAH (Jehovah Cannot Be Defeated!)",
-      "language": "ENGLISH",
-      "massParts": [
-        "THANKSGIVING"
-      ],
-      "variants": [
-        {
-          "lyrics": "<p>S/A (Unison): Ok lo, Jehovah ok lo! *2<br />T/B (Unison): Ok lo, Jehovah ok lo! *2<br />Tutti (Parts): Ok lo, Jehovah ok lo! *2<br />Solo:<br />Katibed gi pesa<br />Katitem manade<br />Katisom manade<br />Katiriek manade<br />Okdi lo gi teko<br />Okdi lo gi ng’uono<br />Okdi lo gi hera<br />Okdi lo gi muolo<br />Katimed gi bilo<br />Katibed gi bunde<br />Katidhum kosogo<br />Katimed andiwo<br />Ok lo gi rieko<br />Ok lo gadiera<br />Ok lo gichiwo<br />Ok lo telo</p>",
-          "plain": "S/A (Unison): Ok lo, Jehovah ok lo! *2 T/B (Unison): Ok lo, Jehovah ok lo! *2 Tutti (Parts): Ok lo, Jehovah ok lo! *2 Solo: Katibed gi pesa Katitem manade Katisom manade Katiriek manade Okdi lo gi teko Okdi lo gi ng’uono Okdi lo gi hera Okdi lo gi muolo Katimed gi bilo Katibed gi bunde Katidhum kosogo Katimed andiwo Ok lo gi rieko Ok lo gadiera Ok lo gichiwo Ok lo telo",
-          "part": "THANKSGIVING"
-        }
-      ],
-      "aliases": [
-        "Ok Lo Jehovah (Dholuo)"
-      ],
-      "lyrics": "<p>(Jehovah Cannot be Defeated!)<br />S/A (Unison): Ok lo, Jehovah ok lo! *2<br />T/B (Unison): Ok lo, Jehovah ok lo! *2<br />Tutti (Parts): Ok lo, Jehovah ok lo! *2<br />Solo:<br />Katibed gi pesa<br />Katitem manade<br />Katisom manade<br />Katiriek manade<br />Okdi lo gi teko<br />Okdi lo gi ng’uono<br />Okdi lo gi hera<br />Okdi lo gi muolo<br />Katimed gi bilo<br />Katibed gi bunde<br />Katidhum kosogo<br />Katimed andiwo<br />Ok lo gi rieko<br />Ok lo gadiera<br />Ok lo gichiwo<br />Ok lo telo</p>",
-      "uses": 2
-    },
-    {
       "slug": "omorembe",
       "title": "Omorembe",
       "language": "ENGLISH",
@@ -9876,11 +9828,10 @@
         }
       ],
       "aliases": [
-        "Psalm 90",
-        "Psalm 95"
+        "Psalm 90"
       ],
       "lyrics": "<p><strong>Responsorial Psalm</strong></p>\n<p>R. O Lord, you have been our refuge,<br />From generation to generation.<br />You turn man back to dust,<br />And say, “Return, O children of men.”<br />To your eyes a thousand years<br />Are like yesterday, come and gone,<br />Or like a watch in the night. R.<br />You sweep them away like a dream,<br />Like grass which is fresh in the morning.<br />In the morning it sprouts and is fresh;<br />By evening it withers and fades. R.<br />Then teach us to number our days,<br />That we may gain wisdom of heart.<br />Turn back, O Lord! How Long?<br />Show pity to your servants. R.<br />At dawn, fill us with your merciful love;<br />We shall exult and rejoice all our days.<br />Let the favour of the Lord our God be upon us;<br />Give success to the work of our hands.<br />O give success to the work of our hands. R.</p>\n<p><strong>Responsorial Psalm</strong></p>\n<p>R. O that today you would listen to his voice! Harden not your hearts.</p><p>Come, let us ring out our joy to the Lord;<br />hail the rock who saves us.<br />Let us come into His presence,<br />giving thanks; let us hail Him with a song of praise. R.</p><p>O come; let us bow and bend low.<br />Let us kneel before the God who made us,<br />for He is our God and we<br />the people who belong to His pasture,<br />the flock that is led by his hand. R.</p><p>O that today you would listen to His voice!<br />“Harden not your hearts as at Meribah,<br />as on that day at Massah in the desert<br />when your forebears put Me to the test;<br />when they tried Me, though they saw my work.” R.</p>",
-      "uses": 7
+      "uses": 5
     },
     {
       "slug": "psalm-103",
@@ -10842,6 +10793,28 @@
       ],
       "lyrics": "<p>R. The Lord is king, with majesty enrobed.<br />The Lord is King, with majesty enrobed.<br />The Lord has robed Himself with might;<br />He has girded Himself with power. R.<br />The world you made firm, not to be moved;<br />Your throne has stood firm from of old.<br />From all eternity, O Lord, you are. R.<br />Truly your decrees are to be trusted.<br />Holiness is fitting to your house,<br />O Lord, until the end of time. R.</p>",
       "uses": 1
+    },
+    {
+      "slug": "psalm-95",
+      "title": "Psalm 95",
+      "language": "ENGLISH",
+      "massParts": [
+        "RESPONSORIAL_PSALM"
+      ],
+      "variants": [
+        {
+          "lyrics": "<p>R. O that today you would listen to his voice! Harden not your hearts.<br />Come, let us ring out our joy to the Lord;<br />hail the rock who saves us.<br />Let us come into His presence, giving thanks;<br />let us hail Him with a song of praise. R.<br />O come; let us bow and bend low.<br />Let us kneel before the God who made us,<br />for He is our God and we<br />the people who belong to His pasture,<br />the flock that is led by His Hand. R.<br />O that today you would listen to His voice!<br />“Harden not your hearts as at Meribah,<br />as on that day at Massah in the desert<br />when your forebears put Me to the test;<br />when they tried Me, though they saw my work.” R.</p>",
+          "plain": "R. O that today you would listen to his voice! Harden not your hearts. Come, let us ring out our joy to the Lord; hail the rock who saves us. Let us come into His presence, giving thanks; let us hail Him with a song of praise. R. O come; let us bow and bend low. Let us kneel before the God who made us, for He is our God and we the people who belong to His pasture, the flock that is led by His Hand. R. O that today you would listen to His voice! “Harden not your hearts as at Meribah, as on that day at Massah in the desert when your forebears put Me to the test; when they tried Me, though they saw my work.” R.",
+          "part": "RESPONSORIAL_PSALM"
+        },
+        {
+          "lyrics": "<p>R. O that today you would listen to his voice! Harden not your hearts.<br />Come, let us ring out our joy to the Lord;<br />hail the rock who saves us.<br />Let us come into his presence,<br />giving thanks; let us hail him with a song of praise. R.<br />O come; let us bow and bend low.<br />Let us kneel before the God who made us,<br />for he is our God and we<br />the people who belong to his pasture,<br />the flock that is led by his hand. R.<br />O that today you would listen to his voice!<br />“Harden not your hearts as at Meribah,<br />as on that day at Massah in the desert<br />when your forebears put me to the test;<br />when they tried rue, though they saw my work.” R.</p>",
+          "plain": "R. O that today you would listen to his voice! Harden not your hearts. Come, let us ring out our joy to the Lord; hail the rock who saves us. Let us come into his presence, giving thanks; let us hail him with a song of praise. R. O come; let us bow and bend low. Let us kneel before the God who made us, for he is our God and we the people who belong to his pasture, the flock that is led by his hand. R. O that today you would listen to his voice! “Harden not your hearts as at Meribah, as on that day at Massah in the desert when your forebears put me to the test; when they tried rue, though they saw my work.” R.",
+          "part": "RESPONSORIAL_PSALM"
+        }
+      ],
+      "lyrics": "<p>R. O that today you would listen to his voice! Harden not your hearts.<br />Come, let us ring out our joy to the Lord;<br />hail the rock who saves us.<br />Let us come into his presence,<br />giving thanks; let us hail him with a song of praise. R.<br />O come; let us bow and bend low.<br />Let us kneel before the God who made us,<br />for he is our God and we<br />the people who belong to his pasture,<br />the flock that is led by his hand. R.<br />O that today you would listen to his voice!<br />“Harden not your hearts as at Meribah,<br />as on that day at Massah in the desert<br />when your forebears put me to the test;<br />when they tried rue, though they saw my work.” R.</p>",
+      "uses": 2
     },
     {
       "slug": "psalm-96",
@@ -13697,11 +13670,27 @@
       "uses": 5
     },
     {
+      "slug": "yawa-uling-aling-a",
+      "title": "Yawa Uling'aling'a",
+      "language": "ENGLISH",
+      "massParts": [
+        "GOSPEL_PROCESSION"
+      ],
+      "variants": [
+        {
+          "lyrics": "<p>Soloist: Yawa uling’alinga uparang’o Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo<br />Soloist:  Yawa uling’alinga uparang’o Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo<br />Soloist:  Umetho, uido, kauparo mana Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo<br />Soloist:  Uchodo, ukwelo kauparo mana Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo<br />Soloist:  Umetho, uido kauparo mana Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo<br />Soloist:  Kendo (repeat)<br />All:  Uling’alinga uparang’o Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo!</p>",
+          "plain": "Soloist: Yawa uling’alinga uparang’o Injili kalo All:  Yawa uling’alinga uparang’o Injili kalo Soloist:  Yawa uling’alinga uparang’o Injili kalo All:  Yawa uling’alinga uparang’o Injili kalo Soloist:  Umetho, uido, kauparo mana Injili kalo All:  Yawa uling’alinga uparang’o Injili kalo Soloist:  Uchodo, ukwelo kauparo mana Injili kalo All:  Yawa uling’alinga uparang’o Injili kalo Soloist:  Umetho, uido kauparo mana Injili kalo All:  Yawa uling’alinga uparang’o Injili kalo Soloist:  Kendo (repeat) All:  Uling’alinga uparang’o Injili kalo All:  Yawa uling’alinga uparang’o Injili kalo!",
+          "part": "GOSPEL_PROCESSION"
+        }
+      ],
+      "lyrics": "<p>Soloist: Yawa uling’alinga uparang’o Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo<br />Soloist:  Yawa uling’alinga uparang’o Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo<br />Soloist:  Umetho, uido, kauparo mana Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo<br />Soloist:  Uchodo, ukwelo kauparo mana Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo<br />Soloist:  Umetho, uido kauparo mana Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo<br />Soloist:  Kendo (repeat)<br />All:  Uling’alinga uparang’o Injili kalo<br />All:  Yawa uling’alinga uparang’o Injili kalo!</p>",
+      "uses": 1
+    },
+    {
       "slug": "yawa-uling-alinga-uparang-o-injili-kalo",
       "title": "Yawa Uling'alinga Uparang'o Injili Kalo",
       "language": "ENGLISH",
       "massParts": [
-        "GOSPEL_PROCESSION",
         "THANKSGIVING"
       ],
       "variants": [
@@ -13711,11 +13700,8 @@
           "part": "THANKSGIVING"
         }
       ],
-      "aliases": [
-        "Yawa Uling'aling'a"
-      ],
       "lyrics": "<p>Soloist: Yawa uling’alinga uparang’o Injili kalo<br />All: Yawa uling’alinga uparang’o Injili kalo<br />Soloist: Yawa uling’alinga uparang’o Injili kalo<br />All: Yawa uling’alinga uparang’o Injili kalo<br />Soloist: Umetho, uido, kauparo mana Injili kalo<br />All: Yawa uling’alinga uparang’o Injili kalo<br />Soloist: Uchodo, ukwelo kauparo mana Injili kalo<br />All: Yawa uling’alinga uparang’o Injili kalo<br />Soloist: Umetho, uido kauparo mana Injili kalo<br />All: Yawa uling’alinga uparang’o Injili kalo<br />Soloist: Kendo (repeat)<br />All: Uling’alinga uparang’o Injili kalo<br />All: Yawa uling’alinga uparang’o Injili kalo!</p>",
-      "uses": 2
+      "uses": 1
     },
     {
       "slug": "yesu-ahsante-sana",
@@ -14487,8 +14473,8 @@
         },
         {
           "part": "GREAT_AMEN",
-          "song": "4-Fold Amen",
-          "slug": "4-fold-amen"
+          "song": "Amen 4-Fold",
+          "slug": "amen-4-fold"
         },
         {
           "part": "OUR_FATHER",
@@ -15047,8 +15033,8 @@
         },
         {
           "part": "GREAT_AMEN",
-          "song": "Four Fold",
-          "slug": "four-fold"
+          "song": "Amen 4-Fold",
+          "slug": "amen-4-fold"
         },
         {
           "part": "OUR_FATHER",
@@ -15449,7 +15435,7 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Nikupe Nini Mungu Wangu (Cha Kukupendeza)",
+          "song": "Nikupe Nini Mungu Wangu",
           "slug": "nikupe-nini-mungu-wangu"
         },
         {
@@ -15489,8 +15475,8 @@
         },
         {
           "part": "AGNUS_DEI",
-          "song": "Agnus Dei - Dan",
-          "slug": "agnus-dei-dan"
+          "song": "Dan's Agnus Dei",
+          "slug": "dan-s-agnus-dei"
         },
         {
           "part": "COMMUNION",
@@ -15931,8 +15917,8 @@
         },
         {
           "part": "THANKSGIVING",
-          "song": "Nikupe Nini Mungu Wangu (Cha Kukupendeza)",
-          "slug": "nikupe-nini-mungu-wangu"
+          "song": "Nikupe Nini (Cha Kukupendeza)",
+          "slug": "nikupe-nini-cha-kukupendeza"
         },
         {
           "part": "RECESSIONAL",
@@ -16338,8 +16324,8 @@
         },
         {
           "part": "GREAT_AMEN",
-          "song": "4-Fold",
-          "slug": "4-fold"
+          "song": "Amen 4-Fold",
+          "slug": "amen-4-fold"
         },
         {
           "part": "OUR_FATHER",
@@ -16898,7 +16884,7 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Nikupe Nini Mungu Wangu (Cha Kukupendeza)",
+          "song": "Nikupe Nini Mungu Wangu",
           "slug": "nikupe-nini-mungu-wangu"
         },
         {
@@ -18603,8 +18589,8 @@
         },
         {
           "part": "RESPONSORIAL_PSALM",
-          "song": "Psalm 100",
-          "slug": "psalm-100"
+          "song": "Psalm 95",
+          "slug": "psalm-95"
         },
         {
           "part": "GOSPEL_ACCLAMATION",
@@ -18982,8 +18968,8 @@
         },
         {
           "part": "GREAT_AMEN",
-          "song": "4-Fold",
-          "slug": "4-fold"
+          "song": "Amen 4-Fold",
+          "slug": "amen-4-fold"
         },
         {
           "part": "OUR_FATHER",
@@ -19075,7 +19061,7 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Nikupe Nini Mungu Wangu (Cha Kukupendeza)",
+          "song": "Nikupe Nini Mungu Wangu",
           "slug": "nikupe-nini-mungu-wangu"
         },
         {
@@ -21702,13 +21688,13 @@
         },
         {
           "part": "KYRIE",
-          "song": "A.M.E.C.E.A. Mass",
-          "slug": "a-m-e-c-e-a-mass"
+          "song": "A.M.E.C.E.A.",
+          "slug": "a-m-e-c-e-a"
         },
         {
           "part": "GLORIA",
-          "song": "A.M.E.C.E.A. Mass",
-          "slug": "a-m-e-c-e-a-mass"
+          "song": "A.M.E.C.E.A.",
+          "slug": "a-m-e-c-e-a"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -21722,8 +21708,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "A.M.E.C.E.A. Mass",
-          "slug": "a-m-e-c-e-a-mass"
+          "song": "A.M.E.C.E.A.",
+          "slug": "a-m-e-c-e-a"
         },
         {
           "part": "OFFERTORY",
@@ -21742,18 +21728,18 @@
         },
         {
           "part": "SANCTUS",
-          "song": "A.M.E.C.E.A. Mass",
-          "slug": "a-m-e-c-e-a-mass"
+          "song": "A.M.E.C.E.A.",
+          "slug": "a-m-e-c-e-a"
         },
         {
           "part": "MYSTERY_OF_FAITH",
-          "song": "A.M.E.C.E.A. Mass",
-          "slug": "a-m-e-c-e-a-mass"
+          "song": "A.M.E.C.E.A.",
+          "slug": "a-m-e-c-e-a"
         },
         {
           "part": "GREAT_AMEN",
-          "song": "A.M.E.C.E.A. Mass",
-          "slug": "a-m-e-c-e-a-mass"
+          "song": "A.M.E.C.E.A.",
+          "slug": "a-m-e-c-e-a"
         },
         {
           "part": "OUR_FATHER",
@@ -21767,8 +21753,8 @@
         },
         {
           "part": "AGNUS_DEI",
-          "song": "A.M.E.C.E.A. Mass",
-          "slug": "a-m-e-c-e-a-mass"
+          "song": "A.M.E.C.E.A.",
+          "slug": "a-m-e-c-e-a"
         },
         {
           "part": "COMMUNION",
@@ -21845,12 +21831,12 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Nikupe Nini Mungu Wangu (Cha Kukupendeza)",
+          "song": "Nikupe Nini Mungu Wangu",
           "slug": "nikupe-nini-mungu-wangu"
         },
         {
           "part": "OFFERTORY",
-          "song": "Nikupe Nini Mungu Wangu (Cha Kukupendeza)",
+          "song": "Nikupe Nini Mungu Wangu",
           "slug": "nikupe-nini-mungu-wangu"
         },
         {
@@ -22033,8 +22019,8 @@
         },
         {
           "part": "THANKSGIVING",
-          "song": "OK LO JEHOVAH (Jehovah Cannot Be Defeated!)",
-          "slug": "ok-lo-jehovah-jehovah-cannot-be-defeated"
+          "song": "Jehovah Ok Lo! (Jehovah Cannot Be Defeated!)",
+          "slug": "jehovah-ok-lo"
         },
         {
           "part": "RECESSIONAL",
@@ -22382,8 +22368,8 @@
         },
         {
           "part": "THANKSGIVING",
-          "song": "Ameweza! (Haya Tazameni)",
-          "slug": "ameweza-haya-tazameni"
+          "song": "Haya Tazameni (Ameweza!)",
+          "slug": "haya-tazameni-ameweza"
         },
         {
           "part": "RECESSIONAL",
@@ -22475,8 +22461,8 @@
         },
         {
           "part": "AGNUS_DEI",
-          "song": "Dan's",
-          "slug": "dan-s"
+          "song": "Dan's Agnus Dei",
+          "slug": "dan-s-agnus-dei"
         },
         {
           "part": "COMMUNION",
@@ -23088,8 +23074,8 @@
         },
         {
           "part": "GOSPEL_PROCESSION",
-          "song": "Yawa Uling'alinga Uparang'o Injili Kalo",
-          "slug": "yawa-uling-alinga-uparang-o-injili-kalo"
+          "song": "Yawa Uling'aling'a",
+          "slug": "yawa-uling-aling-a"
         },
         {
           "part": "RESPONSORIAL_PSALM",
@@ -23168,8 +23154,8 @@
         },
         {
           "part": "THANKSGIVING",
-          "song": "OK LO JEHOVAH (Jehovah Cannot Be Defeated!)",
-          "slug": "ok-lo-jehovah-jehovah-cannot-be-defeated"
+          "song": "Jehovah Ok Lo! (Jehovah Cannot Be Defeated!)",
+          "slug": "jehovah-ok-lo"
         },
         {
           "part": "RECESSIONAL",
@@ -23334,12 +23320,12 @@
         },
         {
           "part": "OFFERTORY",
-          "song": "Nikupe Nini Mungu Wangu (Cha Kukupendeza)",
+          "song": "Nikupe Nini Mungu Wangu",
           "slug": "nikupe-nini-mungu-wangu"
         },
         {
           "part": "OFFERTORY",
-          "song": "Nikupe Nini Mungu Wangu (Cha Kukupendeza)",
+          "song": "Nikupe Nini Mungu Wangu",
           "slug": "nikupe-nini-mungu-wangu"
         },
         {
@@ -23683,8 +23669,8 @@
         },
         {
           "part": "RESPONSORIAL_PSALM",
-          "song": "Psalm 100",
-          "slug": "psalm-100"
+          "song": "Psalm 95",
+          "slug": "psalm-95"
         },
         {
           "part": "GOSPEL_ACCLAMATION",
@@ -23781,8 +23767,7 @@
       {
         "kept": "Psalm 100",
         "absorbed": [
-          "Psalm 90",
-          "Psalm 95"
+          "Psalm 90"
         ]
       },
       {
@@ -23815,6 +23800,13 @@
         "kept": "Roho wa Yesu",
         "absorbed": [
           "Roho ya Yesu"
+        ]
+      },
+      {
+        "kept": "Haya Tazameni (Ameweza!)",
+        "absorbed": [
+          "Ameweza! (Haya Tazameni)",
+          "Haya Tazameni"
         ]
       },
       {
@@ -23854,6 +23846,13 @@
         "kept": "In Bread We Bring You, Lord",
         "absorbed": [
           "In Bread We Bring"
+        ]
+      },
+      {
+        "kept": "Dan's Agnus Dei",
+        "absorbed": [
+          "Dan's",
+          "Agnus Dei - Dan"
         ]
       },
       {
@@ -23933,12 +23932,6 @@
         "absorbed": [
           "Misa Paulo",
           "Sanctus – Misa Paulo"
-        ]
-      },
-      {
-        "kept": "Haya Tazameni (Ameweza!)",
-        "absorbed": [
-          "Haya Tazameni"
         ]
       },
       {
@@ -24112,20 +24105,17 @@
         ]
       },
       {
-        "kept": "Yawa Uling'alinga Uparang'o Injili Kalo",
-        "absorbed": [
-          "Yawa Uling'aling'a"
-        ]
-      },
-      {
         "kept": "AMANI YA BWANA (Mwanamberi)",
         "absorbed": [
           "Amani ya Bwana"
         ]
       },
       {
-        "kept": "OK LO JEHOVAH (Jehovah Cannot Be Defeated!)",
+        "kept": "Jehovah Ok Lo! (Jehovah Cannot Be Defeated!)",
         "absorbed": [
+          "OK LO JEHOVAH (Jehovah Cannot Be Defeated!)",
+          "JEHOVAH OK LO (Jehovah Cannot Be Defeated!)",
+          "Jehovah Ok Lo!",
           "Ok Lo Jehovah (Dholuo)"
         ]
       },
@@ -24186,11 +24176,9 @@
         ]
       },
       {
-        "kept": "Nikupe Nini Mungu Wangu (Cha Kukupendeza)",
+        "kept": "Nikupe Nini Mungu Wangu",
         "absorbed": [
-          "Nikupe Nini Mungu Wangu",
-          "Nikupe Nini",
-          "Nikupe Nini (Cha Kukupendeza)"
+          "Nikupe Nini"
         ]
       },
       {
@@ -24217,7 +24205,6 @@
           "Amecea Mass",
           "Misa Amecea",
           "Amecea",
-          "A.M.E.C.E.A.",
           "Sanctus – Amecea Mass"
         ]
       },
@@ -24343,6 +24330,14 @@
         ]
       },
       {
+        "kept": "Amen 4-Fold",
+        "absorbed": [
+          "4-Fold Amen",
+          "Four Fold",
+          "4-Fold"
+        ]
+      },
+      {
         "kept": "Hine Ma Tov (Hebrew)",
         "absorbed": [
           "Hine Ma Tov",
@@ -24426,13 +24421,6 @@
         "kept": "All Our Joys Lord Take and Bless",
         "absorbed": [
           "All Our Joys"
-        ]
-      },
-      {
-        "kept": "Jehovah Ok Lo! (Jehovah Cannot Be Defeated!)",
-        "absorbed": [
-          "JEHOVAH OK LO (Jehovah Cannot Be Defeated!)",
-          "Jehovah Ok Lo!"
         ]
       },
       {
