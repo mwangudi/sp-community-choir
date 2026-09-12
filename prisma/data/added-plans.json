@@ -1,0 +1,117 @@
+[
+  {
+    "date": "2026-09-13",
+    "name": "24th Sunday in Ordinary Time",
+    "year": "A",
+    "season": "ORDINARY_TIME",
+    "setting": "Misa Mt. Elizabeti",
+    "notes": "Theme: Forgiveness. Selections by Lisa Muthoni, Soprano.",
+    "status": "PUBLISHED",
+    "items": [
+      {
+        "part": "ENTRANCE",
+        "song": "Tukipenda Wenzetu",
+        "slug": "tukipenda-wenzetu"
+      },
+      {
+        "part": "KYRIE",
+        "song": "Misa Mt. Elizabeti",
+        "slug": "misa-mt-elizabeti"
+      },
+      {
+        "part": "GLORIA",
+        "song": "Misa Mt. Elizabeti",
+        "slug": "misa-mt-elizabeti"
+      },
+      {
+        "part": "GOSPEL_PROCESSION",
+        "song": "Ancient Words",
+        "slug": "ancient-words"
+      },
+      {
+        "part": "RESPONSORIAL_PSALM",
+        "song": "Psalm 103",
+        "slug": "psalm-103"
+      },
+      {
+        "part": "GOSPEL_ACCLAMATION",
+        "song": "Alleluia, Our Lord is Merciful",
+        "slug": "alleluia-our-lord-is-merciful"
+      },
+      {
+        "part": "OFFERTORY",
+        "song": "What Returns to Yahweh",
+        "slug": "what-returns-to-yahweh"
+      },
+      {
+        "part": "OFFERTORY",
+        "song": "Nakuja Polepole, Nakuja na Zawadi",
+        "slug": "nakuja-polepole-nakuja-na-zawadi"
+      },
+      {
+        "part": "PREPARATION_OF_GIFTS",
+        "song": "Lord Accept the Gifts We Offer",
+        "slug": "lord-accept-the-gifts-we-offer"
+      },
+      {
+        "part": "SANCTUS",
+        "song": "Misa Mt. Elizabeti",
+        "slug": "misa-mt-elizabeti"
+      },
+      {
+        "part": "MYSTERY_OF_FAITH",
+        "song": "Misa Mt. Elizabeti",
+        "slug": "misa-mt-elizabeti"
+      },
+      {
+        "part": "GREAT_AMEN",
+        "song": "3-Fold",
+        "slug": "3-fold"
+      },
+      {
+        "part": "OUR_FATHER",
+        "song": "Recite"
+      },
+      {
+        "part": "SIGN_OF_PEACE",
+        "song": "Tutakiane Amani Eh",
+        "slug": "tutakiane-amani-eh"
+      },
+      {
+        "part": "AGNUS_DEI",
+        "song": "Misa Mt. Elizabeti",
+        "slug": "misa-mt-elizabeti"
+      },
+      {
+        "part": "COMMUNION",
+        "song": "Wonderful Merciful Saviour",
+        "slug": "wonderful-merciful-saviour"
+      },
+      {
+        "part": "COMMUNION",
+        "song": "Amazing Grace",
+        "slug": "amazing-grace"
+      },
+      {
+        "part": "ANIMA_CHRISTI",
+        "song": "Frisina",
+        "slug": "frisina"
+      },
+      {
+        "part": "THANKSGIVING",
+        "song": "Nitamsifu Mungu wa Mbinguni",
+        "slug": "nitamsifu-mungu-wa-mbinguni"
+      },
+      {
+        "part": "RECESSIONAL",
+        "song": "How Great Thou Art",
+        "slug": "how-great-thou-art"
+      },
+      {
+        "part": "MARIAN_HYMN",
+        "song": "Mother Dearest",
+        "slug": "mother-dearest"
+      }
+    ]
+  }
+]

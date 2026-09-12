@@ -50,6 +50,21 @@ function lyricsForPart(lyrics: string, part: string) {
   return lyrics.slice(sections[0].start, sections[0].end);
 }
 
+/**
+ * The printed aid sets a verse number in bold and a braced refrain bold
+ * throughout. Lyrics are stored as escaped text, so only line starts match.
+ */
+function emphasise(html: string) {
+  return html
+    .split(/(<br \/>|<\/p><p>|<p>|<\/p>)/)
+    .map((part) => {
+      if (part.startsWith("<")) return part;
+      if (/[{}]/.test(part)) return `<strong>${part}</strong>`;
+      return part.replace(/^(\s*\d+\.)/, "<strong>$1</strong>");
+    })
+    .join("");
+}
+
 export default async function WorshipAidPage({
   params,
 }: {
@@ -87,20 +102,24 @@ export default async function WorshipAidPage({
           {plan.notes && <p className="aid-dedication">{plan.notes}</p>}
           <h1 className="aid-title">
             {plan.name.toUpperCase()} YEAR {plan.year} |{" "}
-            {formatDate(plan.date).toUpperCase()} | {choir.parish.toUpperCase()}
+            {formatDate(plan.date).toUpperCase()}
+            <span className="aid-parish">{choir.parish.toUpperCase()}</span>
           </h1>
         </header>
 
         {plan.items.map((item) => (
           <section key={item.id} className="aid-item">
             <h2 className="aid-part">
-              {massPartLabel(item.part).toUpperCase()}: {item.song.toUpperCase()}
+              <span className="aid-part-name">
+                {massPartLabel(item.part).toUpperCase()}:
+              </span>{" "}
+              {item.song.toUpperCase()}
             </h2>
             {item.songRef?.lyrics && (
               <div
                 className="aid-lyrics"
                 dangerouslySetInnerHTML={{
-                  __html: lyricsForPart(item.songRef.lyrics, item.part),
+                  __html: emphasise(lyricsForPart(item.songRef.lyrics, item.part)),
                 }}
               />
             )}

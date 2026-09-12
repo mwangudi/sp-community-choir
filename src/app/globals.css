@@ -138,6 +138,8 @@
   text-decoration: underline;
 }
 
+/* Matches the aid the choir already prints, in the site's cardinal rather
+   than the pure red Word produced. */
 .worship-aid {
   width: 210mm;
   min-height: 297mm;
@@ -145,38 +147,43 @@
   padding: 14mm 15mm;
   background: #fff;
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.16);
-  color: #111;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 10.5pt;
-  line-height: 1.32;
+  color: #000;
+  font-family: Calibri, "Segoe UI", Aptos, system-ui, sans-serif;
+  font-size: 9pt;
+  line-height: 1.28;
 }
 .worship-aid .aid-dedication {
-  font-size: 8.5pt;
+  font-size: 9pt;
   font-style: italic;
   text-align: center;
-  margin: 0 0 6px;
+  margin: 0 0 8px;
 }
 .worship-aid .aid-title {
-  font-size: 12pt;
+  font-size: 11pt;
   font-weight: 700;
   text-align: center;
-  letter-spacing: 0.2px;
-  border-bottom: 2px solid #111;
-  padding-bottom: 5px;
-  margin: 0 0 14px;
+  color: hsl(var(--primary));
+  margin: 0 0 12px;
+}
+.worship-aid .aid-parish {
+  display: block;
 }
 .worship-aid .aid-item {
-  margin-bottom: 11px;
+  margin-bottom: 10px;
   /* Never split a song's heading from its first lines. */
   break-inside: avoid;
 }
 .worship-aid .aid-part {
-  font-size: 10.5pt;
+  font-size: 12pt;
   font-weight: 700;
+  color: hsl(var(--primary));
   margin: 0 0 2px;
 }
+.worship-aid .aid-part .aid-part-name {
+  text-decoration: underline;
+}
 .worship-aid .aid-lyrics p {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
 }
 
 @media print {
