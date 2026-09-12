@@ -170,20 +170,22 @@
 }
 .worship-aid .aid-item {
   margin-bottom: 10px;
-  /* Never split a song's heading from its first lines. */
-  break-inside: avoid;
 }
 .worship-aid .aid-part {
   font-size: 12pt;
   font-weight: 700;
   color: hsl(var(--primary));
   margin: 0 0 2px;
+  /* Keeping a whole song together strands half a page, so hold only the
+     heading to its first verse and let a long song run on. */
+  break-after: avoid;
 }
 .worship-aid .aid-part .aid-part-name {
   text-decoration: underline;
 }
 .worship-aid .aid-lyrics p {
   margin: 0 0 8px;
+  break-inside: avoid;
 }
 
 @media print {
