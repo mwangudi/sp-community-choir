@@ -101,6 +101,8 @@ async function main() {
     const base = {
       name: plan.name,
       year: plan.year,
+      // The aid prints this above the title, as the choir's own copies do.
+      ...(plan.dedication ? { notes: plan.dedication } : {}),
       ...(publish ? { status: "PUBLISHED" } : {}),
     };
 

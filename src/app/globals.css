@@ -151,6 +151,8 @@
   font-family: Calibri, "Segoe UI", Aptos, system-ui, sans-serif;
   font-size: 9pt;
   line-height: 1.28;
+  /* An fi ligature is extracted from the PDF as "sa fi", breaking search. */
+  font-variant-ligatures: none;
 }
 .worship-aid .aid-dedication {
   font-size: 9pt;
