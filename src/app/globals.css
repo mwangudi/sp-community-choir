@@ -113,10 +113,11 @@
 
 /* ─── Sunday worship aid ───────────────────────────────────
    The screen preview is a real A4 sheet so what you see is what
-   the PDF contains. Rendered outside the admin shell. */
+   the PDF contains. Sits inside the admin shell, which the print
+   rules below take away again. */
 .aid-page {
-  min-height: 100vh;
   background: #e9e9ee;
+  margin: -24px -24px -48px;
   padding: 24px 16px 48px;
 }
 .aid-toolbar {
@@ -197,6 +198,18 @@
   .no-print {
     display: none !important;
   }
+  /* The aid prints as a document, so the admin chrome around it goes. */
+  .MuiDrawer-root,
+  .MuiAppBar-root {
+    display: none !important;
+  }
+  .admin-root main,
+  .admin-root .MuiContainer-root {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    width: auto !important;
+  }
   html,
   body {
     background: #fff !important;
@@ -205,6 +218,7 @@
     min-height: 0;
     background: none;
     padding: 0;
+    margin: 0;
   }
   .worship-aid {
     width: auto;

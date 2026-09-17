@@ -560,6 +560,7 @@ export function AdminShell({
         {/* Materio's navbar: static, detached and transparent over the page. */}
         <Box
           component="header"
+          className="no-print"
           sx={{
             display: "flex",
             alignItems: "center",
