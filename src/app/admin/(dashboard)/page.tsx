@@ -243,12 +243,7 @@ function SectionHeader({
       <Stack direction="row" spacing={2} sx={{ alignItems: "flex-start" }}>
         <Box sx={{ color: "text.secondary", mt: 0.25 }}>{icon}</Box>
         <Box>
-          <Typography
-            className="admin-display"
-            sx={{ fontWeight: 600, lineHeight: 1.3, fontSize: "1.0625rem" }}
-          >
-            {title}
-          </Typography>
+          <Typography sx={{ fontWeight: 600, lineHeight: 1.3 }}>{title}</Typography>
           <Typography variant="caption" color="text.secondary">
             {subtitle}
           </Typography>
@@ -562,10 +557,7 @@ export default async function AdminDashboardPage() {
                     >
                       {massPartLabel(item.part)}
                     </Typography>
-                    <Typography
-                      className="admin-song"
-                      sx={{ textAlign: "right", fontWeight: 500 }}
-                    >
+                    <Typography variant="body2" sx={{ textAlign: "right" }}>
                       {item.song}
                     </Typography>
                   </Stack>

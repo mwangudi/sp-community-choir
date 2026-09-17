@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cinzel, Cormorant_Garamond, Inter, Source_Serif_4 } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CHOIR } from "@/lib/choir";
@@ -10,20 +10,6 @@ const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap
 const serif = Source_Serif_4({
   subsets: ["latin"],
   variable: "--font-serif",
-  display: "swap",
-});
-
-// Roman capitals for liturgical headings, and a book face for song titles.
-const display = Cinzel({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-display",
-  display: "swap",
-});
-const song = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-song",
   display: "swap",
 });
 
@@ -98,10 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html
-      lang="en"
-      className={`${sans.variable} ${serif.variable} ${display.variable} ${song.variable}`}
-    >
+    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body className="min-h-screen bg-background text-foreground antialiased">
         <script
           type="application/ld+json"

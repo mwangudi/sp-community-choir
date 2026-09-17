@@ -112,9 +112,7 @@ export default async function MassPlansPage({
       >
         <Box>
           <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
-            <Typography variant="h4" className="admin-display">
-              Mass plans
-            </Typography>
+            <Typography variant="h4">Mass plans</Typography>
             {next?.season && (
               <Chip
                 size="small"
@@ -204,9 +202,7 @@ export default async function MassPlansPage({
                 >
                   <Box>
                     <Stack direction="row" spacing={2} sx={{ alignItems: "center", flexWrap: "wrap", gap: 2 }}>
-                      <Typography variant="h6" className="admin-display">
-                        {plan.name}
-                      </Typography>
+                      <Typography variant="h6">{plan.name}</Typography>
                       <Chip
                         size="small"
                         label={plan.status}
@@ -292,10 +288,7 @@ export default async function MassPlansPage({
                       >
                         {massPartLabel(item.part)}
                       </Typography>
-                      <Typography
-                        className="admin-song"
-                        sx={{ textAlign: "right", fontWeight: 500 }}
-                      >
+                      <Typography variant="body2" sx={{ textAlign: "right" }}>
                         {item.song}
                       </Typography>
                     </Stack>
