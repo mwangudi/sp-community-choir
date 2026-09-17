@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T18:13:55.255Z",
+  "generatedAt": "2026-09-17T11:06:06.786Z",
   "songs": [
     {
       "slug": "3-fold",
@@ -101,59 +101,6 @@
       "uses": 2
     },
     {
-      "slug": "a-m-e-c-e-a",
-      "title": "A.M.E.C.E.A.",
-      "language": "SWAHILI",
-      "massParts": [
-        "KYRIE",
-        "GLORIA",
-        "GOSPEL_ACCLAMATION",
-        "SANCTUS",
-        "MYSTERY_OF_FAITH",
-        "GREAT_AMEN",
-        "AGNUS_DEI"
-      ],
-      "variants": [
-        {
-          "lyrics": "<p>Bwana utuhurumie ee Bwana, Bwana utuhurumie *2<br />Kristu utuhurumie ee Kristu, Kristu utuhurumie *2<br />Bwana utuhurumie ee Bwana, Bwana utuhurumie *2</p>",
-          "plain": "Bwana utuhurumie ee Bwana, Bwana utuhurumie *2 Kristu utuhurumie ee Kristu, Kristu utuhurumie *2 Bwana utuhurumie ee Bwana, Bwana utuhurumie *2",
-          "part": "KYRIE"
-        },
-        {
-          "lyrics": "<p>1. Utukufu kwa Mungu juu mbinguni, na Amani kote duniani<br />(Kwa watu) wenye mapenzi mema</p><p>Tunakusifu Baba tunakuheshimu, twakuabudu sisi tunakutukuza *2</p><p>2. Twakushukuru Mungu kwa ‘tukufu - wako mkuu ewe Mungu Mfalme<br />(Ee Baba) wa mbingu Baba yetu.<br />3. Bwana wetu mwokozi Yesu Kristu - Mwana wa pekee wake Mungu<br />(Uliye) - Mwanakondoo wa Mungu.<br />4. Unayeziondoa dhambi zote - za dunia utuhurumie<br />(pokea) pokea ombi letu.<br />5. Wewe unayeketi kuume - kwake Baba utuhurumie<br />(sikia) - sikia ombi letu.<br />6. Kwani pekee yako ndiwe Bwana - Pekee yako mkuu na Mkombozi<br />(Pekee) - pekee Yesu Kristu.<br />7. Kwa umoja wa Roho Mtakatifu - ndani yake Baba watukuzwa<br />(Ee Yesu) - milele na milele.</p>",
-          "plain": "1. Utukufu kwa Mungu juu mbinguni, na Amani kote duniani (Kwa watu) wenye mapenzi mema  Tunakusifu Baba tunakuheshimu, twakuabudu sisi tunakutukuza *2  2. Twakushukuru Mungu kwa ‘tukufu - wako mkuu ewe Mungu Mfalme (Ee Baba) wa mbingu Baba yetu. 3. Bwana wetu mwokozi Yesu Kristu - Mwana wa pekee wake Mungu (Uliye) - Mwanakondoo wa Mungu. 4. Unayeziondoa dhambi zote - za dunia utuhurumie (pokea) pokea ombi letu. 5. Wewe unayeketi kuume - kwake Baba utuhurumie (sikia) - sikia ombi letu. 6. Kwani pekee yako ndiwe Bwana - Pekee yako mkuu na Mkombozi (Pekee) - pekee Yesu Kristu. 7. Kwa umoja wa Roho Mtakatifu - ndani yake Baba watukuzwa (Ee Yesu) - milele na milele.",
-          "part": "GLORIA"
-        },
-        {
-          "lyrics": "<p>Alleluia *n</p>",
-          "plain": "Alleluia *n",
-          "part": "GOSPEL_ACCLAMATION"
-        },
-        {
-          "lyrics": "<p>Mtakatifu Mtakatifu Bwana, Mungu wa majeshi *2<br />Mbingu na dunia zimejaa zimejaa<br />Mbingu na dunia zimejaa utukufu wako *2<br />Hosana juu *4 Mbinguni<br />Mbarikiwa ‘nayekuja *2 Mbarikiwa<br />Mbarikiwa ‘nayekuja kwa jina jina lake Bwana<br />Hosana juu *4 Mbinguni</p>",
-          "plain": "Mtakatifu Mtakatifu Bwana, Mungu wa majeshi *2 Mbingu na dunia zimejaa zimejaa Mbingu na dunia zimejaa utukufu wako *2 Hosana juu *4 Mbinguni Mbarikiwa ‘nayekuja *2 Mbarikiwa Mbarikiwa ‘nayekuja kwa jina jina lake Bwana Hosana juu *4 Mbinguni",
-          "part": "SANCTUS"
-        },
-        {
-          "lyrics": "<p>Yesu Kristu alikufa Yesu Kristu kafufuka<br />(Yesu) Kristu atakuja atakuja kwetu tena *2</p>",
-          "plain": "Yesu Kristu alikufa Yesu Kristu kafufuka (Yesu) Kristu atakuja atakuja kwetu tena *2",
-          "part": "MYSTERY_OF_FAITH"
-        },
-        {
-          "lyrics": "<p>Amina</p>",
-          "plain": "Amina",
-          "part": "GREAT_AMEN"
-        },
-        {
-          "lyrics": "<p>Mwanakondoo wa Mungu uondoaye dhambi za dunia e Bwana utuhurumie *n<br />Mwanakondoo wa Mungu uondoaye dhambi za dunia e Bwana utujalie amani</p>",
-          "plain": "Mwanakondoo wa Mungu uondoaye dhambi za dunia e Bwana utuhurumie *n Mwanakondoo wa Mungu uondoaye dhambi za dunia e Bwana utujalie amani",
-          "part": "AGNUS_DEI"
-        }
-      ],
-      "lyrics": "<p><strong>Gloria</strong></p>\n<p>1. Utukufu kwa Mungu juu mbinguni, na Amani kote duniani<br />(Kwa watu) wenye mapenzi mema</p><p>Tunakusifu Baba tunakuheshimu, twakuabudu sisi tunakutukuza *2</p><p>2. Twakushukuru Mungu kwa ‘tukufu - wako mkuu ewe Mungu Mfalme<br />(Ee Baba) wa mbingu Baba yetu.<br />3. Bwana wetu mwokozi Yesu Kristu - Mwana wa pekee wake Mungu<br />(Uliye) - Mwanakondoo wa Mungu.<br />4. Unayeziondoa dhambi zote - za dunia utuhurumie<br />(pokea) pokea ombi letu.<br />5. Wewe unayeketi kuume - kwake Baba utuhurumie<br />(sikia) - sikia ombi letu.<br />6. Kwani pekee yako ndiwe Bwana - Pekee yako mkuu na Mkombozi<br />(Pekee) - pekee Yesu Kristu.<br />7. Kwa umoja wa Roho Mtakatifu - ndani yake Baba watukuzwa<br />(Ee Yesu) - milele na milele.</p>\n<p><strong>Sanctus</strong></p>\n<p>Mtakatifu Mtakatifu Bwana, Mungu wa majeshi *2<br />Mbingu na dunia zimejaa zimejaa<br />Mbingu na dunia zimejaa utukufu wako *2<br />Hosana juu *4 Mbinguni<br />Mbarikiwa ‘nayekuja *2 Mbarikiwa<br />Mbarikiwa ‘nayekuja kwa jina jina lake Bwana<br />Hosana juu *4 Mbinguni</p>\n<p><strong>Mystery Of Faith</strong></p>\n<p>Yesu Kristu alikufa Yesu Kristu kafufuka<br />(Yesu) Kristu atakuja atakuja kwetu tena *2</p>\n<p><strong>Gospel Acclamation</strong></p>\n<p>Alleluia *n</p>\n<p><strong>Great Amen</strong></p>\n<p>Amina</p>",
-      "uses": 7
-    },
-    {
       "slug": "a-m-e-c-e-a-mass",
       "title": "A.M.E.C.E.A. Mass",
       "language": "SWAHILI",
@@ -188,10 +135,11 @@
         "Amecea Mass",
         "Misa Amecea",
         "Amecea",
+        "A.M.E.C.E.A.",
         "Sanctus – Amecea Mass"
       ],
       "lyrics": "<p><strong>Gloria</strong></p>\n<p>1. Utukufu kwa Mungu juu mbinguni, na Amani kote duniani<br />(Kwa watu) wenye mapenzi mema</p><p>Tunakusifu Baba tunakuheshimu, twakuabudu sisi tunakutukuza *2</p><p>2. Twakushukuru Mungu kwa ‘tukufu - wako mkuu ewe Mungu Mfalme<br />(Ee Baba) wa mbingu Baba yetu.<br />3. Bwana wetu mwokozi Yesu Kristu - Mwana wa pekee wake Mungu<br />(Uliye) - Mwanakondoo wa Mungu.<br />4. Unayeziondoa dhambi zote - za dunia utuhurumie<br />(pokea) pokea ombi letu.<br />5. Wewe unayeketi kuume - kwake Baba utuhurumie<br />(sikia) - sikia ombi letu.<br />6. Kwani pekee yako ndiwe Bwana - Pekee yako mkuu na Mkombozi<br />(Pekee) - pekee Yesu Kristu.<br />7. Kwa umoja wa Roho Mtakatifu - ndani yake Baba watukuzwa<br />(Ee Yesu) - milele na milele.</p>\n<p><strong>Sanctus</strong></p>\n<p>Mtakatifu Mtakatifu Bwana, Mungu wa majeshi *2<br />Mbingu na dunia zimejaa zimejaa<br />Mbingu na dunia zimejaa utukufu wako x2<br />Hosana juu x 4 Mbinguni<br />Mbarikiwa ‘nayekuja *2 Mbarikiwa<br />Mbarikiwa ‘nayekuja kwa jina jina lake Bwana<br />Hosana juu x 4 Mbinguni</p>\n<p><strong>Mystery Of Faith</strong></p>\n<p>Yesu Kristu alikufax, Yesu Kristu kafufuka<br />Kristu atakuja atakuja kwetu tena (Yesu).</p>\n<p><strong>Gospel Acclamation</strong></p>\n<p>Alleluia *6</p>\n<p><strong>Great Amen</strong></p>\n<p>Amina *n</p>\n<p>Aleluiyah *6</p>",
-      "uses": 32
+      "uses": 39
     },
     {
       "slug": "abide-with-me",
@@ -21764,13 +21712,13 @@
         },
         {
           "part": "KYRIE",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "GLORIA",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "GOSPEL_PROCESSION",
@@ -21784,8 +21732,8 @@
         },
         {
           "part": "GOSPEL_ACCLAMATION",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "OFFERTORY",
@@ -21804,18 +21752,18 @@
         },
         {
           "part": "SANCTUS",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "MYSTERY_OF_FAITH",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "GREAT_AMEN",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "OUR_FATHER",
@@ -21829,8 +21777,8 @@
         },
         {
           "part": "AGNUS_DEI",
-          "song": "A.M.E.C.E.A.",
-          "slug": "a-m-e-c-e-a"
+          "song": "A.M.E.C.E.A. Mass",
+          "slug": "a-m-e-c-e-a-mass"
         },
         {
           "part": "COMMUNION",
@@ -24303,6 +24251,7 @@
           "Amecea Mass",
           "Misa Amecea",
           "Amecea",
+          "A.M.E.C.E.A.",
           "Sanctus – Amecea Mass"
         ]
       },

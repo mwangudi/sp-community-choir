@@ -1,5 +1,68 @@
 [
   {
+    "date": "2026-09-20",
+    "name": "25th Sunday in Ordinary Time",
+    "year": "A",
+    "season": "ORDINARY_TIME",
+    "setting": "A.M.E.C.E.A. Mass",
+    "notes": "Selections by Fiona Kirimi.",
+    "status": "PUBLISHED",
+    "items": [
+      { "part": "ENTRANCE", "song": "Seek Ye First", "slug": "seek-ye-first" },
+      { "part": "KYRIE", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      { "part": "GLORIA", "song": "Misa Magnificat", "slug": "misa-magnificat" },
+      {
+        "part": "GOSPEL_PROCESSION",
+        "song": "Raka Naka Vangeri (Shona)",
+        "slug": "raka-naka-vangeri"
+      },
+      {
+        "part": "GOSPEL_ACCLAMATION",
+        "song": "A.M.E.C.E.A. Mass",
+        "slug": "a-m-e-c-e-a-mass"
+      },
+      { "part": "OFFERTORY", "song": "Matega", "slug": "matega" },
+      { "part": "OFFERTORY", "song": "Beba Mikononi", "slug": "beba-mikononi" },
+      {
+        "part": "PREPARATION_OF_GIFTS",
+        "song": "Blessed Be God",
+        "slug": "blessed-be-god"
+      },
+      { "part": "SANCTUS", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      {
+        "part": "MYSTERY_OF_FAITH",
+        "song": "A.M.E.C.E.A. Mass",
+        "slug": "a-m-e-c-e-a-mass"
+      },
+      { "part": "GREAT_AMEN", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      { "part": "OUR_FATHER", "song": "Latin Chant", "slug": "latin-chant" },
+      {
+        "part": "SIGN_OF_PEACE",
+        "song": "Peace is Flowing Like a River",
+        "slug": "peace-is-flowing-like-a-river"
+      },
+      { "part": "AGNUS_DEI", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      { "part": "COMMUNION", "song": "We Gather Together", "slug": "we-gather-together" },
+      { "part": "COMMUNION", "song": "Amazing Grace", "slug": "amazing-grace" },
+      { "part": "ANIMA_CHRISTI", "song": "Roho wa Yesu", "slug": "roho-wa-yesu" },
+      {
+        "part": "THANKSGIVING",
+        "song": "Haya Tazameni (Ameweza!)",
+        "slug": "haya-tazameni-ameweza"
+      },
+      {
+        "part": "RECESSIONAL",
+        "song": "Blessed Assurance",
+        "slug": "blessed-assurance"
+      },
+      {
+        "part": "MARIAN_HYMN",
+        "song": "Daily Daily Sing to Mary",
+        "slug": "daily-daily-sing-to-mary"
+      }
+    ]
+  },
+  {
     "date": "2026-09-13",
     "name": "24th Sunday in Ordinary Time",
     "year": "A",
