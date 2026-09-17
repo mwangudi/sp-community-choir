@@ -94,7 +94,7 @@ export default async function WorshipAidPage({
         <Link href={`/admin/mass-plans/${plan.id}`} className="aid-back">
           ← Back to the plan
         </Link>
-        <PrintButton />
+        <PrintButton planId={plan.id} />
       </div>
 
       <article className="worship-aid">

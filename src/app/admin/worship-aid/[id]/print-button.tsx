@@ -1,22 +1,40 @@
 "use client";
 
-import { Button, Stack, Typography } from "@mui/material";
-import { Printer } from "lucide-react";
+import { Button, Stack } from "@mui/material";
+import { Download, ExternalLink, Printer } from "lucide-react";
 
-export function PrintButton() {
+export function PrintButton({ planId }: { planId: string }) {
+  const pdf = `/admin/worship-aid/${planId}/pdf`;
+
   return (
-    <Stack direction="row" spacing={3} sx={{ alignItems: "center" }}>
-      <Typography variant="caption" color="text.secondary" sx={{ textAlign: "right" }}>
-        In the dialog, set the destination to <strong>Save as PDF</strong> —
-        on macOS use the <strong>PDF</strong> menu at the bottom left.
-      </Typography>
+    <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
       <Button
         variant="contained"
-        startIcon={<Printer size={16} />}
+        startIcon={<Download size={16} />}
+        href={`${pdf}?download=1`}
+        sx={{ flexShrink: 0 }}
+      >
+        Download PDF
+      </Button>
+      <Button
+        variant="outlined"
+        color="inherit"
+        startIcon={<ExternalLink size={15} />}
+        href={pdf}
+        target="_blank"
+        rel="noreferrer"
+        sx={{ flexShrink: 0 }}
+      >
+        Open PDF
+      </Button>
+      <Button
+        variant="outlined"
+        color="inherit"
+        startIcon={<Printer size={15} />}
         onClick={() => window.print()}
         sx={{ flexShrink: 0 }}
       >
-        Print / Save as PDF
+        Print
       </Button>
     </Stack>
   );
