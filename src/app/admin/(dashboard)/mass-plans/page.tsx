@@ -12,7 +12,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { CalendarDays, Pencil, Plus, Printer } from "lucide-react";
+import { BookOpen, CalendarDays, Download, Pencil, Plus, Printer } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { massPartLabel } from "@/lib/mass-parts";
@@ -26,6 +26,60 @@ export const dynamic = "force-dynamic";
 
 // Each card lists a full order of service, so keep the page short.
 const PER_PAGE = 10;
+
+function startOfToday() {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+function SummaryCard({
+  icon,
+  label,
+  value,
+  chip,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  chip?: React.ReactNode;
+}) {
+  return (
+    <Card>
+      <CardContent
+        sx={{ display: "flex", alignItems: "center", gap: 3, py: 3 }}
+      >
+        <Box
+          sx={{
+            display: "grid",
+            placeItems: "center",
+            width: 38,
+            height: 38,
+            borderRadius: 2,
+            bgcolor: "action.hover",
+            color: "primary.main",
+            flexShrink: 0,
+          }}
+        >
+          {icon}
+        </Box>
+        <Box sx={{ minWidth: 0, flex: 1 }}>
+          <Typography
+            variant="caption"
+            color="text.secondary"
+            sx={{ fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5 }}
+          >
+            {label}
+          </Typography>
+          <Typography noWrap sx={{ fontWeight: 600 }}>
+            {value}
+          </Typography>
+        </Box>
+        {chip}
+      </CardContent>
+    </Card>
+  );
+}
 
 export default async function MassPlansPage({
   searchParams,
@@ -46,6 +100,9 @@ export default async function MassPlansPage({
     take: PER_PAGE,
   });
 
+  const next = plans.find((p) => p.date >= startOfToday()) ?? plans[0];
+  const published = await prisma.massPlan.count({ where: { status: "PUBLISHED" } });
+
   return (
     <Stack spacing={6}>
       <Stack
@@ -54,11 +111,23 @@ export default async function MassPlansPage({
         sx={{ justifyContent: "space-between", alignItems: { sm: "center" } }}
       >
         <Box>
-          <Typography variant="h4">Mass plans</Typography>
+          <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
+            <Typography variant="h4" className="admin-display">
+              Mass plans
+            </Typography>
+            {next?.season && (
+              <Chip
+                size="small"
+                label={next.season.replace(/_/g, " ")}
+                sx={{ textTransform: "uppercase", fontSize: 11, fontWeight: 700 }}
+              />
+            )}
+          </Stack>
           <Typography color="text.secondary">
             The order of service for each Sunday.
           </Typography>
-        </Box>        <Button
+        </Box>
+        <Button
           component={Link}
           href="/admin/mass-plans/new"
           variant="contained"
@@ -67,6 +136,46 @@ export default async function MassPlansPage({
           New plan
         </Button>
       </Stack>
+
+      {next && (
+        <Box
+          sx={{
+            display: "grid",
+            gap: 4,
+            gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)" },
+          }}
+        >
+          <SummaryCard
+            icon={<CalendarDays size={18} />}
+            label="Active setting"
+            value={next.setting ?? "Not set"}
+            chip={<Chip size="small" color="success" label="Current" />}
+          />
+          <SummaryCard
+            icon={<BookOpen size={18} />}
+            label="Liturgical lectionary"
+            value={`Cycle Year ${next.year}`}
+            chip={<Chip size="small" color="warning" label={`Year ${next.year}`} />}
+          />
+          <SummaryCard
+            icon={<Printer size={18} />}
+            label="Worship leaflet"
+            value={`Ready for ${formatDate(next.date)}`}
+            chip={
+              <Tooltip title="Open the worship aid">
+                <IconButton
+                  size="small"
+                  component={Link}
+                  href={`/admin/worship-aid/${next.id}`}
+                  aria-label="Open the worship aid"
+                >
+                  <Download size={16} />
+                </IconButton>
+              </Tooltip>
+            }
+          />
+        </Box>
+      )}
 
       {plans.length === 0 ? (
         <Card>
@@ -95,7 +204,9 @@ export default async function MassPlansPage({
                 >
                   <Box>
                     <Stack direction="row" spacing={2} sx={{ alignItems: "center", flexWrap: "wrap", gap: 2 }}>
-                      <Typography variant="h6">{plan.name}</Typography>
+                      <Typography variant="h6" className="admin-display">
+                        {plan.name}
+                      </Typography>
                       <Chip
                         size="small"
                         label={plan.status}
@@ -145,10 +256,12 @@ export default async function MassPlansPage({
                   </Stack>
                 </Stack>
 
-                <Divider sx={{ my: 4 }} />
-
                 <Box
                   sx={{
+                    mt: 4,
+                    p: 3,
+                    borderRadius: 2,
+                    bgcolor: "action.hover",
                     display: "grid",
                     columnGap: 10,
                     gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
@@ -171,15 +284,18 @@ export default async function MassPlansPage({
                         variant="caption"
                         color="text.secondary"
                         sx={{
-                          fontWeight: 600,
+                          fontWeight: 700,
                           textTransform: "uppercase",
-                          letterSpacing: 0.4,
+                          letterSpacing: 0.5,
                           flexShrink: 0,
                         }}
                       >
                         {massPartLabel(item.part)}
                       </Typography>
-                      <Typography variant="body2" sx={{ textAlign: "right" }}>
+                      <Typography
+                        className="admin-song"
+                        sx={{ textAlign: "right", fontWeight: 500 }}
+                      >
                         {item.song}
                       </Typography>
                     </Stack>

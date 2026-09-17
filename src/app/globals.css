@@ -61,6 +61,17 @@
 /* Shared by the blog editor and the published post, so what you type is what
    you get. */
 @layer components {
+  /* Roman capitals for liturgical headings, a book face for song titles. Both
+     need two classes to outrank the admin's sans rule and MUI's own. */
+  .admin-root .admin-display {
+    font-family: var(--font-display), "Times New Roman", serif;
+    letter-spacing: -0.02em;
+  }
+  .admin-root .admin-song {
+    font-family: var(--font-song), Georgia, serif;
+    font-size: 1.05em;
+  }
+
   .choir-prose {
     @apply text-base leading-relaxed text-foreground/85 sm:text-lg;
   }

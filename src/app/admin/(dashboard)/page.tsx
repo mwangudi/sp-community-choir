@@ -243,7 +243,12 @@ function SectionHeader({
       <Stack direction="row" spacing={2} sx={{ alignItems: "flex-start" }}>
         <Box sx={{ color: "text.secondary", mt: 0.25 }}>{icon}</Box>
         <Box>
-          <Typography sx={{ fontWeight: 600, lineHeight: 1.3 }}>{title}</Typography>
+          <Typography
+            className="admin-display"
+            sx={{ fontWeight: 600, lineHeight: 1.3, fontSize: "1.0625rem" }}
+          >
+            {title}
+          </Typography>
           <Typography variant="caption" color="text.secondary">
             {subtitle}
           </Typography>
@@ -521,9 +526,12 @@ export default async function AdminDashboardPage() {
                   <Chip size="small" variant="outlined" label={s.nextPlan.leader} />
                 )}
               </Stack>
-              <Divider sx={{ my: 4 }} />
               <Box
                 sx={{
+                  mt: 4,
+                  p: 3,
+                  borderRadius: 2,
+                  bgcolor: "action.hover",
                   display: "grid",
                   columnGap: 10,
                   gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
@@ -546,15 +554,18 @@ export default async function AdminDashboardPage() {
                       variant="caption"
                       color="text.secondary"
                       sx={{
-                        fontWeight: 600,
+                        fontWeight: 700,
                         textTransform: "uppercase",
-                        letterSpacing: 0.4,
+                        letterSpacing: 0.5,
                         flexShrink: 0,
                       }}
                     >
                       {massPartLabel(item.part)}
                     </Typography>
-                    <Typography variant="body2" sx={{ textAlign: "right" }}>
+                    <Typography
+                      className="admin-song"
+                      sx={{ textAlign: "right", fontWeight: 500 }}
+                    >
                       {item.song}
                     </Typography>
                   </Stack>
