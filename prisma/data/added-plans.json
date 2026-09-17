@@ -35,7 +35,7 @@
         "slug": "a-m-e-c-e-a-mass"
       },
       { "part": "GREAT_AMEN", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
-      { "part": "OUR_FATHER", "song": "Latin Chant", "slug": "latin-chant" },
+      { "part": "OUR_FATHER", "song": "Pater Noster (Latin Chant)", "slug": "latin-chant" },
       {
         "part": "SIGN_OF_PEACE",
         "song": "Peace is Flowing Like a River",
@@ -44,7 +44,7 @@
       { "part": "AGNUS_DEI", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
       { "part": "COMMUNION", "song": "We Gather Together", "slug": "we-gather-together" },
       { "part": "COMMUNION", "song": "Amazing Grace", "slug": "amazing-grace" },
-      { "part": "ANIMA_CHRISTI", "song": "Roho wa Yesu", "slug": "roho-wa-yesu" },
+      { "part": "ANIMA_CHRISTI", "song": "Roho ya Yesu Itutakase", "slug": "roho-wa-yesu" },
       {
         "part": "THANKSGIVING",
         "song": "Haya Tazameni (Ameweza!)",

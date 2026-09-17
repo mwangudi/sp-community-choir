@@ -1,5 +1,66 @@
 [
   {
+    "slug": "a-m-e-c-e-a-mass",
+    "section": "KYRIE",
+    "verses": [
+      [
+        "Bwana utuhurumie (ee Bwana) - Bwana utuhurumie x2",
+        "Kristu utuhurumie (ee Kristu) - Kristu utuhurumie x2",
+        "Bwana utuhurumie (ee Bwana) - Bwana utuhurumie x2"
+      ]
+    ]
+  },
+  {
+    "slug": "a-m-e-c-e-a-mass",
+    "section": "AGNUS_DEI",
+    "verses": [
+      [
+        "Mwanakondoo wa Mungu uondoaye dhambi, za dunia (ee Mwana) utuhurumie x2",
+        "Mwanakondoo wa Mungu uondoaye dhambi, za dunia (ee Mwana) utujalie amani"
+      ]
+    ]
+  },
+  {
+    "slug": "latin-chant",
+    "title": "Pater Noster (Latin Chant)",
+    "language": "LATIN",
+    "massParts": ["OUR_FATHER"],
+    "verses": [
+      [
+        "Pater noster, qui es in caelis,",
+        "sanctificetur Nomen tuum.",
+        "Adveniat regnum tuum.",
+        "Fiat voluntas tua,",
+        "sicut in caelo et in terra.",
+        "Panem nostrum quotidianum da nobis hodie,",
+        "et dimitte nobis debita nostra",
+        "sicut et nos dimittimus debitoribus nostris.",
+        "Et ne nos inducas in tentationem,",
+        "sed libera nos a malo."
+      ]
+    ]
+  },
+  {
+    "slug": "roho-wa-yesu",
+    "title": "Roho ya Yesu Itutakase",
+    "language": "SWAHILI",
+    "massParts": ["ANIMA_CHRISTI"],
+    "verses": [
+      [
+        "1. Roho wa Yesu itutakase, mwili wa Yesu utuokoe,",
+        "damu ya Yesu ituchangamshe, maji ya ubavu yatusafishe"
+      ],
+      [
+        "2. Mateso yako tutie nguvu, jeraha zako maficho yetu,",
+        "tusitengane nawe ee Yesu, bali utukinge na yule mwovu"
+      ],
+      [
+        "3. Saa ya kufa tuite kwako, tukutukuze Mwokozi wetu,",
+        "pamoja na wateule wote, tukusifu daima na milele"
+      ]
+    ]
+  },
+  {
     "slug": "misa-mt-elizabeti",
     "section": "KYRIE",
     "verses": [
