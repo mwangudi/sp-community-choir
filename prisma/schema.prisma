@@ -3,6 +3,8 @@
 
 generator client {
   provider = "prisma-client-js"
+  // Built on Windows, run on Ubuntu 24.04, so emit that engine too.
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {

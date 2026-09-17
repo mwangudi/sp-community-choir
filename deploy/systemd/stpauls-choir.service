@@ -10,8 +10,10 @@ Group=www-data
 WorkingDirectory=/var/www/choir
 Environment=NODE_ENV=production
 Environment=PORT=3100
+Environment=HOSTNAME=127.0.0.1
 EnvironmentFile=/var/www/choir/.env
-ExecStart=/usr/bin/npm run start
+# Built elsewhere and shipped whole, so there is no npm or build step here.
+ExecStart=/usr/bin/node server.js
 Restart=on-failure
 RestartSec=5
 

@@ -49,3 +49,8 @@ public/uploads/
 
 # large source archives
 *.zip
+
+# Build artefacts from deploy/build-bundle.ps1
+.deploy-bundle/
+choir-bundle.tgz
+worship-aid-*.pdf

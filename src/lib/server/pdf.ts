@@ -43,7 +43,12 @@ export async function renderPagePdf(url: string, cookie: string) {
   const origin = new URL(url).origin;
   const html = (await res.text())
     .replace(/(href|src)="\/(?!\/)/g, `$1="${origin}/`)
-    .replace(/url\(\/(?!\/)/g, `url(${origin}/`);
+    .replace(/url\(\/(?!\/)/g, `url(${origin}/`)
+    // The copy is opened from disk, where a production build cannot match the
+    // path to a route and renders its error page instead. Nothing here needs
+    // to hydrate, so take the scripts out and let it stay static HTML.
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<script\b[^>]*\/>/gi, "");
 
   const dir = await mkdtemp(path.join(os.tmpdir(), "aid-pdf-"));
   const page = path.join(dir, "page.html");

@@ -21,9 +21,12 @@ export async function GET(
   if (!plan) notFound();
 
   const url = new URL(request.url);
-  const origin = url.origin;
   const download = url.searchParams.get("download") === "1";
   const name = `worship-aid-${plan.date.toISOString().slice(0, 10)}.pdf`;
+
+  // Render over loopback rather than the public URL: the browser has to fetch
+  // the page's own assets, and the domain may not resolve from the server.
+  const origin = `http://127.0.0.1:${process.env.PORT ?? 3100}`;
 
   try {
     const pdf = await renderPagePdf(
