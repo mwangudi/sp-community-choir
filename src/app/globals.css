@@ -139,7 +139,7 @@
 }
 
 /* Matches the aid the choir already prints, in the site's cardinal rather
-   than the pure red Word produced. */
+   than the pure red Word produced, and set in the site's own typefaces. */
 .worship-aid {
   width: 210mm;
   min-height: 297mm;
@@ -148,9 +148,9 @@
   background: #fff;
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.16);
   color: #000;
-  font-family: Calibri, "Segoe UI", Aptos, system-ui, sans-serif;
+  font-family: var(--font-sans), Inter, system-ui, sans-serif;
   font-size: 9pt;
-  line-height: 1.28;
+  line-height: 1.32;
   /* An fi ligature is extracted from the PDF as "sa fi", breaking search. */
   font-variant-ligatures: none;
 }
@@ -161,8 +161,9 @@
   margin: 0 0 8px;
 }
 .worship-aid .aid-title {
-  font-size: 11pt;
-  font-weight: 700;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 10.5pt;
+  font-weight: 600;
   text-align: center;
   color: hsl(var(--primary));
   margin: 0 0 12px;
@@ -174,10 +175,12 @@
   margin-bottom: 10px;
 }
 .worship-aid .aid-part {
-  font-size: 12pt;
-  font-weight: 700;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 9.5pt;
+  font-weight: 600;
+  letter-spacing: 0.15px;
   color: hsl(var(--primary));
-  margin: 0 0 2px;
+  margin: 0 0 3px;
   /* Keeping a whole song together strands half a page, so hold only the
      heading to its first verse and let a long song run on. */
   break-after: avoid;
