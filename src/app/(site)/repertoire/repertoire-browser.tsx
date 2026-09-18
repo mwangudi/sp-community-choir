@@ -1,10 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   CalendarDays,
+  ChevronLeft,
+  ChevronRight,
   ExternalLink,
   ListMusic,
   Music2,
@@ -43,6 +45,9 @@ import {
 } from "@/lib/songs";
 import { orderedItems, type MassPlan } from "@/lib/mass-plans";
 import { cn } from "@/lib/utils";
+
+/** Divides evenly into both the 2- and 3-column grids. */
+const PAGE_SIZE = 24;
 
 export default function RepertoireBrowser({
   signedIn,
@@ -91,6 +96,30 @@ export default function RepertoireBrowser({
   );
 
   const hasFilters = !!(query || season || massPart || language);
+
+  const [page, setPage] = useState(1);
+  const resultsRef = useRef<HTMLElement>(null);
+
+  // A new search or filter should land you back on the first page.
+  const filterKey = [query, season, massPart, language].join("|");
+  const [lastFilterKey, setLastFilterKey] = useState(filterKey);
+  if (filterKey !== lastFilterKey) {
+    setLastFilterKey(filterKey);
+    setPage(1);
+  }
+
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(page, pageCount);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const visible = useMemo(
+    () => filtered.slice(start, start + PAGE_SIZE),
+    [filtered, start],
+  );
+
+  const goToPage = (target: number) => {
+    setPage(Math.min(Math.max(target, 1), pageCount));
+    resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <>
@@ -390,14 +419,16 @@ export default function RepertoireBrowser({
       </section>
 
       {/* Results */}
-      <section className="py-12 sm:py-16">
+      <section ref={resultsRef} className="scroll-mt-20 py-12 sm:py-16">
         <div className="container">
           <div className="flex items-baseline justify-between gap-4">
             <h2 className="font-serif text-2xl font-semibold text-primary sm:text-3xl">
               {hasFilters ? "Matching songs" : "All songs"}
             </h2>
             <span className="text-sm text-muted-foreground">
-              {filtered.length} {filtered.length === 1 ? "result" : "results"}
+              {pageCount > 1
+                ? `Showing ${start + 1}–${start + visible.length} of ${filtered.length}`
+                : `${filtered.length} ${filtered.length === 1 ? "result" : "results"}`}
             </span>
           </div>
 
@@ -407,7 +438,7 @@ export default function RepertoireBrowser({
             </p>
           ) : (
             <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((s) => (
+              {visible.map((s) => (
                 <li key={s.slug}>
                   <Card className="group h-full border-border/60 transition-all hover:-translate-y-1 hover:border-secondary/40 hover:shadow-md">
                     <CardHeader>
@@ -442,9 +473,98 @@ export default function RepertoireBrowser({
               ))}
             </ul>
           )}
+
+          <Pager page={currentPage} pageCount={pageCount} onChange={goToPage} />
         </div>
       </section>
     </>
+  );
+}
+
+/** 1 … 4 5 6 … 21 — always keeps the first, last and neighbouring pages visible. */
+function pageItems(page: number, pageCount: number): (number | "gap")[] {
+  const wanted = new Set([1, pageCount]);
+  for (let p = page - 1; p <= page + 1; p++) {
+    if (p >= 1 && p <= pageCount) wanted.add(p);
+  }
+  const items: (number | "gap")[] = [];
+  let previous = 0;
+  for (const p of [...wanted].sort((a, b) => a - b)) {
+    if (previous && p - previous > 1) items.push("gap");
+    items.push(p);
+    previous = p;
+  }
+  return items;
+}
+
+function Pager({
+  page,
+  pageCount,
+  onChange,
+}: {
+  page: number;
+  pageCount: number;
+  onChange: (page: number) => void;
+}) {
+  if (pageCount <= 1) return null;
+
+  return (
+    <nav
+      aria-label="Repertoire pages"
+      className="mt-10 flex flex-wrap items-center justify-center gap-1.5"
+    >
+      <Button
+        type="button"
+        variant="outline"
+        size="sm"
+        onClick={() => onChange(page - 1)}
+        disabled={page === 1}
+        className="rounded-full"
+      >
+        <ChevronLeft className="h-4 w-4" />
+        <span className="hidden sm:inline">Previous</span>
+      </Button>
+
+      {pageItems(page, pageCount).map((item, i) =>
+        item === "gap" ? (
+          <span
+            key={`gap-${i}`}
+            aria-hidden
+            className="px-1 text-sm text-muted-foreground"
+          >
+            …
+          </span>
+        ) : (
+          <button
+            key={item}
+            type="button"
+            onClick={() => onChange(item)}
+            aria-label={`Page ${item}`}
+            aria-current={item === page ? "page" : undefined}
+            className={cn(
+              "h-9 min-w-9 rounded-full border px-3 text-sm font-medium transition-colors",
+              item === page
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border bg-background hover:border-secondary/40 hover:bg-secondary/10",
+            )}
+          >
+            {item}
+          </button>
+        ),
+      )}
+
+      <Button
+        type="button"
+        variant="outline"
+        size="sm"
+        onClick={() => onChange(page + 1)}
+        disabled={page === pageCount}
+        className="rounded-full"
+      >
+        <span className="hidden sm:inline">Next</span>
+        <ChevronRight className="h-4 w-4" />
+      </Button>
+    </nav>
   );
 }
 
