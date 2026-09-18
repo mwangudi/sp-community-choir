@@ -327,7 +327,7 @@ export default function RepertoireBrowser({
                     type="search"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Search title, composer, scripture…"
+                    placeholder="Search title, composer or a line of the lyrics…"
                     aria-label="Search the repertoire"
                     className="h-11 w-full rounded-full border bg-background pl-10 pr-3 text-base shadow-sm outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
                   />

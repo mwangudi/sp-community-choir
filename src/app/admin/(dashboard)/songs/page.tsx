@@ -164,6 +164,8 @@ export default async function SongsPage({
               { title: { contains: q } },
               { composer: { contains: q } },
               { arranger: { contains: q } },
+              // Many songs are known by a line of the chorus, not the title.
+              { lyrics: { contains: q } },
             ],
           }
         : {},

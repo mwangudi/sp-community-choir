@@ -362,6 +362,35 @@ export type SongFilters = {
   language?: SongLanguage;
 };
 
+/**
+ * Lyrics are stored as HTML, and stripping it on every keystroke across the
+ * whole catalogue is wasteful, so each song's searchable text is kept.
+ */
+const HAYSTACK = new WeakMap<Song, string>();
+
+function haystack(s: Song): string {
+  const cached = HAYSTACK.get(s);
+  if (cached !== undefined) return cached;
+
+  const text = [
+    s.title,
+    ...(s.aliases ?? []),
+    s.composer ?? "",
+    s.arranger ?? "",
+    s.language,
+    ...s.themes,
+    ...(s.scripture ?? []),
+    // A song is often known by its chorus rather than its title.
+    (s.lyrics ?? "").replace(/<[^>]+>/g, " "),
+  ]
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .toLowerCase();
+
+  HAYSTACK.set(s, text);
+  return text;
+}
+
 export function searchSongs(songs: Song[], filters: SongFilters): Song[] {
   const q = filters.query?.trim().toLowerCase() ?? "";
   return songs.filter((s) => {
@@ -369,18 +398,7 @@ export function searchSongs(songs: Song[], filters: SongFilters): Song[] {
     if (filters.massPart && !s.massParts.includes(filters.massPart)) return false;
     if (filters.language && s.language !== filters.language) return false;
     if (!q) return true;
-    const hay = [
-      s.title,
-      ...(s.aliases ?? []),
-      s.composer ?? "",
-      s.arranger ?? "",
-      s.language,
-      ...s.themes,
-      ...(s.scripture ?? []),
-    ]
-      .join(" ")
-      .toLowerCase();
-    return hay.includes(q);
+    return haystack(s).includes(q);
   });
 }
 
