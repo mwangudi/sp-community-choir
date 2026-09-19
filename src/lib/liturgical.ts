@@ -63,6 +63,17 @@ function startOfDay(d: Date): Date {
   return r;
 }
 
+/**
+ * YYYY-MM-DD from the local calendar day. `toISOString()` cannot be used for
+ * this: dates here are built at local midnight, which in any zone east of UTC
+ * serialises to the previous day.
+ */
+export function dateKey(d: Date): string {
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${d.getFullYear()}-${m}-${day}`;
+}
+
 function sameDay(a: Date, b: Date): boolean {
   return (
     a.getFullYear() === b.getFullYear() &&

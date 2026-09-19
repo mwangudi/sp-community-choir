@@ -4,37 +4,44 @@
 
 @layer base {
   :root {
-    /* Palette matched to the existing Wix site (spchoir1.wixsite.com/choir):
-       cardinal red brand on warm off-white, with a warm gold accent kept for
-       eyebrows / badges where pure red would overload. */
-    --background: 30 25% 97%;        /* warm off-white #F7F5F2 */
-    --foreground: 20 13% 14%;        /* warm near-black #27211E */
+    /* "Liturgical Editorial" palette from the Stitch design export.
+       Parchment and ivory surfaces instead of white, deep ecclesiastical
+       crimson, and burnished gold. Hex equivalents are noted for reference. */
+    --background: 33 60% 98%;        /* surface-parchment #FDFBF7 */
+    --foreground: 24 11% 10%;        /* text-primary #1C1917 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 20 13% 14%;
+    --card: 0 0% 100%;               /* surface-elevated #FFFFFF */
+    --card-foreground: 24 11% 10%;
 
-    --primary: 350 96% 38%;          /* cardinal red ~#BC0424 */
-    --primary-foreground: 30 25% 97%;
+    --primary: 356 100% 22%;         /* primary #6E0009 */
+    --primary-foreground: 33 60% 98%;
+    /* Banners, filled CTAs and the active nav pill. */
+    --primary-container: 353 100% 30%;   /* #990011 */
+    --primary-deep: 351 100% 24%;        /* liturgical-crimson-deep #7B000E */
+    --primary-bright: 351 79% 41%;       /* liturgical-crimson-bright #BD152F */
 
-    --secondary: 35 80% 40%;         /* warm deep gold ~#B87809 */
-    --secondary-foreground: 20 13% 14%;
+    --secondary: 36 74% 29%;         /* secondary #815513 */
+    --secondary-foreground: 0 0% 100%;
 
-    /* Amber gold from the choir uniform ~#FDB321. Bright enough to stay
-       legible on the cardinal-red and ink backgrounds, where the deeper
-       --secondary gold does not have sufficient contrast. */
-    --gold: 40 98% 56%;
+    /* Burnished golds: --gold on dark/crimson, --gold-subtle for eyebrow pills. */
+    --gold: 37 68% 72%;              /* gold-light #E9C886 */
+    --gold-subtle: 43 68% 91%;       /* gold-subtle #F7EEDA */
 
-    --muted: 20 15% 93%;
-    --muted-foreground: 20 10% 38%;
+    --muted: 33 33% 94%;             /* surface-ivory #F6F1E8 */
+    --muted-foreground: 25 5% 33%;   /* text-secondary #57534E */
+    --muted-strong: 24 5% 46%;       /* text-tertiary #78716C */
 
-    --accent: 35 80% 40%;
-    --accent-foreground: 20 13% 14%;
+    --accent: 36 74% 29%;
+    --accent-foreground: 0 0% 100%;
 
-    --border: 20 15% 86%;
-    --input: 20 15% 86%;
-    --ring: 350 96% 38%;
+    --border: 43 42% 85%;            /* border-warm #E8DEC8 */
+    --input: 43 42% 85%;
+    --ring: 353 100% 30%;
 
-    --radius: 0.6rem;
+    /* Cathedral midnight — the inverted "Echoes of Praise" band. */
+    --ink: 255 27% 12%;              /* cathedral-night #181424 */
+
+    --radius: 0.75rem;
   }
 
   * {
