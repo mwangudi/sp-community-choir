@@ -61,6 +61,9 @@ async function main() {
       year: plan.year,
       season: plan.season ?? null,
       setting: plan.setting ?? null,
+      ...(Object.hasOwn(plan, "youtubeId")
+        ? { youtubeId: plan.youtubeId || null }
+        : {}),
       notes: plan.notes ?? null,
       status: plan.status ?? "DRAFT",
     };
