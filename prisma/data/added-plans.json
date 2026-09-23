@@ -1,5 +1,287 @@
 [
   {
+    "date": "2026-10-18",
+    "name": "29th Sunday in Ordinary Time",
+    "year": "A",
+    "season": "ORDINARY_TIME",
+    "setting": "A.M.E.C.E.A. Mass",
+    "notes": "World Mission Sunday.",
+    "status": "PUBLISHED",
+    "items": [
+      {
+        "part": "ENTRANCE",
+        "song": "Twende Nyumbani Mwa Bwana Hoya! (Hoya!)",
+        "slug": "twende-nyumbani-mwa-bwana-hoya"
+      },
+      { "part": "KYRIE", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      { "part": "GLORIA", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      {
+        "part": "GOSPEL_PROCESSION",
+        "song": "Nimtume Nani",
+        "slug": "nimtume-nani"
+      },
+      {
+        "part": "GOSPEL_ACCLAMATION",
+        "song": "Mimi Ninasikia",
+        "slug": "mimi-ninasikia"
+      },
+      {
+        "part": "OFFERTORY",
+        "song": "Ee Baba Twaleta Zawadi Zetu",
+        "slug": "ee-baba-twaleta-zawadi-zetu"
+      },
+      {
+        "part": "OFFERTORY",
+        "song": "Nginyukitie Nguite Mugate",
+        "slug": "nginyukitie-nguite-mugate"
+      },
+      {
+        "part": "PREPARATION_OF_GIFTS",
+        "song": "Let Us Break Bread",
+        "slug": "let-us-break-bread"
+      },
+      { "part": "SANCTUS", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      {
+        "part": "MYSTERY_OF_FAITH",
+        "song": "A.M.E.C.E.A. Mass",
+        "slug": "a-m-e-c-e-a-mass"
+      },
+      { "part": "GREAT_AMEN", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      { "part": "SIGN_OF_PEACE", "song": "Ni Amani Katika Yesu Bwana" },
+      { "part": "AGNUS_DEI", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      {
+        "part": "COMMUNION",
+        "song": "Twendeni Kwa Karamu",
+        "slug": "twendeni-kwa-karamu"
+      },
+      {
+        "part": "COMMUNION",
+        "song": "Sweet Sacrament Divine",
+        "slug": "sweet-sacrament-divine"
+      },
+      {
+        "part": "ANIMA_CHRISTI",
+        "song": "Soul of My Saviour",
+        "slug": "soul-of-my-saviour"
+      },
+      { "part": "THANKSGIVING", "song": "Kongoi" },
+      { "part": "RECESSIONAL", "song": "Nasikia Sauti Nzuri" },
+      {
+        "part": "RECESSIONAL",
+        "song": "Nimeahidi Yesu",
+        "slug": "nimeahidi-yesu"
+      },
+      { "part": "MARIAN_HYMN", "song": "Mother Dearest", "slug": "mother-dearest" }
+    ]
+  },
+  {
+    "date": "2026-10-11",
+    "name": "28th Sunday in Ordinary Time",
+    "year": "A",
+    "season": "ORDINARY_TIME",
+    "setting": "Our Lady of Mercy Mass",
+    "notes": "Theme: Shepherded to the Banquet.",
+    "status": "PUBLISHED",
+    "items": [
+      { "part": "ENTRANCE", "song": "Savior, Like a Shepherd Lead Us" },
+      {
+        "part": "KYRIE",
+        "song": "Our Lady of Mercy Mass",
+        "slug": "our-lady-of-mercy-mass"
+      },
+      {
+        "part": "GLORIA",
+        "song": "Our Lady of Mercy Mass",
+        "slug": "our-lady-of-mercy-mass"
+      },
+      { "part": "GOSPEL_PROCESSION", "song": "O God Beyond All Praising" },
+      { "part": "GOSPEL_ACCLAMATION", "song": "Gregorian" },
+      { "part": "CREED", "song": "Recite" },
+      { "part": "OFFERTORY", "song": "Sadaka Yangu (A. Kauki)" },
+      { "part": "OFFERTORY", "song": "Take and Sanctify" },
+      { "part": "OFFERTORY", "song": "Ndipereka", "slug": "ndipereka" },
+      {
+        "part": "PREPARATION_OF_GIFTS",
+        "song": "Take Our Bread",
+        "slug": "take-our-bread"
+      },
+      {
+        "part": "SANCTUS",
+        "song": "Our Lady of Mercy Mass",
+        "slug": "our-lady-of-mercy-mass"
+      },
+      {
+        "part": "MYSTERY_OF_FAITH",
+        "song": "Mass of Christ the Saviour",
+        "slug": "mass-of-christ-the-saviour"
+      },
+      {
+        "part": "GREAT_AMEN",
+        "song": "Mass of Christ the Saviour",
+        "slug": "mass-of-christ-the-saviour"
+      },
+      { "part": "OUR_FATHER", "song": "Recite" },
+      {
+        "part": "SIGN_OF_PEACE",
+        "song": "Peace is Flowing Like a River",
+        "slug": "peace-is-flowing-like-a-river"
+      },
+      {
+        "part": "AGNUS_DEI",
+        "song": "Mass of Christ the Saviour",
+        "slug": "mass-of-christ-the-saviour"
+      },
+      { "part": "COMMUNION", "song": "Table of Plenty" },
+      {
+        "part": "COMMUNION",
+        "song": "Psalm 23 (Br. James Air)",
+        "slug": "psalm-23-br-james-air"
+      },
+      {
+        "part": "ANIMA_CHRISTI",
+        "song": "Soul of My Saviour",
+        "slug": "soul-of-my-saviour"
+      },
+      { "part": "THANKSGIVING", "song": "Niwikite Wega" },
+      {
+        "part": "RECESSIONAL",
+        "song": "Bwana Ni Mchunga",
+        "slug": "bwana-ni-mchunga"
+      },
+      { "part": "MARIAN_HYMN", "song": "Jina Maria", "slug": "jina-maria" }
+    ]
+  },
+  {
+    "date": "2026-10-04",
+    "name": "27th Sunday in Ordinary Time",
+    "year": "A",
+    "season": "ORDINARY_TIME",
+    "setting": "Misa Fadhili",
+    "status": "PUBLISHED",
+    "items": [
+      {
+        "part": "ENTRANCE",
+        "song": "Uninyunyizie Maji",
+        "slug": "uninyunyizie-maji"
+      },
+      { "part": "KYRIE", "song": "Misa Fadhili", "slug": "misa-fadhili" },
+      { "part": "GLORIA", "song": "Misa Fadhili", "slug": "misa-fadhili" },
+      {
+        "part": "GOSPEL_PROCESSION",
+        "song": "Iende Mbele Injili",
+        "slug": "iende-mbele-injili"
+      },
+      { "part": "GOSPEL_ACCLAMATION", "song": "Alleluia" },
+      { "part": "CREED", "song": "Recite" },
+      {
+        "part": "OFFERTORY",
+        "song": "Mungu Baba Pokea Sadaka",
+        "slug": "mungu-baba-pokea-sadaka"
+      },
+      {
+        "part": "OFFERTORY",
+        "song": "Receive Oh Lord",
+        "slug": "receive-oh-lord"
+      },
+      {
+        "part": "PREPARATION_OF_GIFTS",
+        "song": "Blessed Be God",
+        "slug": "blessed-be-god"
+      },
+      { "part": "SANCTUS", "song": "Misa Fadhili", "slug": "misa-fadhili" },
+      { "part": "MYSTERY_OF_FAITH", "song": "Misa Fadhili", "slug": "misa-fadhili" },
+      { "part": "GREAT_AMEN", "song": "Misa Fadhili", "slug": "misa-fadhili" },
+      { "part": "OUR_FATHER", "song": "Recite" },
+      { "part": "SIGN_OF_PEACE", "song": "Ni Wakati wa Amani" },
+      { "part": "AGNUS_DEI", "song": "Dan", "slug": "dan" },
+      { "part": "COMMUNION", "song": "Mimi ni Mzabibu" },
+      {
+        "part": "COMMUNION",
+        "song": "Sakramenti Kubwa Hiyo",
+        "slug": "sakramenti-kubwa-hiyo"
+      },
+      {
+        "part": "ANIMA_CHRISTI",
+        "song": "Roho ya Yesu Itutakase",
+        "slug": "roho-wa-yesu"
+      },
+      {
+        "part": "THANKSGIVING",
+        "song": "Ninyonete (Thengyiu Ngai)",
+        "slug": "ninyonete-thengyiu-ngai"
+      },
+      {
+        "part": "RECESSIONAL",
+        "song": "All Hail the Power of Jesus Name",
+        "slug": "all-hail-the-power-of-jesus-name"
+      },
+      { "part": "MARIAN_HYMN", "song": "Mother Dearest", "slug": "mother-dearest" }
+    ]
+  },
+  {
+    "date": "2026-09-27",
+    "name": "26th Sunday in Ordinary Time",
+    "year": "A",
+    "season": "ORDINARY_TIME",
+    "setting": "Ggaba Mass",
+    "status": "PUBLISHED",
+    "items": [
+      {
+        "part": "ENTRANCE",
+        "song": "To God in Gladness Sing",
+        "slug": "to-god-in-gladness-sing"
+      },
+      { "part": "KYRIE", "song": "Ggaba Mass", "slug": "ggaba-mass" },
+      { "part": "GLORIA", "song": "Ggaba Mass", "slug": "ggaba-mass" },
+      { "part": "GOSPEL_PROCESSION", "song": "I've a Message" },
+      {
+        "part": "GOSPEL_ACCLAMATION",
+        "song": "Mimi Ninasikia",
+        "slug": "mimi-ninasikia"
+      },
+      { "part": "CREED", "song": "Recite" },
+      {
+        "part": "OFFERTORY",
+        "song": "Nitakwenda Mimi Mwenyewe",
+        "slug": "nitakwenda-mimi-mwenyewe"
+      },
+      { "part": "OFFERTORY", "song": "Take and Sanctify" },
+      {
+        "part": "PREPARATION_OF_GIFTS",
+        "song": "O God Our Help in Ages Past",
+        "slug": "o-god-our-help-in-ages-past"
+      },
+      { "part": "SANCTUS", "song": "Ggaba Mass", "slug": "ggaba-mass" },
+      {
+        "part": "MYSTERY_OF_FAITH",
+        "song": "He is King of Kings",
+        "slug": "he-is-king-of-kings"
+      },
+      { "part": "GREAT_AMEN", "song": "Imba Amen!", "slug": "imba-amen" },
+      { "part": "OUR_FATHER", "song": "Recite" },
+      {
+        "part": "SIGN_OF_PEACE",
+        "song": "Bind Us Together, Lord",
+        "slug": "bind-us-together-lord"
+      },
+      { "part": "AGNUS_DEI", "song": "Ggaba Mass", "slug": "ggaba-mass" },
+      { "part": "COMMUNION", "song": "Here I Am, Lord" },
+      { "part": "COMMUNION", "song": "As the Deer", "slug": "as-the-deer" },
+      { "part": "ANIMA_CHRISTI", "song": "Frisina", "slug": "frisina" },
+      {
+        "part": "THANKSGIVING",
+        "song": "Kongoi Mising",
+        "slug": "kongoi-mising"
+      },
+      {
+        "part": "RECESSIONAL",
+        "song": "Guide Me Oh Thou Great Jehovah",
+        "slug": "guide-me-oh-thou-great-jehovah"
+      },
+      { "part": "MARIAN_HYMN", "song": "Salve Regina", "slug": "salve-regina" }
+    ]
+  },
+  {
     "date": "2026-09-20",
     "name": "25th Sunday in Ordinary Time",
     "year": "A",
@@ -23,11 +305,15 @@
         "slug": "a-m-e-c-e-a-mass"
       },
       { "part": "OFFERTORY", "song": "Matega", "slug": "matega" },
-      { "part": "OFFERTORY", "song": "Beba Mikononi", "slug": "beba-mikononi" },
+      {
+        "part": "OFFERTORY",
+        "song": "Tusimame Ndugu (Beba Mikononi)",
+        "slug": "tusimame-ndugu-beba-mikononi"
+      },
       {
         "part": "PREPARATION_OF_GIFTS",
-        "song": "Blessed Be God",
-        "slug": "blessed-be-god"
+        "song": "Blessed Are You, Lord",
+        "slug": "blessed-are-you-lord"
       },
       { "part": "SANCTUS", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
       {
