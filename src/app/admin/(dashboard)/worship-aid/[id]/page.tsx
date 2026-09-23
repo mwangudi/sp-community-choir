@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { massPartLabel } from "@/lib/mass-parts";
+import { MASS_PLAN_PART_ORDER } from "@/lib/mass-plans";
 import { getChoir } from "@/lib/server/settings";
 import { formatDate } from "@/lib/utils";
 import { PrintButton } from "./print-button";
@@ -25,14 +26,23 @@ const ORDINARY = new Set([
   "agnus dei",
 ]);
 
+/**
+ * Only a movement name marks a new section. Editors also bold a whole
+ * paragraph for emphasis — a refrain, most often — and treating that as a
+ * heading used to drop every verse above it from the printed aid.
+ */
+const MOVEMENTS = new Set(MASS_PLAN_PART_ORDER.map((p) => p.toLowerCase()));
+
 function lyricsForPart(lyrics: string, part: string) {
   const heading = /<p><strong>([^<]+)<\/strong><\/p>/g;
   const sections: { label: string; start: number; end: number }[] = [];
 
   for (let m = heading.exec(lyrics); m; m = heading.exec(lyrics)) {
+    const label = m[1].trim().toLowerCase();
+    if (!MOVEMENTS.has(label)) continue;
     if (sections.length > 0) sections[sections.length - 1].end = m.index;
     sections.push({
-      label: m[1].trim().toLowerCase(),
+      label,
       start: m.index + m[0].length,
       end: lyrics.length,
     });
@@ -47,7 +57,9 @@ function lyricsForPart(lyrics: string, part: string) {
   if (ORDINARY.has(wanted) && sections.some((s) => ORDINARY.has(s.label))) {
     return "";
   }
-  return lyrics.slice(sections[0].start, sections[0].end);
+  // Anything above the first movement heading belongs to that movement, so
+  // start from the top rather than discarding it.
+  return lyrics.slice(0, sections[0].end);
 }
 
 /**
@@ -99,7 +111,6 @@ export default async function WorshipAidPage({
 
       <article className="worship-aid">
         <header>
-          {plan.notes && <p className="aid-dedication">{plan.notes}</p>}
           <h1 className="aid-title">
             {plan.name.toUpperCase()} YEAR {plan.year} |{" "}
             {formatDate(plan.date).toUpperCase()}
@@ -125,6 +136,12 @@ export default async function WorshipAidPage({
             )}
           </section>
         ))}
+
+        {plan.notes && (
+          <footer className="aid-dedication">
+            <p>{plan.notes}</p>
+          </footer>
+        )}
       </article>
     </div>
   );

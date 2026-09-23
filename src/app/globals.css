@@ -163,10 +163,17 @@
   font-variant-ligatures: none;
 }
 .worship-aid .aid-dedication {
-  font-size: 9pt;
+  font-size: 7.5pt;
   font-style: italic;
   text-align: center;
-  margin: 0 0 8px;
+  margin: 10px 0 0;
+  padding-top: 5px;
+  border-top: 0.5pt solid rgba(0, 0, 0, 0.25);
+  /* A credit split over two pages reads as an orphan line, so keep it whole. */
+  break-inside: avoid;
+}
+.worship-aid .aid-dedication p {
+  margin: 0;
 }
 .worship-aid .aid-title {
   font-family: var(--font-serif), Georgia, serif;
