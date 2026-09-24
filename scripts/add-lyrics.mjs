@@ -41,7 +41,14 @@ const escapeHtml = (s) =>
 
 const toHtml = (verses) =>
   verses
-    .map((v) => `<p>${v.map(escapeHtml).join("<br />")}</p>`)
+    .map((v) => {
+      if (Array.isArray(v)) return `<p>${v.map(escapeHtml).join("<br />")}</p>`;
+      // A named block — a second arrangement of the same hymn, say. The name
+      // must not be a Mass part, or the worship aid reads it as a movement
+      // heading and prints only the block beneath it.
+      const body = v.lines.map(escapeHtml).join("<br />");
+      return `<p><strong>${escapeHtml(v.label)}</strong></p><p>${body}</p>`;
+    })
     .join("");
 
 /** Splits lyrics into the movement sections the worship aid reads. */

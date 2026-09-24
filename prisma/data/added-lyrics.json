@@ -306,5 +306,85 @@
         "(Translation: What will I offer? I will offer my life, I don’t have a gift, wealth, child to offer, I offer my life)"
       ]
     ]
+  },
+  {
+    "slug": "matega",
+    "title": "Matega",
+    "language": "SWAHILI",
+    "massParts": ["OFFERTORY"],
+    "aliases": ["Matega Maitu"],
+    "verses": [
+      {
+        "label": "Arrangement 1 — Ngai twagutegera",
+        "lines": [
+          "1. Matega maitu Ngai twagutegera",
+          "Twakuuria umamukire na umarathime.",
+          "(Moe) Moee moee eh eh eh",
+          "Twakuuria umamukire na umarathime",
+          "2. Mahoya maitu Ngai twagutegera",
+          "Twakuuria umamukire na umarathime.",
+          "(Moe) Moee moee eh eh eh",
+          "Twakuuria umamukire na umarathime",
+          "3. Na ciana ciitu Ngai twagutegera",
+          "Twakuuria uciamukire na ucirathime",
+          "(Cioe) Cioee cioee eh eh eh",
+          "Twakuuria uciamukire na ucirathime",
+          "4. Aciari aitu Ngai twagutegera",
+          "Twakuuria umamukire na umarathime",
+          "(Moe) Moee moee eh eh eh",
+          "Twakuuria umamukire na umarathime",
+          "5. Na Father witu Ngai twagutegera",
+          "Twakuuria umwamukire na umurathime",
+          "(Mwoe) Mwoee mwoee eh eh eh",
+          "Twakuuria umwamukire na umurathime",
+          "6. Bururi witu Ngai twagutegera",
+          "Twakuuria uwamukire na uurathime",
+          "(Woe) Woee woee eh eh eh",
+          "Twakuuria uwamukire na uurathime"
+        ]
+      },
+      {
+        "label": "Arrangement 2 — Ngai twakurehera",
+        "lines": [
+          "1. Matega maitu Ngai twakurehera,",
+          "Twakuria umamukire na umarathime",
+          "[s:] Moe - [w:] Moee, moe ee,",
+          "Twakuria umamukire na umarathime *2",
+          "2. Mugate witu Ngai twakurehera",
+          "3. Divai itu Ngai twakurehera",
+          "4. Magetha maitu Ngai twakurehera",
+          "5. Na mbeca citu Ngai twakurehera",
+          "6. Aciari aitu Ngai twakurehera",
+          "7. Na ciana citu Ngai twakurehera",
+          "8. Mathomo maitu Ngai twakurehera",
+          "9. Arata aitu Ngai twakurehera"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "bwana-asema",
+    "title": "Bwana Asema",
+    "language": "SWAHILI",
+    "massParts": ["GOSPEL_PROCESSION", "COMMUNION"],
+    "aliases": ["Nitume Mimi Bwana"],
+    "verses": [
+      [
+        "1. Bwana asema, nitume nani.",
+        "Na ninani atakaye kwenda badala yangu?"
+      ],
+      [
+        "Nitume mimi Bwana, Nitume mimi Bwana,",
+        "Nitume mimi Bwana, Nitume mimi Bwana."
+      ],
+      [
+        "2. Midomo yangu, ni chafu sana,",
+        "Uichome kwa kaa la moto uitakase *2",
+        "3. Ninaogopa, kuwa mdogo",
+        "Kuhubiri neno lake Bwana pote niendako *2",
+        "4. Waniambia mimi nisiogope,",
+        "Nitapata ujasiri mwingi kutoka kwako *2"
+      ]
+    ]
   }
 ]
