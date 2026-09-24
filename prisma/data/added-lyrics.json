@@ -386,5 +386,53 @@
         "Nitapata ujasiri mwingi kutoka kwako *2"
       ]
     ]
+  },
+  {
+    "slug": "nikupe-nini-mungu-wangu",
+    "title": "Nikupe Nini Mungu Wangu",
+    "language": "SWAHILI",
+    "massParts": ["OFFERTORY"],
+    "aliases": ["Nikupe Nini"],
+    "verses": [
+      [
+        "Nikupe nini Mungu wangu, nikupe nini we Mwokozi,",
+        "nikupe nini Bwana Wangu chakukupendeza.",
+        "1. Nakutolea mkate toka mmea wa ngano, nakutolea divai ni tunda la mzabibu",
+        "Ninakuomba Mwokozi, nifanyie msamaha na unipokee.",
+        "Mema unayoyatenda, nitafanya nini mimi nikurudishie.",
+        "2. Kila nitakachoshika mbona bado ni kidogo, mema unayoyatenda kwangu mimi naogopa",
+        "3. Mchana hata usiku wewe wanisimamia na nikiwa safarini waniepusha ajali",
+        "4. Nikiwa na matatizo Bwana wanisimamia, nikiwa kwenye majonzi wewe unanifariji",
+        "5. Kama njia sioni wewe unaniongoza, na hata nikopotea kwako unanirudisha",
+        "Nitafanya nini mimi kitakachokuwa sawa na fadhili zako,",
+        "nitaimba vipi mimi niyataje mema yote utendayo kwangu"
+      ]
+    ]
+  },
+  {
+    "slug": "twende-nyumbani-mwa-bwana-hoya",
+    "title": "Twende Nyumbani Mwa Bwana Hoya! (Hoya!)",
+    "language": "SWAHILI",
+    "massParts": ["ENTRANCE"],
+    "aliases": [
+      "Twende Nyumbani Mwa Bwana",
+      "Twende Nyumbani Mwa Bwana Hoya!",
+      "Twende Nyumbani (Hoya!)"
+    ],
+    "verses": [
+      [
+        "Twende nyumbani mwa Bwana, Hoya!",
+        "Twende nyumbani mwa Bwana, Hoya! *2",
+        "Tuimbe tushangilie tupige vigelegele tupige makofi hoya hoya! *2",
+        "1. Twende tumsifu kwa nyimbo za Zaburi wakristu hoya -",
+        "Tumsujudie twende tukamwabudu wakristu hoya",
+        "2. Twende tumsifu kwa ngoma na kayamba wakristu, hoya -",
+        "Tumsujudie twende tukamwabudu wakristu, hoya",
+        "3. Twende tukacheze vinanda na vinubi wakristu, hoya -",
+        "Tumsujudie twende tukamwabudu wakristu, hoya",
+        "4. Tujitayarishe kwa nyimbo zake Bwana wakristu, hoya -",
+        "Tumsujudie twende tukamwabudu wakristu, hoya"
+      ]
+    ]
   }
 ]
