@@ -113,6 +113,7 @@ async function main() {
           ...(entry.title ? { title: entry.title } : {}),
           ...(entry.language ? { language: entry.language } : {}),
           ...(entry.massParts ? { massParts: entry.massParts } : {}),
+          ...(entry.aliases ? { aliases: entry.aliases } : {}),
         },
       });
       songsUpdated += 1;
@@ -125,6 +126,7 @@ async function main() {
           language: entry.language ?? "SWAHILI",
           massParts: entry.massParts ?? [],
           seasons: [],
+          aliases: entry.aliases ?? [],
           lyrics: html,
         },
       });

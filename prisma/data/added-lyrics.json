@@ -257,5 +257,54 @@
         "Our wonder, our transport when Jesus we see!"
       ]
     ]
+  },
+  {
+    "slug": "amepaa",
+    "title": "Amepaa",
+    "language": "SWAHILI",
+    "massParts": ["COMMUNION"],
+    "aliases": ["Amepaa, Amepaa"],
+    "verses": [
+      ["Amepaa amepaa juu Mbinguni *2"],
+      [
+        "1. Nimepewa mamlaka yote, aleluya",
+        "Mbinguni na duniani, aleluya",
+        "2. Nendeni mkawafanye mataifa yote, aleluya",
+        "Wawe wafuasi, aleluya",
+        "3. Wabatizeni kwa jina la Baba na mwana aleluya",
+        "Na la Roho Mtakatifu aleluya",
+        "4. Wafundisheni kushika maagizo yote, aleluya",
+        "Niliyowapeni, aleluya",
+        "5. Nami nipo nanyi siku zote, aleluya,",
+        "Naam, mpaka mwisho wa nyakati, aleluya.",
+        "6. Nilitoka kwa Bwana, aleluya,",
+        "Nimefika duniani, aleluya",
+        "7. Ninaacha tena dunia, aleluya,",
+        "Niende kwa Baba, aleluya.",
+        "8. Kristu Bwana amepaa kwenda kwa Baba, aleluya,",
+        "Astahili sifa na heshima, aleluya."
+      ]
+    ]
+  },
+  {
+    "slug": "ndipereka",
+    "title": "Ndipereka",
+    "language": "SWAHILI",
+    "massParts": ["OFFERTORY"],
+    "aliases": ["Ndipereka Moyo Wanga (Chichewa, Zambia)"],
+    "verses": [
+      [
+        "1. Ndilibe mphotso ine zopereka kwa Mulungu wanga",
+        "Ndiperekaine? Ndipereka moyo wanga *2",
+        "Ndipereka ine? Ndipereka moyo wanga? *4",
+        "2. Ndilibe chuma ine chopereka kwa Mulungu wanga",
+        "Ndiperekaine? Ndipereka moyo wanga *2",
+        "3. Ndilibe mwana ine wopereka kwa Mulungu wanga",
+        "Ndiperekaine? Ndipereka moyo wanga *2"
+      ],
+      [
+        "(Translation: What will I offer? I will offer my life, I don’t have a gift, wealth, child to offer, I offer my life)"
+      ]
+    ]
   }
 ]
