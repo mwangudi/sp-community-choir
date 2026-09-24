@@ -205,5 +205,57 @@
         "AQUA LATERIS CHRISTI, LAVA ME"
       ]
     ]
+  },
+  {
+    "slug": "ngwanirira-ndina-gikeno",
+    "title": "Ngwanirira Ndina Gikeno",
+    "language": "SWAHILI",
+    "massParts": ["THANKSGIVING"],
+    "verses": [
+      [
+        "Ngwanirira ndina gikeno njuge Mwathani niundathimite",
+        "ndatara irathimo ciakwa utamburukitie moko iguru riakwa",
+        "1. Ningukuinira Ngai ndina gikeno, na ndahe riri Wa ritwa riaku",
+        "ngugoce na ngukumie nduriri ini ngukenerere ngoro ini yakwa",
+        "2. Uhoti waku Ngai ni munene, na ugutura tene na tene",
+        "maitho maku nimo manjuthagiriria ukangitira mitino yothe",
+        "3. Ndagukaire Ngai nawe ukinjigua, ugithikiriria kiriro giakwa",
+        "ndwanjehereirie Ngai utugi waku niwanjokeirie ihoya riakwa",
+        "4. Niuminjaminjiirie mbura yotana, na nii gukena ningenukite",
+        "nguga ngemi na ihuni ngugathe Ngai urotugira iguru muno",
+        "5. Kurathima Ngai niuturathimaga ugakumbatura guoko gwaku",
+        "kiria giothe ki muoyo ugakihuniana nii ngutura o ngugocaga"
+      ]
+    ]
+  },
+  {
+    "slug": "to-god-be-the-glory",
+    "title": "To God Be the Glory",
+    "language": "ENGLISH",
+    "massParts": ["THANKSGIVING", "RECESSIONAL", "ENTRANCE"],
+    "verses": [
+      [
+        "1. To God be the glory, great things He hath done,",
+        "So loved He the world that He gave us His Son,",
+        "Who yielded His life an atonement for sin,",
+        "And opened the life-gate that all may go in."
+      ],
+      [
+        "Praise the Lord, praise the Lord! Let the earth hear His voice;",
+        "Praise the Lord, praise the Lord, Let the people rejoice;",
+        "Oh, come to the Father, through Jesus the Son,",
+        "And give Him the glory; great things He hath done."
+      ],
+      [
+        "2. Oh, perfect redemption, the purchase of blood,",
+        "To every believer the promise of God;",
+        "The vilest offender who truly believes,",
+        "That moment from Jesus a pardon receives.",
+        "3. Great things He hath taught us, great things He hath done,",
+        "And great our rejoicing through Jesus the Son;",
+        "But purer, and higher, and greater will be",
+        "Our wonder, our transport when Jesus we see!"
+      ]
+    ]
   }
 ]
