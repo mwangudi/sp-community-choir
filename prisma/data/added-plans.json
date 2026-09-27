@@ -224,6 +224,8 @@
     "year": "A",
     "season": "ORDINARY_TIME",
     "setting": "Ggaba Mass",
+    "youtubeId": "uSlI2uyc_dM",
+    "notes": "This Sunday the Choir Family prays with Claudia Wanjiru for her intentions and Choir intentions, thank you, Claudia, for the songs selections!",
     "status": "PUBLISHED",
     "items": [
       {
@@ -233,7 +235,16 @@
       },
       { "part": "KYRIE", "song": "Ggaba Mass", "slug": "ggaba-mass" },
       { "part": "GLORIA", "song": "Ggaba Mass", "slug": "ggaba-mass" },
-      { "part": "GOSPEL_PROCESSION", "song": "I've a Message" },
+      {
+        "part": "GOSPEL_PROCESSION",
+        "song": "I've a message from the Lord",
+        "slug": "i-ve-a-message-from-the-lord"
+      },
+      {
+        "part": "RESPONSORIAL_PSALM",
+        "song": "Psalms - 26th Sun OT Year  A",
+        "slug": "psalms-26th-sun-ot-year-a"
+      },
       {
         "part": "GOSPEL_ACCLAMATION",
         "song": "Mimi Ninasikia",
@@ -245,7 +256,7 @@
         "song": "Nitakwenda Mimi Mwenyewe",
         "slug": "nitakwenda-mimi-mwenyewe"
       },
-      { "part": "OFFERTORY", "song": "Take and Sanctify" },
+      { "part": "OFFERTORY", "song": "We Asa Osa", "slug": "we-asa-osa" },
       {
         "part": "PREPARATION_OF_GIFTS",
         "song": "O God Our Help in Ages Past",
@@ -265,7 +276,11 @@
         "slug": "bind-us-together-lord"
       },
       { "part": "AGNUS_DEI", "song": "Ggaba Mass", "slug": "ggaba-mass" },
-      { "part": "COMMUNION", "song": "Here I Am, Lord" },
+      {
+        "part": "COMMUNION",
+        "song": "I the Lord of Sea and Sky",
+        "slug": "i-the-lord-of-sea-and-sky"
+      },
       { "part": "COMMUNION", "song": "As the Deer", "slug": "as-the-deer" },
       { "part": "ANIMA_CHRISTI", "song": "Frisina", "slug": "frisina" },
       {
