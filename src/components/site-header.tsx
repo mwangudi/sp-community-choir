@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Menu, Music2, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CHOIR } from "@/lib/choir";
 import { cn } from "@/lib/utils";
@@ -14,27 +14,27 @@ type NavEntry = NavLink | NavGroup;
 
 const NAV: NavEntry[] = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  { href: "/about", label: "About Us" },
   {
     label: "Music",
     items: [
-      { href: "/repertoire", label: "Repertoire" },
+      { href: "/repertoire", label: "Sacred repertoire" },
+      { href: "/masses", label: "Mass music orders" },
       { href: "/propose", label: "Propose songs" },
     ],
   },
   {
-    label: "Events",
+    label: "Concerts & Events",
     items: [
-      { href: "/masses", label: "Sunday Masses" },
-      { href: "/concerts", label: "Concerts" },
-      { href: "/gallery", label: "Gallery" },
-      { href: "/blog", label: "Blog" },
+      { href: "/concerts", label: "Concerts & liturgies" },
+      { href: "/blog", label: "Choir journal" },
     ],
   },
+  { href: "/gallery", label: "Gallery" },
   {
-    label: "Get involved",
+    label: "Get Involved",
     items: [
-      { href: "/join", label: "Join the choir" },
+      { href: "/join", label: "Join & auditions" },
       { href: "/support", label: "Support us" },
       { href: "/contact", label: "Contact" },
     ],
@@ -52,36 +52,31 @@ export function SiteHeader() {
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground">
-            <Music2 className="h-4 w-4" />
+    <header className="sticky top-0 z-40 bg-background/95 shadow-[0_1px_8px_rgba(45,30,85,0.04)] backdrop-blur-md">
+      <div className="container flex h-20 items-center justify-between gap-4">
+        <Link href="/" className="group flex shrink-0 flex-col leading-tight">
+          <span className="whitespace-nowrap font-serif text-base font-semibold tracking-tight text-primary transition-colors group-hover:text-primary-deep lg:text-lg">
+            St. Paul&apos;s Community Choir
           </span>
-          <span className="flex flex-col leading-tight">
-            <span className="font-serif text-base font-semibold text-primary sm:text-lg">
-              {CHOIR.shortName}
-            </span>
-            <span className="text-[10px] uppercase tracking-widest text-muted-foreground sm:text-[11px]">
-              St. Paul&apos;s Chapel · UoN
-            </span>
+          <span className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+            {CHOIR.tagline} • UoN Chaplaincy
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 xl:flex">
           {NAV.map((item) =>
             isGroup(item) ? (
               <NavDropdown key={item.label} group={item} isActive={isActive} />
             ) : (
               <Link
-                key={item.href}
+                key={item.label}
                 href={item.href}
                 aria-current={isActive(item.href) ? "page" : undefined}
                 className={cn(
-                  "rounded-full px-3 py-1.5 text-sm font-medium transition-colors",
+                  "whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors",
                   isActive(item.href)
-                    ? "bg-secondary/20 text-secondary"
-                    : "text-foreground/80 hover:bg-muted hover:text-foreground",
+                    ? "bg-primary-container text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {item.label}
@@ -90,9 +85,16 @@ export function SiteHeader() {
           )}
         </nav>
 
-        <div className="hidden md:block">
-          <Button asChild size="sm" className="rounded-full">
-            <Link href="/join">Join the choir</Link>
+        <div className="hidden shrink-0 xl:block">
+          <Button
+            asChild
+            size="sm"
+            className="gap-1.5 rounded-full bg-primary-container px-5 hover:bg-primary-deep"
+          >
+            <Link href="/join">
+              Join the Choir
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </Button>
         </div>
 
@@ -101,7 +103,7 @@ export function SiteHeader() {
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border md:hidden"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md border xl:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -110,7 +112,7 @@ export function SiteHeader() {
       {/* Mobile menu */}
       <div
         className={cn(
-          "border-t bg-background md:hidden",
+          "border-t bg-background xl:hidden",
           open ? "block" : "hidden",
         )}
       >
@@ -140,7 +142,7 @@ export function SiteHeader() {
               </div>
             ) : (
               <Link
-                key={item.href}
+                key={item.label}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 aria-current={isActive(item.href) ? "page" : undefined}
@@ -157,7 +159,7 @@ export function SiteHeader() {
           )}
           <Button asChild className="mt-3 rounded-full">
             <Link href="/join" onClick={() => setOpen(false)}>
-              Join the choir
+              Join the Choir
             </Link>
           </Button>
         </div>
@@ -209,10 +211,10 @@ function NavDropdown({
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
         className={cn(
-          "inline-flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium transition-colors",
+          "inline-flex items-center gap-1 whitespace-nowrap rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors",
           anyActive
-            ? "bg-secondary/20 text-secondary"
-            : "text-foreground/80 hover:bg-muted hover:text-foreground",
+            ? "bg-primary-container text-primary-foreground"
+            : "text-muted-foreground hover:text-foreground",
         )}
       >
         {group.label}

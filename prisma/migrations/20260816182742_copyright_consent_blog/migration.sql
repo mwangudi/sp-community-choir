@@ -1,16 +1,16 @@
 -- AlterTable
-ALTER TABLE `joinapplication` ADD COLUMN `consentAt` DATETIME(3) NULL,
+ALTER TABLE `JoinApplication` ADD COLUMN `consentAt` DATETIME(3) NULL,
     ADD COLUMN `consentVersion` VARCHAR(191) NULL,
     ADD COLUMN `mediaConsent` BOOLEAN NOT NULL DEFAULT false,
     ADD COLUMN `privacyConsent` BOOLEAN NOT NULL DEFAULT false;
 
 -- AlterTable
-ALTER TABLE `member` ADD COLUMN `consentAt` DATETIME(3) NULL,
+ALTER TABLE `Member` ADD COLUMN `consentAt` DATETIME(3) NULL,
     ADD COLUMN `consentVersion` VARCHAR(191) NULL,
     ADD COLUMN `mediaConsent` BOOLEAN NOT NULL DEFAULT false;
 
 -- AlterTable
-ALTER TABLE `song` ADD COLUMN `copyrightStatus` ENUM('PUBLIC_DOMAIN', 'LICENSED', 'COPYRIGHTED', 'UNKNOWN') NOT NULL DEFAULT 'UNKNOWN',
+ALTER TABLE `Song` ADD COLUMN `copyrightStatus` ENUM('PUBLIC_DOMAIN', 'LICENSED', 'COPYRIGHTED', 'UNKNOWN') NOT NULL DEFAULT 'UNKNOWN',
     ADD COLUMN `licenceRef` VARCHAR(191) NULL,
     ADD COLUMN `rightsCheckedAt` DATETIME(3) NULL,
     ADD COLUMN `rightsHolder` VARCHAR(191) NULL,

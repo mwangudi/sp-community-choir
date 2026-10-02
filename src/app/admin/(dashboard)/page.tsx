@@ -521,9 +521,12 @@ export default async function AdminDashboardPage() {
                   <Chip size="small" variant="outlined" label={s.nextPlan.leader} />
                 )}
               </Stack>
-              <Divider sx={{ my: 4 }} />
               <Box
                 sx={{
+                  mt: 4,
+                  p: 3,
+                  borderRadius: 2,
+                  bgcolor: "action.hover",
                   display: "grid",
                   columnGap: 10,
                   gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
@@ -546,9 +549,9 @@ export default async function AdminDashboardPage() {
                       variant="caption"
                       color="text.secondary"
                       sx={{
-                        fontWeight: 600,
+                        fontWeight: 700,
                         textTransform: "uppercase",
-                        letterSpacing: 0.4,
+                        letterSpacing: 0.5,
                         flexShrink: 0,
                       }}
                     >

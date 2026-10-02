@@ -1,14 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Source_Serif_4 } from "next/font/google";
+import { Newsreader, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CHOIR } from "@/lib/choir";
 import { ALLOW_INDEXING, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const serif = Source_Serif_4({
+const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+const serif = Newsreader({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
   variable: "--font-serif",
   display: "swap",
 });

@@ -16,8 +16,8 @@ const config: Config = {
         sm: "640px",
         md: "768px",
         lg: "1024px",
-        xl: "1280px",
-        "2xl": "1440px",
+        xl: "1200px",
+        "2xl": "1200px",
       },
     },
     extend: {
@@ -30,16 +30,26 @@ const config: Config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          /** Filled banners, CTAs and the active nav pill. */
+          container: "hsl(var(--primary-container))",
+          deep: "hsl(var(--primary-deep))",
+          bright: "hsl(var(--primary-bright))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
-        /** Amber gold (choir uniform) — for accents on dark/red backgrounds. */
-        gold: "hsl(var(--gold))",
+        /** Burnished gold — on dark/crimson fields, and for eyebrow pills. */
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          subtle: "hsl(var(--gold-subtle))",
+        },
+        /** Cathedral midnight, used by the inverted Echoes band. */
+        ink: "hsl(var(--ink))",
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
+          strong: "hsl(var(--muted-strong))",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",

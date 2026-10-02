@@ -55,9 +55,9 @@ const STORAGE_KEY = "choir-admin-sidebar";
 
 const NAVY = ADMIN_SURFACE;
 
-// Materio's themeConfig: 24px layout padding, 1440px compact content width.
+// Materio's 24px layout padding. Its 1440px content cap is not used: on a
+// wide screen it left a dead channel between the sidebar and the tables.
 const LAYOUT_PADDING = 24;
-const COMPACT_WIDTH = 1440;
 
 type Leaf = { href: string; label: string; icon: React.ElementType; minRole?: Role };
 type Group = {
@@ -560,6 +560,7 @@ export function AdminShell({
         {/* Materio's navbar: static, detached and transparent over the page. */}
         <Box
           component="header"
+          className="no-print"
           sx={{
             display: "flex",
             alignItems: "center",
@@ -576,8 +577,6 @@ export function AdminShell({
               alignItems: "center",
               gap: 2,
               width: "100%",
-              mx: "auto",
-              maxWidth: COMPACT_WIDTH,
               py: "10px",
               px: `${LAYOUT_PADDING}px`,
             }}
@@ -731,8 +730,6 @@ export function AdminShell({
             flex: 1,
             minWidth: 0,
             width: "100%",
-            mx: "auto",
-            maxWidth: COMPACT_WIDTH,
             p: `${LAYOUT_PADDING}px`,
           }}
         >

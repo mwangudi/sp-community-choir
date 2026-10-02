@@ -1,6 +1,7 @@
 import "server-only";
 
 import { prisma } from "@/lib/db";
+import { dateKey } from "@/lib/liturgical";
 import type { LectionaryYear, LiturgicalSeason } from "@/lib/liturgical";
 import {
   SONGS,
@@ -133,7 +134,7 @@ export async function findSongBySlug(slug: string): Promise<Song | null> {
 
 /** The published plan for a given Sunday, or the bundled snapshot. */
 export async function getMassPlan(date: Date): Promise<MassPlan | null> {
-  const key = date.toISOString().slice(0, 10);
+  const key = dateKey(date);
 
   try {
     const row = await prisma.massPlan.findFirst({

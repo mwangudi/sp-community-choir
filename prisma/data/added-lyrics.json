@@ -1,0 +1,438 @@
+[
+  {
+    "slug": "a-m-e-c-e-a-mass",
+    "section": "KYRIE",
+    "verses": [
+      [
+        "Bwana utuhurumie (ee Bwana) - Bwana utuhurumie x2",
+        "Kristu utuhurumie (ee Kristu) - Kristu utuhurumie x2",
+        "Bwana utuhurumie (ee Bwana) - Bwana utuhurumie x2"
+      ]
+    ]
+  },
+  {
+    "slug": "a-m-e-c-e-a-mass",
+    "section": "AGNUS_DEI",
+    "verses": [
+      [
+        "Mwanakondoo wa Mungu uondoaye dhambi, za dunia (ee Mwana) utuhurumie x2",
+        "Mwanakondoo wa Mungu uondoaye dhambi, za dunia (ee Mwana) utujalie amani"
+      ]
+    ]
+  },
+  {
+    "slug": "latin-chant",
+    "title": "Pater Noster (Latin Chant)",
+    "language": "LATIN",
+    "massParts": ["OUR_FATHER"],
+    "verses": [
+      [
+        "Pater noster, qui es in caelis,",
+        "sanctificetur Nomen tuum.",
+        "Adveniat regnum tuum.",
+        "Fiat voluntas tua,",
+        "sicut in caelo et in terra.",
+        "Panem nostrum quotidianum da nobis hodie,",
+        "et dimitte nobis debita nostra",
+        "sicut et nos dimittimus debitoribus nostris.",
+        "Et ne nos inducas in tentationem,",
+        "sed libera nos a malo."
+      ]
+    ]
+  },
+  {
+    "slug": "roho-wa-yesu",
+    "title": "Roho ya Yesu Itutakase",
+    "language": "SWAHILI",
+    "massParts": ["ANIMA_CHRISTI"],
+    "verses": [
+      [
+        "1. Roho wa Yesu itutakase, mwili wa Yesu utuokoe,",
+        "damu ya Yesu ituchangamshe, maji ya ubavu yatusafishe"
+      ],
+      [
+        "2. Mateso yako tutie nguvu, jeraha zako maficho yetu,",
+        "tusitengane nawe ee Yesu, bali utukinge na yule mwovu"
+      ],
+      [
+        "3. Saa ya kufa tuite kwako, tukutukuze Mwokozi wetu,",
+        "pamoja na wateule wote, tukusifu daima na milele"
+      ]
+    ]
+  },
+  {
+    "slug": "misa-mt-elizabeti",
+    "section": "KYRIE",
+    "verses": [
+      [
+        "Bwana, Bwana x2 'Tuhurumie x2",
+        "Kristu, Kristu x2 'Tuhurumie x2",
+        "Bwana, Bwana x2 'Tuhurumie x2"
+      ]
+    ]
+  },
+  {
+    "slug": "misa-mt-elizabeti",
+    "section": "MYSTERY_OF_FAITH",
+    "verses": [
+      ["Kristu - alikufa, Kristu - alifufuka, Kristu - atakuja tena x2"]
+    ]
+  },
+  {
+    "slug": "psalm-103",
+    "title": "Psalm 103",
+    "language": "ENGLISH",
+    "massParts": ["RESPONSORIAL_PSALM"],
+    "verses": [
+      ["Psalm 103:1-2. 3-4. 9-10. 11-12 (R. 8)"],
+      [
+        "R/. The Lord is compassionate and gracious, slow to anger and rich in mercy."
+      ],
+      [
+        "Bless the LORD, O my soul,",
+        "And all within me, his holy name.",
+        "Bless the LORD, O my soul,",
+        "And never forget all his benefits. R/."
+      ],
+      [
+        "It is the LORD who forgives all your sins,",
+        "who heals every one of your ills,",
+        "who redeems your life from the grave,",
+        "who crowns you with mercy and compassion. R/."
+      ],
+      [
+        "R/. The Lord is compassionate and gracious, slow to anger and rich in mercy."
+      ],
+      [
+        "He will not always find fault;",
+        "nor persist in his anger forever.",
+        "He does not treat us according to our sins,",
+        "nor repay us according to our faults. R/."
+      ],
+      [
+        "For as the heavens are high above the earth,",
+        "So strong his mercy for those who fear him.",
+        "As far as the east is from the west,",
+        "So far from us does he remove our transgressions. R/."
+      ]
+    ]
+  },
+  {
+    "slug": "nakuja-polepole-nakuja-na-zawadi",
+    "title": "Nakuja Polepole, Nakuja na Zawadi",
+    "language": "SWAHILI",
+    "massParts": ["OFFERTORY"],
+    "verses": [
+      [
+        "1. Naondoka mimi naenda kwa Baba,",
+        "Nipeleke hiki nilichokipata,",
+        "Japo kidogo, sitaona haya,",
+        "Nimeamua, sitarudi nyuma"
+      ],
+      [
+        "{ Nakuja polepole Baba,",
+        "Nakuja na zawadi yangu",
+        "Naleta mbele zako ili nitoe shukurani } *2"
+      ],
+      [
+        "2. Natembea mimi mwendo wa madaha,",
+        "Nakanyaga chini kwa maringo tele,",
+        "Naelekea, altare ya Bwana,",
+        "Nimkabidhi, nilichojaliwa."
+      ],
+      [
+        "3. Nimechangamka ninashangilia,",
+        "Napiga kelele kelele za shangwe",
+        "Nachezacheza, najongea kwako,",
+        "Ee Mungu Baba Nipokee mimi."
+      ],
+      [
+        "4. Nafsi yangu mimi naileta kwako,",
+        "Mkate divai pia ninaleta",
+        "Uigeuze, mwili na damuyo,",
+        "Chakula chetu, tunaosafiri"
+      ],
+      [
+        "5. Mavuno shambani mimi nimevuna,",
+        "Mifukoni fedha nimekabidhiwa,",
+        "Mimi ni nani, nisikushukuru,",
+        "Baba nasema asante kwa yote."
+      ]
+    ]
+  },
+  {
+    "slug": "frisina",
+    "language": "LATIN",
+    "massParts": ["ANIMA_CHRISTI"],
+    "verses": [
+      [
+        "ANIMA CHRISTI, SANCTIFICA ME",
+        "CORPUS CHRISTI, SALVA ME",
+        "SANGUIS CHRISTI, INEBRIA ME",
+        "AQUA LATERIS CHRISTI, LAVA ME"
+      ],
+      [
+        "Passio Christi, conforta me",
+        "O bone Iesu, exaudi me",
+        "Intra vulnera tua absconde me"
+      ],
+      [
+        "ANIMA CHRISTI, SANCTIFICA ME",
+        "CORPUS CHRISTI, SALVA ME",
+        "SANGUIS CHRISTI, INEBRIA ME",
+        "AQUA LATERIS CHRISTI, LAVA ME"
+      ],
+      [
+        "Ne permittas a te me separari",
+        "Ab hoste maligno defende me",
+        "In hora mortis meæ voca me"
+      ],
+      [
+        "ANIMA CHRISTI, SANCTIFICA ME",
+        "CORPUS CHRISTI, SALVA ME",
+        "SANGUIS CHRISTI, INEBRIA ME",
+        "AQUA LATERIS CHRISTI, LAVA ME"
+      ],
+      [
+        "Et iube me venire ad te",
+        "Ut cum sanctis tuis laudem te",
+        "Per infinita sæcula sæculorum. Amen"
+      ],
+      [
+        "ANIMA CHRISTI, SANCTIFICA ME",
+        "CORPUS CHRISTI, SALVA ME",
+        "SANGUIS CHRISTI, INEBRIA ME",
+        "AQUA LATERIS CHRISTI, LAVA ME"
+      ]
+    ]
+  },
+  {
+    "slug": "ngwanirira-ndina-gikeno",
+    "title": "Ngwanirira Ndina Gikeno",
+    "language": "SWAHILI",
+    "massParts": ["THANKSGIVING"],
+    "verses": [
+      [
+        "Ngwanirira ndina gikeno njuge Mwathani niundathimite",
+        "ndatara irathimo ciakwa utamburukitie moko iguru riakwa",
+        "1. Ningukuinira Ngai ndina gikeno, na ndahe riri Wa ritwa riaku",
+        "ngugoce na ngukumie nduriri ini ngukenerere ngoro ini yakwa",
+        "2. Uhoti waku Ngai ni munene, na ugutura tene na tene",
+        "maitho maku nimo manjuthagiriria ukangitira mitino yothe",
+        "3. Ndagukaire Ngai nawe ukinjigua, ugithikiriria kiriro giakwa",
+        "ndwanjehereirie Ngai utugi waku niwanjokeirie ihoya riakwa",
+        "4. Niuminjaminjiirie mbura yotana, na nii gukena ningenukite",
+        "nguga ngemi na ihuni ngugathe Ngai urotugira iguru muno",
+        "5. Kurathima Ngai niuturathimaga ugakumbatura guoko gwaku",
+        "kiria giothe ki muoyo ugakihuniana nii ngutura o ngugocaga"
+      ]
+    ]
+  },
+  {
+    "slug": "to-god-be-the-glory",
+    "title": "To God Be the Glory",
+    "language": "ENGLISH",
+    "massParts": ["THANKSGIVING", "RECESSIONAL", "ENTRANCE"],
+    "verses": [
+      [
+        "1. To God be the glory, great things He hath done,",
+        "So loved He the world that He gave us His Son,",
+        "Who yielded His life an atonement for sin,",
+        "And opened the life-gate that all may go in."
+      ],
+      [
+        "Praise the Lord, praise the Lord! Let the earth hear His voice;",
+        "Praise the Lord, praise the Lord, Let the people rejoice;",
+        "Oh, come to the Father, through Jesus the Son,",
+        "And give Him the glory; great things He hath done."
+      ],
+      [
+        "2. Oh, perfect redemption, the purchase of blood,",
+        "To every believer the promise of God;",
+        "The vilest offender who truly believes,",
+        "That moment from Jesus a pardon receives.",
+        "3. Great things He hath taught us, great things He hath done,",
+        "And great our rejoicing through Jesus the Son;",
+        "But purer, and higher, and greater will be",
+        "Our wonder, our transport when Jesus we see!"
+      ]
+    ]
+  },
+  {
+    "slug": "amepaa",
+    "title": "Amepaa",
+    "language": "SWAHILI",
+    "massParts": ["COMMUNION"],
+    "aliases": ["Amepaa, Amepaa"],
+    "verses": [
+      ["Amepaa amepaa juu Mbinguni *2"],
+      [
+        "1. Nimepewa mamlaka yote, aleluya",
+        "Mbinguni na duniani, aleluya",
+        "2. Nendeni mkawafanye mataifa yote, aleluya",
+        "Wawe wafuasi, aleluya",
+        "3. Wabatizeni kwa jina la Baba na mwana aleluya",
+        "Na la Roho Mtakatifu aleluya",
+        "4. Wafundisheni kushika maagizo yote, aleluya",
+        "Niliyowapeni, aleluya",
+        "5. Nami nipo nanyi siku zote, aleluya,",
+        "Naam, mpaka mwisho wa nyakati, aleluya.",
+        "6. Nilitoka kwa Bwana, aleluya,",
+        "Nimefika duniani, aleluya",
+        "7. Ninaacha tena dunia, aleluya,",
+        "Niende kwa Baba, aleluya.",
+        "8. Kristu Bwana amepaa kwenda kwa Baba, aleluya,",
+        "Astahili sifa na heshima, aleluya."
+      ]
+    ]
+  },
+  {
+    "slug": "ndipereka",
+    "title": "Ndipereka",
+    "language": "SWAHILI",
+    "massParts": ["OFFERTORY"],
+    "aliases": ["Ndipereka Moyo Wanga (Chichewa, Zambia)"],
+    "verses": [
+      [
+        "1. Ndilibe mphotso ine zopereka kwa Mulungu wanga",
+        "Ndiperekaine? Ndipereka moyo wanga *2",
+        "Ndipereka ine? Ndipereka moyo wanga? *4",
+        "2. Ndilibe chuma ine chopereka kwa Mulungu wanga",
+        "Ndiperekaine? Ndipereka moyo wanga *2",
+        "3. Ndilibe mwana ine wopereka kwa Mulungu wanga",
+        "Ndiperekaine? Ndipereka moyo wanga *2"
+      ],
+      [
+        "(Translation: What will I offer? I will offer my life, I don’t have a gift, wealth, child to offer, I offer my life)"
+      ]
+    ]
+  },
+  {
+    "slug": "matega",
+    "title": "Matega",
+    "language": "SWAHILI",
+    "massParts": ["OFFERTORY"],
+    "aliases": ["Matega Maitu"],
+    "verses": [
+      {
+        "label": "Arrangement 1 — Ngai twagutegera",
+        "lines": [
+          "1. Matega maitu Ngai twagutegera",
+          "Twakuuria umamukire na umarathime.",
+          "(Moe) Moee moee eh eh eh",
+          "Twakuuria umamukire na umarathime",
+          "2. Mahoya maitu Ngai twagutegera",
+          "Twakuuria umamukire na umarathime.",
+          "(Moe) Moee moee eh eh eh",
+          "Twakuuria umamukire na umarathime",
+          "3. Na ciana ciitu Ngai twagutegera",
+          "Twakuuria uciamukire na ucirathime",
+          "(Cioe) Cioee cioee eh eh eh",
+          "Twakuuria uciamukire na ucirathime",
+          "4. Aciari aitu Ngai twagutegera",
+          "Twakuuria umamukire na umarathime",
+          "(Moe) Moee moee eh eh eh",
+          "Twakuuria umamukire na umarathime",
+          "5. Na Father witu Ngai twagutegera",
+          "Twakuuria umwamukire na umurathime",
+          "(Mwoe) Mwoee mwoee eh eh eh",
+          "Twakuuria umwamukire na umurathime",
+          "6. Bururi witu Ngai twagutegera",
+          "Twakuuria uwamukire na uurathime",
+          "(Woe) Woee woee eh eh eh",
+          "Twakuuria uwamukire na uuarathime"
+        ]
+      },
+      {
+        "label": "Arrangement 2 — Ngai twakurehera",
+        "lines": [
+          "1. Matega maitu Ngai twakurehera,",
+          "Twakuria umamukire na umarathime",
+          "[s:] Moe - [w:] Moee, moe ee,",
+          "Twakuria umamukire na umarathime *2",
+          "2. Mugate witu Ngai twakurehera",
+          "3. Divai itu Ngai twakurehera",
+          "4. Magetha Maitu Ngai twakurehera",
+          "5. Na mbeca citu Ngai twakurehera",
+          "6. Aciari aitu Ngai twakurehera",
+          "7. Na ciana citu Ngai twakurehera",
+          "8. Mathomo maitu Ngai twakurehera",
+          "9. Arata aitu Ngai twakurehera"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "bwana-asema",
+    "title": "Bwana Asema",
+    "language": "SWAHILI",
+    "massParts": ["GOSPEL_PROCESSION", "COMMUNION"],
+    "aliases": ["Nitume Mimi Bwana"],
+    "verses": [
+      [
+        "1. Bwana asema, nitume nani.",
+        "Na ninani atakaye kwenda badala yangu?"
+      ],
+      [
+        "Nitume mimi Bwana, Nitume mimi Bwana,",
+        "Nitume mimi Bwana, Nitume mimi Bwana."
+      ],
+      [
+        "2. Midomo yangu, ni chafu sana,",
+        "Uichome kwa kaa la moto uitakase *2",
+        "3. Ninaogopa, kuwa mdogo",
+        "Kuhubiri neno lake Bwana pote niendako *2",
+        "4. Waniambia mimi nisiogope,",
+        "Nitapata ujasiri mwingi kutoka kwako *2"
+      ]
+    ]
+  },
+  {
+    "slug": "nikupe-nini-mungu-wangu",
+    "title": "Nikupe Nini Mungu Wangu",
+    "language": "SWAHILI",
+    "massParts": ["OFFERTORY"],
+    "aliases": ["Nikupe Nini"],
+    "verses": [
+      [
+        "Nikupe nini Mungu wangu, nikupe nini we Mwokozi,",
+        "nikupe nini Bwana Wangu chakukupendeza.",
+        "1. Nakutolea mkate toka mmea wa ngano, nakutolea divai ni tunda la mzabibu",
+        "Ninakuomba Mwokozi, nifanyie msamaha na unipokee.",
+        "Mema unayoyatenda, nitafanya nini mimi nikurudishie.",
+        "2. Kila nitakachoshika mbona bado ni kidogo, mema unayoyatenda kwangu mimi naogopa",
+        "3. Mchana hata usiku wewe wanisimamia na nikiwa safarini waniepusha ajali",
+        "4. Nikiwa na matatizo Bwana wanisimamia, nikiwa kwenye majonzi wewe unanifariji",
+        "5. Kama njia sioni wewe unaniongoza, na hata nikopotea kwako unanirudisha",
+        "Nitafanya nini mimi kitakachokuwa sawa na fadhili zako,",
+        "nitaimba vipi mimi niyataje mema yote utendayo kwangu"
+      ]
+    ]
+  },
+  {
+    "slug": "twende-nyumbani-mwa-bwana-hoya",
+    "title": "Twende Nyumbani Mwa Bwana Hoya! (Hoya!)",
+    "language": "SWAHILI",
+    "massParts": ["ENTRANCE"],
+    "aliases": [
+      "Twende Nyumbani Mwa Bwana",
+      "Twende Nyumbani Mwa Bwana Hoya!",
+      "Twende Nyumbani (Hoya!)"
+    ],
+    "verses": [
+      [
+        "Twende nyumbani mwa Bwana, Hoya!",
+        "Twende nyumbani mwa Bwana, Hoya! *2",
+        "Tuimbe tushangilie tupige vigelegele tupige makofi hoya hoya! *2",
+        "1. Twende tumsifu kwa nyimbo za Zaburi wakristu hoya -",
+        "Tumsujudie twende tukamwabudu wakristu hoya",
+        "2. Twende tumsifu kwa ngoma na kayamba wakristu, hoya -",
+        "Tumsujudie twende tukamwabudu wakristu, hoya",
+        "3. Twende tukacheze vinanda na vinubi wakristu, hoya -",
+        "Tumsujudie twende tukamwabudu wakristu, hoya",
+        "4. Tujitayarishe kwa nyimbo zake Bwana wakristu, hoya -",
+        "Tumsujudie twende tukamwabudu wakristu, hoya"
+      ]
+    ]
+  }
+]

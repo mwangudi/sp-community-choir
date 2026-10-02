@@ -126,7 +126,7 @@ export function SongsToolbar({
         <TextField
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder={`Search title or composer — ${MIN_QUERY} letters to start…`}
+          placeholder={`Search title, composer or lyrics — ${MIN_QUERY} letters to start…`}
           size="small"
           sx={{ flex: 1, minWidth: 200 }}
           slotProps={{

@@ -45,6 +45,17 @@ sudo swapon /swapfile
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
+**Chromium, for the worship aid PDF.** The Download PDF button prints the aid
+with a headless browser. Without one the page still works and Print still
+offers Save as PDF, but the button returns an error:
+
+```bash
+sudo apt install -y chromium-browser   # or: sudo apt install -y chromium
+which chromium chromium-browser        # found automatically at either path
+```
+
+Set `CHROME_PATH` in `.env` only if it is installed somewhere else.
+
 ---
 
 ## 1. DNS
