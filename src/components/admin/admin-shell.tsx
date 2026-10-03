@@ -22,8 +22,10 @@ import {
   Tooltip,
   Typography,
   useMediaQuery,
+  useScrollTrigger,
   useTheme,
 } from "@mui/material";
+import { alpha } from "@mui/material/styles";
 import {
   CalendarDays,
   CalendarHeart,
@@ -120,6 +122,8 @@ export function AdminShell({
 }) {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
+  // Once the page moves, the navbar lifts off it as a floating card.
+  const scrolled = useScrollTrigger({ disableHysteresis: true, threshold: 0 });
   const pathname = usePathname();
   const router = useRouter();
 
@@ -559,17 +563,27 @@ export function AdminShell({
       </Menu>
 
       <Box sx={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column" }}>
-        {/* Materio's navbar: static, detached and transparent over the page. */}
+        {/* Materio's floating navbar: transparent at the top, then pinned as a
+            detached card while the page scrolls beneath it. */}
         <Box
           component="header"
           className="no-print"
           sx={{
+            position: "sticky",
+            top: 0,
+            zIndex: theme.zIndex.appBar,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             width: "100%",
             flexShrink: 0,
             minHeight: 64,
+            px: scrolled ? `${LAYOUT_PADDING}px` : 0,
+            pt: scrolled ? "12px" : 0,
+            // Fades the page out above the card instead of showing it through the gap.
+            background: scrolled
+              ? `linear-gradient(180deg, ${theme.palette.background.default} 44%, ${alpha(theme.palette.background.default, 0.43)} 73%, ${alpha(theme.palette.background.default, 0)})`
+              : "transparent",
           }}
         >
           <Box
@@ -580,7 +594,15 @@ export function AdminShell({
               gap: 2,
               width: "100%",
               py: "10px",
-              px: `${LAYOUT_PADDING}px`,
+              px: scrolled ? "16px" : `${LAYOUT_PADDING}px`,
+              borderRadius: 2,
+              bgcolor: scrolled ? alpha(theme.palette.background.paper, 0.88) : "transparent",
+              backdropFilter: scrolled ? "blur(8px)" : "none",
+              boxShadow: scrolled ? theme.shadows[4] : "none",
+              transition: theme.transitions.create(
+                ["background-color", "box-shadow", "padding"],
+                { duration: theme.transitions.duration.shorter },
+              ),
             }}
           >
             <IconButton
