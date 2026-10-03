@@ -44,7 +44,11 @@ the site header and footer. Route groups do not change URLs.
 
 - **User** — email, password hash, role (`ADMIN` / `TECHNICAL` / `MEMBER`), voice, active flag
 - **Song** — the repertoire, plus rights fields (see Copyright below)
-- **MassPlan** / **MassPlanItem** — a Sunday's order of service, one row per part
+- **MassPlan** / **MassPlanItem** — an order of service, one row per part. `kind` is
+  `SUNDAY` for the Sunday flow, or `WEDDING` / `REQUIEM` / `FEAST` / `OTHER` for a
+  special Mass on any day. Several plans may share a date; only one *Sunday* plan
+  per date is allowed, enforced in `mass-plans/actions.ts`. `year` (lectionary
+  cycle) is optional; `venue` is for special Masses held away from the chapel.
 - **SongProposal** / **SongProposalItem** — member submissions and their review state
 - **Concert**, **GalleryItem**, **Member**, **JoinApplication**, **Feedback**
 - **Post** — blog entries
@@ -83,6 +87,8 @@ Materio's shape language (soft radii, layered shadows, gradient active states)
 rendered in **cardinal red `#BC0424`** and **amber gold `#FDB321`** rather than
 Materio's purple.
 
+**Navbar** — sticks to the top; once the page scrolls it floats as a blurred card.
+
 **Sidebar**
 - Grouped menus with submenus: Dashboard · Music · Content · People
 - Active item uses a gradient pill with a soft shadow; the parent group carries that state while collapsed
@@ -93,10 +99,47 @@ Materio's purple.
 
 **Pages**
 - **Dashboard** — greeting banner, four colour-coded stat cards, next Sunday's plan
+- **Mass plans** — Sunday orders of service, fed by accepted song proposals
+- **Special Masses** — weddings, requiems, feasts and other one-off Masses on any day.
+  The admin picks the songs directly (no proposals). "Use the … outline" fills a
+  starter order of service per occasion (`OUTLINES` in `src/lib/mass-occasions.ts`).
+  Three parts exist only here: Rite of Marriage, Signing of Register, Final
+  Commendation. Special Masses never appear on the public site.
+- **Worship aid** — `/admin/worship-aid/[id]`, for any plan. An A4 preview beside the
+  plan's details and a *Lyrics check* listing songs that would print as a bare
+  heading. Download PDF renders this same page in headless Chromium; print rules in
+  `globals.css` strip everything but the sheet. Sunday files are named like
+  `27th Sun OT Year A.pdf` (`src/lib/worship-aid.ts`).
 - **Song proposals** — status filters, full order of service per submission, one-click review
 - **Applications** — consent evidence and status changes, plus erase-record
 - **Blog** — list, editor, publish/unpublish, delete
 - **Login carousel** — upload, reorder, hide, delete
+
+---
+
+## Worship aid lyrics
+
+The aid prints each song's stored lyrics. A Mass setting is **one** song holding
+every movement, each under a bold heading paragraph named after the part —
+`<p><strong>Kyrie</strong></p>`, `Gloria`, `Sanctus`, … — and the aid prints only
+the section whose heading matches the part being sung (`lyricsForPart` in
+`worship-aid/[id]/page.tsx`). Other bold lines (refrains, "Gloria — alternative
+setting") do not start a section. If a setting has no section for a movement, the
+heading prints alone rather than another movement's text.
+
+So when editing a setting in the admin, keep one bold heading line per movement,
+spelled as the part is named.
+
+Repair scripts (each has `--dry-run`, and is safe to re-run):
+
+| Script | What it fixes |
+|--------|---------------|
+| `scripts/rebuild-mass-settings.mjs` | Settings whose sections were headed "Another setting" or had lost movements (most Kyries). Rebuilds them from the part-tagged variants in `prisma/data/liturgical-songs.json`, taking the most common text per movement. Run again after `import-lyrics.mjs`. |
+| `scripts/split-ee-bwana.mjs` | "Ee Bwana Vyote Mali Yako", which held two other Offertory songs. Splits them into their own records. |
+| `scripts/fix-repeated-movements.mjs` | Songs with the same movement heading twice, of which only the first printed. |
+| `scripts/split-sequence.mjs` | The Pentecost and Corpus Christi Sequences filed as one song. |
+
+Run against the live database as described in `deploy.md` → *Data repairs*.
 
 ---
 
@@ -182,19 +225,24 @@ Sign in at `/admin`. Change the seeded password after the first login.
 
 ---
 
-## Before deploying
+## Deploying
 
-1. **Hosted MySQL** — Vercel cannot reach `localhost:3306`. PlanetScale, Railway or Aiven.
-2. **Vercel Blob store** — otherwise uploads fail in production.
-3. Set `JWT_SECRET`, `DATABASE_URL` and `NEXT_PUBLIC_SITE_URL` in Vercel.
-4. Run `npm run db:deploy` against the hosted database.
-5. Decide the domain (e.g. `choir.stpaulschapelnbi.org`).
+Live at <https://hispraises.org> on the DigitalOcean droplet, not Vercel. Ship
+changes with `deploy/deploy-bundle.sh`; the full setup, rollback and data-repair
+steps are in [`deploy.md`](../deploy.md).
 
 ---
 
 ## Still to do
 
-- Admin CRUD for Mass plans, Repertoire, Concerts, Gallery, Members, Users — the routes are in the sidebar but the pages are not built yet.
+- Psalms 24, 34, 40, 98, 100, 104, 119, 145 and "Ee Bwana Sistahili" hold several
+  responses or versions in one record, so an aid prints all of them. Split them the
+  way `split-ee-bwana.mjs` does.
+- Some older plans filed as Sundays are special Masses ("Wedding Mass Program",
+  "Graduation", "All Souls' Day", "Exaltation of the Holy Cross"); move them by
+  setting `kind`.
+- The social-share image (`src/app/opengraph-image.tsx`) still prints the old
+  `vercel.app` address.
 - Review each song's copyright status and clear the `UNKNOWN` backlog.
 - Bulk gallery upload for the choir's photo archive.
 - Wording polish across the public pages.

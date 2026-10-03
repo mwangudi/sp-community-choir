@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Redeploy the choir site after the initial setup in deploy.md.
 #   sudo bash /var/www/choir/deploy/deploy.sh
+#
+# Superseded: the live service now runs a standalone bundle built elsewhere,
+# so there is no git checkout or build on the server. Use
+# deploy/deploy-bundle.sh from your own machine instead.
 set -euo pipefail
 
 APP_DIR="${APP_DIR:-/var/www/choir}"

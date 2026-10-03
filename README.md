@@ -71,13 +71,19 @@ The `Upcoming` / `Recent` split on `/concerts` is computed from `startsAt`.
 
 ## Deployment
 
-This repo is designed to deploy to **Vercel** as a separate project from the
-parish website.
+Live at <https://hispraises.org>, on the parish's DigitalOcean droplet behind
+nginx. The site is built on your own machine and shipped as a standalone
+bundle:
 
-1. Push to a Git host (GitHub / GitLab).
-2. Import into Vercel.
-3. No env vars are required for the first deploy. To temporarily hide the site
-   from search engines, set `NEXT_PUBLIC_ALLOW_INDEXING=false`.
+```bash
+SSH_KEY=~/.ssh/id_ed255_new bash deploy/deploy-bundle.sh
+```
+
+It backs up the database, applies migrations and keeps the previous release for
+rollback. Setup, rollback and data repairs are in [`deploy.md`](deploy.md); the
+admin panel, worship aids and data model are described in
+[`docs/admin-and-backend.md`](docs/admin-and-backend.md). To hide the site from
+search engines, deploy with `ALLOW_INDEXING=false`.
 
 ## Relationship to the parish website
 
