@@ -22,6 +22,9 @@ export const MASS_PARTS = [
   "THANKSGIVING",
   "RECESSIONAL",
   "MARIAN_HYMN",
+  "RITE_OF_MARRIAGE",
+  "SIGNING_OF_REGISTER",
+  "FINAL_COMMENDATION",
 ] as const;
 
 /**

@@ -22,6 +22,13 @@ import {
   useFieldValidation,
 } from "@/components/admin/use-field-validation";
 import { massPartLabel } from "@/lib/mass-parts";
+import {
+  OCCASION_PARTS,
+  OUTLINES,
+  SPECIAL_KINDS,
+  massKindLabel,
+  plansHref,
+} from "@/lib/mass-occasions";
 import { MASS_PARTS, SEASONS } from "@/lib/validation";
 import { saveMassPlan, type PlanFormState } from "./actions";
 
@@ -29,8 +36,10 @@ export type PlanItemDraft = { part: string; song: string; songSlug: string | nul
 
 export type PlanDraft = {
   id?: string;
+  kind: string;
   date: string;
   name: string;
+  venue: string;
   year: string;
   season: string;
   setting: string;
@@ -55,6 +64,12 @@ export function PlanForm({
     {},
   );
   const [items, setItems] = useState<PlanItemDraft[]>(plan.items);
+  const [kind, setKind] = useState(plan.kind);
+  const sunday = kind === "SUNDAY";
+  // Wedding and funeral rites have no place on a Sunday.
+  const parts = sunday
+    ? MASS_PARTS.filter((p) => !OCCASION_PARTS.includes(p))
+    : MASS_PARTS;
   const { formProps, field } = useFieldValidation({
     name: isRequired("Name"),
     date: isRequired("Date"),
@@ -77,6 +92,7 @@ export function PlanForm({
   return (
     <form action={formAction} {...formProps}>
       {plan.id && <input type="hidden" name="id" value={plan.id} />}
+      {sunday && <input type="hidden" name="kind" value="SUNDAY" />}
       <input type="hidden" name="items" value={JSON.stringify(items)} />
 
       {state.error && (
@@ -101,18 +117,36 @@ export function PlanForm({
               sx={{ justifyContent: "space-between", alignItems: "center", mb: 5 }}
             >
               <Typography variant="h6">Order of service</Typography>
-              <Button
-                size="small"
-                startIcon={<Plus size={14} />}
-                onClick={() =>
-                  setItems((rows) => [
-                    ...rows,
-                    { part: "ENTRANCE", song: "", songSlug: null },
-                  ])
-                }
-              >
-                Add a slot
-              </Button>
+              <Stack direction="row" spacing={2}>
+                {!sunday && items.length === 0 && (
+                  <Button
+                    size="small"
+                    onClick={() =>
+                      setItems(
+                        OUTLINES[kind as keyof typeof OUTLINES].map((part) => ({
+                          part,
+                          song: "",
+                          songSlug: null,
+                        })),
+                      )
+                    }
+                  >
+                    Use the {massKindLabel(kind).toLowerCase()} outline
+                  </Button>
+                )}
+                <Button
+                  size="small"
+                  startIcon={<Plus size={14} />}
+                  onClick={() =>
+                    setItems((rows) => [
+                      ...rows,
+                      { part: "ENTRANCE", song: "", songSlug: null },
+                    ])
+                  }
+                >
+                  Add a slot
+                </Button>
+              </Stack>
             </Stack>
 
             {items.length === 0 ? (
@@ -136,7 +170,7 @@ export function PlanForm({
                       onChange={(e) => update(index, { part: e.target.value })}
                       sx={{ minWidth: 210 }}
                     >
-                      {MASS_PARTS.map((p) => (
+                      {parts.map((p) => (
                         <MenuItem key={p} value={p}>
                           {massPartLabel(p)}
                         </MenuItem>
@@ -213,13 +247,33 @@ export function PlanForm({
           <Card>
             <CardContent>
               <Typography variant="h6" sx={{ mb: 5 }}>
-                The Sunday
+                {sunday ? "The Sunday" : "The occasion"}
               </Typography>
               <Stack spacing={5}>
+                {!sunday && (
+                  <TextField
+                    name="kind"
+                    label="Occasion"
+                    select
+                    value={kind}
+                    onChange={(e) => setKind(e.target.value)}
+                    fullWidth
+                  >
+                    {SPECIAL_KINDS.map((k) => (
+                      <MenuItem key={k} value={k}>
+                        {massKindLabel(k)}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                )}
                 <TextField
                   name="name"
                   label="Name"
-                  placeholder="e.g. 21st Sunday in Ordinary Time"
+                  placeholder={
+                    sunday
+                      ? "e.g. 21st Sunday in Ordinary Time"
+                      : "e.g. Requiem Mass for the late Jane Wanjiru"
+                  }
                   defaultValue={plan.name}
                   fullWidth
                   {...field("name")}
@@ -233,19 +287,30 @@ export function PlanForm({
                   slotProps={{ inputLabel: { shrink: true } }}
                   {...field("date")}
                 />
-                <TextField
-                  name="year"
-                  label="Lectionary year"
-                  select
-                  defaultValue={plan.year}
-                  fullWidth
-                >
-                  {["A", "B", "C"].map((y) => (
-                    <MenuItem key={y} value={y}>
-                      Year {y}
-                    </MenuItem>
-                  ))}
-                </TextField>
+                {sunday ? (
+                  <TextField
+                    name="year"
+                    label="Lectionary year"
+                    select
+                    defaultValue={plan.year}
+                    fullWidth
+                  >
+                    <MenuItem value="">Not set</MenuItem>
+                    {["A", "B", "C"].map((y) => (
+                      <MenuItem key={y} value={y}>
+                        Year {y}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                ) : (
+                  <TextField
+                    name="venue"
+                    label="Venue"
+                    placeholder="Leave blank for the chapel"
+                    defaultValue={plan.venue}
+                    fullWidth
+                  />
+                )}
                 <TextField
                   name="season"
                   label="Season"
@@ -260,16 +325,18 @@ export function PlanForm({
                     </MenuItem>
                   ))}
                 </TextField>
-                <TextField
-                  name="status"
-                  label="Status"
-                  select
-                  defaultValue={plan.status}
-                  fullWidth
-                >
-                  <MenuItem value="DRAFT">Draft</MenuItem>
-                  <MenuItem value="PUBLISHED">Published</MenuItem>
-                </TextField>
+                {sunday && (
+                  <TextField
+                    name="status"
+                    label="Status"
+                    select
+                    defaultValue={plan.status}
+                    fullWidth
+                  >
+                    <MenuItem value="DRAFT">Draft</MenuItem>
+                    <MenuItem value="PUBLISHED">Published</MenuItem>
+                  </TextField>
+                )}
               </Stack>
             </CardContent>
           </Card>
@@ -292,17 +359,21 @@ export function PlanForm({
                   defaultValue={plan.leader}
                   fullWidth
                 />
-                <TextField
-                  name="youtubeId"
-                  label="Livestream (YouTube)"
-                  placeholder="https://www.youtube.com/watch?v=…"
-                  defaultValue={plan.youtubeId}
-                  helperText="Paste the link after Mass — visitors can then watch it on the website."
-                  fullWidth
-                />
+                {sunday && (
+                  <TextField
+                    name="youtubeId"
+                    label="Livestream (YouTube)"
+                    placeholder="https://www.youtube.com/watch?v=…"
+                    defaultValue={plan.youtubeId}
+                    helperText="Paste the link after Mass — visitors can then watch it on the website."
+                    fullWidth
+                  />
+                )}
                 <TextField
                   name="notes"
-                  label="Notes"
+                  label={sunday ? "Notes" : "Dedication"}
+                  placeholder={sunday ? undefined : "e.g. In loving memory of …"}
+                  helperText="Printed at the foot of the worship aid."
                   defaultValue={plan.notes}
                   multiline
                   minRows={3}
@@ -316,7 +387,7 @@ export function PlanForm({
 
       <FormActions
         pending={pending}
-        cancelHref="/admin/mass-plans"
+        cancelHref={plansHref(kind)}
         label="Save plan"
       />
     </form>

@@ -59,8 +59,8 @@ async function getStats() {
     recentApplications,
   ] = await Promise.all([
     prisma.songProposal.count({ where: { status: "PENDING" } }),
-    prisma.massPlan.count({ where: { status: "PUBLISHED" } }),
-    prisma.massPlan.count(),
+    prisma.massPlan.count({ where: { kind: "SUNDAY", status: "PUBLISHED" } }),
+    prisma.massPlan.count({ where: { kind: "SUNDAY" } }),
     prisma.song.count({ where: { isActive: true } }),
     prisma.song.count({
       where: { isActive: true, NOT: { copyrightStatus: "UNKNOWN" } },
@@ -73,7 +73,7 @@ async function getStats() {
     prisma.galleryItem.count(),
     prisma.concert.count({ where: { isPublished: true, startsAt: { gte: now } } }),
     prisma.massPlan.findFirst({
-      where: { date: { gte: today } },
+      where: { kind: "SUNDAY", date: { gte: today } },
       orderBy: { date: "asc" },
       include: { items: { orderBy: { sortOrder: "asc" } } },
     }),
@@ -513,7 +513,9 @@ export default async function AdminDashboardPage() {
                   label={massPartLabel(s.nextPlan.status)}
                   color={s.nextPlan.status === "PUBLISHED" ? "success" : "default"}
                 />
-                <Chip size="small" variant="outlined" label={`Year ${s.nextPlan.year}`} />
+                {s.nextPlan.year && (
+                  <Chip size="small" variant="outlined" label={`Year ${s.nextPlan.year}`} />
+                )}
                 {s.nextPlan.setting && (
                   <Chip size="small" variant="outlined" label={s.nextPlan.setting} />
                 )}

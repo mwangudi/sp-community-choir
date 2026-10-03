@@ -89,11 +89,12 @@ export default async function MassPlansPage({
   await requireSession("TECHNICAL");
 
   const { page: rawPage } = await searchParams;
-  const total = await prisma.massPlan.count();
+  const total = await prisma.massPlan.count({ where: { kind: "SUNDAY" } });
   const pageCount = Math.max(1, Math.ceil(total / PER_PAGE));
   const page = Math.min(Math.max(Number(rawPage) || 1, 1), pageCount);
 
   const plans = await prisma.massPlan.findMany({
+    where: { kind: "SUNDAY" },
     orderBy: { date: "desc" },
     include: { items: { orderBy: { sortOrder: "asc" } } },
     skip: (page - 1) * PER_PAGE,
@@ -101,7 +102,6 @@ export default async function MassPlansPage({
   });
 
   const next = plans.find((p) => p.date >= startOfToday()) ?? plans[0];
-  const published = await prisma.massPlan.count({ where: { status: "PUBLISHED" } });
 
   return (
     <Stack spacing={6}>
@@ -152,8 +152,10 @@ export default async function MassPlansPage({
           <SummaryCard
             icon={<BookOpen size={18} />}
             label="Liturgical lectionary"
-            value={`Cycle Year ${next.year}`}
-            chip={<Chip size="small" color="warning" label={`Year ${next.year}`} />}
+            value={next.year ? `Cycle Year ${next.year}` : "Not set"}
+            chip={
+              next.year && <Chip size="small" color="warning" label={`Year ${next.year}`} />
+            }
           />
           <SummaryCard
             icon={<Printer size={18} />}
@@ -208,7 +210,9 @@ export default async function MassPlansPage({
                         label={plan.status}
                         color={plan.status === "PUBLISHED" ? "success" : "default"}
                       />
-                      <Chip size="small" variant="outlined" label={`Year ${plan.year}`} />
+                      {plan.year && (
+                        <Chip size="small" variant="outlined" label={`Year ${plan.year}`} />
+                      )}
                     </Stack>
                     <Typography variant="caption" color="text.secondary">
                       {formatDate(plan.date)}

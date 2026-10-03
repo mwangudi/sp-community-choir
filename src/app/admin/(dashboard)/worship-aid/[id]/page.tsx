@@ -5,6 +5,7 @@ import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { massPartLabel } from "@/lib/mass-parts";
 import { MASS_PLAN_PART_ORDER } from "@/lib/mass-plans";
+import { plansHref } from "@/lib/mass-occasions";
 import { getChoir } from "@/lib/server/settings";
 import { formatDate } from "@/lib/utils";
 import { PrintButton } from "./print-button";
@@ -99,11 +100,12 @@ export default async function WorshipAidPage({
   ]);
 
   if (!plan) notFound();
+  const sunday = plan.kind === "SUNDAY";
 
   return (
     <div className="aid-page">
       <div className="aid-toolbar no-print">
-        <Link href={`/admin/mass-plans/${plan.id}`} className="aid-back">
+        <Link href={`${plansHref(plan.kind)}/${plan.id}`} className="aid-back">
           ← Back to the plan
         </Link>
         <PrintButton planId={plan.id} />
@@ -112,9 +114,13 @@ export default async function WorshipAidPage({
       <article className="worship-aid">
         <header>
           <h1 className="aid-title">
-            {plan.name.toUpperCase()} YEAR {plan.year} |{" "}
+            {plan.name.toUpperCase()}
+            {/* Optional, and only meaningful on a Sunday. */}
+            {sunday && plan.year ? ` YEAR ${plan.year}` : ""} |{" "}
             {formatDate(plan.date).toUpperCase()}
-            <span className="aid-parish">{choir.parish.toUpperCase()}</span>
+            <span className="aid-parish">
+              {(plan.venue ?? choir.parish).toUpperCase()}
+            </span>
           </h1>
         </header>
 

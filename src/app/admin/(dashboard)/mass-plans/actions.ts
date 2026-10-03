@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import type { LiturgicalSeason, MassPart, PlanStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
+import { isMassKind, plansHref } from "@/lib/mass-occasions";
 import { youtubeId } from "@/lib/youtube";
 
 export type PlanFormState = { error?: string };
@@ -23,19 +24,28 @@ export async function saveMassPlan(
   const session = await requireSession("TECHNICAL");
 
   const id = String(formData.get("id") ?? "").trim();
+  const rawKind = String(formData.get("kind") ?? "SUNDAY");
+  const kind = isMassKind(rawKind) ? rawKind : "SUNDAY";
+  const sunday = kind === "SUNDAY";
+
   const name = String(formData.get("name") ?? "").trim();
-  if (name.length < 2) return { error: "Give the Sunday a name" };
+  if (name.length < 2) {
+    return { error: sunday ? "Give the Sunday a name" : "Give the Mass a name" };
+  }
 
   const rawDate = String(formData.get("date") ?? "").trim();
   if (!rawDate) return { error: "Choose the date this plan serves" };
   const date = new Date(`${rawDate}T00:00:00.000Z`);
   if (Number.isNaN(date.getTime())) return { error: "That date is not valid" };
 
-  const clash = await prisma.massPlan.findFirst({
-    where: { date, ...(id ? { NOT: { id } } : {}) },
-    select: { id: true },
-  });
-  if (clash) return { error: "There is already a plan for that Sunday" };
+  // Special Masses may share a day with a Sunday or with each other.
+  if (sunday) {
+    const clash = await prisma.massPlan.findFirst({
+      where: { kind: "SUNDAY", date, ...(id ? { NOT: { id } } : {}) },
+      select: { id: true },
+    });
+    if (clash) return { error: "There is already a plan for that Sunday" };
+  }
 
   let items: IncomingItem[] = [];
   try {
@@ -52,22 +62,27 @@ export async function saveMassPlan(
       sortOrder: index,
     }));
 
-  const rawLivestream = String(formData.get("youtubeId") ?? "").trim();
+  // Only Sundays are streamed to the website.
+  const rawLivestream = sunday ? String(formData.get("youtubeId") ?? "").trim() : "";
   const livestream = rawLivestream ? youtubeId(rawLivestream) : null;
   if (rawLivestream && !livestream) {
     return { error: "That does not look like a YouTube link or video id" };
   }
 
   const data = {
+    kind,
     date,
     name,
-    year: String(formData.get("year") ?? "A"),
+    venue: sunday ? null : text(formData, "venue"),
+    // Optional, and meaningless away from a Sunday.
+    year: sunday && /^[ABC]$/.test(String(formData.get("year"))) ? String(formData.get("year")) : null,
     season: (text(formData, "season") as LiturgicalSeason | null) ?? null,
     setting: text(formData, "setting"),
     leader: text(formData, "leader"),
     youtubeId: livestream,
     notes: text(formData, "notes"),
-    status: String(formData.get("status") ?? "DRAFT") as PlanStatus,
+    // Specials never appear on the website, so there is nothing to publish.
+    status: (sunday ? String(formData.get("status") ?? "DRAFT") : "DRAFT") as PlanStatus,
   };
 
   if (id) {
@@ -85,9 +100,9 @@ export async function saveMassPlan(
     });
   }
 
-  revalidatePath("/admin/mass-plans");
+  revalidatePath(plansHref(kind));
   revalidatePath("/masses");
-  redirect("/admin/mass-plans");
+  redirect(plansHref(kind));
 }
 
 export async function deleteMassPlan(formData: FormData) {
@@ -97,6 +112,7 @@ export async function deleteMassPlan(formData: FormData) {
   await prisma.massPlan.delete({ where: { id } });
 
   revalidatePath("/admin/mass-plans");
+  revalidatePath("/admin/special-masses");
   revalidatePath("/masses");
 }
 

@@ -100,7 +100,9 @@ async function seedSongs() {
 async function seedMassPlans(createdById: string) {
   for (const plan of MASS_PLANS) {
     const date = new Date(`${plan.date}T00:00:00Z`);
-    const existing = await prisma.massPlan.findUnique({ where: { date } });
+    const existing = await prisma.massPlan.findFirst({
+      where: { kind: "SUNDAY", date },
+    });
     if (existing) {
       await prisma.massPlanItem.deleteMany({ where: { planId: existing.id } });
     }
@@ -111,27 +113,20 @@ async function seedMassPlans(createdById: string) {
       sortOrder: i,
     }));
 
-    await prisma.massPlan.upsert({
-      where: { date },
-      update: {
-        name: plan.name,
-        year: plan.year,
-        setting: plan.setting ?? null,
-        leader: plan.leader ?? null,
-        status: "PUBLISHED",
-        items: { create: items },
-      },
-      create: {
-        date,
-        name: plan.name,
-        year: plan.year,
-        setting: plan.setting ?? null,
-        leader: plan.leader ?? null,
-        status: "PUBLISHED",
-        createdById,
-        items: { create: items },
-      },
-    });
+    const data = {
+      name: plan.name,
+      year: plan.year,
+      setting: plan.setting ?? null,
+      leader: plan.leader ?? null,
+      status: "PUBLISHED" as const,
+      items: { create: items },
+    };
+
+    if (existing) {
+      await prisma.massPlan.update({ where: { id: existing.id }, data });
+    } else {
+      await prisma.massPlan.create({ data: { date, createdById, ...data } });
+    }
   }
   console.log(`  mass plans: ${MASS_PLANS.length}`);
 }

@@ -93,8 +93,8 @@ async function main() {
       }));
     if (rows.length === 0) continue;
 
-    const existing = await prisma.massPlan.findUnique({
-      where: { date },
+    const existing = await prisma.massPlan.findFirst({
+      where: { kind: "SUNDAY", date },
       select: { id: true },
     });
 

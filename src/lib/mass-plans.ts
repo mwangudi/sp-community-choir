@@ -47,8 +47,8 @@ export type MassPlan = {
   date: string;
   /** Label from the worksheet, e.g. "13 Sun OT". */
   name: string;
-  /** Lectionary cycle. */
-  year: LectionaryYear;
+  /** Lectionary cycle, when recorded. */
+  year?: LectionaryYear;
   /** Mass Ordinary setting, when one setting covers Kyrie/Gloria/Sanctus/Agnus. */
   setting?: string;
   /** Music leader / conductor for the day, when recorded. */

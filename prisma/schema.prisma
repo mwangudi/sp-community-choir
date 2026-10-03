@@ -91,6 +91,10 @@ enum MassPart {
   THANKSGIVING
   RECESSIONAL
   MARIAN_HYMN
+  // Sung only at special Masses.
+  RITE_OF_MARRIAGE
+  SIGNING_OF_REGISTER
+  FINAL_COMMENDATION
 }
 
 /// Rights status of a score — drives whether files are shown publicly.
@@ -148,13 +152,27 @@ enum PlanStatus {
   PUBLISHED
 }
 
+/// SUNDAY plans go through member proposals and appear on the website;
+/// the rest are one-off Masses the admin plans directly for a worship aid.
+enum MassKind {
+  SUNDAY
+  WEDDING
+  REQUIEM
+  FEAST
+  OTHER
+}
+
 model MassPlan {
   id        String     @id @default(cuid())
-  /// The Sunday this plan serves (date only, unique).
-  date      DateTime   @unique @db.Date
+  kind      MassKind   @default(SUNDAY)
+  /// The day this plan serves (date only). One SUNDAY plan per date, enforced
+  /// in code, since a wedding and a requiem may share a day.
+  date      DateTime   @db.Date
   name      String
-  /// Lectionary cycle: A, B or C.
-  year      String     @db.Char(1)
+  /// Where a special Mass is held, when not at the chapel.
+  venue     String?
+  /// Lectionary cycle: A, B or C. Optional, and printed only when set.
+  year      String?    @db.Char(1)
   season    LiturgicalSeason?
   setting   String?
   leader    String?
@@ -170,6 +188,7 @@ model MassPlan {
 
   items MassPlanItem[]
 
+  @@index([kind, date])
   @@index([status])
 }
 

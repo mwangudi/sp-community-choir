@@ -26,6 +26,7 @@ import {
 } from "@mui/material";
 import {
   CalendarDays,
+  CalendarHeart,
   ChevronDown,
   ChevronRight,
   Circle,
@@ -78,6 +79,7 @@ const NAV: Entry[] = [
       { href: "/admin/songs", label: "Repertoire", icon: Music2 },
       { href: "/admin/proposals", label: "Song proposals", icon: Inbox },
       { href: "/admin/mass-plans", label: "Mass plans", icon: CalendarDays },
+      { href: "/admin/special-masses", label: "Special Masses", icon: CalendarHeart },
     ],
   },
   {

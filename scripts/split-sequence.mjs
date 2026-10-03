@@ -88,7 +88,10 @@ async function splitSequence() {
     }
 
     const date = new Date(`${spec.sunday}T00:00:00.000Z`);
-    const plan = await prisma.massPlan.findUnique({ where: { date }, select: { id: true, name: true } });
+    const plan = await prisma.massPlan.findFirst({
+      where: { kind: "SUNDAY", date },
+      select: { id: true, name: true },
+    });
     if (plan && !dryRun) {
       const { count } = await prisma.massPlanItem.updateMany({
         where: { planId: plan.id, songSlug: "sequence" },

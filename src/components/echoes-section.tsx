@@ -25,7 +25,7 @@ const STRANDS = [
 export async function EchoesSection() {
   const plan = await prisma.massPlan
     .findFirst({
-      where: { status: "PUBLISHED", youtubeId: { not: null } },
+      where: { kind: "SUNDAY", status: "PUBLISHED", youtubeId: { not: null } },
       orderBy: { date: "desc" },
       include: { items: { orderBy: { sortOrder: "asc" } } },
     })

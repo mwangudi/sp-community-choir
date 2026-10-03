@@ -3,13 +3,14 @@ import { notFound, redirect } from "next/navigation";
 import { Box, Stack, Typography } from "@mui/material";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
+import { massKindLabel } from "@/lib/mass-occasions";
 import { formatDate } from "@/lib/utils";
-import { PlanForm } from "../plan-form";
+import { PlanForm } from "../../mass-plans/plan-form";
 
-export const metadata: Metadata = { title: "Edit mass plan" };
+export const metadata: Metadata = { title: "Edit special Mass" };
 export const dynamic = "force-dynamic";
 
-export default async function EditMassPlanPage({
+export default async function EditSpecialMassPage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -29,14 +30,14 @@ export default async function EditMassPlanPage({
     }),
   ]);
   if (!plan) notFound();
-  if (plan.kind !== "SUNDAY") redirect(`/admin/special-masses/${plan.id}`);
+  if (plan.kind === "SUNDAY") redirect(`/admin/mass-plans/${plan.id}`);
 
   return (
     <Stack spacing={6}>
       <Box>
-        <Typography variant="h4">Edit mass plan</Typography>
+        <Typography variant="h4">Edit special Mass</Typography>
         <Typography color="text.secondary">
-          {plan.name} · {formatDate(plan.date)}
+          {massKindLabel(plan.kind)} · {plan.name} · {formatDate(plan.date)}
         </Typography>
       </Box>
 
@@ -48,11 +49,11 @@ export default async function EditMassPlanPage({
           date: plan.date.toISOString().slice(0, 10),
           name: plan.name,
           venue: plan.venue ?? "",
-          year: plan.year ?? "",
+          year: "",
           season: plan.season ?? "",
           setting: plan.setting ?? "",
           leader: plan.leader ?? "",
-          youtubeId: plan.youtubeId ?? "",
+          youtubeId: "",
           notes: plan.notes ?? "",
           status: plan.status,
           items: plan.items.map((i) => ({

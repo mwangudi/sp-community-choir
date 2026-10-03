@@ -68,8 +68,8 @@ async function main() {
       status: plan.status ?? "DRAFT",
     };
 
-    const existing = await prisma.massPlan.findUnique({
-      where: { date },
+    const existing = await prisma.massPlan.findFirst({
+      where: { kind: "SUNDAY", date },
       select: { id: true },
     });
 

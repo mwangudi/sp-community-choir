@@ -22,6 +22,7 @@ export async function MassOrderSection() {
   const plan = await prisma.massPlan
     .findFirst({
       where: {
+        kind: "SUNDAY",
         date: new Date(`${dateKey(ctx.date)}T00:00:00.000Z`),
         status: "PUBLISHED",
       },
@@ -62,7 +63,8 @@ export async function MassOrderSection() {
           <p className="mt-1 text-[15px] text-muted-foreground">
             {plan.name}
             <span className="mx-1.5">•</span>
-            {seasonLabel(ctx.season)} · Year {plan.year}
+            {seasonLabel(ctx.season)}
+            {plan.year ? ` · Year ${plan.year}` : ""}
             <span className="mx-1.5">•</span>
             St. Paul&apos;s Chapel ({CHOIR.ministersAt.label})
           </p>

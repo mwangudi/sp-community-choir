@@ -16,13 +16,17 @@ export async function GET(
   const { id } = await params;
   const plan = await prisma.massPlan.findUnique({
     where: { id },
-    select: { date: true },
+    select: { date: true, kind: true },
   });
   if (!plan) notFound();
 
   const url = new URL(request.url);
   const download = url.searchParams.get("download") === "1";
-  const name = `worship-aid-${plan.date.toISOString().slice(0, 10)}.pdf`;
+  const day = plan.date.toISOString().slice(0, 10);
+  const name =
+    plan.kind === "SUNDAY"
+      ? `worship-aid-${day}.pdf`
+      : `worship-aid-${plan.kind.toLowerCase()}-${day}.pdf`;
 
   // Render over loopback rather than the public URL: the browser has to fetch
   // the page's own assets, and the domain may not resolve from the server.

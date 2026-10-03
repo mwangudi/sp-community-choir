@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default async function MassesPage() {
   const plans = await prisma.massPlan.findMany({
-    where: { status: "PUBLISHED", youtubeId: { not: null } },
+    where: { kind: "SUNDAY", status: "PUBLISHED", youtubeId: { not: null } },
     orderBy: { date: "desc" },
     take: 24,
     include: { items: { orderBy: { sortOrder: "asc" } } },
@@ -55,7 +55,7 @@ export default async function MassesPage() {
                   <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
                     <CalendarDays className="h-4 w-4 text-secondary" />
                     {formatDate(plan.date)}
-                    <Badge variant="outline">Year {plan.year}</Badge>
+                    {plan.year && <Badge variant="outline">Year {plan.year}</Badge>}
                     {plan.setting && <Badge variant="secondary">{plan.setting}</Badge>}
                   </div>
                   <h2 className="mt-2 font-serif text-2xl font-semibold text-primary sm:text-3xl">

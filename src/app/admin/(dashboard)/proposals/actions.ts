@@ -89,18 +89,21 @@ export async function addAcceptedToPlan(formData: FormData) {
   if (accepted.length === 0) return;
 
   const first = proposals[0];
-  const plan = await prisma.massPlan.upsert({
-    where: { date: sundayDate },
-    update: {},
-    create: {
-      date: sundayDate,
-      name: first.sundayName,
-      year: first.lectionaryYear ?? "A",
-      status: "DRAFT",
-      createdById: session.sub,
-    },
-    include: { items: true },
-  });
+  const plan =
+    (await prisma.massPlan.findFirst({
+      where: { kind: "SUNDAY", date: sundayDate },
+      include: { items: true },
+    })) ??
+    (await prisma.massPlan.create({
+      data: {
+        date: sundayDate,
+        name: first.sundayName,
+        year: first.lectionaryYear,
+        status: "DRAFT",
+        createdById: session.sub,
+      },
+      include: { items: true },
+    }));
 
   const key = (part: string, song: string) => `${part}|${song.trim().toLowerCase()}`;
   const already = new Set(plan.items.map((i) => key(i.part, i.song)));

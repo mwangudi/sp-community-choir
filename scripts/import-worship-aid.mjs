@@ -477,11 +477,13 @@ async function main() {
     status: "PUBLISHED",
   };
 
-  const plan = await prisma.massPlan.upsert({
-    where: { date },
-    update: planData,
-    create: { date, ...planData },
+  const existing = await prisma.massPlan.findFirst({
+    where: { kind: "SUNDAY", date },
+    select: { id: true },
   });
+  const plan = existing
+    ? await prisma.massPlan.update({ where: { id: existing.id }, data: planData })
+    : await prisma.massPlan.create({ data: { date, ...planData } });
 
   // Rebuild the order of service so re-runs don't duplicate rows.
   // Entries that reuse an earlier song carry only a slug, so look the title up.

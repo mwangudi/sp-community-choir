@@ -138,7 +138,11 @@ export async function getMassPlan(date: Date): Promise<MassPlan | null> {
 
   try {
     const row = await prisma.massPlan.findFirst({
-      where: { date: new Date(`${key}T00:00:00.000Z`), status: "PUBLISHED" },
+      where: {
+        kind: "SUNDAY",
+        date: new Date(`${key}T00:00:00.000Z`),
+        status: "PUBLISHED",
+      },
       include: { items: { orderBy: { sortOrder: "asc" } } },
     });
 
@@ -146,7 +150,7 @@ export async function getMassPlan(date: Date): Promise<MassPlan | null> {
       return {
         date: key,
         name: row.name,
-        year: row.year as LectionaryYear,
+        year: (row.year ?? undefined) as LectionaryYear | undefined,
         setting: row.setting ?? undefined,
         leader: row.leader ?? undefined,
         items: row.items
