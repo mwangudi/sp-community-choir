@@ -1,11 +1,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  Divider,
+  IconButton,
+  Stack,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { ArrowLeft, CircleCheck, Pencil, TriangleAlert } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { massPartLabel } from "@/lib/mass-parts";
 import { MASS_PLAN_PART_ORDER } from "@/lib/mass-plans";
-import { plansHref } from "@/lib/mass-occasions";
+import { massKindLabel, plansHref } from "@/lib/mass-occasions";
 import { getChoir } from "@/lib/server/settings";
 import { formatDate } from "@/lib/utils";
 import { PrintButton } from "./print-button";
@@ -101,54 +114,200 @@ export default async function WorshipAidPage({
 
   if (!plan) notFound();
   const sunday = plan.kind === "SUNDAY";
+  const editHref = `${plansHref(plan.kind)}/${plan.id}`;
+  const place = plan.venue ?? choir.parish;
+
+  const items = plan.items.map((item) => ({
+    ...item,
+    lyrics: item.songRef?.lyrics ? lyricsForPart(item.songRef.lyrics, item.part) : "",
+  }));
+  // A recited part has nothing to print by design; anything else prints a bare heading.
+  const bare = items.filter(
+    (i) => !i.lyrics.trim() && !/^recited?$/i.test(i.song.trim()),
+  );
+
+  const details: [string, string | null][] = [
+    ["Occasion", massKindLabel(plan.kind)],
+    ["Date", formatDate(plan.date)],
+    ["Lectionary year", sunday ? (plan.year ? `Year ${plan.year}` : "Not set") : null],
+    ["Venue", place],
+    ["Mass setting", plan.setting],
+    ["Leader", plan.leader],
+    ["Songs", String(plan.items.length)],
+  ];
 
   return (
-    <div className="aid-page">
-      <div className="aid-toolbar no-print">
-        <Link href={`${plansHref(plan.kind)}/${plan.id}`} className="aid-back">
-          ← Back to the plan
-        </Link>
-        <PrintButton planId={plan.id} />
-      </div>
-
-      <article className="worship-aid">
-        <header>
-          <h1 className="aid-title">
-            {plan.name.toUpperCase()}
-            {/* Optional, and only meaningful on a Sunday. */}
-            {sunday && plan.year ? ` YEAR ${plan.year}` : ""} |{" "}
-            {formatDate(plan.date).toUpperCase()}
-            <span className="aid-parish">
-              {(plan.venue ?? choir.parish).toUpperCase()}
-            </span>
-          </h1>
-        </header>
-
-        {plan.items.map((item) => (
-          <section key={item.id} className="aid-item">
-            <h2 className="aid-part">
-              <span className="aid-part-name">
-                {massPartLabel(item.part).toUpperCase()}:
-              </span>{" "}
-              {item.song.toUpperCase()}
-            </h2>
-            {item.songRef?.lyrics && (
-              <div
-                className="aid-lyrics"
-                dangerouslySetInnerHTML={{
-                  __html: emphasise(lyricsForPart(item.songRef.lyrics, item.part)),
-                }}
+    <Stack spacing={6} className="aid-screen">
+      <Stack
+        className="no-print"
+        direction={{ xs: "column", md: "row" }}
+        spacing={4}
+        sx={{ justifyContent: "space-between", alignItems: { md: "flex-end" } }}
+      >
+        <Box sx={{ minWidth: 0 }}>
+          <Button
+            component={Link}
+            href={editHref}
+            size="small"
+            color="inherit"
+            startIcon={<ArrowLeft size={15} />}
+            sx={{ mb: 1, ml: -1, color: "text.secondary" }}
+          >
+            Back to the plan
+          </Button>
+          <Stack direction="row" spacing={2} sx={{ alignItems: "center", flexWrap: "wrap", gap: 2 }}>
+            <Typography variant="h4">Worship aid</Typography>
+            <Chip size="small" variant="outlined" label={massKindLabel(plan.kind)} />
+            {sunday && (
+              <Chip
+                size="small"
+                label={plan.status}
+                color={plan.status === "PUBLISHED" ? "success" : "default"}
               />
             )}
-          </section>
-        ))}
+          </Stack>
+          <Typography color="text.secondary">
+            {plan.name} · {formatDate(plan.date)}
+          </Typography>
+        </Box>
+        <Stack direction="row" spacing={2} sx={{ alignItems: "center", flexWrap: "wrap", gap: 2 }}>
+          <PrintButton planId={plan.id} />
+          <Tooltip title="Edit the plan">
+            <IconButton component={Link} href={editHref} aria-label="Edit the plan">
+              <Pencil size={17} />
+            </IconButton>
+          </Tooltip>
+        </Stack>
+      </Stack>
 
-        {plan.notes && (
-          <footer className="aid-dedication">
-            <p>{plan.notes}</p>
-          </footer>
-        )}
-      </article>
-    </div>
+      <Box className="aid-layout">
+        <Card className="aid-sheet-card">
+          <Box className="aid-sheet-well" sx={{ bgcolor: "action.hover" }}>
+            <article className="worship-aid">
+              <header>
+                <h1 className="aid-title">
+                  {plan.name.toUpperCase()}
+                  {/* Optional, and only meaningful on a Sunday. */}
+                  {sunday && plan.year ? ` YEAR ${plan.year}` : ""} |{" "}
+                  {formatDate(plan.date).toUpperCase()}
+                  <span className="aid-parish">{place.toUpperCase()}</span>
+                </h1>
+              </header>
+
+              {items.map((item) => (
+                <section key={item.id} className="aid-item">
+                  <h2 className="aid-part">
+                    <span className="aid-part-name">
+                      {massPartLabel(item.part).toUpperCase()}:
+                    </span>{" "}
+                    {item.song.toUpperCase()}
+                  </h2>
+                  {item.lyrics && (
+                    <div
+                      className="aid-lyrics"
+                      dangerouslySetInnerHTML={{ __html: emphasise(item.lyrics) }}
+                    />
+                  )}
+                </section>
+              ))}
+
+              {plan.notes && (
+                <footer className="aid-dedication">
+                  <p>{plan.notes}</p>
+                </footer>
+              )}
+            </article>
+          </Box>
+        </Card>
+
+        <Stack spacing={6} className="no-print">
+          <Card>
+            <CardContent>
+              <Typography variant="h6" sx={{ mb: 3 }}>
+                Details
+              </Typography>
+              <Stack divider={<Divider flexItem />} spacing={2}>
+                {details
+                  .filter((d): d is [string, string] => Boolean(d[1]))
+                  .map(([label, value]) => (
+                    <Stack
+                      key={label}
+                      direction="row"
+                      spacing={3}
+                      sx={{ justifyContent: "space-between", alignItems: "baseline" }}
+                    >
+                      <Typography variant="body2" color="text.secondary" sx={{ flexShrink: 0 }}>
+                        {label}
+                      </Typography>
+                      <Typography variant="body2" sx={{ fontWeight: 600, textAlign: "right" }}>
+                        {value}
+                      </Typography>
+                    </Stack>
+                  ))}
+              </Stack>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent>
+              <Stack direction="row" spacing={2} sx={{ alignItems: "center", mb: 3 }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    color: bare.length === 0 ? "success.main" : "warning.main",
+                  }}
+                >
+                  {bare.length === 0 ? <CircleCheck size={18} /> : <TriangleAlert size={18} />}
+                </Box>
+                <Typography variant="h6">Lyrics check</Typography>
+              </Stack>
+              {bare.length === 0 ? (
+                <Typography variant="body2" color="text.secondary">
+                  Every song prints with its words.
+                </Typography>
+              ) : (
+                <>
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                    {bare.length === 1 ? "This prints" : "These print"} as a heading only — add the
+                    lyrics, or the movement to the setting, before printing.
+                  </Typography>
+                  <Stack spacing={1}>
+                    {bare.map((item) => (
+                      <Stack
+                        key={item.id}
+                        direction="row"
+                        spacing={2}
+                        sx={{ justifyContent: "space-between", alignItems: "baseline" }}
+                      >
+                        <Typography variant="body2" sx={{ minWidth: 0 }}>
+                          <Box component="span" sx={{ color: "text.secondary" }}>
+                            {massPartLabel(item.part)}:
+                          </Box>{" "}
+                          {item.song}
+                        </Typography>
+                        {item.songSlug ? (
+                          <Button
+                            component={Link}
+                            href={`/admin/songs/${item.songSlug}`}
+                            size="small"
+                            sx={{ flexShrink: 0 }}
+                          >
+                            Edit song
+                          </Button>
+                        ) : (
+                          <Typography variant="caption" color="text.secondary" sx={{ flexShrink: 0 }}>
+                            not linked
+                          </Typography>
+                        )}
+                      </Stack>
+                    ))}
+                  </Stack>
+                </>
+              )}
+            </CardContent>
+          </Card>
+        </Stack>
+      </Box>
+    </Stack>
   );
 }

@@ -118,41 +118,41 @@
   }
 }
 
-/* ─── Sunday worship aid ───────────────────────────────────
-   The screen preview is a real A4 sheet so what you see is what
-   the PDF contains. Sits inside the admin shell, which the print
-   rules below take away again. */
-.aid-page {
-  background: #e9e9ee;
-  margin: -24px -24px -48px;
-  padding: 24px 16px 48px;
+/* ─── Worship aid ──────────────────────────────────────────
+   The screen preview is the A4 sheet the PDF contains, set in a card
+   beside the plan's details. It narrows with the screen rather than
+   scrolling sideways; the print rules below strip everything but the
+   sheet, and the PDF is printed from this page. */
+.aid-layout {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
 }
-.aid-toolbar {
-  max-width: 210mm;
-  margin: 0 auto 16px;
+@media (min-width: 1200px) {
+  .aid-layout {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+}
+.aid-sheet-well {
+  padding: 24px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
-.aid-back {
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  color: #4a0713;
-}
-.aid-back:hover {
-  text-decoration: underline;
+@media (max-width: 600px) {
+  .aid-sheet-well {
+    padding: 8px;
+  }
 }
 
 /* Matches the aid the choir already prints, in the site's cardinal rather
    than the pure red Word produced, and set in the site's own typefaces. */
 .worship-aid {
-  width: 210mm;
+  width: 100%;
+  max-width: 210mm;
   min-height: 297mm;
   margin: 0 auto;
-  padding: 14mm 15mm;
+  padding: clamp(16px, 4vw, 14mm) clamp(14px, 4vw, 15mm);
   background: #fff;
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.16);
   color: #000;
@@ -228,14 +228,28 @@
   body {
     background: #fff !important;
   }
-  .aid-page {
-    min-height: 0;
-    background: none;
-    padding: 0;
-    margin: 0;
+  /* The page's spacing would print as a band of the admin background. */
+  .aid-screen,
+  .aid-layout {
+    display: block !important;
+    gap: 0 !important;
+    margin: 0 !important;
+  }
+  .aid-sheet-card {
+    box-shadow: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    overflow: visible !important;
+  }
+  .aid-sheet-well {
+    padding: 0 !important;
+    background: none !important;
+    display: block !important;
   }
   .worship-aid {
     width: auto;
+    max-width: none;
     min-height: 0;
     margin: 0;
     padding: 0;
