@@ -40,7 +40,7 @@ the site header and footer. Route groups do not change URLs.
 
 ## Data model
 
-`prisma/schema.prisma` — 14 models.
+`prisma/schema.prisma` — 15 models.
 
 - **User** — email, password hash, role (`ADMIN` / `TECHNICAL` / `MEMBER`), voice, active flag
 - **Song** — the repertoire, plus rights fields (see Copyright below)
@@ -53,6 +53,7 @@ the site header and footer. Route groups do not change URLs.
 - **Concert**, **GalleryItem**, **Member**, **JoinApplication**, **Feedback**
 - **Post** — blog entries
 - **Slide** — photos for the admin sign-in carousel and the homepage hero (`placement`)
+- **Announcement** — lines for the news banner under the public menu, with optional link and show-from / show-until times
 
 MySQL has no scalar arrays, so list-like fields (`aliases`, `seasons`, `tags`…)
 are stored as JSON columns.
@@ -113,6 +114,11 @@ Materio's purple.
 - **Song proposals** — status filters, full order of service per submission, one-click review
 - **Applications** — consent evidence and status changes, plus erase-record
 - **Blog** — list, editor, publish/unpublish, delete
+- **Announcements** — the news banner that scrolls right to left under the public
+  site's main menu (`src/components/news-ticker.tsx`). Each line can carry a link and
+  show-from / until times; it disappears by itself after "until", and the whole
+  banner is hidden when nothing is showing. Hovering pauses it; visitors who turn
+  off animations get a still, scrollable line.
 - **Login carousel** — upload, reorder, hide, delete
 
 ---

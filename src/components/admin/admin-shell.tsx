@@ -40,6 +40,7 @@ import {
   Inbox,
   LayoutDashboard,
   LogOut,
+  Megaphone,
   Menu as MenuIcon,
   Music2,
   NotebookPen,
@@ -90,6 +91,7 @@ const NAV: Entry[] = [
     icon: NotebookPen,
     items: [
       { href: "/admin/blog", label: "Blog", icon: NotebookPen },
+      { href: "/admin/announcements", label: "Announcements", icon: Megaphone },
       { href: "/admin/concerts", label: "Concerts", icon: Ticket },
       { href: "/admin/gallery", label: "Gallery", icon: ImageIcon },
       { href: "/admin/hero-slides", label: "Homepage hero", icon: Images, minRole: "ADMIN" },

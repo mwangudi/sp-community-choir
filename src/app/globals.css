@@ -118,6 +118,43 @@
   }
 }
 
+/* ─── News banner ─────────────────────────────────────────
+   Two copies of the messages sit side by side; moving the track by half
+   its width brings the second copy exactly where the first began, so the
+   loop has no seam. Hovering or tabbing into it holds it still. */
+@keyframes news-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.news-ticker-track {
+  animation: news-ticker var(--ticker-duration, 40s) linear infinite;
+  will-change: transform;
+}
+.news-ticker:hover .news-ticker-track,
+.news-ticker:focus-within .news-ticker-track {
+  animation-play-state: paused;
+}
+/* Fade the text in and out at the edges rather than cutting it off. */
+.news-ticker-viewport {
+  mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 32px), transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .news-ticker-track {
+    animation: none;
+  }
+  .news-ticker-copy {
+    display: none;
+  }
+  .news-ticker-viewport {
+    overflow-x: auto !important;
+    mask-image: none;
+  }
+}
+
 /* ─── Worship aid ──────────────────────────────────────────
    The screen preview is the A4 sheet the PDF contains, set in a card
    beside the plan's details. It narrows with the screen rather than

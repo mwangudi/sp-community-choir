@@ -440,6 +440,26 @@ model Slide {
   @@index([placement, isActive, sortOrder])
 }
 
+// ──────────────────────── Announcements ──────────────────────
+
+/// A line in the news banner that scrolls under the site's main menu.
+model Announcement {
+  id        String    @id @default(cuid())
+  message   String    @db.Text
+  /// Optional link, shown after the message as "<linkLabel> →".
+  href      String?
+  linkLabel String?
+  /// Shown only between these times, when set.
+  startsAt  DateTime?
+  endsAt    DateTime?
+  isActive  Boolean   @default(true)
+  sortOrder Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([isActive, sortOrder])
+}
+
 // ───────────────────────── Site settings ─────────────────────
 
 /// Editable site copy and contact/payment details, keyed by dotted path
