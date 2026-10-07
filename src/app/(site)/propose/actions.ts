@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { proposalSchema } from "@/lib/validation";
 import { toMassPartEnum } from "@/lib/mass-parts";
+import { blockedFor, clientIp, hit } from "@/lib/server/rate-limit";
 
 export type ProposalSubmitState = {
   ok?: boolean;
@@ -26,6 +27,13 @@ type Input = {
 export async function submitProposal(
   input: Input,
 ): Promise<ProposalSubmitState> {
+  // Generous for a choir member, but enough to stop a script flooding the review queue.
+  const key = `propose:${await clientIp()}`;
+  if (blockedFor(key) > 0) {
+    return { error: "Too many proposals from here in the last hour — please try again later." };
+  }
+  hit(key, 10, 60 * 60_000);
+
   const parsed = proposalSchema.safeParse({
     ...input,
     voice: input.voice ? input.voice.toUpperCase() : null,

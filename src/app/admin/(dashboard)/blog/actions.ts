@@ -82,7 +82,7 @@ export async function savePost(
 
   revalidatePath("/admin/blog");
   revalidatePath("/blog");
-  redirect("/admin/blog");
+  redirect("/admin/blog?saved=1");
 }
 
 export async function deletePost(formData: FormData) {

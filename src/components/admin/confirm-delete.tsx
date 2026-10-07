@@ -12,6 +12,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import { Trash2 } from "lucide-react";
+import { useAdminRole } from "@/components/admin/admin-role";
 
 /** The hidden field is always `id`; Song passes its slug through it. */
 export function ConfirmDelete({
@@ -19,13 +20,18 @@ export function ConfirmDelete({
   id,
   name,
   note,
+  adminOnly = true,
 }: {
   action: (formData: FormData) => Promise<void>;
   id: string;
   name: string;
   note?: string;
+  /** Most deletes need the Admin role; hide the button from anyone else. */
+  adminOnly?: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const role = useAdminRole();
+  if (adminOnly && role !== "ADMIN") return null;
 
   return (
     <>

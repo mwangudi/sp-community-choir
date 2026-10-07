@@ -83,7 +83,7 @@ export async function saveUser(
   }
 
   revalidatePath("/admin/users");
-  redirect("/admin/users");
+  redirect("/admin/users?saved=1");
 }
 
 export async function deleteUser(formData: FormData) {

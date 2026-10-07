@@ -88,7 +88,7 @@ export async function saveSong(
 
   revalidatePath("/admin/songs");
   revalidatePath("/repertoire");
-  redirect("/admin/songs");
+  redirect("/admin/songs?saved=1");
 }
 
 export async function deleteSong(formData: FormData) {

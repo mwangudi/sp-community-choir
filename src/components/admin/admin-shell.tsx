@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -52,6 +52,8 @@ import {
 } from "lucide-react";
 import type { Role } from "@prisma/client";
 import { ADMIN_SURFACE } from "@/components/admin/surface";
+import { AdminNotice } from "@/components/admin/admin-notice";
+import { AdminRoleProvider } from "@/components/admin/admin-role";
 
 const WIDTH = 260;
 const MINI_WIDTH = 76;
@@ -759,9 +761,13 @@ export function AdminShell({
             p: `${LAYOUT_PADDING}px`,
           }}
         >
-          {children}
+          <AdminRoleProvider value={user.role}>{children}</AdminRoleProvider>
         </Box>
       </Box>
+      {/* useSearchParams needs a boundary of its own. */}
+      <Suspense fallback={null}>
+        <AdminNotice />
+      </Suspense>
     </Box>
   );
 }

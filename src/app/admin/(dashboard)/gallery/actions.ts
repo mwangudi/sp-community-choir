@@ -92,7 +92,7 @@ export async function saveGalleryItem(
 
   revalidatePath("/admin/gallery");
   revalidatePath("/gallery");
-  redirect("/admin/gallery");
+  redirect("/admin/gallery?saved=1");
 }
 
 export async function deleteGalleryItem(formData: FormData) {

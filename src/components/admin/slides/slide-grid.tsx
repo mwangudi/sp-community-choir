@@ -18,7 +18,7 @@ export function SlideGrid({
     return (
       <Card>
         <CardContent sx={{ textAlign: "center", py: 12 }}>
-          <ImageIcon size={32} style={{ opacity: 0.35 }} />
+          <ImageIcon size={32} style={{ opacity: 0.35, margin: "0 auto" }} />
           <Typography sx={{ mt: 2, fontWeight: 600 }}>No photos yet</Typography>
           <Typography variant="body2" color="text.secondary">
             {emptyHint}

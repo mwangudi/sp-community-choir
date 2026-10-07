@@ -1,19 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { SESSION_COOKIE, verifySession } from "@/lib/auth/session";
+import { publicOrigin } from "@/lib/public-origin";
 
 const PUBLIC_ADMIN_PATHS = ["/admin/login"];
 
-/**
- * Behind nginx, Next builds request.url from its own origin, so redirecting
- * against it sends people to localhost:3100. Middleware insists the location
- * be absolute, so build it from the headers the proxy actually sets.
- */
+/** Middleware insists on an absolute location; see publicOrigin for why. */
 function redirectTo(request: NextRequest, path: string) {
-  const host =
-    request.headers.get("x-forwarded-host") ?? request.headers.get("host");
-  const proto = request.headers.get("x-forwarded-proto") ?? "https";
-  const base = host ? `${proto}://${host}` : request.url;
-  return NextResponse.redirect(new URL(path, base));
+  return NextResponse.redirect(new URL(path, publicOrigin(request)));
 }
 
 export async function middleware(request: NextRequest) {

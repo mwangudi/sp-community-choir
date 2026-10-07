@@ -50,7 +50,7 @@ export default async function ConcertsPage() {
       {concerts.length === 0 ? (
         <Card>
           <CardContent sx={{ textAlign: "center", py: 12 }}>
-            <Ticket size={32} style={{ opacity: 0.35 }} />
+            <Ticket size={32} style={{ opacity: 0.35, margin: "0 auto" }} />
             <Typography sx={{ mt: 2 }}>No concerts yet</Typography>
             <Button
               component={Link}

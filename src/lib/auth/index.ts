@@ -46,14 +46,31 @@ export async function getSession(): Promise<SessionPayload | null> {
   return verifySession(jar.get(SESSION_COOKIE)?.value);
 }
 
-/** Session or redirect to login. Use in admin server components. */
+/**
+ * Session or redirect to login. Use in admin server components and actions.
+ *
+ * The cookie alone would keep a deactivated or demoted user in for the rest
+ * of its 8 hours, so the account is re-read on every call and its current
+ * role wins over the one signed into the cookie.
+ */
 export async function requireSession(
   required: Role = "TECHNICAL",
 ): Promise<SessionPayload> {
   const session = await getSession();
   if (!session) redirect("/admin/login");
-  if (!hasRole(session.role, required)) redirect("/admin?denied=1");
-  return session;
+
+  const user = await prisma.user.findUnique({
+    where: { id: session.sub },
+    select: { role: true, isActive: true, name: true, email: true },
+  });
+  // The login page bounces a valid cookie straight back here, so go through
+  // logout to clear it rather than looping.
+  // Members have no admin pages at all, so the same applies to them.
+  if (!user || !user.isActive || user.role === "MEMBER") redirect("/api/admin/logout");
+
+  const current = { ...session, role: user.role, name: user.name, email: user.email };
+  if (!hasRole(current.role, required)) redirect("/admin?denied=1");
+  return current;
 }
 
 /** Verifies credentials and returns the user, or null when they do not match. */

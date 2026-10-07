@@ -55,7 +55,7 @@ export default async function BlogAdminPage() {
       {posts.length === 0 ? (
         <Card>
           <CardContent sx={{ textAlign: "center", py: 6 }}>
-            <NotebookPen size={32} style={{ opacity: 0.35 }} />
+            <NotebookPen size={32} style={{ opacity: 0.35, margin: "0 auto" }} />
             <Typography sx={{ mt: 1, fontWeight: 600 }}>No posts yet</Typography>
             <Typography variant="body2" color="text.secondary">
               Write the first one and publish it when you are ready.

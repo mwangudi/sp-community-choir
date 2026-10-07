@@ -180,7 +180,7 @@ export default async function MassPlansPage({
       {plans.length === 0 ? (
         <Card>
           <CardContent sx={{ textAlign: "center", py: 12 }}>
-            <CalendarDays size={32} style={{ opacity: 0.35 }} />
+            <CalendarDays size={32} style={{ opacity: 0.35, margin: "0 auto" }} />
             <Typography sx={{ mt: 2 }}>No plans yet</Typography>
             <Button
               component={Link}

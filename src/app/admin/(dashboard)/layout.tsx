@@ -1,5 +1,4 @@
-import { redirect } from "next/navigation";
-import { getSession } from "@/lib/auth";
+import { requireSession } from "@/lib/auth";
 import { AdminShell } from "@/components/admin/admin-shell";
 
 export default async function AdminDashboardLayout({
@@ -7,8 +6,8 @@ export default async function AdminDashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getSession();
-  if (!session) redirect("/admin/login");
+  // Checked against the database, so the menu reflects the user's current role.
+  const session = await requireSession("TECHNICAL");
 
   return (
     <AdminShell

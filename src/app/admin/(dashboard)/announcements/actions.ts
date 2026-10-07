@@ -37,7 +37,8 @@ export async function saveAnnouncement(
   if (message.length < 5) return { error: "Write the announcement" };
 
   const href = text(formData, "href");
-  if (href && !/^(https?:\/\/|\/|mailto:|tel:)/.test(href)) {
+  // "/" means a page on this site; "//host" would quietly leave it.
+  if (href && !/^(https?:\/\/|\/(?!\/)|mailto:|tel:)/.test(href)) {
     return { error: "The link must start with https://, / (a page on this site), mailto: or tel:" };
   }
 
@@ -65,7 +66,7 @@ export async function saveAnnouncement(
   }
 
   refresh();
-  redirect("/admin/announcements");
+  redirect("/admin/announcements?saved=1");
 }
 
 export async function toggleAnnouncement(formData: FormData) {

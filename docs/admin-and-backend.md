@@ -79,6 +79,10 @@ silently change a live password.
 - `src/middleware.ts` guards every `/admin/*` route and bounces signed-out users to the login page, preserving the intended destination.
 - `requireSession(role)` protects server components and actions. Roles are ranked `MEMBER < TECHNICAL < ADMIN`.
 - Login returns the same message for an unknown email and a wrong password, so accounts cannot be enumerated.
+- `requireSession` re-reads the user on every call: a deactivated or deleted account is signed out at once, and a role change applies at once rather than when the 8-hour cookie expires. Member accounts are refused at sign-in — they have no admin pages.
+- Failed sign-ins are limited to 5 per account and 10 per IP address per 15 minutes; the public Join and Propose forms to 5 and 10 submissions per IP per hour (`src/lib/server/rate-limit.ts`, in memory, cleared on restart). nginx passes the visitor's address as `X-Real-IP`.
+- Security headers (HSTS, nosniff, Referrer-Policy, X-Frame-Options, Permissions-Policy) are set in `next.config.ts`; nginx repeats `nosniff` for `/uploads/`, which it serves itself.
+- Behind nginx, build redirect URLs with `publicOrigin()` (`src/lib/public-origin.ts`), never `request.url`, which is `localhost:3100` there.
 
 ---
 
@@ -89,6 +93,11 @@ rendered in **cardinal red `#BC0424`** and **amber gold `#FDB321`** rather than
 Materio's purple.
 
 **Navbar** — sticks to the top; once the page scrolls it floats as a blurred card.
+
+**Feedback** — save actions redirect with `?saved=1` and `requireSession` with
+`?denied=1`; `AdminNotice` shows either as a short message and clears the flag.
+Delete buttons (`ConfirmDelete`) hide themselves from non-admins unless given
+`adminOnly={false}`, since almost every delete action requires the Admin role.
 
 **Sidebar**
 - Grouped menus with submenus: Dashboard · Music · Content · People

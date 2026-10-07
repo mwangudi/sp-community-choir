@@ -256,7 +256,7 @@ export default async function SongsPage({
 
         {songs.length === 0 ? (
           <Box sx={{ textAlign: "center", py: 10 }}>
-            <Music2 size={32} style={{ opacity: 0.35 }} />
+            <Music2 size={32} style={{ opacity: 0.35, margin: "0 auto" }} />
             <Typography sx={{ mt: 2, fontWeight: 600 }}>
               {filtered ? "No songs match those filters" : "No songs yet"}
             </Typography>

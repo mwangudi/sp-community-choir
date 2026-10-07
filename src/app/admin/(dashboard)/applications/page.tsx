@@ -49,7 +49,7 @@ export default async function ApplicationsPage() {
       {applications.length === 0 ? (
         <Card>
           <CardContent sx={{ textAlign: "center", py: 6 }}>
-            <UserPlus size={32} style={{ opacity: 0.35 }} />
+            <UserPlus size={32} style={{ opacity: 0.35, margin: "0 auto" }} />
             <Typography sx={{ mt: 1, fontWeight: 600 }}>No applications yet</Typography>
           </CardContent>
         </Card>

@@ -102,7 +102,7 @@ export async function saveMassPlan(
 
   revalidatePath(plansHref(kind));
   revalidatePath("/masses");
-  redirect(plansHref(kind));
+  redirect(`${plansHref(kind)}?saved=1`);
 }
 
 export async function deleteMassPlan(formData: FormData) {

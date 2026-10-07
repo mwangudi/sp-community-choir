@@ -87,7 +87,7 @@ export async function saveConcert(
 
   revalidatePath("/admin/concerts");
   revalidatePath("/concerts");
-  redirect("/admin/concerts");
+  redirect("/admin/concerts?saved=1");
 }
 
 export async function deleteConcert(formData: FormData) {

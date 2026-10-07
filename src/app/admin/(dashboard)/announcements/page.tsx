@@ -63,7 +63,7 @@ export default async function AnnouncementsPage() {
       {announcements.length === 0 ? (
         <Card>
           <CardContent sx={{ textAlign: "center", py: 12 }}>
-            <Megaphone size={32} style={{ opacity: 0.35 }} />
+            <Megaphone size={32} style={{ opacity: 0.35, margin: "0 auto" }} />
             <Typography sx={{ mt: 2 }}>No announcements — the banner is hidden</Typography>
             <Button
               component={Link}
@@ -134,6 +134,7 @@ export default async function AnnouncementsPage() {
                         action={deleteAnnouncement}
                         id={a.id}
                         name="this announcement"
+                        adminOnly={false}
                       />
                     </Stack>
                   </Stack>

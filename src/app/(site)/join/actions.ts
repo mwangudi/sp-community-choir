@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { joinApplicationSchema } from "@/lib/validation";
 import { CONSENT_VERSION } from "@/lib/consent";
+import { blockedFor, clientIp, hit } from "@/lib/server/rate-limit";
 
 export type ApplyState = { ok?: boolean; error?: string };
 
@@ -27,6 +28,13 @@ const VOICE_MAP: Record<string, string> = {
 };
 
 export async function submitApplication(input: Input): Promise<ApplyState> {
+  // A real applicant sends one form; this only stops a script filling the inbox.
+  const key = `join:${await clientIp()}`;
+  if (blockedFor(key) > 0) {
+    return { error: "We have received several applications from you already — please email us instead." };
+  }
+  hit(key, 5, 60 * 60_000);
+
   if (!input.privacyConsent) {
     return { error: "Please accept the privacy notice so we may hold your details." };
   }
