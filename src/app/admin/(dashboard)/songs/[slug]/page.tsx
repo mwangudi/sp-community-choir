@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { Box, Stack, Typography } from "@mui/material";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
+import { ConfirmDelete } from "@/components/admin/confirm-delete";
+import { deleteSong } from "../actions";
 import { SongForm } from "../song-form";
 
 export const metadata: Metadata = { title: "Edit song" };
@@ -22,10 +24,24 @@ export default async function EditSongPage({
 
   return (
     <Stack spacing={6}>
-      <Box>
-        <Typography variant="h4">Edit song</Typography>
-        <Typography color="text.secondary">{song.title}</Typography>
-      </Box>
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        spacing={4}
+        sx={{ justifyContent: "space-between", alignItems: { sm: "center" } }}
+      >
+        <Box>
+          <Typography variant="h4">Edit song</Typography>
+          <Typography color="text.secondary">{song.title}</Typography>
+        </Box>
+        {/* Kept off the list so a slip of the mouse cannot remove a song. */}
+        <ConfirmDelete
+          action={deleteSong}
+          id={song.slug}
+          name={song.title}
+          label="Delete song"
+          note="The song is removed from the repertoire. Mass plans that name it keep the text but lose the link."
+        />
+      </Stack>
 
       <SongForm
         isNew={false}

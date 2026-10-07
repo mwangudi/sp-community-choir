@@ -21,6 +21,7 @@ export function ConfirmDelete({
   name,
   note,
   adminOnly = true,
+  label,
 }: {
   action: (formData: FormData) => Promise<void>;
   id: string;
@@ -28,6 +29,8 @@ export function ConfirmDelete({
   note?: string;
   /** Most deletes need the Admin role; hide the button from anyone else. */
   adminOnly?: boolean;
+  /** Show a labelled button (e.g. on an edit page) instead of a row icon. */
+  label?: string;
 }) {
   const [open, setOpen] = useState(false);
   const role = useAdminRole();
@@ -35,16 +38,27 @@ export function ConfirmDelete({
 
   return (
     <>
-      <Tooltip title="Delete">
-        <IconButton
-          size="small"
+      {label ? (
+        <Button
+          variant="outlined"
           color="error"
-          aria-label={`Delete ${name}`}
+          startIcon={<Trash2 size={16} />}
           onClick={() => setOpen(true)}
         >
-          <Trash2 size={16} />
-        </IconButton>
-      </Tooltip>
+          {label}
+        </Button>
+      ) : (
+        <Tooltip title="Delete">
+          <IconButton
+            size="small"
+            color="error"
+            aria-label={`Delete ${name}`}
+            onClick={() => setOpen(true)}
+          >
+            <Trash2 size={16} />
+          </IconButton>
+        </Tooltip>
+      )}
 
       <Dialog open={open} onClose={() => setOpen(false)} maxWidth="xs" fullWidth>
         <DialogTitle>Delete {name}?</DialogTitle>

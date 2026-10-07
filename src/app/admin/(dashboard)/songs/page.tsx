@@ -30,11 +30,9 @@ import {
 import { Music2, Pencil, Plus, ShieldAlert } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
-import { ConfirmDelete } from "@/components/admin/confirm-delete";
 import { PaginationBar } from "@/components/admin/pagination-bar";
 import { ADMIN_SURFACE } from "@/components/admin/surface";
 import { massPartLabel } from "@/lib/mass-parts";
-import { deleteSong } from "./actions";
 import { SongsToolbar } from "./songs-toolbar";
 
 export const metadata: Metadata = { title: "Repertoire" };
@@ -47,6 +45,18 @@ const RIGHTS_COLOR: Record<CopyrightStatus, "success" | "info" | "error" | "warn
   LICENSED: "info",
   COPYRIGHTED: "error",
   UNKNOWN: "warning",
+};
+
+/**
+ * Badge text. The theme's own "dark" shades are still bright (#E6A200 for
+ * warning) and read poorly on their pale tint, so these are picked for
+ * contrast against it.
+ */
+const RIGHTS_TEXT: Record<CopyrightStatus, string> = {
+  PUBLIC_DOMAIN: "#2F6F00",
+  LICENSED: "#0A6A9C",
+  COPYRIGHTED: "#B3261E",
+  UNKNOWN: "#7A5000",
 };
 
 const LANGUAGES: SongLanguage[] = [
@@ -370,7 +380,7 @@ export default async function SongsPage({
                           sx={{
                             fontWeight: 500,
                             whiteSpace: "nowrap",
-                            color: `${RIGHTS_COLOR[song.copyrightStatus]}.main`,
+                            color: RIGHTS_TEXT[song.copyrightStatus],
                             backgroundColor: `rgb(var(--mui-palette-${
                               RIGHTS_COLOR[song.copyrightStatus]
                             }-mainChannel) / 0.16)`,
@@ -393,12 +403,6 @@ export default async function SongsPage({
                               <Pencil size={16} />
                             </IconButton>
                           </Tooltip>
-                          <ConfirmDelete
-                            action={deleteSong}
-                            id={song.slug}
-                            name={song.title}
-                            note="The song is removed from the repertoire. Mass plans that name it keep the text but lose the link."
-                          />
                         </Stack>
                       </TableCell>
                     </TableRow>

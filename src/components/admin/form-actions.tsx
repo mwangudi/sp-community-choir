@@ -19,9 +19,14 @@ export function FormActions({
       sx={{
         position: "sticky",
         bottom: 0,
-        py: 4,
-        bgcolor: "background.default",
         zIndex: 1,
+        py: 4,
+        // Run edge to edge across the page padding, so fields scrolling
+        // underneath never show at the sides, with a soft edge above.
+        mx: "-24px",
+        px: "24px",
+        bgcolor: "background.default",
+        boxShadow: "0 -6px 12px -10px rgba(0, 0, 0, 0.25)",
       }}
     >
       <Stack direction="row" spacing={3}>

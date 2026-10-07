@@ -22,16 +22,28 @@ import { requireSession } from "@/lib/auth";
 import { massPartLabel } from "@/lib/mass-parts";
 import { formatDate } from "@/lib/utils";
 import { ConfirmDelete } from "@/components/admin/confirm-delete";
+import { PaginationBar } from "@/components/admin/pagination-bar";
 import { deleteMember } from "./actions";
 
 export const metadata: Metadata = { title: "Members" };
 export const dynamic = "force-dynamic";
 
-export default async function MembersPage() {
+const PER_PAGE = 25;
+
+export default async function MembersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   await requireSession("TECHNICAL");
+  const { page: rawPage } = await searchParams;
+  const total = await prisma.member.count();
+  const pageCount = Math.max(1, Math.ceil(total / PER_PAGE));
+  const page = Math.min(Math.max(Number(rawPage) || 1, 1), pageCount);
   const members = await prisma.member.findMany({
     orderBy: [{ isActive: "desc" }, { lastName: "asc" }],
-    take: 400,
+    skip: (page - 1) * PER_PAGE,
+    take: PER_PAGE,
   });
 
   return (
@@ -44,7 +56,7 @@ export default async function MembersPage() {
         <Box>
           <Typography variant="h4">Members</Typography>
           <Typography color="text.secondary">
-            {members.length} on the roster.
+            {total} on the roster.
           </Typography>
         </Box>
         <Button
@@ -138,6 +150,17 @@ export default async function MembersPage() {
           </TableContainer>
         )}
       </Card>
+
+      {total > PER_PAGE && (
+        <PaginationBar
+          page={page}
+          pageCount={pageCount}
+          total={total}
+          shown={members.length}
+          basePath="/admin/members"
+          label="members"
+        />
+      )}
     </Stack>
   );
 }

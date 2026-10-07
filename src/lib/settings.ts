@@ -5,6 +5,8 @@ export type SettingField = {
   key: string;
   label: string;
   help?: string;
+  /** An example shown inside the empty field; unlike help it adds no height. */
+  placeholder?: string;
   multiline?: boolean;
 };
 
@@ -27,7 +29,7 @@ export const SETTING_GROUPS: SettingGroup[] = [
     title: "Rehearsals",
     description: "Used on the contact, join and about pages.",
     fields: [
-      { key: "rehearsals.day", label: "Rehearsal days", help: "e.g. Mon & Wed" },
+      { key: "rehearsals.day", label: "Rehearsal days", placeholder: "e.g. Mon & Wed" },
       { key: "rehearsals.time", label: "Rehearsal time" },
       { key: "rehearsals.sundayWarmUp", label: "Sunday warm-up" },
       { key: "rehearsals.venue", label: "Venue" },

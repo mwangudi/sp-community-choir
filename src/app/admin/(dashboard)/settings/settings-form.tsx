@@ -59,6 +59,7 @@ export function SettingsForm({ values }: { values: Record<string, string> }) {
                     name={f.key}
                     label={f.label}
                     defaultValue={values[f.key] ?? ""}
+                    placeholder={f.placeholder}
                     multiline={f.multiline}
                     minRows={f.multiline ? 3 : undefined}
                     fullWidth
@@ -71,9 +72,11 @@ export function SettingsForm({ values }: { values: Record<string, string> }) {
             </CardContent>
           </Card>
         ))}
-
-        <FormActions pending={pending} cancelHref="/admin" />
       </Stack>
+
+      {/* Outside the Stack, which zeroes its children's margins and would
+          stop the bar running edge to edge. */}
+      <FormActions pending={pending} cancelHref="/admin" />
     </form>
   );
 }

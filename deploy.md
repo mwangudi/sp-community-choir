@@ -215,12 +215,13 @@ SSH_KEY=~/.ssh/id_ed255_new bash deploy/deploy-bundle.sh
    so a build with the local `.env` would point links at the wrong domain);
 2. assembles the bundle and strips macOS/Windows binaries and every `.env`;
 3. backs up the database to `/root/choir-backups/choir-<time>.sql.gz`;
-4. uploads to `/var/www/choir-next`, adds the server's `.env`, its Linux `sharp`
-   binaries and the `public/uploads` link;
+4. uploads to `/var/www/choir-next`, adds the server's `.env` and the
+   `public/uploads` link, and checks `sharp` loads — the bundle carries the Linux
+   `sharp` binaries at the exact versions its `sharp` was built against;
 5. runs `prisma migrate deploy`, swaps the release in, restarts
    `stpauls-choir` and checks `/`, `/masses` and `/admin/login` return 200;
-6. keeps the previous release as `/var/www/choir-prev-<time>` (the newest two
-   are kept; set `KEEP` to change that).
+6. keeps the previous release as `/var/www/choir-prev-<time>` for rollback and
+   deletes older ones (set `KEEP` to hold more).
 
 **SSH access.** Log in as `root` with a key listed in
 `/root/.ssh/authorized_keys`. Keys added under DigitalOcean → Settings →
@@ -262,7 +263,7 @@ node scripts/rebuild-mass-settings.mjs --dry-run   # then without --dry-run
 | Build killed | Out of memory — confirm swap is on with `free -m` |
 | Admin edits don't show | Every public page is `force-dynamic`; if one is stale it is missing that export |
 | Uploads 404 | Check the `public/uploads` symlink and that nginx `alias` points at `/var/lib/choir-uploads/` |
-| Images unoptimised / erroring | `sharp` must be installed — it is a dependency, so re-run `npm ci` |
+| Images unoptimised / uploads fail | `cd /var/www/choir && node -e 'require("sharp")'` must print nothing. A `libvips-cpp.so` error means the Linux binaries do not match `sharp`'s version; redeploy with `deploy-bundle.sh`, which bundles the matching ones |
 | Login redirect loop | `JWT_SECRET` missing or under 32 chars |
 
 ## Backups

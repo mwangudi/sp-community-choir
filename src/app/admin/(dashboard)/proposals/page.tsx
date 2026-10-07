@@ -144,7 +144,7 @@ export default async function ProposalsPage({
   return (
     <Stack spacing={5}>
       <Box>
-        <Typography variant="h4" sx={{ fontSize: { xs: "1.6rem", sm: "2.125rem" } }}>
+        <Typography variant="h4">
           Song proposals
         </Typography>
         <Typography color="text.secondary">

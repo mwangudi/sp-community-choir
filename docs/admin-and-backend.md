@@ -153,6 +153,7 @@ Repair scripts (each has `--dry-run`, and is safe to re-run):
 | `scripts/split-ee-bwana.mjs` | "Ee Bwana Vyote Mali Yako", which held two other Offertory songs. Splits them into their own records. |
 | `scripts/fix-repeated-movements.mjs` | Songs with the same movement heading twice, of which only the first printed. |
 | `scripts/split-sequence.mjs` | The Pentecost and Corpus Christi Sequences filed as one song. |
+| `scripts/strip-upload-metadata.mjs` | Removes EXIF/GPS from images uploaded before uploads were cleaned. Pass `/var/lib/choir-uploads` on the droplet. |
 
 Run against the live database as described in `deploy.md` → *Data repairs*.
 
@@ -198,11 +199,16 @@ Admin-authored only — there is no public submission route.
 
 `src/lib/storage.ts` exposes `saveImage()` / `deleteImage()`.
 
-- With `BLOB_READ_WRITE_TOKEN` set, files go to **Vercel Blob**.
-- Without it, files are written to `public/uploads/` for local development.
+- On the droplet, files are written under `public/uploads/`, which links to
+  `/var/lib/choir-uploads` (see `deploy.md`). With `BLOB_READ_WRITE_TOKEN` set
+  they go to Vercel Blob instead.
 - Validation: type allow-list (JPG/PNG/WebP/AVIF), 5 MB cap, and **UUID filenames** — the client-supplied name is never used, which avoids path traversal.
-
-Vercel's filesystem is read-only, so a Blob store is required in production.
+- **Every image is re-encoded with sharp** before it is stored: EXIF, XMP and
+  IPTC — including the GPS position phone photos carry — are dropped, the
+  photo is turned upright first, the longest side is capped at 2560px, and a
+  file that is not really an image is refused.
+- `scripts/strip-upload-metadata.mjs [dir] [--dry-run]` cleans images uploaded
+  before that, in place.
 
 ---
 

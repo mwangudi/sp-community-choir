@@ -9,9 +9,10 @@
 #
 #   1. Build with the live site's public settings (baked in at build time).
 #   2. Assemble .next/standalone, static assets, public/, prisma/ and scripts/,
-#      dropping macOS/Windows binaries and every .env file.
+#      swap in Linux sharp binaries matching the bundled sharp, and drop every
+#      .env file.
 #   3. Back up the live database, upload to /var/www/choir-next, give it the
-#      server's .env, Linux sharp binaries and uploads link.
+#      server's .env and uploads link, and check the bundled Linux sharp loads.
 #   4. Apply migrations, swap the release in, keep the old one as
 #      /var/www/choir-prev-<time> for rollback, restart and smoke-test.
 #
@@ -24,8 +25,8 @@ HOST="${DEPLOY_HOST:-root@46.101.6.131}"
 SITE_URL="${SITE_URL:-https://hispraises.org}"
 ALLOW_INDEXING="${ALLOW_INDEXING:-true}"
 PRISMA_VERSION="${PRISMA_VERSION:-6.19.3}"
-# Old releases kept on the server besides the live one.
-KEEP="${KEEP:-2}"
+# Old releases kept on the server besides the live one (the newest, for rollback).
+KEEP="${KEEP:-1}"
 
 SSH_OPTS=(-o BatchMode=yes)
 if [[ -n "${SSH_KEY:-}" ]]; then
@@ -52,9 +53,22 @@ rm -rf "$STAGE/public" && cp -R public "$STAGE/public" && rm -rf "$STAGE/public/
 cp prisma/schema.prisma prisma/seed.ts "$STAGE/prisma/"
 cp -R prisma/migrations prisma/data "$STAGE/prisma/"
 cp -R scripts "$STAGE/scripts"
-# Only the Linux binaries belong on the server; it supplies its own sharp.
-rm -rf "$STAGE"/node_modules/@img/sharp-darwin-* "$STAGE"/node_modules/@img/sharp-libvips-darwin-* \
-  "$STAGE"/node_modules/@img/sharp-win32-* "$STAGE"/node_modules/@img/sharp-libvips-win32-*
+# Swap this machine's sharp binaries for the Linux ones, at exactly the
+# versions this sharp was built against. Reusing whatever the server had once
+# left a libvips one release too new, so sharp never loaded there.
+rm -rf "$STAGE"/node_modules/@img/sharp-*
+SHARP_PKGS=$(node -p '
+  const o = require("./node_modules/sharp/package.json").optionalDependencies;
+  ["@img/sharp-linux-x64", "@img/sharp-libvips-linux-x64"].map((n) => `${n}@${o[n]}`).join(" ")')
+PACKS="$(mktemp -d)"
+for pkg in $SHARP_PKGS; do
+  tarball=$(cd "$PACKS" && npm pack --silent "$pkg")
+  dest="$STAGE/node_modules/${pkg%@*}"
+  mkdir -p "$dest"
+  tar -xzf "$PACKS/$tarball" -C "$dest" --strip-components=1
+  echo "    $pkg"
+done
+rm -rf "$PACKS"
 find "$STAGE/node_modules/.prisma/client" -name "*darwin*" -delete -o -name "*windows*" -delete
 # Next traces the local .env into standalone; shipping it would overwrite the
 # server's credentials with development ones.
@@ -87,11 +101,12 @@ MYSQL_PWD="$DB_PASS" mysqldump --no-tablespaces --single-transaction \
 echo "    database backed up to $BACKUP"
 
 cp -p "$O"/.env* "$N"/
-cp -a "$O"/node_modules/@img/sharp-linux-x64 "$O"/node_modules/@img/sharp-libvips-linux-x64 "$N"/node_modules/@img/
 ln -sfn /var/lib/choir-uploads "$N"/public/uploads
 chown -R www-data:www-data "$N"
 
 cd "$N"
+# Image uploads and the optimiser need it; fail here rather than in front of users.
+node -e 'require("sharp")' && echo "    sharp loads"
 npx -y "prisma@$PRISMA_VERSION" migrate deploy
 
 mv "$O" "/var/www/choir-prev-$TS"

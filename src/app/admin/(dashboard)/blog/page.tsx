@@ -14,17 +14,29 @@ import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { postCategoryLabel } from "@/lib/blog";
 import { formatDate } from "@/lib/utils";
+import { PaginationBar } from "@/components/admin/pagination-bar";
 import { deletePost, togglePublish } from "./actions";
 
 export const metadata: Metadata = { title: "Blog" };
 export const dynamic = "force-dynamic";
 
-export default async function BlogAdminPage() {
+const PER_PAGE = 20;
+
+export default async function BlogAdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   const session = await requireSession("TECHNICAL");
+  const { page: rawPage } = await searchParams;
+  const total = await prisma.post.count();
+  const pageCount = Math.max(1, Math.ceil(total / PER_PAGE));
+  const page = Math.min(Math.max(Number(rawPage) || 1, 1), pageCount);
   const posts = await prisma.post.findMany({
     orderBy: [{ status: "asc" }, { updatedAt: "desc" }],
     include: { author: { select: { name: true } } },
-    take: 200,
+    skip: (page - 1) * PER_PAGE,
+    take: PER_PAGE,
   });
 
   return (
@@ -35,7 +47,7 @@ export default async function BlogAdminPage() {
         sx={{ justifyContent: "space-between", alignItems: { sm: "center" } }}
       >
         <Box>
-          <Typography variant="h4" sx={{ fontSize: { xs: "1.6rem", sm: "2.125rem" } }}>
+          <Typography variant="h4">
             Blog
           </Typography>
           <Typography color="text.secondary">
@@ -132,6 +144,17 @@ export default async function BlogAdminPage() {
             </Card>
           ))}
         </Stack>
+      )}
+
+      {total > PER_PAGE && (
+        <PaginationBar
+          page={page}
+          pageCount={pageCount}
+          total={total}
+          shown={posts.length}
+          basePath="/admin/blog"
+          label="posts"
+        />
       )}
     </Stack>
   );

@@ -109,7 +109,8 @@ export function PlanForm({
           alignItems: "start",
         }}
       >
-        <Card>
+        {/* On a phone the details come first; an empty order of service is no place to start. */}
+        <Card sx={{ order: { xs: 2, lg: 0 } }}>
           <CardContent>
             <Stack
               direction="row"
@@ -243,7 +244,7 @@ export function PlanForm({
           </CardContent>
         </Card>
 
-        <Stack spacing={6}>
+        <Stack spacing={6} sx={{ order: { xs: 1, lg: 0 } }}>
           <Card>
             <CardContent>
               <Typography variant="h6" sx={{ mb: 5 }}>

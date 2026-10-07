@@ -19,12 +19,14 @@ import { massPartLabel } from "@/lib/mass-parts";
 import { SPECIAL_KINDS, massKindLabel } from "@/lib/mass-occasions";
 import { formatDate } from "@/lib/utils";
 import { ConfirmDelete } from "@/components/admin/confirm-delete";
+import { PaginationBar } from "@/components/admin/pagination-bar";
 import { deleteMassPlan } from "../mass-plans/actions";
 
 export const metadata: Metadata = { title: "Special Masses" };
 export const dynamic = "force-dynamic";
 
-const PAST_SHOWN = 20;
+// Past Masses per page; upcoming ones are always shown in full.
+const PAST_PER_PAGE = 10;
 
 const NEW_LABELS: Record<(typeof SPECIAL_KINDS)[number], string> = {
   WEDDING: "Wedding",
@@ -145,21 +147,35 @@ function MassCard({ plan }: { plan: Plan }) {
   );
 }
 
-export default async function SpecialMassesPage() {
+export default async function SpecialMassesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   await requireSession("TECHNICAL");
 
   const today = todayUtc();
+  const pastWhere = { kind: { not: "SUNDAY" as const }, date: { lt: today } };
+  const { page: rawPage } = await searchParams;
+  const pastTotal = await prisma.massPlan.count({ where: pastWhere });
+  const pageCount = Math.max(1, Math.ceil(pastTotal / PAST_PER_PAGE));
+  const page = Math.min(Math.max(Number(rawPage) || 1, 1), pageCount);
+
   const include = { items: { orderBy: { sortOrder: "asc" as const } } };
   const [upcoming, past] = await Promise.all([
+    // Later pages are about the past; keep the upcoming list on the first.
+    page === 1
+      ? prisma.massPlan.findMany({
+          where: { kind: { not: "SUNDAY" }, date: { gte: today } },
+          orderBy: { date: "asc" },
+          include,
+        })
+      : Promise.resolve([]),
     prisma.massPlan.findMany({
-      where: { kind: { not: "SUNDAY" }, date: { gte: today } },
-      orderBy: { date: "asc" },
-      include,
-    }),
-    prisma.massPlan.findMany({
-      where: { kind: { not: "SUNDAY" }, date: { lt: today } },
+      where: pastWhere,
       orderBy: { date: "desc" },
-      take: PAST_SHOWN,
+      skip: (page - 1) * PAST_PER_PAGE,
+      take: PAST_PER_PAGE,
       include,
     }),
   ]);
@@ -210,18 +226,20 @@ export default async function SpecialMassesPage() {
         </Card>
       ) : (
         <>
-          <Stack spacing={4}>
-            <Typography variant="overline" color="text.secondary">
-              Upcoming
-            </Typography>
-            {upcoming.length === 0 ? (
-              <Typography variant="body2" color="text.secondary">
-                Nothing planned ahead.
+          {page === 1 && (
+            <Stack spacing={4}>
+              <Typography variant="overline" color="text.secondary">
+                Upcoming
               </Typography>
-            ) : (
-              upcoming.map((plan) => <MassCard key={plan.id} plan={plan} />)
-            )}
-          </Stack>
+              {upcoming.length === 0 ? (
+                <Typography variant="body2" color="text.secondary">
+                  Nothing planned ahead.
+                </Typography>
+              ) : (
+                upcoming.map((plan) => <MassCard key={plan.id} plan={plan} />)
+              )}
+            </Stack>
+          )}
 
           {past.length > 0 && (
             <Stack spacing={4}>
@@ -231,6 +249,16 @@ export default async function SpecialMassesPage() {
               {past.map((plan) => (
                 <MassCard key={plan.id} plan={plan} />
               ))}
+              {pastTotal > PAST_PER_PAGE && (
+                <PaginationBar
+                  page={page}
+                  pageCount={pageCount}
+                  total={pastTotal}
+                  shown={past.length}
+                  basePath="/admin/special-masses"
+                  label="past Masses"
+                />
+              )}
             </Stack>
           )}
         </>

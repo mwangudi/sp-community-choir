@@ -99,4 +99,6 @@ export async function deleteSong(formData: FormData) {
 
   revalidatePath("/admin/songs");
   revalidatePath("/repertoire");
+  // Deleted from its own edit page, which would otherwise 404.
+  redirect("/admin/songs?deleted=1");
 }

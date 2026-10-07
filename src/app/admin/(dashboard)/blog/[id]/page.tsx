@@ -23,7 +23,7 @@ export default async function EditPostPage({
   return (
     <Stack spacing={3}>
       <Box>
-        <Typography variant="h4" sx={{ fontSize: { xs: "1.6rem", sm: "2.125rem" } }}>
+        <Typography variant="h4">
           Edit post
         </Typography>
         <Typography color="text.secondary">{post.title}</Typography>

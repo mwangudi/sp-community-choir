@@ -38,7 +38,7 @@ export default async function ApplicationsPage() {
   return (
     <Stack spacing={3}>
       <Box>
-        <Typography variant="h4" sx={{ fontSize: { xs: "1.6rem", sm: "2.125rem" } }}>
+        <Typography variant="h4">
           Applications
         </Typography>
         <Typography color="text.secondary">

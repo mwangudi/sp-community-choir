@@ -6,6 +6,7 @@ import { Alert, Snackbar } from "@mui/material";
 
 const NOTICES = {
   saved: { severity: "success", text: "Saved" },
+  deleted: { severity: "success", text: "Deleted" },
   denied: {
     severity: "warning",
     text: "That needs an Administrator account. Ask an administrator to do it for you.",
