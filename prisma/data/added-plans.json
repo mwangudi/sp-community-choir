@@ -156,7 +156,9 @@
     "name": "27th Sunday in Ordinary Time",
     "year": "A",
     "season": "ORDINARY_TIME",
-    "setting": "Misa Fadhili",
+    "setting": "Ggaba Mass",
+    "youtubeId": "RZWDTsI1Qc8",
+    "notes": "This Sunday the Choir Family prays with Mercy Francis for her intentions and Choir intentions, thank you, Mercy, for the songs selections!",
     "status": "PUBLISHED",
     "items": [
       {
@@ -164,15 +166,35 @@
         "song": "Uninyunyizie Maji",
         "slug": "uninyunyizie-maji"
       },
-      { "part": "KYRIE", "song": "Misa Fadhili", "slug": "misa-fadhili" },
-      { "part": "GLORIA", "song": "Misa Fadhili", "slug": "misa-fadhili" },
+      {
+        "part": "KYRIE",
+        "song": "Ggaba Mass",
+        "slug": "ggaba-mass"
+      },
+      {
+        "part": "GLORIA",
+        "song": "Ggaba Mass",
+        "slug": "ggaba-mass"
+      },
       {
         "part": "GOSPEL_PROCESSION",
         "song": "Iende Mbele Injili",
         "slug": "iende-mbele-injili"
       },
-      { "part": "GOSPEL_ACCLAMATION", "song": "Alleluia" },
-      { "part": "CREED", "song": "Recite" },
+      {
+        "part": "RESPONSORIAL_PSALM",
+        "song": "Psalm - The vineyard of the Lord of the hosts is the house of Israel",
+        "slug": "psalm-the-vineyard-of-the-lord-of-the-hosts-is-the-house-of-israel"
+      },
+      {
+        "part": "GOSPEL_ACCLAMATION",
+        "song": "Caribbean Alleluia",
+        "slug": "caribbean-alleluia"
+      },
+      {
+        "part": "CREED",
+        "song": "Recite"
+      },
       {
         "part": "OFFERTORY",
         "song": "Mungu Baba Pokea Sadaka",
@@ -188,13 +210,39 @@
         "song": "Blessed Be God",
         "slug": "blessed-be-god"
       },
-      { "part": "SANCTUS", "song": "Misa Fadhili", "slug": "misa-fadhili" },
-      { "part": "MYSTERY_OF_FAITH", "song": "Misa Fadhili", "slug": "misa-fadhili" },
-      { "part": "GREAT_AMEN", "song": "Misa Fadhili", "slug": "misa-fadhili" },
-      { "part": "OUR_FATHER", "song": "Recite" },
-      { "part": "SIGN_OF_PEACE", "song": "Ni Wakati wa Amani" },
-      { "part": "AGNUS_DEI", "song": "Dan", "slug": "dan" },
-      { "part": "COMMUNION", "song": "Mimi ni Mzabibu" },
+      {
+        "part": "SANCTUS",
+        "song": "Ggaba Mass",
+        "slug": "ggaba-mass"
+      },
+      {
+        "part": "MYSTERY_OF_FAITH",
+        "song": "Misa Fadhili",
+        "slug": "misa-fadhili"
+      },
+      {
+        "part": "GREAT_AMEN",
+        "song": "Misa Fadhili",
+        "slug": "misa-fadhili"
+      },
+      {
+        "part": "OUR_FATHER",
+        "song": "Recite"
+      },
+      {
+        "part": "SIGN_OF_PEACE",
+        "song": "Ni Wakati wa Amani"
+      },
+      {
+        "part": "AGNUS_DEI",
+        "song": "Dan's Agnus Dei",
+        "slug": "dan-s-agnus-dei"
+      },
+      {
+        "part": "COMMUNION",
+        "song": "Mimi ni mzabibu",
+        "slug": "mimi-ni-mzabibu"
+      },
       {
         "part": "COMMUNION",
         "song": "Sakramenti Kubwa Hiyo",
@@ -215,7 +263,11 @@
         "song": "All Hail the Power of Jesus Name",
         "slug": "all-hail-the-power-of-jesus-name"
       },
-      { "part": "MARIAN_HYMN", "song": "Mother Dearest", "slug": "mother-dearest" }
+      {
+        "part": "MARIAN_HYMN",
+        "song": "Mother Dearest",
+        "slug": "mother-dearest"
+      }
     ]
   },
   {
@@ -233,8 +285,16 @@
         "song": "To God in Gladness Sing",
         "slug": "to-god-in-gladness-sing"
       },
-      { "part": "KYRIE", "song": "Ggaba Mass", "slug": "ggaba-mass" },
-      { "part": "GLORIA", "song": "Ggaba Mass", "slug": "ggaba-mass" },
+      {
+        "part": "KYRIE",
+        "song": "Misa Fadhili",
+        "slug": "misa-fadhili"
+      },
+      {
+        "part": "GLORIA",
+        "song": "Misa Fadhili",
+        "slug": "misa-fadhili"
+      },
       {
         "part": "GOSPEL_PROCESSION",
         "song": "I've a message from the Lord",
@@ -250,39 +310,64 @@
         "song": "Mimi Ninasikia",
         "slug": "mimi-ninasikia"
       },
-      { "part": "CREED", "song": "Recite" },
+      {
+        "part": "CREED",
+        "song": "Recite"
+      },
       {
         "part": "OFFERTORY",
         "song": "Nitakwenda Mimi Mwenyewe",
         "slug": "nitakwenda-mimi-mwenyewe"
       },
-      { "part": "OFFERTORY", "song": "We Asa Osa", "slug": "we-asa-osa" },
+      {
+        "part": "OFFERTORY",
+        "song": "We Asa Osa",
+        "slug": "we-asa-osa"
+      },
       {
         "part": "PREPARATION_OF_GIFTS",
         "song": "O God Our Help in Ages Past",
         "slug": "o-god-our-help-in-ages-past"
       },
-      { "part": "SANCTUS", "song": "Ggaba Mass", "slug": "ggaba-mass" },
+      {
+        "part": "SANCTUS",
+        "song": "Misa Fadhili",
+        "slug": "misa-fadhili"
+      },
       {
         "part": "MYSTERY_OF_FAITH",
         "song": "He is King of Kings",
         "slug": "he-is-king-of-kings"
       },
-      { "part": "GREAT_AMEN", "song": "Imba Amen!", "slug": "imba-amen" },
-      { "part": "OUR_FATHER", "song": "Recite" },
+      {
+        "part": "OUR_FATHER",
+        "song": "Recite"
+      },
       {
         "part": "SIGN_OF_PEACE",
         "song": "Bind Us Together, Lord",
         "slug": "bind-us-together-lord"
       },
-      { "part": "AGNUS_DEI", "song": "Ggaba Mass", "slug": "ggaba-mass" },
+      {
+        "part": "AGNUS_DEI",
+        "song": "Misa Fadhili",
+        "slug": "misa-fadhili"
+      },
       {
         "part": "COMMUNION",
         "song": "I the Lord of Sea and Sky",
         "slug": "i-the-lord-of-sea-and-sky"
       },
-      { "part": "COMMUNION", "song": "As the Deer", "slug": "as-the-deer" },
-      { "part": "ANIMA_CHRISTI", "song": "Frisina", "slug": "frisina" },
+      {
+        "part": "COMMUNION",
+        "song": "As the Deer",
+        "slug": "as-the-deer"
+      },
+      {
+        "part": "ANIMA_CHRISTI",
+        "song": "Frisina",
+        "slug": "frisina"
+      },
       {
         "part": "THANKSGIVING",
         "song": "Kongoi Mising",
@@ -293,7 +378,11 @@
         "song": "Guide Me Oh Thou Great Jehovah",
         "slug": "guide-me-oh-thou-great-jehovah"
       },
-      { "part": "MARIAN_HYMN", "song": "Salve Regina", "slug": "salve-regina" }
+      {
+        "part": "MARIAN_HYMN",
+        "song": "Salve Regina",
+        "slug": "salve-regina"
+      }
     ]
   },
   {
