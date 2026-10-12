@@ -32,11 +32,18 @@ const FILTERS: { value: GalleryFilter; label: string }[] = [
   { value: "video", label: "Videos" },
 ];
 
+/** Two rows of three on desktop; each "Show more" adds four rows. */
+const FIRST_PAGE = 6;
+const PAGE_STEP = 12;
+
 export function GalleryBrowser({ items: all }: { items: GalleryItem[] }) {
   const [filter, setFilter] = useState<GalleryFilter>("all");
   const [active, setActive] = useState<GalleryItem | null>(null);
+  const [shown, setShown] = useState(FIRST_PAGE);
 
   const items = useMemo(() => filterGallery(all, filter), [all, filter]);
+  const visible = items.slice(0, shown);
+  const remaining = items.length - visible.length;
 
   // Close lightbox on Esc.
   useEffect(() => {
@@ -124,7 +131,10 @@ export function GalleryBrowser({ items: all }: { items: GalleryItem[] }) {
                   <button
                     key={f.value}
                     type="button"
-                    onClick={() => setFilter(f.value)}
+                    onClick={() => {
+                      setFilter(f.value);
+                      setShown(FIRST_PAGE);
+                    }}
                     className={cn(
                       "rounded-full border px-3 py-1 text-sm transition-colors",
                       active
@@ -142,13 +152,44 @@ export function GalleryBrowser({ items: all }: { items: GalleryItem[] }) {
           {items.length === 0 ? (
             <EmptyState />
           ) : (
-            <ul className="mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4 [&>*]:break-inside-avoid">
-              {items.map((item) => (
-                <li key={item.slug}>
-                  <GalleryTile item={item} onOpen={() => setActive(item)} />
-                </li>
-              ))}
-            </ul>
+            <>
+              {/* Even tiles rather than masonry, so the first page reads as
+                  two clean rows; the lightbox shows each photo uncropped. */}
+              <ul className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+                {visible.map((item) => (
+                  <li key={item.slug}>
+                    <GalleryTile item={item} onOpen={() => setActive(item)} />
+                  </li>
+                ))}
+              </ul>
+
+              {items.length > FIRST_PAGE && (
+                <div className="mt-8 flex flex-col items-center gap-3">
+                  <p className="text-sm text-muted-foreground">
+                    Showing {visible.length} of {items.length}
+                  </p>
+                  {remaining > 0 ? (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="rounded-full"
+                      onClick={() => setShown((n) => n + PAGE_STEP)}
+                    >
+                      Show {Math.min(PAGE_STEP, remaining)} more
+                    </Button>
+                  ) : (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      className="rounded-full"
+                      onClick={() => setShown(FIRST_PAGE)}
+                    >
+                      Show fewer
+                    </Button>
+                  )}
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
@@ -173,18 +214,17 @@ function GalleryTile({
       <button
         type="button"
         onClick={onOpen}
-        className="group relative block w-full overflow-hidden rounded-xl border bg-muted text-left transition-shadow hover:shadow-md"
+        className="group relative block aspect-[4/3] w-full overflow-hidden rounded-xl border bg-muted text-left transition-shadow hover:shadow-md"
       >
         <Image
           src={item.src}
           alt={item.alt}
-          width={1200}
-          height={900}
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="block h-auto w-full transition-transform duration-500 group-hover:scale-105"
+          fill
+          sizes="(min-width: 1024px) 33vw, 50vw"
+          className="object-cover object-[center_30%] transition-transform duration-500 group-hover:scale-105"
         />
         {item.caption && (
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-3 text-sm text-white">
+          <div className="absolute inset-x-0 bottom-0 hidden bg-gradient-to-t from-black/70 via-black/30 to-transparent p-3 text-sm text-white sm:block">
             {item.caption}
           </div>
         )}
