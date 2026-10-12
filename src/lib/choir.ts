@@ -185,6 +185,15 @@ export const CONCERTS: ChoirConcert[] = [
       "Drums, kayamba, harmonies and dance — African sacred music in the service of the liturgy.",
   },
   {
+    slug: "voices-for-hospice-2026",
+    title: "Voices for Hospice",
+    startsAt: "2026-10-10T15:00:00+03:00",
+    venue: "St. Andrew's PCEA Church, Nairobi",
+    blurb:
+      "Singing alongside choirs and orchestra in support of Nairobi Hospice and its care for patients and families.",
+    poster: "/gallery/voices-for-hospice-2026-group-hero.avif",
+  },
+  {
     slug: "st-pauls-christmas-carols-2026",
     title: "St. Paul's Christmas Carols",
     startsAt: "2026-12-20T18:30:00+03:00",

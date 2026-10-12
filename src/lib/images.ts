@@ -61,6 +61,15 @@ export const HERO_CAROUSEL: {
   focus?: string;
 }[] = [
   {
+    src: "/gallery/voices-for-hospice-2026-group-hero.avif",
+    alt: "The choir gathered outside St. Andrew's PCEA Church after Voices for Hospice",
+    kicker: "Singing for Nairobi Hospice",
+    title: "Voices for Hospice",
+    // Cut from the full group shot at 16:10 so the frame stops short of a
+    // chorister's baby at the right of the front row.
+    focus: "center",
+  },
+  {
     src: "/gallery/pic-1.avif",
     alt: "Choir in praise and dance",
     kicker: "Join us in",

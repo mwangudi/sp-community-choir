@@ -18,7 +18,8 @@
     "import:worship-aid": "node --env-file=.env scripts/import-worship-aid.mjs",
     "import:lyrics": "node --env-file=.env scripts/import-lyrics.mjs",
     "add:lyrics": "node scripts/add-lyrics.mjs",
-    "add:plans": "node scripts/add-plans.mjs"
+    "add:plans": "node scripts/add-plans.mjs",
+    "add:concerts": "node scripts/add-concerts.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
