@@ -31,25 +31,25 @@
         "slug": "voices-for-hospice-2026-003",
         "src": "/gallery/voices-for-hospice-2026-003.avif",
         "original": "IMG_0478.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-004",
         "src": "/gallery/voices-for-hospice-2026-004.avif",
         "original": "IMG_0479.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-005",
         "src": "/gallery/voices-for-hospice-2026-005.avif",
         "original": "IMG_0480.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-006",
         "src": "/gallery/voices-for-hospice-2026-006.avif",
         "original": "IMG_0481.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-007",
@@ -121,7 +121,7 @@
         "slug": "voices-for-hospice-2026-018",
         "src": "/gallery/voices-for-hospice-2026-018.avif",
         "original": "IMG_0530.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-019",
@@ -133,7 +133,7 @@
         "slug": "voices-for-hospice-2026-020",
         "src": "/gallery/voices-for-hospice-2026-020.avif",
         "original": "IMG_0563.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-021",
@@ -145,13 +145,13 @@
         "slug": "voices-for-hospice-2026-022",
         "src": "/gallery/voices-for-hospice-2026-022.avif",
         "original": "IMG_0586.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-023",
         "src": "/gallery/voices-for-hospice-2026-023.avif",
         "original": "IMG_0588.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-024",
@@ -169,19 +169,19 @@
         "slug": "voices-for-hospice-2026-026",
         "src": "/gallery/voices-for-hospice-2026-026.avif",
         "original": "IMG_0603.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-027",
         "src": "/gallery/voices-for-hospice-2026-027.avif",
         "original": "IMG_0615.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-028",
         "src": "/gallery/voices-for-hospice-2026-028.avif",
         "original": "IMG_0618.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-029",
@@ -193,25 +193,25 @@
         "slug": "voices-for-hospice-2026-030",
         "src": "/gallery/voices-for-hospice-2026-030.avif",
         "original": "IMG_0631.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-031",
         "src": "/gallery/voices-for-hospice-2026-031.avif",
         "original": "IMG_0632.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-032",
         "src": "/gallery/voices-for-hospice-2026-032.avif",
         "original": "IMG_0636.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-033",
         "src": "/gallery/voices-for-hospice-2026-033.avif",
         "original": "IMG_0643.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-034",
@@ -223,7 +223,7 @@
         "slug": "voices-for-hospice-2026-035",
         "src": "/gallery/voices-for-hospice-2026-035.avif",
         "original": "IMG_0657.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-036",
@@ -277,7 +277,7 @@
         "slug": "voices-for-hospice-2026-044",
         "src": "/gallery/voices-for-hospice-2026-044.avif",
         "original": "IMG_0678.JPG",
-        "published": true
+        "published": false
       },
       {
         "slug": "voices-for-hospice-2026-045",
@@ -373,7 +373,7 @@
         "slug": "voices-for-hospice-2026-060",
         "src": "/gallery/voices-for-hospice-2026-060.avif",
         "original": "IMG_5380.jpeg",
-        "published": true
+        "published": false
       }
     ]
   }
