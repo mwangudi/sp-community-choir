@@ -5,6 +5,7 @@
     "year": "A",
     "season": "ORDINARY_TIME",
     "setting": "A.M.E.C.E.A. Mass",
+    "youtubeId": "baFJBRjJis0",
     "notes": "World Mission Sunday.",
     "status": "PUBLISHED",
     "items": [
@@ -13,8 +14,16 @@
         "song": "Twende Nyumbani Mwa Bwana Hoya! (Hoya!)",
         "slug": "twende-nyumbani-mwa-bwana-hoya"
       },
-      { "part": "KYRIE", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
-      { "part": "GLORIA", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      {
+        "part": "KYRIE",
+        "song": "A.M.E.C.E.A. Mass",
+        "slug": "a-m-e-c-e-a-mass"
+      },
+      {
+        "part": "GLORIA",
+        "song": "A.M.E.C.E.A. Mass",
+        "slug": "a-m-e-c-e-a-mass"
+      },
       {
         "part": "GOSPEL_PROCESSION",
         "song": "Nimtume Nani",
@@ -40,15 +49,30 @@
         "song": "Let Us Break Bread",
         "slug": "let-us-break-bread"
       },
-      { "part": "SANCTUS", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      {
+        "part": "SANCTUS",
+        "song": "A.M.E.C.E.A. Mass",
+        "slug": "a-m-e-c-e-a-mass"
+      },
       {
         "part": "MYSTERY_OF_FAITH",
         "song": "A.M.E.C.E.A. Mass",
         "slug": "a-m-e-c-e-a-mass"
       },
-      { "part": "GREAT_AMEN", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
-      { "part": "SIGN_OF_PEACE", "song": "Ni Amani Katika Yesu Bwana" },
-      { "part": "AGNUS_DEI", "song": "A.M.E.C.E.A. Mass", "slug": "a-m-e-c-e-a-mass" },
+      {
+        "part": "GREAT_AMEN",
+        "song": "A.M.E.C.E.A. Mass",
+        "slug": "a-m-e-c-e-a-mass"
+      },
+      {
+        "part": "SIGN_OF_PEACE",
+        "song": "Ni Amani Katika Yesu Bwana"
+      },
+      {
+        "part": "AGNUS_DEI",
+        "song": "A.M.E.C.E.A. Mass",
+        "slug": "a-m-e-c-e-a-mass"
+      },
       {
         "part": "COMMUNION",
         "song": "Twendeni Kwa Karamu",
@@ -64,14 +88,21 @@
         "song": "Soul of My Saviour",
         "slug": "soul-of-my-saviour"
       },
-      { "part": "THANKSGIVING", "song": "Kongoi" },
-      { "part": "RECESSIONAL", "song": "Nasikia Sauti Nzuri" },
+      {
+        "part": "THANKSGIVING",
+        "song": "Kongoi Mising",
+        "slug": "kongoi-mising"
+      },
       {
         "part": "RECESSIONAL",
         "song": "Nimeahidi Yesu",
         "slug": "nimeahidi-yesu"
       },
-      { "part": "MARIAN_HYMN", "song": "Mother Dearest", "slug": "mother-dearest" }
+      {
+        "part": "MARIAN_HYMN",
+        "song": "Mother Dearest",
+        "slug": "mother-dearest"
+      }
     ]
   },
   {
