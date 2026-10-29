@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import {
   Alert,
+  Autocomplete,
   Box,
   Card,
   CardContent,
@@ -60,6 +61,9 @@ export function SongForm({ song, isNew }: { song: SongDraft; isNew: boolean }) {
   );
   const [seasons, setSeasons] = useState<string[]>(song.seasons);
   const [massParts, setMassParts] = useState<string[]>(song.massParts);
+  const [aliases, setAliases] = useState<string[]>(
+    song.aliases.split("\n").filter(Boolean),
+  );
   const { formProps, field } = useFieldValidation({
     title: isRequired("Title"),
   });
@@ -69,6 +73,7 @@ export function SongForm({ song, isNew }: { song: SongDraft; isNew: boolean }) {
       {!isNew && <input type="hidden" name="originalSlug" value={song.slug} />}
       <input type="hidden" name="seasons" value={seasons.join(",")} />
       <input type="hidden" name="massParts" value={massParts.join(",")} />
+      <input type="hidden" name="aliases" value={aliases.join("\n")} />
 
       {state.error && (
         <Alert severity="error" sx={{ mb: 5 }}>
@@ -97,6 +102,25 @@ export function SongForm({ song, isNew }: { song: SongDraft; isNew: boolean }) {
                   defaultValue={song.title}
                   fullWidth
                   {...field("title")}
+                />
+                {/* A psalm serves many Sundays; each one is a title it is found by. */}
+                <Autocomplete
+                  multiple
+                  freeSolo
+                  autoSelect
+                  options={[]}
+                  value={aliases}
+                  onChange={(_, v) =>
+                    setAliases([...new Set(v.map((a) => a.trim()).filter(Boolean))])
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Sundays sung & other titles"
+                      placeholder={aliases.length ? "Add another…" : "e.g. 3rd Sunday of Lent, Year A"}
+                      helperText="Type a Sunday or another title and press Enter. Add as many as it is sung on — searches find the song under each."
+                    />
+                  )}
                 />
                 <TextField
                   name="slug"
@@ -247,15 +271,6 @@ export function SongForm({ song, isNew }: { song: SongDraft; isNew: boolean }) {
                   label="Scripture"
                   defaultValue={song.scripture}
                   helperText="Comma separated — e.g. Ps 23, Jn 6:35"
-                  fullWidth
-                />
-                <TextField
-                  name="aliases"
-                  label="Also known as"
-                  defaultValue={song.aliases}
-                  helperText="One per line, commas allowed. Name every Sunday a psalm is sung on, e.g. 30th Sunday in Ordinary Time, Year A — searches find the song under each."
-                  multiline
-                  minRows={2}
                   fullWidth
                 />
               </Stack>
