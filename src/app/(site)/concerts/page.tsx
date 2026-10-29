@@ -111,6 +111,14 @@ function ConcertCard({
           </div>
         </div>
         <p className="text-muted-foreground">{concert.blurb}</p>
+        {/* A day's timetable, uniform and who may take part, one per line. */}
+        {concert.description && concert.description.length > 0 && (
+          <ul className="space-y-1 border-t pt-3 text-foreground/80">
+            {concert.description.map((line, i) => (
+              <li key={i}>{line}</li>
+            ))}
+          </ul>
+        )}
       </CardContent>
     </Card>
   );

@@ -1,5 +1,120 @@
 [
   {
+    "date": "2026-10-25",
+    "name": "30th Sunday OT",
+    "year": "A",
+    "season": "ORDINARY_TIME",
+    "youtubeId": "Ofv6rTZRP7w",
+    "notes": "We congratulate and pray with the Daughters of St. Paul's on their Anniversary Celebratiions!",
+    "status": "PUBLISHED",
+    "items": [
+      {
+        "part": "ENTRANCE",
+        "song": "Mkizipenda Sheria Zangu",
+        "slug": "mkizipenda-sheria-zangu"
+      },
+      {
+        "part": "KYRIE",
+        "song": "Misa Kariobangi",
+        "slug": "misa-kariobangi"
+      },
+      {
+        "part": "GLORIA",
+        "song": "Misa Kariobangi",
+        "slug": "misa-kariobangi"
+      },
+      {
+        "part": "GOSPEL_PROCESSION",
+        "song": "Injili Yake Bwana",
+        "slug": "injili-yake-bwana"
+      },
+      {
+        "part": "RESPONSORIAL_PSALM",
+        "song": "Psalms: I love You Lord my strength",
+        "slug": "psalms-i-love-you-lord-my-strength"
+      },
+      {
+        "part": "GOSPEL_ACCLAMATION",
+        "song": "Sing Alleluia to the Lord - Accl",
+        "slug": "sing-alleluia-to-the-lord-accl"
+      },
+      {
+        "part": "OFFERTORY",
+        "song": "Twende wote tukatoe sadaka",
+        "slug": "twende-wote-tukatoe-sadaka"
+      },
+      {
+        "part": "OFFERTORY",
+        "song": "Mimi Ninakuja",
+        "slug": "mimi-ninakuja"
+      },
+      {
+        "part": "PREPARATION_OF_GIFTS",
+        "song": "Gentle as Silence",
+        "slug": "gentle-as-silence"
+      },
+      {
+        "part": "SANCTUS",
+        "song": "Misa Kariobangi",
+        "slug": "misa-kariobangi"
+      },
+      {
+        "part": "MYSTERY_OF_FAITH",
+        "song": "Misa Kariobangi",
+        "slug": "misa-kariobangi"
+      },
+      {
+        "part": "GREAT_AMEN",
+        "song": "3-Fold",
+        "slug": "3-fold"
+      },
+      {
+        "part": "OUR_FATHER",
+        "song": "Recite"
+      },
+      {
+        "part": "SIGN_OF_PEACE",
+        "song": "Nijaposema Kwa Lugha",
+        "slug": "nijaposema-kwa-lugha"
+      },
+      {
+        "part": "AGNUS_DEI",
+        "song": "Misa Kariobangi",
+        "slug": "misa-kariobangi"
+      },
+      {
+        "part": "COMMUNION",
+        "song": "A New Commandment",
+        "slug": "a-new-commandment"
+      },
+      {
+        "part": "COMMUNION",
+        "song": "Love Divine",
+        "slug": "love-divine"
+      },
+      {
+        "part": "ANIMA_CHRISTI",
+        "song": "Roho ya Yesu Itutakase",
+        "slug": "roho-wa-yesu"
+      },
+      {
+        "part": "THANKSGIVING",
+        "song": "Nitamsifu Mungu wa Mbinguni",
+        "slug": "nitamsifu-mungu-wa-mbinguni"
+      },
+      {
+        "part": "RECESSIONAL",
+        "song": "My Jesus I Love Thee",
+        "slug": "my-jesus-i-love-thee"
+      },
+      {
+        "part": "MARIAN_HYMN",
+        "song": "Tumsifu Maria",
+        "slug": "tumsifu-maria"
+      }
+    ]
+  },
+  {
     "date": "2026-10-18",
     "name": "29th Sunday in Ordinary Time",
     "year": "A",

@@ -376,5 +376,84 @@
         "published": false
       }
     ]
+  },
+  {
+    "slug": "choir-retreat-2026",
+    "title": "Choir Retreat",
+    "startsAt": "2026-11-14T08:30:00+03:00",
+    "venue": "Hekima University College, Joseph Kangethe Road, off Ngong Road (by Posta)",
+    "blurb": "A day of reflection and confession led by Fr. Rector Emmanuel Foro, SJ, closing with Holy Mass.",
+    "description": [
+      "8:30 am · Arrival",
+      "8:45 – 10:30 am · Reflection",
+      "10:45 am – 12:00 pm · Confessions",
+      "12:00 – 1:00 pm · Lunch (agape: bring something to share)",
+      "2:30 – 3:30 pm · Holy Mass",
+      "Members to be installed on Choir Day must attend."
+    ]
+  },
+  {
+    "slug": "st-pauls-family-day-2026",
+    "title": "St. Paul's Family Day",
+    "startsAt": "2026-11-15T09:30:00+03:00",
+    "venue": "Nairobi Primary School Grounds",
+    "blurb": "Arise, evangelise and bridge generations: One Family, One Mission.",
+    "description": [
+      "Main celebrant: His Lordship Rt. Rev. Bishop David Kamau",
+      "Uniform: to be confirmed"
+    ]
+  },
+  {
+    "slug": "adn-st-cecilia-day-2026",
+    "title": "ADN St. Cecilia Day",
+    "startsAt": "2026-11-21T08:00:00+03:00",
+    "venue": "Queen of Apostles, Ruaraka",
+    "blurb": "The Archdiocese of Nairobi keeps the feast of St. Cecilia, patron of musicians, and commissions choir members who have completed formation.",
+    "description": [
+      "8:00 am · Registration",
+      "9:00 am · Holy Mass and commissioning",
+      "Uniform: ADN choir uniform"
+    ]
+  },
+  {
+    "slug": "choir-day-2026",
+    "title": "Choir Day",
+    "startsAt": "2026-11-22T11:30:00+03:00",
+    "venue": "St. Paul's Chapel",
+    "blurb": "Holy Mass with the installation of new members and renewal of commitments, followed by lunch.",
+    "description": [
+      "Installation is open to members of at least 7 – 9 months who attend the retreat on 14 November.",
+      "To be installed, register your name with your voice leader.",
+      "Uniform: to be set by the Uniform Committee."
+    ]
+  },
+  {
+    "slug": "corpus-christi-procession-2026",
+    "title": "Corpus Christi Adoration & Procession",
+    "startsAt": "2026-06-07T15:00:00+03:00",
+    "venue": "St. Paul's Catholic Chapel, University Way",
+    "blurb": "Solemn adoration, choral reflection and the Eucharistic procession around the chapel grounds.",
+    "pinned": true
+  },
+  {
+    "slug": "african-concert-2026",
+    "title": "African Concert",
+    "startsAt": "2026-08-16T17:00:00+03:00",
+    "venue": "St. Paul's Catholic Chapel",
+    "blurb": "Drums, kayamba, harmonies and dance — African sacred music in the service of the liturgy."
+  },
+  {
+    "slug": "mater-hospital-carols-2026",
+    "title": "Carols at Mater Hospital",
+    "startsAt": "2026-12-13T15:00:00+03:00",
+    "venue": "Mater Misericordiae Hospital, South B",
+    "blurb": "Bringing Christmas carols to patients, staff and visitors at Mater Hospital."
+  },
+  {
+    "slug": "st-pauls-christmas-carols-2026",
+    "title": "St. Paul's Christmas Carols",
+    "startsAt": "2026-12-20T18:30:00+03:00",
+    "venue": "St. Paul's Catholic Chapel",
+    "blurb": "Our annual evening of carols, readings and reflection that closes the academic year."
   }
 ]
