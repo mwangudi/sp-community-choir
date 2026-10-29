@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Box, Stack, Typography } from "@mui/material";
-import { prisma } from "@/lib/db";
+import { songOptions } from "@/lib/server/song-options";
 import { requireSession } from "@/lib/auth";
 import { isMassKind } from "@/lib/mass-occasions";
 import { PlanForm } from "../../mass-plans/plan-form";
@@ -18,11 +18,7 @@ export default async function NewSpecialMassPage({
   const { kind: rawKind = "" } = await searchParams;
   const kind = isMassKind(rawKind) && rawKind !== "SUNDAY" ? rawKind : "REQUIEM";
 
-  const songs = await prisma.song.findMany({
-    where: { isActive: true },
-    select: { slug: true, title: true },
-    orderBy: { title: "asc" },
-  });
+  const songs = await songOptions();
 
   return (
     <Stack spacing={6}>

@@ -50,7 +50,31 @@ export type PlanDraft = {
   items: PlanItemDraft[];
 };
 
-export type SongOption = { slug: string; title: string };
+export type SongOption = { slug: string; title: string; aliases?: string[] };
+
+const fold = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+/** The other title a search matched, e.g. the other Sunday a psalm is sung on. */
+function matchedAlias(option: SongOption, input: string): string | undefined {
+  const q = fold(input);
+  if (!q || fold(option.title).includes(q)) return undefined;
+  return option.aliases?.find((a) => fold(a).includes(q));
+}
+
+/** Match a song on its title or any title it is also known by. */
+function filterSongs(options: SongOption[], { inputValue }: { inputValue: string }) {
+  const q = fold(inputValue);
+  if (!q) return options;
+  return options.filter(
+    (o) => fold(o.title).includes(q) || (o.aliases ?? []).some((a) => fold(a).includes(q)),
+  );
+}
 
 export function PlanForm({
   plan,
@@ -119,7 +143,7 @@ export function PlanForm({
             >
               <Typography variant="h6">Order of service</Typography>
               <Stack direction="row" spacing={2}>
-                {!sunday && items.length === 0 && (
+                {items.length === 0 && (
                   <Button
                     size="small"
                     onClick={() =>
@@ -184,6 +208,23 @@ export function PlanForm({
                       sx={{ flex: 1 }}
                       options={songs}
                       getOptionLabel={(o) => (typeof o === "string" ? o : o.title)}
+                      filterOptions={filterSongs}
+                      renderOption={(props, option, { inputValue }) => {
+                        const { key, ...rest } = props as typeof props & { key: string };
+                        const alias = matchedAlias(option, inputValue);
+                        return (
+                          <li key={key} {...rest}>
+                            <Box>
+                              {option.title}
+                              {alias && (
+                                <Typography variant="caption" color="text.secondary" sx={{ display: "block" }}>
+                                  Also: {alias}
+                                </Typography>
+                              )}
+                            </Box>
+                          </li>
+                        );
+                      }}
                       value={item.song}
                       onInputChange={(_, value, reason) => {
                         if (reason === "input") {

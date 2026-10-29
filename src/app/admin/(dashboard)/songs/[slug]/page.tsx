@@ -53,7 +53,7 @@ export default async function EditSongPage({
           arranger: song.arranger ?? "",
           voicing: song.voicing ?? "",
           musicalKey: song.musicalKey ?? "",
-          aliases: asList(song.aliases).join(", "),
+          aliases: asList(song.aliases).join("\n"),
           seasons: asList(song.seasons),
           massParts: asList(song.massParts),
           themes: asList(song.themes).join(", "),

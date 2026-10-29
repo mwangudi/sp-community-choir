@@ -161,6 +161,17 @@ export default async function SongsPage({
       ? { OR: values.map((v) => ({ [field]: { array_contains: v } })) }
       : {};
 
+  // A psalm is filed under one Sunday and also known by the others it is sung
+  // on. Aliases are a JSON array, which Prisma cannot match on part of an
+  // entry, so find those songs first. JSON text is case-sensitive, hence LOWER.
+  const aliasSlugs = q
+    ? (
+        await prisma.$queryRaw<{ slug: string }[]>`
+          SELECT slug FROM \`Song\`
+          WHERE LOWER(CAST(aliases AS CHAR)) LIKE CONCAT('%', LOWER(${q}), '%')`
+      ).map((r) => r.slug)
+    : [];
+
   // MySQL's utf8mb4_unicode_ci collation already makes `contains` case-insensitive.
   const where: Prisma.SongWhereInput = {
     AND: [
@@ -176,6 +187,7 @@ export default async function SongsPage({
               { arranger: { contains: q } },
               // Many songs are known by a line of the chorus, not the title.
               { lyrics: { contains: q } },
+              ...(aliasSlugs.length ? [{ slug: { in: aliasSlugs } }] : []),
             ],
           }
         : {},

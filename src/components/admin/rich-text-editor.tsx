@@ -5,10 +5,12 @@ import { EditorContent, useEditor, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
-import { Box, Divider, Stack, ToggleButton, Tooltip } from "@mui/material";
+import { Box, Button, Divider, Stack, ToggleButton, Tooltip, Typography } from "@mui/material";
 import {
   Bold,
   Code,
+  CornerDownLeft,
+  Sparkles,
   Heading2,
   Heading3,
   Italic,
@@ -22,11 +24,14 @@ import {
   Strikethrough,
   Undo2,
 } from "lucide-react";
+import { tidyLyrics } from "@/lib/tidy-lyrics";
 
 type Props = {
   name: string;
   defaultValue?: string;
   placeholder?: string;
+  /** Song lyrics: adds the line-break and tidy-spacing tools. */
+  lyrics?: boolean;
 };
 
 /** Wraps legacy plain-text bodies so they still render as paragraphs. */
@@ -40,7 +45,7 @@ function toHtml(value: string): string {
     .join("");
 }
 
-export function RichTextEditor({ name, defaultValue = "", placeholder }: Props) {
+export function RichTextEditor({ name, defaultValue = "", placeholder, lyrics }: Props) {
   const [html, setHtml] = useState(() => toHtml(defaultValue));
 
   const editor = useEditor({
@@ -74,6 +79,15 @@ export function RichTextEditor({ name, defaultValue = "", placeholder }: Props) 
       return;
     }
     editor.chain().focus().setLink({ href: url }).run();
+  }, [editor]);
+
+  // One undoable step, so Undo brings the old spacing back.
+  const tidy = useCallback(() => {
+    if (!editor) return;
+    const before = editor.getHTML();
+    const after = tidyLyrics(before);
+    if (after !== before) editor.chain().focus().setContent(after).run();
+    setHtml(editor.getHTML());
   }, [editor]);
 
   if (!editor) {
@@ -174,6 +188,29 @@ export function RichTextEditor({ name, defaultValue = "", placeholder }: Props) 
             <Link2Off size={16} />
           </Tool>
 
+          {lyrics && (
+            <>
+              <Divider orientation="vertical" flexItem sx={{ mx: 0.5 }} />
+              <Tool
+                editor={editor}
+                tip="New line in the same verse (Shift+Enter)"
+                onClick={(e) => e.chain().focus().setHardBreak().run()}
+              >
+                <CornerDownLeft size={16} />
+              </Tool>
+              <Tooltip title="Join lines typed one per paragraph into verses, and remove empty lines">
+                <Button
+                  size="small"
+                  startIcon={<Sparkles size={14} />}
+                  onClick={tidy}
+                  sx={{ textTransform: "none" }}
+                >
+                  Tidy spacing
+                </Button>
+              </Tooltip>
+            </>
+          )}
+
           <Box sx={{ flex: 1 }} />
 
           <Tool editor={editor} tip="Undo" onClick={(e) => e.chain().focus().undo().run()}>
@@ -197,6 +234,11 @@ export function RichTextEditor({ name, defaultValue = "", placeholder }: Props) 
           <EditorContent editor={editor} />
         </Box>
       </Box>
+      {lyrics && (
+        <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 1 }}>
+          Enter starts a new verse. Shift+Enter starts a new line in the same verse.
+        </Typography>
+      )}
     </Box>
   );
 }

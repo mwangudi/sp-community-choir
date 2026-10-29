@@ -51,9 +51,38 @@ const STANDARD: MassPart[] = [
   "RECESSIONAL",
 ];
 
+/**
+ * The choir's Sunday order of service, as sung on the 30th Sunday in Ordinary
+ * Time 2026: two Offertory and two Communion songs, the psalm and the Marian
+ * hymn included, so a new plan only needs its songs and title filled in.
+ */
+const SUNDAY: MassPart[] = [
+  "ENTRANCE",
+  "KYRIE",
+  "GLORIA",
+  "GOSPEL_PROCESSION",
+  "RESPONSORIAL_PSALM",
+  "GOSPEL_ACCLAMATION",
+  "OFFERTORY",
+  "OFFERTORY",
+  "PREPARATION_OF_GIFTS",
+  "SANCTUS",
+  "MYSTERY_OF_FAITH",
+  "GREAT_AMEN",
+  "OUR_FATHER",
+  "SIGN_OF_PEACE",
+  "AGNUS_DEI",
+  "COMMUNION",
+  "COMMUNION",
+  "ANIMA_CHRISTI",
+  "THANKSGIVING",
+  "RECESSIONAL",
+  "MARIAN_HYMN",
+];
+
 /** Starter order of service for each occasion; the admin edits from here. */
 export const OUTLINES: Record<MassKind, MassPart[]> = {
-  SUNDAY: STANDARD,
+  SUNDAY,
   WEDDING: [
     "ENTRANCE",
     "KYRIE",

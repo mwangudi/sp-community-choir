@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { Box, Stack, Typography } from "@mui/material";
 import { prisma } from "@/lib/db";
+import { songOptions } from "@/lib/server/song-options";
 import { requireSession } from "@/lib/auth";
 import { formatDate } from "@/lib/utils";
 import { PlanForm } from "../plan-form";
@@ -22,11 +23,7 @@ export default async function EditMassPlanPage({
       where: { id },
       include: { items: { orderBy: { sortOrder: "asc" } } },
     }),
-    prisma.song.findMany({
-      where: { isActive: true },
-      select: { slug: true, title: true },
-      orderBy: { title: "asc" },
-    }),
+    songOptions(),
   ]);
   if (!plan) notFound();
   if (plan.kind !== "SUNDAY") redirect(`/admin/special-masses/${plan.id}`);

@@ -28,6 +28,14 @@ function list(value: FormDataEntryValue | null): string[] {
     .filter(Boolean);
 }
 
+/** One entry per line: a Sunday's name has commas of its own. */
+function lines(value: FormDataEntryValue | null): string[] {
+  return String(value ?? "")
+    .split(/\r?\n/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
 function text(formData: FormData, key: string): string | null {
   const v = String(formData.get(key) ?? "").trim();
   return v || null;
@@ -64,7 +72,7 @@ export async function saveSong(
     arranger: text(formData, "arranger"),
     voicing: text(formData, "voicing"),
     musicalKey: text(formData, "musicalKey"),
-    aliases: list(formData.get("aliases")),
+    aliases: lines(formData.get("aliases")),
     seasons: list(formData.get("seasons")) as LiturgicalSeason[],
     massParts: list(formData.get("massParts")) as MassPart[],
     themes: list(formData.get("themes")),

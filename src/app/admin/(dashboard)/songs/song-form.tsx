@@ -174,6 +174,7 @@ export function SongForm({ song, isNew }: { song: SongDraft; isNew: boolean }) {
               </Typography>
               <RichTextEditor
                 name="lyrics"
+                lyrics
                 defaultValue={song.lyrics}
                 placeholder={"1. First line of the verse…"}
               />
@@ -252,7 +253,9 @@ export function SongForm({ song, isNew }: { song: SongDraft; isNew: boolean }) {
                   name="aliases"
                   label="Also known as"
                   defaultValue={song.aliases}
-                  helperText="Comma separated alternative titles"
+                  helperText="One per line, commas allowed. Name every Sunday a psalm is sung on, e.g. 30th Sunday in Ordinary Time, Year A — searches find the song under each."
+                  multiline
+                  minRows={2}
                   fullWidth
                 />
               </Stack>
