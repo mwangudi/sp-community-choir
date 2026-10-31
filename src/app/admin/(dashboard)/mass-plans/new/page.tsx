@@ -4,7 +4,7 @@ import type { LiturgicalSeason } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { requireSession } from "@/lib/auth";
 import { dateKey, liturgicalContext, type LiturgicalContext } from "@/lib/liturgical";
-import { OUTLINES } from "@/lib/mass-occasions";
+import { OUTLINES, withTithe } from "@/lib/mass-occasions";
 import { songOptions } from "@/lib/server/song-options";
 import { PlanForm } from "../plan-form";
 
@@ -64,7 +64,7 @@ export default async function NewMassPlanPage() {
           youtubeId: "",
           notes: "",
           status: "DRAFT",
-          items: OUTLINES.SUNDAY.map((part) => ({ part, song: "", songSlug: null })),
+          items: withTithe(OUTLINES.SUNDAY, sunday.date).map((part) => ({ part, song: "", songSlug: null })),
         }}
       />
     </Stack>

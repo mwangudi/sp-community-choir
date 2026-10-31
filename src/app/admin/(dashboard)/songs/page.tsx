@@ -94,6 +94,7 @@ const MASS_PARTS: MassPart[] = [
   "CREED",
   "OFFERTORY",
   "PREPARATION_OF_GIFTS",
+  "TITHE",
   "SANCTUS",
   "MYSTERY_OF_FAITH",
   "GREAT_AMEN",

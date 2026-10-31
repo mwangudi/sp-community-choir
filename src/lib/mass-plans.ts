@@ -24,6 +24,7 @@ export type MassPlanPart =
   | "Creed"
   | "Offertory"
   | "Preparation of Gifts"
+  | "Tithe"
   | "Sanctus"
   | "Mystery of Faith"
   | "Great Amen"
@@ -68,6 +69,7 @@ export const MASS_PLAN_PART_ORDER: MassPlanPart[] = [
   "Creed",
   "Offertory",
   "Preparation of Gifts",
+  "Tithe",
   "Sanctus",
   "Mystery of Faith",
   "Great Amen",

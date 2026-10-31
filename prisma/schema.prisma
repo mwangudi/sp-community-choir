@@ -80,6 +80,8 @@ enum MassPart {
   CREED
   OFFERTORY
   PREPARATION_OF_GIFTS
+  // The tithe collection, on some first Sundays of the month.
+  TITHE
   SANCTUS
   MYSTERY_OF_FAITH
   GREAT_AMEN

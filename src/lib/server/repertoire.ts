@@ -69,6 +69,7 @@ const PLAN_PARTS: Record<string, MassPlanPart> = {
   CREED: "Creed",
   OFFERTORY: "Offertory",
   PREPARATION_OF_GIFTS: "Preparation of Gifts",
+  TITHE: "Tithe",
   SANCTUS: "Sanctus",
   MYSTERY_OF_FAITH: "Mystery of Faith",
   GREAT_AMEN: "Great Amen",

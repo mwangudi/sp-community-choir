@@ -121,6 +121,16 @@ export const OUTLINES: Record<MassKind, MassPart[]> = {
   OTHER: STANDARD,
 };
 
+/**
+ * Some first Sundays of the month take a tithe collection, so their plan gets
+ * a Tithe slot after the Preparation of Gifts; left empty, it drops on save.
+ */
+export function withTithe(outline: MassPart[], date: Date): MassPart[] {
+  if (date.getDate() > 7) return outline;
+  const at = outline.lastIndexOf("PREPARATION_OF_GIFTS") + 1 || outline.length;
+  return [...outline.slice(0, at), "TITHE", ...outline.slice(at)];
+}
+
 /** Admin section that owns a plan of this kind. */
 export function plansHref(kind: MassKind | string): string {
   return kind === "SUNDAY" ? "/admin/mass-plans" : "/admin/special-masses";
