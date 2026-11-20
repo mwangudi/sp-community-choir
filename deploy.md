@@ -208,6 +208,11 @@ uploaded — the droplet never runs `npm` or `next build` (see the comment in
 SSH_KEY=~/.ssh/id_ed255_new bash deploy/deploy-bundle.sh
 ```
 
+The site is deployed from more than one machine, so the script first checks
+that your checkout is exactly GitHub's `main`: it stops if GitHub has commits
+you lack (`git pull --rebase` first) or you have commits GitHub lacks (push
+first). Otherwise a deploy could roll the live site back to an older copy.
+
 [`deploy/deploy-bundle.sh`](deploy/deploy-bundle.sh) then:
 
 1. builds with the live site's public settings (`SITE_URL`, default

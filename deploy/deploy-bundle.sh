@@ -41,6 +41,18 @@ if [[ -n "$(git status --porcelain)" ]]; then
   exit 1
 fi
 
+# The site is deployed from more than one machine. Building from a checkout
+# that lacks commits already on GitHub would roll the live site back to it.
+git fetch --quiet origin main
+if ! git merge-base --is-ancestor origin/main HEAD; then
+  echo "!! GitHub has commits this checkout lacks — run 'git pull --rebase' first." >&2
+  exit 1
+fi
+if [[ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]]; then
+  echo "!! This checkout has commits not on GitHub — push them first, so the other machines see what is live." >&2
+  exit 1
+fi
+
 echo "==> Building $(git rev-parse --short HEAD) for $SITE_URL"
 rm -rf .next
 NEXT_PUBLIC_SITE_URL="$SITE_URL" NEXT_PUBLIC_ALLOW_INDEXING="$ALLOW_INDEXING" npx next build
