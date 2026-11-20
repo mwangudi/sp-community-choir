@@ -242,6 +242,13 @@
 }
 .worship-aid .aid-lyrics p {
   margin: 0 0 8px;
+  /* Long paragraphs may run onto the next page, but never strand a line or
+     two at the foot of one page or the head of the next. */
+  orphans: 3;
+  widows: 3;
+}
+/* Short ones (marked in worship-aid/[id]/page.tsx) stay whole. */
+.worship-aid .aid-lyrics p.aid-keep {
   break-inside: avoid;
 }
 

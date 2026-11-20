@@ -91,6 +91,20 @@ function printedDate(date: Date) {
   return `${date.getUTCDate()} ${MONTHS[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
 }
 
+/**
+ * A short paragraph — a refrain, a verse — reads best kept on one page. A long
+ * one, often a whole hymn stored as one block, must be free to run on: held
+ * together it jumped to the next page whole and left a gap behind it.
+ */
+const KEEP_TOGETHER_LINES = 6;
+
+function markShortParagraphs(html: string) {
+  return html.replace(/<p>([\s\S]*?)<\/p>/g, (whole, body: string) => {
+    const lines = (body.match(/<br\s*\/?>/g) ?? []).length + 1;
+    return lines <= KEEP_TOGETHER_LINES ? `<p class="aid-keep">${body}</p>` : whole;
+  });
+}
+
 function emphasise(html: string) {
   return html
     .split(/(<br \/>|<\/p><p>|<p>|<\/p>)/)
@@ -216,7 +230,7 @@ export default async function WorshipAidPage({
                   {item.lyrics && (
                     <div
                       className="aid-lyrics"
-                      dangerouslySetInnerHTML={{ __html: emphasise(item.lyrics) }}
+                      dangerouslySetInnerHTML={{ __html: markShortParagraphs(emphasise(item.lyrics)) }}
                     />
                   )}
                 </section>
