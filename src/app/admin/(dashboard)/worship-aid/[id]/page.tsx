@@ -80,6 +80,17 @@ function lyricsForPart(lyrics: string, part: string) {
  * The printed aid sets a verse number in bold and a braced refrain bold
  * throughout. Lyrics are stored as escaped text, so only line starts match.
  */
+/**
+ * The printed heading uses three-letter months, "22 Nov 2026". Spelled out
+ * here because en-GB formatting gives "Sept" for September. The plan's date is
+ * a DATE stored as UTC midnight, so read it in UTC.
+ */
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function printedDate(date: Date) {
+  return `${date.getUTCDate()} ${MONTHS[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+}
+
 function emphasise(html: string) {
   return html
     .split(/(<br \/>|<\/p><p>|<p>|<\/p>)/)
@@ -189,7 +200,7 @@ export default async function WorshipAidPage({
                   {plan.name.toUpperCase()}
                   {/* Optional, and only meaningful on a Sunday. */}
                   {sunday && plan.year ? ` YEAR ${plan.year}` : ""} |{" "}
-                  {formatDate(plan.date).toUpperCase()}
+                  {printedDate(plan.date).toUpperCase()}
                   <span className="aid-parish">{place.toUpperCase()}</span>
                 </h1>
               </header>
